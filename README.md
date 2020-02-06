@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# software-design-vu
-Project template and specification for the Software Design course at the Vrije Universiteit Amsterdam
-=======
 # Software Design 
 This is the template for the team project of the Software Design course at the Vrije Universiteit Amsterdam. 
 
@@ -51,4 +47,3 @@ How to build a Jar file with Intellij:
 You can find your jar file in /out/artifacts/filename.jar.
 
 If you are still having troubles, check out [this link](https://www.jetbrains.com/help/idea/packaging-a-module-into-a-jar-file.html).
->>>>>>> 823760aa2c34e1c012f03040de9d1e5cd6c72718
