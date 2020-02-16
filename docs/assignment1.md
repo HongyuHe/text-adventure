@@ -19,7 +19,7 @@ Don’t forget to use links to external URLs (e.g., the direct link to the Fanta
 Maximum number of words for this section: 1000
 
 ## Features
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Tolucawana Taglialabempong
 
 <When defining both functional features and quality requirements, remember that you will need to come back to them in Assignments 2 and 3 and explicitly state how specific parts of models/implementation satisfy them.>
 
@@ -29,10 +29,12 @@ As a preamble to the table, you can discuss the main line of reasoning you appli
 
 | ID  | Short name  | Description  |
 |---|---|---|
-| F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
-| F2  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-name [target-objects]*`. The available `command-names` are the following: <br/> - move: ... <br/> - use: ... <br/> - inspect: ... <br/> |
-| F3  | Movements  | The main character shall move freely in the environment according  |
-| F4  | ... | ... |
+| F1  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-verb + [target-noun]`, where (\*) indicates a noun is optional. Available `command-verbs` are: <br/> - `move` + [north, east, south, west, area-name] <br/> - `use` + [item] <br/> - `look` + [item]\* <br/> - `interact` + [npc, item] <br/> |
+| F2  | Movements  | The player may move freely between different areas in four directions as described by the `move` command. Some areas may be blocked by obstacles and therefore inaccessible. Obstacles may be removed by using some item or action.  |
+| F3  | Areas | All areas will be represented as nodes in a graph, where edges between nodes indicate two areas are reachable from one another.  |
+| F4  | Obstacles |   |
+| F5  | Items | The player may acquire and use items throughout the game. Items will be stored in an inventory of infinite size. Several commands may be used in combination with an item: </br> - `interact` acquires the item and places it in the player's inventory. </br> - `look` briefly describes the item. </br> - `use` queries the item, asking it what it may be used for, and if appropriate for the situation, uses it (e.g. `use key door` will consume the key but `use key npc` will not).  |
+| F6  | NPCs | Throughout the game, several NPCs will appear which can be interacted with using the `interact` command. NPCs may be friendly or hostile and hold valuable items for the user to acquire.  |
 
 ### Quality requirements
 Author(s): `name of the team member(s) responsible for this section`
