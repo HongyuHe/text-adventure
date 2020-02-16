@@ -20,9 +20,18 @@ The customizations available to the *modder* will be as follows:
 - Edit JSON files to create new NPCs, items, obstacles and areas but with fixed structure that follows the guidelines of the default enitites.
 - Edit JSON files to change the descriptions and names of default entities, modifying the starting inventory of the player and increasing or decreasing the stats of the player.
 
-The system will be implemented as a form of a terminal/text-based game in a game window where the user will interact with the game engine by means of text based inputs typed by means of a keyboard only. The way the *gamer* experiences the system will be as follows:
+The main modules of the system will be as follows:
+- Scenario: The scenario will be written in structured JSONs and describe all entities in the game which have been mentioned above.
+- Parser: This will be the middleware that parses the JSONs and maps these to pre-built java classes.
+- Game Engine: This will be the main module that parses the user input into pre-built functions and executes these interactions.
+- UI: This will be the game window where the main user I/O operations will take place. The gamer commands will be inputed here and the output of the game engine will be logged here.
 
-Maximum number of words for this section: 1000
+The system will be implemented as a form of a terminal/text-based game in a game window where the user will interact with the game engine by means of text based inputs typed by means of a keyboard only. The way the game will generally work will be as follows:
+- User runs the game and a window is loaded.
+- A description of the starting area and the player's starting inventory will be displayed.
+- The system will wait for the user to provide an input in the form of supported commands.
+- Each input will be processed on a new line and the outcome of the action will be displayed to the user.
+- The game ends if the player's health reaches zero, or the player enters the quit command or the player wins the game by attaining a specific item. For example, a diamond. 
 
 ## Features
 Author(s): Tolucawana Taglialabempong
