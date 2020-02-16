@@ -3,33 +3,33 @@
 ## Introduction									
 Author(s): `Ajay Hitendra Mota, Hongyu He`
 
-**Cork** is a customizable version of the text-based adventure game Zork. The system we are going to implement will allow a user to create interesting scenarios for the original Zork game by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario. The main types of users will be :
+**Cork** is a customizable version of the text-based adventure game [Zork](https://en.wikipedia.org/wiki/Zork) (which can be played online [here](https://textadventures.co.uk/games/view/5zyoqrsugeopel3ffhz_vq/zork)). The system we are going to implement will allow a user to create their own interesting scenarios by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario written by themselves, or another user. The main types of users will be :
 - *Gamer*: A user who plays the game making use of the features provided by the game engine.
-- *Modder*: A user who can modify the default scenario to build modified versions of the original game.
+- *Modder*: A user who modifies the default scenario to build their own version of the original game.
 
 The main entities in the game that the *gamer* can interact with will be as follows:
 - Player: This will be the main player character who interacts with all other elements in the game. The actions available to the gamer, mentioned later in the features, would be enacted by this player entity. The player would have stats like health & strength and have an inventory. 
-- Areas: These will be the locations on the game map where a player can stand, visualize his/her surroundings and move to other linked areas. For example, a forrest with a castle to the north.
-- Obstacles: These will be game objects that block the path of a player while going from one area to another. One obstacle shall exist inside areas. For example, a locked door or darkness.
-- Items: These will be game objects that the player can use to influence stats of the player character, add to inventory, overcome an obstacle or affect an NPC. For example, an apple or a key.
-- NPCs: These will be entities in the game that the player can interact with opening up either conversations or combat. As a bonus we could implement merchants or bosses. For example, the grue.
+- Areas: These will be the locations on the game map where a player can stand, visualize his/her surroundings and move to other linked areas. For example, a forest with a castle to the north.
+- Obstacles: These will be game objects that exist within areas, and block the path of a player while going from one area to another. Interact with an appropriate object will enable or disable their impeding state. For example, a locked door opens with a key, or darkness dissipates with a lantern.
+- Items: These will be game objects that the player can use to change their stats, add or remove items from their inventory, overcome an obstacle, or impact an NPC. For example, an apple will increase health, a key will open a door, a sword will damage a monster, and gold might influence a friendly NPC to give a hint.
+- NPCs: These will be entities in the game that the player can interact with opening up either conversations or combat. As a bonus we could implement merchants or bosses. For example, the [Grue](https://en.wikipedia.org/wiki/Grue_(monster)).
 
 The customizations available to the *modder* will be as follows:
-- Edit JSON files to create new NPCs, items, obstacles and areas but with fixed structure that follows the guidelines of the default enitites.
+- Edit JSON files to create new NPCs, items, obstacles and areas. There edits must adhere to a fixed structure that will be described in accompanying documentation (and should be visible from files describing the default scenario).
 - Edit JSON files to change the descriptions and names of default entities, modifying the starting inventory of the player and increasing or decreasing the stats of the player.
 
 The main modules of the system will be as follows:
 - Scenario: The scenario will be written in structured JSONs and describe all entities in the game which have been mentioned above.
 - Parser: This will be the middleware that parses the JSONs and maps these to pre-built java classes.
-- Game Engine: This will be the main module that parses the user input into pre-built functions and executes these interactions.
-- UI: This will be the game window where the main user I/O operations will take place. The gamer commands will be inputed here and the output of the game engine will be logged here.
+- Game Engine: This will be the main module that parses the user input into pre-built commands and executes the corresponding interactions.
+- UI: This will be the game window where the main user I/O operations will take place. The gamer's commands will be entered here and the output of the game engine will be logged here. There will be no graphical components in the UI as this would violate adherence to the style of the original Zork.
 
 The system will be implemented as a form of a terminal/text-based game in a game window where the user will interact with the game engine by means of text based inputs typed by means of a keyboard only. The way the game will generally work will be as follows:
-- User runs the game and a window is loaded.
+- User runs the game and a terminal is opened.
 - A description of the starting area and the player's starting inventory will be displayed.
 - The system will wait for the user to provide an input in the form of supported commands.
 - Each input will be processed on a new line and the outcome of the action will be displayed to the user.
-- The game ends if the player's health reaches zero, or the player enters the quit command or the player wins the game by attaining a specific item. For example, a diamond. 
+- The game ends if the player's health reaches zero, the player enters the quit command, or the player wins the game by obtaining a specific item. For example, a diamond.
 
 ## Features
 Author(s): `Luca Taglialatela`
@@ -40,15 +40,15 @@ For a text-adventure type of game, we cannot get around the use of commands, how
 
 | ID  | Short name  | Description  |
 |---|---|---|
-| F1  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-verb + [target-noun]`, where (\*) indicates a noun is optional. Available `command-verbs` are: <br/> - `move` + [north, east, south, west, area-name] <br/> - `use` + [item] + [npc, item, obstacle]* <br/> - `look` + [item]\* <br/> - `interact` + [npc, item] <br/> - `inventory` <br/> - `quit` <br/> - `load` <br/> - `save` <br/> |
-| F2  | Movements  | The player may move freely between different areas in four directions as described by the `move` command. Some areas may be blocked by obstacles and therefore inaccessible. Obstacles may be removed by using some item or action.  |
+| F1  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-verb + [target-noun]`, where (\*) indicates a noun is optional. Available `command-verbs` are: <br/> - `move` + [north, east, south, west, area-name] <br/> - `use` + [item] <br/> - `look` + [item]\* <br/> - `interact` + [npc, item] <br/> - `inventory` <br/> - `quit` <br/> - `load` <br/> - `save` <br/> |
+| F2  | Movements  | The player may move freely between different areas in four directions as described by the `move` command. Some areas may be blocked by obstacles and therefore inaccessible. Obstacles may be removed by using a specific item in their presence (e.g. "use key" might open a door).  |
 | F3  | Areas | All areas will be represented as nodes in a graph, where edges between nodes indicate two areas are reachable from one another. Each area will have a description so the player can distinguish between different type of areas, however, some areas may not be unique.  |
-| F4  | Obstacles | An obstacle is a special type of object which prohibits movement between two specific areas until a certain requirement is met. Obstacles are similar to, but not a subset of, items in the sense that they may be interacted with, and items may be used on them. As a bonus feature NPCs may also act as an obstacle, preventing the player from advancing unless they perform some task for them or defeat them in combat.  |
-| F5  | Items | The player may acquire and use items throughout the game. Items will be stored in an inventory of infinite size, which may be accessed using the `inventory` command. Some items are consumed upon first use, whereas other items persist throughout the game. Several commands may be used in combination with an item: </br> - `interact` acquires the item and places it in the player's inventory. </br> - `look` briefly describes the item. </br> - `use` queries the item, asking it what it may be used for, and if appropriate for the situation, uses it (e.g. `use key door` will consume the key but `use key npc` will not).  |
-| F6  | NPCs | Throughout the game, several NPCs will appear which can be interacted with using the `interact` command. NPCs may be friendly or hostile and hold valuable items for the user to acquire.  |
-| F7  | Stats | The player has two main stats, `health` and `strength`, which they will use for combat. Naturally, `health` is an indicator of the player's vitality whereas `strength` affects the damage inflicted by the player to NPCs.  |
-| F8  | Combat | Our combat system is turn-based. Whenever the player engages in combat, they will be able to use any items they may have that can assist them.  |
-| F9  | Gamestate | The player may save or load the game at any moment using the `save` and `load` commands respectively. A savefile will contain all actions as performed by the player up until the point of saving, along with the appropriate game configurations. Whenever a savefile is loaded into the game, all actions are replayed so the user may proceed where they left off when saving. The player may quit the game after saving or loading, using the `quit` command at any time. Otherwise, the game will end when some predetermined win condition has been met, or alternatively, when the player has died.  |
+| F4  | Obstacles | An obstacle is a special type of object which prohibits movement between two specific areas until a certain item is used in the same area that they inhabit. Having obstacles be generic like this allows some more complex behaviour to exhibit itself - for example, defeating a monster may have them drop an item that "unlocks" an obstacle, therefore inhibiting progress until the monster is defeated. |
+| F5  | Items | The player may acquire and use items throughout the game. Items will be stored in an inventory of infinite size, which may be accessed using the `inventory` command. Some items are consumed upon first use, whereas other items persist throughout the game. Several commands may be used in combination with an item: </br> - `interact` acquires the item and places it in the player's inventory. </br> - `look` briefly describes the item. </br> - `use` queries the item, asking it what it may be used for, and if appropriate for the situation, uses it (e.g. `use key` might consume the key if in the presence of the appropriate door, otherwise the inventory will remain unchanged).  |
+| F6  | NPCs | Throughout the game, several NPCs will appear which can be interacted with using the `interact` command. NPCs may be friendly or hostile and could hold valuable or important items for the user to acquire.  |
+| F7  | Stats | The player has two main stats, `health` and `strength`, which they will use for combat. Naturally, `health` is an indicator of the player's remaining vitality (reaching 0 health will result in losing the game), whereas `strength` determines whether or not the player can defeat an enemy in combat, and how much damage they take during the battle.  |
+| F8  | Combat | If the player encounters an enemy they are not strong enough to defeat, then attempting to attack them will result in the player losing a significant chunk of health whilst the enemy remains alive. If the player's strength is high enough to defeat the enemy they will lose some health but the enemy will be defeated. If the player's strength if even higher than this, then they will defeat the enemy without losing any health at all. |
+| F9  | Gamestate | The player may save or load the game at any moment using the `save` and `load` commands respectively. A savefile will contain all actions as performed by the player up until the point of saving, along with the appropriate initial game configuration. Whenever a savefile is loaded into the game, all actions are replayed so the user may proceed where they left off when saving. The player may quit the game after saving or loading, using the `quit` command at any time.  |
 
 ### Quality requirements
 Author(s): `Jim Cuijpers, Ajay Hitendra Mota, Anthony Wilkes`
@@ -63,6 +63,7 @@ Author(s): `Jim Cuijpers, Ajay Hitendra Mota, Anthony Wilkes`
 | QR6  | Command validation | Usability  | Any action typed by the user will be compared to the formats specified in F1, and if it does not match, the user will be presented with a messaging indicating that the command was not understood along with a suggestion to use the help command. | This will ensure that user interacts with the game engine correctly and provides guidance. |
 | QR7 | Input Reception | Usability | For any input the user types, the game will always provide some response to indicate that the input was received. | This will ensure that the user will never be lead to believe the system is unresponsive when in fact it is not. |
 | QR8 | Save Files Encryption | Security | Whenever the user saves their game, the engine should encrypt the contents to ensure the user cannot edit them. The encryption does not have to be cryptographically secure. | This will prevent players from cheating easily. |
+| QR9 | Save Prompting | Usability | If the player has not saved their game for at least 20 actions and attempts to quit, the game should prompt them to save first. If the player attempts to quit without doing so, then the game will exit without saving. | This prevents players from accidentally exiting the game without saving their progress, but does not force the players to do so. |
 
 ### Java libraries
 Author(s): `Anthony Wilkes, Jim Cuijpers`
