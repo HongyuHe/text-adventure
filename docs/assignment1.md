@@ -40,15 +40,15 @@ As a preamble to the table, you can discuss the main line of reasoning you appli
 
 | ID  | Short name  | Description  |
 |---|---|---|
-| F1  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-verb + [target-noun]`, where (\*) indicates a noun is optional. Available `command-verbs` are: <br/> - `move` + [north, east, south, west, area-name] <br/> - `use` + [item] <br/> - `look` + [item]\* <br/> - `interact` + [npc, item] <br/> - `inventory` <br/> - `quit` <br/> - `load` <br/> - `save` <br/> |
+| F1  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-verb + [target-noun]`, where (\*) indicates a noun is optional. Available `command-verbs` are: <br/> - `move` + [north, east, south, west, area-name] <br/> - `use` + [item] + [npc, item, obstacle]* <br/> - `look` + [item]\* <br/> - `interact` + [npc, item] <br/> - `inventory` <br/> - `quit` <br/> - `load` <br/> - `save` <br/> |
 | F2  | Movements  | The player may move freely between different areas in four directions as described by the `move` command. Some areas may be blocked by obstacles and therefore inaccessible. Obstacles may be removed by using some item or action.  |
-| F3  | Areas | All areas will be represented as nodes in a graph, where edges between nodes indicate two areas are reachable from one another.  |
-| F4  | Obstacles |   |
+| F3  | Areas | All areas will be represented as nodes in a graph, where edges between nodes indicate two areas are reachable from one another. Each area will have a description so the player can distinguish between different type of areas, however, some areas may not be unique.  |
+| F4  | Obstacles | An obstacle is a special type of object which prohibits movement between two specific areas until a certain requirement is met. Obstacles are similar to, but not a subset of, items in the sense that they may be interacted with, and items may be used on them. An NPC may also act as an obstacle, preventing the player from advancing unless they perform some task for them or defeat them in combat.  |
 | F5  | Items | The player may acquire and use items throughout the game. Items will be stored in an inventory of infinite size, which may be accessed using the `inventory` command. Several commands may be used in combination with an item: </br> - `interact` acquires the item and places it in the player's inventory. </br> - `look` briefly describes the item. </br> - `use` queries the item, asking it what it may be used for, and if appropriate for the situation, uses it (e.g. `use key door` will consume the key but `use key npc` will not).  |
 | F6  | NPCs | Throughout the game, several NPCs will appear which can be interacted with using the `interact` command. NPCs may be friendly or hostile and hold valuable items for the user to acquire.  |
-| F7  | Stats | The player has two main stats, `health` and `strength`, which they will use for combat.  |
+| F7  | Stats | The player has two main stats, `health` and `strength`, which they will use for combat. Naturally, `health` is an indicator of the player's vitality whereas `strength` affects the damage inflicted by the player to NPCs.  |
 | F8  | Combat | Whenever the player engages in combat they will be presented with a set of choices to make. Depending on the player's choices, combat will have either a positive or negative result for the player's health stat.  |
-| F9  | Gamestate | The player may save or load the game at any moment using the `save` and `load` commands respectively. The gamestate will be represented using a JSON file, containing all appropriate information.  |
+| F9  | Gamestate | The player may save or load the game at any moment using the `save` and `load` commands respectively. The gamestate will be represented using a JSON file, containing all appropriate information. The player may quit a game after saving or loading, using the `quit` command at any time.  |
 
 ### Quality requirements
 Author(s): `Jim Cuijpers, Ajay Hitendra Mota, Anthony Wilkes`
