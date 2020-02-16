@@ -3,18 +3,24 @@ Maximum number of words for this document: 2500
 
 
 ## Introduction									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Ajay Hitendra Mota`
 
-Write a short description of your version of the system you are going to design and implement in this course. 
-Clearly specify which are the key aspects of your system, such as:
-- customizations/extensions w.r.t. the project track, 
-- main type of user(s)
-- overall idea about how it works
-- ...
+**Cork** is a customizable version of the text-based adventure game Zork. The system we are going to implement will allow a user to create interesting scenarios for the original Zork game by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario. The main types of users will be :
+- *Gamer*: A user who plays the game making use of the features provided by the game engine.
+- *Modder*: A user who can modify the default scenario to build modified versions of the original game.
 
-Be creative here!
+The main entities in the game that the *gamer* can interact with will be as follows:
+- Player: This will be the main player character who interacts with all other elements in the game. The actions available to the gamer, mentioned later in the features, would be enacted by this player entity. The player would have stats like health & strength and have an inventory. 
+- Areas: These will be the locations on the game map where a player can stand, visualize his/her surroundings and move to other linked areas. For example, a forrest with a castle to the north.
+- Obstacles: These will be game objects that block the path of a player while going from one area to another. One obstacle shall exist inside areas. For example, a locked door or darkness.
+- Items: These will be game objects that the player can use to influence stats of the player character, add to inventory, overcome an obstacle or affect an NPC. For example, an apple or a key.
+- NPCs: These will be entities in the game that the player can interact with opening up either conversations or combat. As a bonus we could implement merchants or bosses. For example, the grue.
 
-Don’t forget to use links to external URLs (e.g., the direct link to the Fantasy soccer league you are getting inspiration from, the link to the original video game you are getting inspiration from, etc.), if applicable. 
+The customizations available to the *modder* will be as follows:
+- Edit JSON files to create new NPCs, items, obstacles and areas but with fixed structure that follows the guidelines of the default enitites.
+- Edit JSON files to change the descriptions and names of default entities, modifying the starting inventory of the player and increasing or decreasing the stats of the player.
+
+The system will be implemented as a form of a terminal/text-based game in a game window where the user will interact with the game engine by means of text based inputs typed by means of a keyboard only. The way the *gamer* experiences the system will be as follows:
 
 Maximum number of words for this section: 1000
 
