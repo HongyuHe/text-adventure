@@ -59,12 +59,12 @@ Each quality requirement must be tagged with the corresponding quality attribute
 Maximum number of words for this section: 1000
 
 ### Java libraries
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Jim Cuijpers`
 
 | Name (with link) | Description  |
 |---|---|
-| [JFoenix](http://www.jfoenix.com/)  | Used for styling the user interface of the system. We chose it among others because ... | 
-| [fastjson](https://github.com/alibaba/fastjson) | We will use it for reading and writing JSON configuration files containing the description of the levels of the videogame. We chose it because it is easy to configure and use from Java code and preliminary experiments makes us confident about its correct functioning... |
-| ...  | ... |
-
-Maximum number of words for this section: 500
+| [Erdos](https://github.com/Erdos-Graph-Framework/Erdos)  | Graphs will be used to represent how the different areas in the game connect to each other. Erdos has a very simple and easy to use API with thorough documentation, some alternative that were looked at were JGraphT, which was too heavy-weight with nine separate dependencies, or Apache Commons Graph, which was excessively complex for our needs. |
+| [Gson](https://github.com/google/gson) | Gson will be used to read the JSON files created by the game designer. Since this is an integral part of the game we are writing, we wanted a robust library that was still easy to use. Most alternatives offered performance as their core advantage (Jackson, HikariJSON, LoganSquare, FastJSON), however, as loading JSON will only be used during initialization, speed increases are unlikely to make much difference during the game playing session and therefore we would prefer simplicity over speed. |
+| [SonarLint](https://www.sonarlint.org/) | Used to ensure that all team members adhere to the same coding style and practices. |
+| [TinyLog2](https://tinylog.org/v2/) | Using a logger will provide structure to the code the team is writing, and will allow much cleaner testing and debugging, whilst ensuring that  the requirements of SonarLint are adhered to during production. TinyLog has the advantage of being a very small, lightweight logger that requires almost no boilerplate code. TinyLog also allows configuration through a properties file, something that the alternative, MinLog, did not offer. |
+| [Text-IO](https://github.com/beryx/text-io) | Text-IO is a highly recommended library for reading input from a user. It allows things like selecting values from a list which will be helpful if we implement conversation and combat as part of our bonus features. It has a very clean and easy to use API - since text input and output is a core part of the game, keeping these sections tidy is of the utmost importance. Text-IO also allows colour input and output which can help provide a more interesting and higher quality experience for the player. The team considered using Zircon to build a terminal-GUI, however it was decided that this would be outside the requirements as this would not be in line with providing an "authentic" Zork experience. |
