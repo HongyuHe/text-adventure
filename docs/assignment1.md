@@ -1,9 +1,7 @@
 # Assignment 1
-Maximum number of words for this document: 2500
-
 
 ## Introduction									
-Author(s): `Ajay Hitendra Mota`
+Author(s): `Ajay Hitendra Mota, Hongyu He`
 
 **Cork** is a customizable version of the text-based adventure game Zork. The system we are going to implement will allow a user to create interesting scenarios for the original Zork game by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario. The main types of users will be :
 - *Gamer*: A user who plays the game making use of the features provided by the game engine.
@@ -52,20 +50,18 @@ As a preamble to the table, you can discuss the main line of reasoning you appli
 | F6  | NPCs | Throughout the game, several NPCs will appear which can be interacted with using the `interact` command. NPCs may be friendly or hostile and hold valuable items for the user to acquire.  |
 
 ### Quality requirements
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Jim Cuijpers, Ajay Hitendra Mota, Anthony Wilkes`
 
-As a preamble to the table, you can discuss the main line of reasoning you followed for coming up with the quality requirements listed below.
-
-| ID  | Short name  | Quality attribute | Description  |
-|---|---|---|---|
-| QR1  | Commands sanity checks | Reliability  | When the player issues a command, the syntax of the command shall always get validated against the format specified in F2 |
-| QR2  | Extensible world | Maintainability  | The video game shall be easilty extendable in terms of levels, worlds, interaction points  |
-| QR3  | Instantaneous results | Responsiveness  | Once the scores of all soccer players are provided by the user, the results of the virtual matches shall be available within 1 second |
-| QR4  | ... | ... | ... |
-
-Each quality requirement must be tagged with the corresponding quality attribute (see corresponding slides of the first lecture for knowing them).
-
-Maximum number of words for this section: 1000
+| ID  | Short name  | Quality attribute | Description  | Rationale |
+|---|---|---|---|---|
+| QR1 | JSON Validation | Reliability | The JSON files that describe the game world will be read by the engine as the game is started, and the first missing - but required - attribute shall be indicated to the user, and the game will exit. | This ensures that people who wish to modify the game files will be able to identify their mistakes easily. |
+| QR2  | Customizable Scenarios | Maintainability  | The JSON files which define the game world shall be easy to customize and modify with only a limited understanding of JSON, and documentation will provide the expected format for each kind of JSON file. | This will allow non-technical users to create their own stories without needing to learn any programming languages. |
+| QR3 | Event Timing | Availability | A command can only be issued by the user once the events of the previous command have been completed. | This ensures that the execution of commands will always be deterministic and helps avoid any potential confusion that the player may face (e.g. receiving responses from commands out of order). |
+| QR4 | Speed of Action Execution | Responsiveness  | Any command that the user gives as part of gameplay, shall be completed and provide a response within 2 seconds. | The user should never be left waiting on the system for an extended period of time, or be lead to believe that that system has become unresponsive. It will also ensure that QR3 is fulfilled correctly. |
+| QR5 | Speed of Initialization | Responsiveness | Any command involved in the set-up of the system or game, including saving and loading, shall be completed within 10 seconds. | This ensures that the game and system set-up takes a reasonable length of time. |
+| QR6  | Command validation | Usability  | Any action typed by the user will be compared to the formats specified in F1, and if it does not match, the user will be presented with a messaging indicating that the command was not understood along with a suggestion to use the help command. | This will ensure that user interacts with the game engine correctly and provides guidance. |
+| QR7 | Input Reception | Usability | For any input the user types, the game will always provide some response to indicate that the input was received. | This will ensure that the user will never be lead to believe the system is unresponsive when in fact it is not. |
+| QR8 | Save Files Encryption | Security | Whenever the user saves their game, the engine should encrypt the contents to ensure the user cannot edit them. The encryption does not have to be cryptographically secure. | This will prevent players from cheating easily. |
 
 ### Java libraries
 Author(s): `Anthony Wilkes, Jim Cuijpers`
