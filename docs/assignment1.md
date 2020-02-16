@@ -3,7 +3,7 @@
 ## Introduction									
 Author(s): `Ajay Hitendra Mota, Hongyu He`
 
-**Cork** is a customizable version of the text-based adventure game [Zork](https://en.wikipedia.org/wiki/Zork) (which can be played online [here](https://textadventures.co.uk/games/view/5zyoqrsugeopel3ffhz_vq/zork)). The system we are going to implement will allow a user to create their own interesting scenarios by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario written by themselves, or another user. The main types of users will be :
+**Cork** (a portmanteau  of "custom" and "Zork") is a customizable version of the text-based adventure game [Zork](https://en.wikipedia.org/wiki/Zork) (which can be played online [here](https://textadventures.co.uk/games/view/5zyoqrsugeopel3ffhz_vq/zork)). The system we are going to implement will allow a user to create their own interesting scenarios by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario written by themselves, or another user. The main types of users will be :
 - *Gamer*: A user who plays the game making use of the features provided by the game engine.
 - *Modder*: A user who modifies the default scenario to build their own version of the original game.
 
