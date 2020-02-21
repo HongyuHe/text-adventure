@@ -1,62 +1,80 @@
 # Assignment 1
-Maximum number of words for this document: 2500
-
 
 ## Introduction									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Ajay Hitendra Mota, Hongyu He`
 
-Write a short description of your version of the system you are going to design and implement in this course. 
-Clearly specify which are the key aspects of your system, such as:
-- customizations/extensions w.r.t. the project track, 
-- main type of user(s)
-- overall idea about how it works
-- ...
+**Cork** (a portmanteau  of "custom" and "Zork") is a customizable version of the text-based adventure game [Zork](https://en.wikipedia.org/wiki/Zork) (which can be played online [here](https://textadventures.co.uk/games/view/5zyoqrsugeopel3ffhz_vq/zork)). The system we are going to implement will allow a user to create their own scenarios by modifying JSON files which define the interactable entities in the game. A user will also be able to play the default scenario designed by us or play a customized scenario written by themselves, or another user. The main types of users will be :
+- *Gamer*: A user who plays the game making use of the features provided by the game engine.
+- *Modder*: A user who modifies the default scenario to build their own version of the original game.
 
-Be creative here!
+The main entities in the game that the *gamer* can interact with will be as follows:
+- Player: This will be the main player character who interacts with all other elements in the game. The actions available to the gamer, mentioned later in the features, would be enacted by this player entity. The player would have stats like health & strength and have an inventory. 
+- Areas: These will be the locations on the game map where a player can stand, visualize his/her surroundings and move to other linked areas. For example, a forest with a castle to the north.
+- Obstacles: These will be game objects that exist within areas, and block the path of a player while going from one area to another. Using certain objects whilst in the proximity of certain obstacles (i.e. whilst standing in the same area) will change the obstacle's state either allowing or preventing movement. For example, a locked door opens with a key, or darkness dissipates with a lantern.
+- Items: These will be game objects that the player can pick up and use that will change their stats, add or remove items from their inventory, overcome obstacles, or impact NPCs. For example, an apple will increase health, a key will open a door, a sword will damage a monster, and gold might influence a friendly NPC to give a hint.
+- NPCs: These will be entities in the game that the player can interact with opening up either conversations or combat. As a bonus we could implement merchants, bosses (e.g., the [Grue](https://en.wikipedia.org/wiki/Grue_(monster))), or even conversation trees.
 
-Don’t forget to use links to external URLs (e.g., the direct link to the Fantasy soccer league you are getting inspiration from, the link to the original video game you are getting inspiration from, etc.), if applicable. 
+The customizations available to the *modder* will be as follows:
+- Edit JSON files to create new NPCs, items, obstacles and areas. There edits must adhere to a fixed structure that will be described in accompanying documentation (and should be visible from files describing the default scenario).
+- Edit JSON files to change the descriptions and names of default entities, modifying the starting inventory of the player and increasing or decreasing the stats of the player.
 
-Maximum number of words for this section: 1000
+The main modules of the system will be as follows:
+- Scenario: The scenario will be written in structured JSONs and describe all entities in the game which have been mentioned above.
+- Parser: This will be the middleware that parses the JSONs and maps these to pre-built java classes.
+- Game Engine: This will be the main module that parses the user input into pre-built commands and executes the corresponding interactions.
+- UI: This will be the game window where the main user I/O operations will take place. The gamer's commands will be entered here and the output of the game engine will be logged here. There will be no graphical components in the UI as this would violate adherence to the style of the original Zork.
+
+The system will be implemented as a form of a terminal/text-based game in a game window where the user will interact with the game engine by means of text based inputs typed by means of a keyboard only. The way the game will generally work will be as follows:
+- User runs the game and a terminal is opened.
+- A description of the starting area and the player's starting inventory will be displayed.
+- The system will wait for the user to provide an input in the form of supported commands.
+- Each input will be processed on a new line and the outcome of the action will be displayed to the user.
+- The game ends if the player's health reaches zero, the player enters the quit command, or the player wins the game by obtaining a specific item. For example, a diamond.
 
 ## Features
-Author(s): `name of the team member(s) responsible for this section`
-
-<When defining both functional features and quality requirements, remember that you will need to come back to them in Assignments 2 and 3 and explicitly state how specific parts of models/implementation satisfy them.>
+Author(s): `Luca Taglialatela`
 
 ### Functional features
 
-As a preamble to the table, you can discuss the main line of reasoning you applied for defining the functional features provided in the table.
+One of the most important aspects of the game will be to allow users to create their own scenarios, however, providing complete freedom to modders would be very difficult (if not impossible) to implement. Therefore, all hard-coded aspects of the game were designed to be as generic as possible, resulting in the following list of commands, game entity types and interactions.
+
+Based on the commands we agreed to use, we developed all other functional features. Both movement and areas are fundamental functional features, since they allow us to create a setting for some story to take place in, thus further supporting the idea of being able to configure the game. Our choice for representing the areas as nodes in a graph arose pretty early on, since it seemed intuitive to us that this approach would greatly simplify connecting and moving between areas. To make the game actually interesting and interactive, we concluded that having items and NPCs as functional features would make most sense, since they are easily modifiable and therefore provide us with a great amount of freedom. To put this in perspective, both a sword and a key may be different items used in different game configurations, but with the same underlying implementation. We also decided to make combat and stats functional features to further the idea of an adventure type of game in which there is also an element of risk involved. Finally, we came up with the functional features of saving and loading gamestates. These features do not necessarily affect the game itself, however, they are a requirement of functionality.
 
 | ID  | Short name  | Description  |
 |---|---|---|
-| F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
-| F2  | Commands  | The player can control the main character by issuing command-line commands following this syntax: `command-name [target-objects]*`. The available `command-names` are the following: <br/> - move: ... <br/> - use: ... <br/> - inspect: ... <br/> |
-| F3  | Movements  | The main character shall move freely in the environment according  |
-| F4  | ... | ... |
+| F1  | Commands  | The player can control the main character by typing command-line instructions following this syntax: `command + [target]`, where the (\*) below indicates that a target is optional. <br/> Available `commands` are: <br/><br/> - `move` + [north, east, south, west, area-name] <br/> - `use` + [item] <br/> - `look` + [item]\* <br/> - `interact` + [npc, item] <br/> - `inventory` <br/> - `save` <br/> - `load` <br/> - `quit` <br/> |
+| F2  | Movements  | The player may move freely between different areas in four directions as described by the `move` command above, or by specifying a unique area name (optionally given in the description of the current area). Some areas may be blocked by obstacles and therefore inaccessible. Obstacles may be removed by using a specific item in their presence (e.g. "use key" might open a door).  |
+| F3  | Areas | All areas will be represented as nodes in a graph, where edges between nodes indicate two areas are reachable from one another. Each area will have a description so the player can distinguish between different type of areas, however, some areas may not be unique.  |
+| F4  | Obstacles | An obstacle is a special type of object which prohibits movement between two specific areas until a certain item is used in the same area that they inhabit. Having obstacles be generic like this allows some more complex behaviour to exhibit itself - for example, defeating a monster may have them drop an item that "unlocks" an obstacle, therefore inhibiting progress until the monster is defeated. |
+| F5  | Items | The player may acquire and use items throughout the game. Items will be stored in an inventory of infinite size, which may be accessed using the `inventory` command (i.e. `inventory` will print the names of the currently held items). Some items are consumed upon first use, whereas other items persist throughout the game. Several commands may be used in combination with an item: </br> - `interact` acquires the item and places it in the player's inventory. </br> - `look` briefly describes the item. </br> - `use` queries the item, asking it what it may be used for, and if appropriate for the situation, uses it (e.g. `use key` might consume the key if in the presence of the appropriate door, otherwise the inventory will remain unchanged).  |
+| F6  | NPCs | Throughout the game, several NPCs will appear which can be interacted with using the `interact` command. NPCs may be friendly or hostile and could hold valuable or important items for the user to acquire.  |
+| F7  | Stats | The player has two main stats, `health` and `strength`, which they will use for combat. Naturally, `health` is an indicator of the player's remaining vitality (reaching 0 health will result in losing the game), whereas `strength` determines whether or not the player can defeat an enemy in combat, and how much damage they take during the battle.  |
+| F8  | Combat | Whenever a player engages in combat, their strength is compared to that of the enemy combatant. The outcome of the fight is determined by the difference in strength between both the player and their enemy:</br> - player strength < enemy strength: enemy survives, player loses a significant chunk of health </br> - player strength >= enemy strength: enemy defeated, player loses some health</br> - player strength >> enemy strength: enemy defeated, player loses no health |
+| F9  | Gamestate | The player may save or load the game at any moment using the `save` and `load` commands respectively. A savefile will contain all actions as performed by the player up until the point of saving, along with the appropriate initial game configuration. Whenever a savefile is loaded into the game, all actions are replayed so the user may proceed where they left off when saving. The player may quit the game after saving or loading, using the `quit` command at any time.  |
 
 ### Quality requirements
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Jim Cuijpers, Ajay Hitendra Mota, Anthony Wilkes`
 
-As a preamble to the table, you can discuss the main line of reasoning you followed for coming up with the quality requirements listed below.
-
-| ID  | Short name  | Quality attribute | Description  |
-|---|---|---|---|
-| QR1  | Commands sanity checks | Reliability  | When the player issues a command, the syntax of the command shall always get validated against the format specified in F2 |
-| QR2  | Extensible world | Maintainability  | The video game shall be easilty extendable in terms of levels, worlds, interaction points  |
-| QR3  | Instantaneous results | Responsiveness  | Once the scores of all soccer players are provided by the user, the results of the virtual matches shall be available within 1 second |
-| QR4  | ... | ... | ... |
-
-Each quality requirement must be tagged with the corresponding quality attribute (see corresponding slides of the first lecture for knowing them).
-
-Maximum number of words for this section: 1000
+| ID  | Short name  | Quality attribute | Description  | Rationale |
+|---|---|---|---|---|
+| QR1 | JSON Validation | Reliability | The JSON files that describe the game world will be read by the engine as the game is started, and the first missing - but required - attribute shall be indicated to the user, and the game will exit. | This ensures that people who wish to modify the game files will be able to identify their mistakes easily. |
+| QR2  | Customizable Scenarios | Maintainability  | The JSON files which define the game world shall be easy to customize and modify with only a limited understanding of JSON, and documentation will provide the expected format for each kind of JSON file. | This will allow non-technical users to create their own stories without needing to learn any programming languages. |
+| QR3 | Event Timing | Availability | A command can only be issued by the user once the events of the previous command have been completed. | This ensures that the execution of commands will always be deterministic and helps avoid any potential confusion that the player may face (e.g. receiving responses from commands out of order). |
+| QR4 | Speed of Action Execution | Responsiveness  | Any command that the user gives as part of gameplay, shall be completed and provide a response within 2 seconds. | The user should never be left waiting on the system for an extended period of time, or be lead to believe that that system has become unresponsive. It will also ensure that QR3 is fulfilled correctly. |
+| QR5 | Speed of Initialization | Responsiveness | Any command involved in the set-up of the system or game, including saving and loading, shall be completed within 10 seconds. | This ensures that the game and system set-up takes a reasonable length of time. |
+| QR6  | Command validation | Usability  | Any action typed by the user will be compared to the formats specified in F1, and if it does not match, the user will be presented with a messaging indicating that the command was not understood along with a suggestion to use the help command. | This will ensure that user interacts with the game engine correctly and provides guidance. |
+| QR7 | Input Reception | Usability | For any input the user types, the game will always provide some response to indicate that the input was received. | This will ensure that the user will never be lead to believe the system is unresponsive when in fact it is not. |
+| QR8 | Save Files Encryption | Security | Whenever the user saves their game, the engine should encrypt the contents to ensure the user cannot edit them. The encryption does not have to be cryptographically secure. | This will prevent players from cheating easily. |
+| QR9 | Save Prompting | Usability | If the player has not saved their game for at least 20 actions and attempts to quit, the game should prompt them to save first. If the player attempts to quit without doing so, then the game will exit without saving. | This prevents players from accidentally exiting the game without saving their progress, but does not force the players to do so. |
+| QR10 | Determinism Guarantee | Maintainability | All actions in the game must be deterministic. | This ensures that loading a game by replaying all actions up to the moment of saving will always result in the exact same state. |
 
 ### Java libraries
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Jim Cuijpers`
 
 | Name (with link) | Description  |
 |---|---|
-| [JFoenix](http://www.jfoenix.com/)  | Used for styling the user interface of the system. We chose it among others because ... | 
-| [fastjson](https://github.com/alibaba/fastjson) | We will use it for reading and writing JSON configuration files containing the description of the levels of the videogame. We chose it because it is easy to configure and use from Java code and preliminary experiments makes us confident about its correct functioning... |
-| ...  | ... |
-
-Maximum number of words for this section: 500
+| [Erdos](https://github.com/Erdos-Graph-Framework/Erdos)  | Graphs will be used to represent how the different areas in the game connect to each other. Erdos has a very simple and easy to use API with thorough documentation, some alternative that were looked at were JGraphT, which was too heavy-weight with nine separate dependencies, or Apache Commons Graph, which was excessively complex for our needs. |
+| [Gson](https://github.com/google/gson) | Gson will be used to read the JSON files created by the game designer. Since this is an integral part of the game we are writing, we wanted a robust library that was still easy to use. Most alternatives offered performance as their core advantage (Jackson, HikariJSON, LoganSquare, FastJSON), however, as loading JSON will only be used during initialization, speed increases are unlikely to make much difference during the game playing session and therefore we would prefer simplicity over speed. |
+| [SonarLint](https://www.sonarlint.org/) | Used to ensure that all team members adhere to the same coding style and practices. |
+| [TinyLog2](https://tinylog.org/v2/) | Using a logger will provide structure to the code the team is writing, and will allow much cleaner testing and debugging, whilst ensuring that  the requirements of SonarLint are adhered to during production. TinyLog has the advantage of being a very small, lightweight logger that requires almost no boilerplate code. TinyLog also allows configuration through a properties file, something that the alternative, MinLog, did not offer. |
+| [Text-IO](https://github.com/beryx/text-io) | Text-IO is a highly recommended library for reading input from a user. It allows things like selecting values from a list which will be helpful if we implement conversation and combat as part of our bonus features. It has a very clean and easy to use API - since text input and output is a core part of the game, keeping these sections tidy is of the utmost importance. Text-IO also allows colour input and output which can help provide a more interesting and higher quality experience for the player. The team considered using Zircon to build a terminal-GUI, however it was decided that this would be outside the requirements as this would not be in line with providing an "authentic" Zork experience. |
