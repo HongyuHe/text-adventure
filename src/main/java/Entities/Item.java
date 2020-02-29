@@ -5,9 +5,10 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Set;
 import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
+import com.google.gson.GsonBuilder;
+import CustomDeserialisers.ItemDeserializer;
 
-class Item implements IEntity {
+public class Item implements IEntity {
     private String type;
     private String name;
     private String description;
@@ -15,7 +16,7 @@ class Item implements IEntity {
     private Boolean active;
     private Stat stat;
 
-    Item(String type,
+    public Item(String type,
          String name,
          String description,
          Boolean consumable,
@@ -30,32 +31,42 @@ class Item implements IEntity {
         this.stat = stat;
     }
 
-    class Stat {
+    public static class Stat {
         private String name;
         private Integer value;
 
-        Stat(String name, Integer value) {
+        public Stat(String name, Integer value) {
             this.name = name;
             this.value = value;
         }
     }
 
-    static Set<Item> getEntities() {
-        try {
-            Reader reader = Files.newBufferedReader(Paths.get("src/main/resources/data/items.json"));
-            Set<Item> entities = new Gson().fromJson(reader, new TypeToken<Set<Item>>() {}.getType());
-            reader.close();
-
-            return entities;
-
-        } catch (Exception ex) {
-            ex.printStackTrace();
-            System.exit(1);
-        }
-
-        return null;
+    public String getType() {
+        return type;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public String getDescription() {
+        return description;
+    }
 
+    public Boolean isConsumable() {
+        return consumable;
+    }
+
+    public Boolean isActive() {
+        return active;
+    }
+/*
+    public String getStatName() {
+        return stat.name;
+    }
+
+    public Integer getStatValue() {
+        return stat.value;
+    }
+*/
 }
