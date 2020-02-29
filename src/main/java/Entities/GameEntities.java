@@ -1,20 +1,18 @@
-package Initializer;
-
-import java.util.Set;
+package Entities;
 
 public class GameEntities {
-    //Set<AreaEntity> areaEntities;
-    //Set<ObstacleEntity> obstacleEntities;
-    //Set<NpcEntity> npcEntities;
-    //Set<ItemEntity> itemEntities;
-    //PlayerEntity player;
+    //Set<Area> areaEntities;
+    //Set<Obstacle> obstacleEntities;
+    //Set<Npc> npcEntities;
+    //Set<Item> itemEntities;
+    //Player player;
     //EmptyEntity emptyEntity;
 
     /*public GameEntities(Set areaEntities,
                         Set obstacleEntities,
                         Set npcEntities,
                         Set itemEntities,
-                        PlayerEntity player) {
+                        Player player) {
         this.areaEntities = areaEntities;
         this.obstacleEntities = obstacleEntities;
         this.npcEntities = npcEntities;

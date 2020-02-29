@@ -1,7 +1,5 @@
-import Initializer.Initializer;
-import Initializer.GameEntities;
-
-import static Initializer.Initializer.loadGameFiles;
+import Entities.Initializer;
+import Entities.GameEntities;
 
 public class Main {
     public static void main (String[] args){
