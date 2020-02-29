@@ -1,0 +1,12 @@
+{
+  "type": "Item",
+  "name": "apple",
+  "description": "A delicious looking apple!",
+  "consumable": true,
+  "active": true,
+  
+  "stat": {
+    "name": "health",
+    "value": 10
+  }
+}
