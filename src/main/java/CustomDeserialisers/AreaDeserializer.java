@@ -7,6 +7,8 @@ import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class AreaDeserializer implements JsonDeserializer<Area> {
 
@@ -28,8 +30,8 @@ public class AreaDeserializer implements JsonDeserializer<Area> {
         );
     }
 
-    private ArrayList<String> createArray(JsonArray jArray) {
-        ArrayList<String> arrayList = new ArrayList<>();
+    private Set<String> createArray(JsonArray jArray) {
+        Set<String> arrayList = new HashSet<>();
 
         if (jArray != null) {
             for (JsonElement e : jArray) {

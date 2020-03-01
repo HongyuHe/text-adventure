@@ -1,40 +1,40 @@
 package Entities;
 
-import java.util.Set;
+import java.util.Map;
 
 public class GameEntities {
-    private Set<Item> itemEntities;
-    private Set<Area> areaEntities;
-    private Set<Obstacle> obstacleEntities;
-    private Set<Npc> npcEntities;
+    private Map<String, Item> itemEntities;
+    private Map<String, Area> areaEntities;
+    private Map<String, Obstacle> obstacleEntities;
+    private Map<String, Npc> npcEntities;
     private GameOverItem gameOverItem;
     private Player player;
     private EmptyEntity emptyEntity;
 
-    GameEntities(Set<Item >itemEntities,
-                        Set<Area> areaEntities,
-                        Set<Obstacle> obstacleEntities,
-                        Set<Npc> npcEntities,
-                        GameOverItem gameOverItem,
-                        Player player,
-                        EmptyEntity emptyEntity) {
+    GameEntities(Map<String, Item>itemEntities,
+                 Map<String, Area> areaEntities,
+                 Map<String, Obstacle> obstacleEntities,
+                 Map<String, Npc> npcEntities,
+                 GameOverItem gameOverItem,
+                 Player player,
+                 EmptyEntity emptyEntity) {
 
+        this.itemEntities = itemEntities;
         this.areaEntities = areaEntities;
         this.obstacleEntities = obstacleEntities;
         this.npcEntities = npcEntities;
-        this.itemEntities = itemEntities;
         this.gameOverItem = gameOverItem;
         this.player = player;
         this.emptyEntity = emptyEntity;
     }
 
-    public Set<Item> getItemEntities() { return itemEntities; }
+    public Map<String, Item> getItemEntities() { return itemEntities; }
 
-    public Set<Area> getAreaEntities() { return areaEntities; }
+    public Map<String, Area> getAreaEntities() { return areaEntities; }
 
-    public Set<Obstacle> getObstacleEntities() { return obstacleEntities; }
+    public Map<String, Obstacle> getObstacleEntities() { return obstacleEntities; }
 
-    public Set<Npc> getNpcEntities() { return npcEntities; }
+    public Map<String, Npc> getNpcEntities() { return npcEntities; }
 
     public GameOverItem getGameOverItem() { return gameOverItem; }
 
