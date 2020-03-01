@@ -19,10 +19,15 @@ import static Entities.EmptyEntity.initializeEmptyEntity;
 public abstract class Initializer {
 
     public static GameEntities loadGameFiles() {
-        Map<String, Item> itemEntities = loadMap("src/main/resources/data/items.json", new ItemDeserializer(), Item.class);
-        Map<String, Area> areaEntities = loadMap("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class);
-        Map<String, Obstacle> obstacleEntities = loadMap("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
-        Map<String, Npc> npcEntities = loadMap("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class);
+        Map<String, Item> itemEntities = load("src/main/resources/data/items.json", new ItemDeserializer(), Item.class)
+                .stream().collect(Collectors.toMap(Item::getName, Function.identity()));
+        Map<String, Area> areaEntities = load("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class)
+                .stream().collect(Collectors.toMap(Area::getName, Function.identity()));
+        Map<String, Obstacle> obstacleEntities = load("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class)
+                .stream().collect(Collectors.toMap(Obstacle::getName, Function.identity()));
+        Map<String, Npc> npcEntities = load("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class)
+                .stream().collect(Collectors.toMap(Npc::getName, Function.identity()));
+
         GameOverItem gameOverItem = loadSingleEntity("src/main/resources/data/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
         Player player = loadSingleEntity("src/main/resources/data/player.json", new PlayerDeserializer(), Player.class);
         EmptyEntity emptyEntity = initializeEmptyEntity();
@@ -37,7 +42,7 @@ public abstract class Initializer {
                 );
     }
 
-    private static <T> Map<String, T> loadMap(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
+    private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
         try {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(IEntity.class, deserializer)
@@ -47,11 +52,7 @@ public abstract class Initializer {
             Type entitySetType = TypeToken.getParameterized(ArrayList.class, c).getType();
             ArrayList<T> entitySet = gson.fromJson(reader, entitySetType);
             reader.close();
-
-
-
-            return entitySet.stream()
-                    .collect(Collectors.toMap(e -> c.getName(), e -> e, (oldVal, newVal) -> newVal));
+            return entitySet;
 
         } catch (Exception ex) {
             ex.printStackTrace();

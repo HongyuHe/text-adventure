@@ -30,6 +30,8 @@ public class Area implements IEntity {
         this.connections = connections;
     }
 
+    public Boolean connectsTo(String nextArea) { return connections.containsKey(nextArea); }
+
     @Override
     public String getType() { return type; }
 
