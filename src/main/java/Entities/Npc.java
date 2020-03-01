@@ -35,4 +35,7 @@ public class Npc implements ICharacter {
 
     @Override
     public Boolean isActive() { return active; }
+
+    @Override
+    public Set<String> getInventory() { return inventory; }
 }

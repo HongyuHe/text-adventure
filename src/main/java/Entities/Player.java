@@ -42,5 +42,8 @@ public class Player implements ICharacter, IInteractable {
     @Override
     public Boolean isActive() { return active; }
 
+    @Override
+    public Set<String> getInventory() { return inventory; }
+
 }
 

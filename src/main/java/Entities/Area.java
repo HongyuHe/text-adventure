@@ -43,4 +43,6 @@ public class Area implements IEntity {
     @Override
     public Boolean isActive() { return active; }
 
+    public Set<String> getInventory() { return inventory; }
+
 }
