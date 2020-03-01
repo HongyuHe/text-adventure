@@ -1,8 +1,7 @@
-package CustomDeserialisers;
+package booster.deserialiser;
 
-import Entities.IEntity;
-import Entities.Item;
-import Entities.Stat;
+import entity.Item;
+import entity.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

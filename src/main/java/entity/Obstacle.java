@@ -1,4 +1,7 @@
-package Entities;
+package entity;
+
+import booster.init.IEntity;
+import booster.init.IInteractable;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -47,7 +50,7 @@ public class Obstacle implements IEntity, IInteractable {
     public Boolean isActive() { return active; }
 
     @Override
-    public Set<Command> getCommands() { return commands; }
+    public Set<Command> getCommands() { return new HashSet<>(commands); }
 
     public Boolean getState() { return state; }
 

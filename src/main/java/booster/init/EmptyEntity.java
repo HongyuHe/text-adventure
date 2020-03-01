@@ -1,4 +1,4 @@
-package Entities;
+package booster.init;
 
 public class EmptyEntity implements IEntity {
     private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();

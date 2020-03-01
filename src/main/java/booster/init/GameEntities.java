@@ -1,5 +1,8 @@
-package Entities;
+package booster.init;
 
+import entity.*;
+
+import java.util.HashMap;
 import java.util.Map;
 
 public class GameEntities {
@@ -28,13 +31,13 @@ public class GameEntities {
         this.emptyEntity = emptyEntity;
     }
 
-    public Map<String, Item> getItemEntities() { return itemEntities; }
+    public Map<String, Item> getItemEntities() { return new HashMap<>(itemEntities); }
 
-    public Map<String, Area> getAreaEntities() { return areaEntities; }
+    public Map<String, Area> getAreaEntities() { return new HashMap<>(areaEntities); }
 
-    public Map<String, Obstacle> getObstacleEntities() { return obstacleEntities; }
+    public Map<String, Obstacle> getObstacleEntities() { return new HashMap<>(obstacleEntities); }
 
-    public Map<String, Npc> getNpcEntities() { return npcEntities; }
+    public Map<String, Npc> getNpcEntities() { return new HashMap<>(npcEntities); }
 
     public GameOverItem getGameOverItem() { return gameOverItem; }
 

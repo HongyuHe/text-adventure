@@ -1,4 +1,6 @@
-package Entities;
+package entity;
+
+import booster.init.IEntity;
 
 import java.util.HashMap;
 import java.util.HashSet;
