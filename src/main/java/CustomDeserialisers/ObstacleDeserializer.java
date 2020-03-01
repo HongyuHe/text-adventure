@@ -1,5 +1,6 @@
 package CustomDeserialisers;
 
+import Entities.Command;
 import Entities.IEntity;
 import Entities.IInteractable;
 import Entities.Obstacle;
@@ -28,8 +29,8 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
         );
     }
 
-    private ArrayList<Obstacle.Commands> createArray(JsonArray jArray) {
-        ArrayList<Obstacle.Commands> arrayList = new ArrayList<>();
+    private ArrayList<Command> createArray(JsonArray jArray) {
+        ArrayList<Command> arrayList = new ArrayList<>();
 
         if (jArray != null) {
             for (JsonElement e : jArray) {
@@ -52,8 +53,8 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
         return arrayList;
     }
 
-    private Obstacle.Commands createObject(JsonObject jObject) {
-        return new Obstacle.Commands(
+    private Command createObject(JsonObject jObject) {
+        return new Command(
                 jObject.get("name").getAsString(),
                 jObject.get("function").getAsString(),
                 createArray(jObject.get("params").getAsJsonObject())

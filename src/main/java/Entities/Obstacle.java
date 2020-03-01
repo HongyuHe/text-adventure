@@ -9,7 +9,7 @@ public class Obstacle implements IEntity, IInteractable {
     Boolean state;
     String blocks;
     String requiredObject;
-    ArrayList<Commands> commands;
+    ArrayList<Command> commands;
 
     public Obstacle(String type,
                     String name,
@@ -17,7 +17,7 @@ public class Obstacle implements IEntity, IInteractable {
                     Boolean state,
                     String blocks,
                     String requiredObject,
-                    ArrayList<Commands> commands) {
+                    ArrayList<Command> commands) {
 
         this.type = type;
         this.name = name;
@@ -26,21 +26,6 @@ public class Obstacle implements IEntity, IInteractable {
         this.blocks = blocks;
         this.requiredObject = requiredObject;
         this.commands = commands;
-    }
-
-    public static class Commands {
-        public String name;
-        public String function;
-        public ArrayList<String> params;
-
-        public Commands(String name,
-                        String function,
-                        ArrayList<String> params) {
-
-            this.name = name;
-            this.function = function;
-            this.params = params;
-        }
     }
 
     public String getName() {
