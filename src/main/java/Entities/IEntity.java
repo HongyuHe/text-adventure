@@ -2,9 +2,11 @@ package Entities;
 
 public interface IEntity {
 
-    //String getName();
+    String getName();
 
-    //String getDescription();
+    String getDescription();
+
+    Boolean isActive();
 
 
 }

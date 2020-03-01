@@ -24,4 +24,13 @@ public class Npc implements ICharacter {
         this.active = active;
         this.stat = stat;
     }
+
+    @Override
+    public String getName() { return name; }
+
+    @Override
+    public String getDescription() { return description; }
+
+    @Override
+    public Boolean isActive() { return active; }
 }

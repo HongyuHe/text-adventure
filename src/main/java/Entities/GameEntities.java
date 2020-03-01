@@ -8,7 +8,7 @@ public class GameEntities {
     Set<Obstacle> obstacleEntities;
     Set<Npc> npcEntities;
     GameOverItem gameOverItem;
-    Player player;
+    public Player player;
     EmptyEntity emptyEntity;
 
     public GameEntities(Set<Item >itemEntities,

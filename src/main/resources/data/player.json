@@ -1,4 +1,4 @@
-[{
+{
   "type": "Player",
   "name": "you",
   "description": "You're just a regular baseline human.",
@@ -51,4 +51,4 @@
     "params": ["Item", "inventory"]
   }] 
   
-}]
+}

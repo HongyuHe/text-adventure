@@ -28,12 +28,16 @@ public class Obstacle implements IEntity, IInteractable {
         this.commands = commands;
     }
 
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getDescription() {
         return "This entity does not have a description, quite the obstacle";
     }
 
+    @Override
+    public Boolean isActive() { return active; }
 }

@@ -30,5 +30,15 @@ public class Player implements ICharacter, IInteractable {
         this.stat = stat;
         this.commands = commands;
     }
+
+    @Override
+    public String getName() { return name; }
+
+    @Override
+    public String getDescription() { return desciption; }
+
+    @Override
+    public Boolean isActive() { return active; }
+
 }
 

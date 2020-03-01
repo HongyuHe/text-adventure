@@ -30,20 +30,17 @@ public class Area implements IEntity {
         this.connections = connections;
     }
 
-
-
-
-
-
-
-
-
+    @Override
     public String getName() {
         return name;
     }
 
+    @Override
     public String getDescription() {
         return description;
     }
+
+    @Override
+    public Boolean isActive() { return active; }
 
 }
