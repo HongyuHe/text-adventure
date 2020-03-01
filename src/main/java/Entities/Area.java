@@ -1,31 +1,31 @@
 package Entities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Area implements IEntity {
     String type;
     String name;
     Boolean active;
     String description;
-    ArrayList<String> inventory;
-    ArrayList<String> npcs;
+    Set<String> inventory;
+    Set<String> npcs;
     HashMap<String, String> connections;
 
     public Area(String type,
                 String name,
                 Boolean active,
                 String description,
-                ArrayList<String> inventory,
-                ArrayList<String> npcs,
+                Set<String> inventory,
+                Set<String> npcs,
                 HashMap<String, String> connections) {
 
         this.type = type;
         this.name = name;
         this.active = active;
         this.description = description;
-        this.inventory = inventory;
+        this.inventory = new HashSet<>(inventory);
         this.npcs = npcs;
         this.connections = connections;
     }

@@ -1,4 +1,8 @@
 package Entities;
 
-public interface ICharacter extends IEntity{
+import java.util.Set;
+
+public interface ICharacter extends IEntity {
+
+    Set<String> getInventory();
 }

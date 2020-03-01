@@ -1,16 +1,18 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Player implements ICharacter, IInteractable {
     String type;
     String name;
     String desciption;
-    ArrayList<String> inventory;
+    Set<String> inventory;
     Boolean active;
     String currentLocation;
     Stat stat;
-    ArrayList<Command> commands;
+    Set<Command> commands;
 
     public Player(String type,
                   String name,
@@ -24,11 +26,11 @@ public class Player implements ICharacter, IInteractable {
         this.type = type;
         this.name = name;
         this.desciption = description;
-        this.inventory = inventory;
+        this.inventory = new HashSet<>(inventory);
         this.active = active;
         this.currentLocation = currentLocation;
         this.stat = stat;
-        this.commands = commands;
+        this.commands = new HashSet<>(commands);
     }
 
     @Override

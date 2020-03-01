@@ -1,6 +1,8 @@
 package Entities;
 
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Obstacle implements IEntity, IInteractable {
     String type;
@@ -9,7 +11,7 @@ public class Obstacle implements IEntity, IInteractable {
     Boolean state;
     String blocks;
     String requiredObject;
-    ArrayList<Command> commands;
+    Set<Command> commands;
 
     public Obstacle(String type,
                     String name,
@@ -25,7 +27,7 @@ public class Obstacle implements IEntity, IInteractable {
         this.state = state;
         this.blocks = blocks;
         this.requiredObject = requiredObject;
-        this.commands = commands;
+        this.commands = new HashSet<>(commands);
     }
 
     @Override
