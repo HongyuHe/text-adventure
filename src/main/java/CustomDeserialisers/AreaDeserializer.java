@@ -8,10 +8,10 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class AreaDeserializer implements JsonDeserializer<IEntity> {
+public class AreaDeserializer implements JsonDeserializer<Area> {
 
     @Override
-    public IEntity deserialize(JsonElement json,
+    public Area deserialize(JsonElement json,
                                Type typeOfT,
                                JsonDeserializationContext context) throws JsonParseException {
 

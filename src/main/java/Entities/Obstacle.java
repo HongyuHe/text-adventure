@@ -1,9 +1,8 @@
 package Entities;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
-public class Obstacle implements IInteractable {
+public class Obstacle implements IEntity, IInteractable {
     String type;
     String name;
     Boolean active;

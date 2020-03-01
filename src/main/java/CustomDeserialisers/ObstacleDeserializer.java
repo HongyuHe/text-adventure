@@ -1,5 +1,6 @@
 package CustomDeserialisers;
 
+import Entities.IEntity;
 import Entities.IInteractable;
 import Entities.Obstacle;
 import com.google.gson.*;
@@ -7,10 +8,10 @@ import com.google.gson.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 
-public class ObstacleDeserializer implements JsonDeserializer<IInteractable> {
+public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
 
     @Override
-    public IInteractable deserialize(JsonElement json,
+    public Obstacle deserialize(JsonElement json,
                                      Type typeOfT,
                                      JsonDeserializationContext context) throws JsonParseException {
 

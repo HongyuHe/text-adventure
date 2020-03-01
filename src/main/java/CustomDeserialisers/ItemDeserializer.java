@@ -6,10 +6,10 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
-public class ItemDeserializer implements JsonDeserializer<IEntity> {
+public class ItemDeserializer implements JsonDeserializer<Item> {
 
         @Override
-        public IEntity deserialize(JsonElement json,
+        public Item deserialize(JsonElement json,
                                    Type typeOfT,
                                    JsonDeserializationContext context) throws JsonParseException {
 

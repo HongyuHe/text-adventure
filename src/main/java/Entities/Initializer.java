@@ -21,7 +21,7 @@ public abstract class Initializer {
         Set<Obstacle> obstacleEntities = load("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
         //System.out.println(areaEntities);
         for (Obstacle item : obstacleEntities) {
-            item.commands.forEach(e -> System.out.println(e.params));
+            System.out.println(item instanceof IInteractable);
         }
 
         return new GameEntities();

@@ -1,4 +1,4 @@
 package Entities;
 
-public interface IInteractable extends IEntity{
+public interface IInteractable {
 }
