@@ -11,6 +11,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Set;
 
+import static Entities.EmptyEntity.initializeEmptyEntity;
+
 public abstract class Initializer {
 
     public static GameEntities loadGameFiles() {
@@ -18,13 +20,17 @@ public abstract class Initializer {
         Set<Area> areaEntities = loadSet("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class);
         Set<Obstacle> obstacleEntities = loadSet("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
         Set<Npc> npcEntities = loadSet("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class);
-        Player player = loadPlayer("src/main/resources/data/player.json");
-        //System.out.println(areaEntities);
-        for (Npc item : npcEntities) {
-            System.out.println(item instanceof ICharacter);
-        }
+        GameOverItem gameOverItem = loadSingleEntity("src/main/resources/data/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
+        Player player = loadSingleEntity("src/main/resources/data/player.json", new PlayerDeserializer(), Player.class);
+        EmptyEntity emptyEntity = initializeEmptyEntity();
 
-        return new GameEntities();
+        return new GameEntities(itemEntities,
+                                areaEntities,
+                                obstacleEntities,
+                                npcEntities,
+                                gameOverItem,
+                                player,
+                                emptyEntity);
     }
 
     private static <T> Set<T> loadSet(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
@@ -46,17 +52,17 @@ public abstract class Initializer {
         return null;
     }
 
-    private static Player loadPlayer(String jsonLocation) {
+    private static <T> T loadSingleEntity(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
         try {
             Gson gson = new GsonBuilder()
-                            .registerTypeAdapter(IEntity.class, new PlayerDeserializer())
+                            .registerTypeAdapter(IEntity.class, deserializer)
                             .create();
 
             Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
-            Player player = gson.fromJson(reader, Player.class);
+            T singleEntity = gson.fromJson(reader, c);
 
             reader.close();
-            return player;
+            return singleEntity;
 
         } catch (Exception ex) {
             ex.printStackTrace();

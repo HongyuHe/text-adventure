@@ -1,4 +1,4 @@
-[{
+{
   "type": "Item",
   "name": "diamond",
   "description": "A very precious diamond.",
@@ -10,4 +10,4 @@
     "value": 0
   }
   
-}]
+}
