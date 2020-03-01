@@ -5,14 +5,14 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Player implements ICharacter, IInteractable {
-    String type;
-    String name;
-    String desciption;
-    Set<String> inventory;
-    Boolean active;
-    String currentLocation;
-    Stat stat;
-    Set<Command> commands;
+    private String type;
+    private String name;
+    private String description;
+    private Set<String> inventory;
+    private Boolean active;
+    private String currentLocation;
+    private Stat stat;
+    private Set<Command> commands;
 
     public Player(String type,
                   String name,
@@ -25,7 +25,7 @@ public class Player implements ICharacter, IInteractable {
 
         this.type = type;
         this.name = name;
-        this.desciption = description;
+        this.description = description;
         this.inventory = new HashSet<>(inventory);
         this.active = active;
         this.currentLocation = currentLocation;
@@ -34,10 +34,13 @@ public class Player implements ICharacter, IInteractable {
     }
 
     @Override
+    public String getType() { return type; }
+
+    @Override
     public String getName() { return name; }
 
     @Override
-    public String getDescription() { return desciption; }
+    public String getDescription() { return description; }
 
     @Override
     public Boolean isActive() { return active; }
@@ -45,5 +48,11 @@ public class Player implements ICharacter, IInteractable {
     @Override
     public Set<String> getInventory() { return inventory; }
 
+    @Override
+    public Set<Command> getCommands() { return commands; }
+
+    public String getCurrentLocation() { return currentLocation; }
+
+    public Stat getStat() { return stat; }
 }
 

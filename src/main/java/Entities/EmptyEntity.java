@@ -10,6 +10,9 @@ public class EmptyEntity implements IEntity {
     }
 
     @Override
+    public String getType() { return null; }
+
+    @Override
     public String getName() {
         return null;
     }

@@ -24,6 +24,9 @@ public class Item implements IEntity {
     }
 
     @Override
+    public String getType() { return type; }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -35,6 +38,11 @@ public class Item implements IEntity {
 
     @Override
     public Boolean isActive() { return active; }
+
+    public Boolean isConsumable() { return consumable; }
+
+    public Stat getStat() { return stat; }
+
 }
 
 

@@ -5,13 +5,13 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Obstacle implements IEntity, IInteractable {
-    String type;
-    String name;
-    Boolean active;
-    Boolean state;
-    String blocks;
-    String requiredObject;
-    Set<Command> commands;
+    private String type;
+    private String name;
+    private Boolean active;
+    private Boolean state;
+    private String blocks;
+    private String requiredObject;
+    private Set<Command> commands;
 
     public Obstacle(String type,
                     String name,
@@ -31,6 +31,9 @@ public class Obstacle implements IEntity, IInteractable {
     }
 
     @Override
+    public String getType() { return type; }
+
+    @Override
     public String getName() {
         return name;
     }
@@ -42,4 +45,15 @@ public class Obstacle implements IEntity, IInteractable {
 
     @Override
     public Boolean isActive() { return active; }
+
+    @Override
+    public Set<Command> getCommands() { return commands; }
+
+    public Boolean getState() { return state; }
+
+    public String getBlocks() { return blocks; }
+
+    public String getRequiredObject() { return requiredObject; }
+
 }
+

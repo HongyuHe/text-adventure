@@ -1,12 +1,12 @@
 package Entities;
 
 public class GameOverItem implements IEntity {
-    String type;
-    String name;
-    String description;
-    Boolean consumable;
-    Boolean active;
-    Stat stat;
+    private String type;
+    private String name;
+    private String description;
+    private Boolean consumable;
+    private Boolean active;
+    private Stat stat;
 
     public GameOverItem(String type,
                         String name,
@@ -24,6 +24,9 @@ public class GameOverItem implements IEntity {
     }
 
     @Override
+    public String getType() { return type; }
+
+    @Override
     public String getName() { return name; }
 
     @Override
@@ -31,4 +34,8 @@ public class GameOverItem implements IEntity {
 
     @Override
     public Boolean isActive() { return active; }
+
+    public Boolean isConsumable() { return consumable; }
+
+    public Stat getStat() { return stat; }
 }

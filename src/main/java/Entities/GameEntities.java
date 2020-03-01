@@ -3,15 +3,15 @@ package Entities;
 import java.util.Set;
 
 public class GameEntities {
-    Set<Item> itemEntities;
-    Set<Area> areaEntities;
-    Set<Obstacle> obstacleEntities;
-    Set<Npc> npcEntities;
-    GameOverItem gameOverItem;
-    public Player player;
-    EmptyEntity emptyEntity;
+    private Set<Item> itemEntities;
+    private Set<Area> areaEntities;
+    private Set<Obstacle> obstacleEntities;
+    private Set<Npc> npcEntities;
+    private GameOverItem gameOverItem;
+    private Player player;
+    private EmptyEntity emptyEntity;
 
-    public GameEntities(Set<Item >itemEntities,
+    GameEntities(Set<Item >itemEntities,
                         Set<Area> areaEntities,
                         Set<Obstacle> obstacleEntities,
                         Set<Npc> npcEntities,
@@ -26,7 +26,20 @@ public class GameEntities {
         this.gameOverItem = gameOverItem;
         this.player = player;
         this.emptyEntity = emptyEntity;
-
     }
+
+    public Set<Item> getItemEntities() { return itemEntities; }
+
+    public Set<Area> getAreaEntities() { return areaEntities; }
+
+    public Set<Obstacle> getObstacleEntities() { return obstacleEntities; }
+
+    public Set<Npc> getNpcEntities() { return npcEntities; }
+
+    public GameOverItem getGameOverItem() { return gameOverItem; }
+
+    public Player getPlayer() { return player; }
+
+    public EmptyEntity getEmptyEntity() { return emptyEntity; }
 
 }
