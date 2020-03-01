@@ -1,4 +1,4 @@
-package Entities;
+package booster.init;
 
 public interface IEntity {
 

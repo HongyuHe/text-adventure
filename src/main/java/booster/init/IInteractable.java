@@ -1,4 +1,6 @@
-package Entities;
+package booster.init;
+
+import entity.Command;
 
 import java.util.Set;
 

@@ -1,4 +1,6 @@
-package Entities;
+package entity;
+
+import booster.init.IEntity;
 
 public class Item implements IEntity {
     private String type;

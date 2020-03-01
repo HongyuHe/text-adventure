@@ -1,9 +1,7 @@
-package CustomDeserialisers;
+package booster.deserialiser;
 
-import Entities.Command;
-import Entities.IEntity;
-import Entities.IInteractable;
-import Entities.Obstacle;
+import entity.Command;
+import entity.Obstacle;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
