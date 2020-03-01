@@ -8,7 +8,6 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-
 public class AreaDeserializer implements JsonDeserializer<IEntity> {
 
     @Override

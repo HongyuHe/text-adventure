@@ -2,6 +2,7 @@ package Entities;
 
 import CustomDeserialisers.AreaDeserializer;
 import CustomDeserialisers.ItemDeserializer;
+import CustomDeserialisers.ObstacleDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
@@ -17,9 +18,10 @@ public abstract class Initializer {
     public static GameEntities loadGameFiles() {
         Set<Item> itemEntities = load("src/main/resources/data/items.json", new ItemDeserializer(), Item.class);
         Set<Area> areaEntities = load("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class);
+        Set<Obstacle> obstacleEntities = load("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
         //System.out.println(areaEntities);
-        for (Area item : areaEntities) {
-            System.out.println(item.connections.get("north"));
+        for (Obstacle item : obstacleEntities) {
+            item.commands.forEach(e -> System.out.println(e.params));
         }
 
         return new GameEntities();
