@@ -25,11 +25,11 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
                 jsonObject.get("state").getAsBoolean(),
                 jsonObject.get("blocks").getAsString(),
                 jsonObject.get("requiredObject").getAsString(),
-                createArray(jsonObject.get("commands").getAsJsonArray())
+                createCommandArray(jsonObject.get("commands").getAsJsonArray())
         );
     }
 
-    private ArrayList<Command> createArray(JsonArray jArray) {
+    private ArrayList<Command> createCommandArray(JsonArray jArray) {
         ArrayList<Command> arrayList = new ArrayList<>();
 
         if (jArray != null) {
@@ -41,9 +41,8 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
         return arrayList;
     }
 
-    private ArrayList<String> createArray(JsonObject jObject) {
+    private ArrayList<String> createArray(JsonArray jArray) {
         ArrayList<String> arrayList = new ArrayList<>();
-        JsonArray jArray = jObject.getAsJsonArray();
         if (jArray != null) {
             for (JsonElement e : jArray) {
                 arrayList.add(e.getAsString());
@@ -57,7 +56,7 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
         return new Command(
                 jObject.get("name").getAsString(),
                 jObject.get("function").getAsString(),
-                createArray(jObject.get("params").getAsJsonObject())
+                createArray(jObject.get("params").getAsJsonArray())
         );
     }
 
