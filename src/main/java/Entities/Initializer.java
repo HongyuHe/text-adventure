@@ -9,17 +9,20 @@ import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.Set;
+import java.util.*;
+import java.util.function.Function;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import static Entities.EmptyEntity.initializeEmptyEntity;
 
 public abstract class Initializer {
 
     public static GameEntities loadGameFiles() {
-        Set<Item> itemEntities = loadSet("src/main/resources/data/items.json", new ItemDeserializer(), Item.class);
-        Set<Area> areaEntities = loadSet("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class);
-        Set<Obstacle> obstacleEntities = loadSet("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
-        Set<Npc> npcEntities = loadSet("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class);
+        Map<String, Item> itemEntities = loadMap("src/main/resources/data/items.json", new ItemDeserializer(), Item.class);
+        Map<String, Area> areaEntities = loadMap("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class);
+        Map<String, Obstacle> obstacleEntities = loadMap("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
+        Map<String, Npc> npcEntities = loadMap("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class);
         GameOverItem gameOverItem = loadSingleEntity("src/main/resources/data/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
         Player player = loadSingleEntity("src/main/resources/data/player.json", new PlayerDeserializer(), Player.class);
         EmptyEntity emptyEntity = initializeEmptyEntity();
@@ -30,21 +33,25 @@ public abstract class Initializer {
                                 npcEntities,
                                 gameOverItem,
                                 player,
-                                emptyEntity);
+                                emptyEntity
+                );
     }
 
-    private static <T> Set<T> loadSet(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
+    private static <T> Map<String, T> loadMap(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
         try {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(IEntity.class, deserializer)
                             .create();
 
             Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
-            Type entitySetType = TypeToken.getParameterized(Set.class, c).getType();
-            Set<T> entitySet = gson.fromJson(reader, entitySetType);
-
+            Type entitySetType = TypeToken.getParameterized(ArrayList.class, c).getType();
+            ArrayList<T> entitySet = gson.fromJson(reader, entitySetType);
             reader.close();
-            return entitySet;
+
+
+
+            return entitySet.stream()
+                    .collect(Collectors.toMap(e -> c.getName(), e -> e, (oldVal, newVal) -> newVal));
 
         } catch (Exception ex) {
             ex.printStackTrace();

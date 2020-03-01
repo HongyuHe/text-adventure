@@ -7,6 +7,8 @@ import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class NpcDeserializer implements JsonDeserializer<Npc> {
     @Override
@@ -31,8 +33,8 @@ public class NpcDeserializer implements JsonDeserializer<Npc> {
         );
 
     }
-    private ArrayList<String> createArray(JsonArray jArray) {
-        ArrayList<String> arrayList = new ArrayList<>();
+    private Set<String> createArray(JsonArray jArray) {
+        Set<String> arrayList = new HashSet<>();
 
         if (jArray != null) {
             for (JsonElement e : jArray) {
