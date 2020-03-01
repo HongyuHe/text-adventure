@@ -9,11 +9,11 @@ public class Item implements IEntity {
     private Stat stat;
 
     public Item(String type,
-         String name,
-         String description,
-         Boolean consumable,
-         Boolean active,
-         Stat stat) {
+                String name,
+                String description,
+                Boolean consumable,
+                Boolean active,
+                Stat stat) {
 
         this.type = type;
         this.name = name;
@@ -21,16 +21,6 @@ public class Item implements IEntity {
         this.consumable = consumable;
         this.active = active;
         this.stat = stat;
-    }
-
-    public static class Stat {
-        private String name;
-        private Integer value;
-
-        public Stat(String name, Integer value) {
-            this.name = name;
-            this.value = value;
-        }
     }
 
     public String getName() {
@@ -42,3 +32,5 @@ public class Item implements IEntity {
     }
 
 }
+
+

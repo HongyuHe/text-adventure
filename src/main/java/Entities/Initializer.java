@@ -2,6 +2,7 @@ package Entities;
 
 import CustomDeserialisers.AreaDeserializer;
 import CustomDeserialisers.ItemDeserializer;
+import CustomDeserialisers.NpcDeserializer;
 import CustomDeserialisers.ObstacleDeserializer;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,9 +20,11 @@ public abstract class Initializer {
         Set<Item> itemEntities = load("src/main/resources/data/items.json", new ItemDeserializer(), Item.class);
         Set<Area> areaEntities = load("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class);
         Set<Obstacle> obstacleEntities = load("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class);
+        Set<Npc> npcEntities = load("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class);
+
         //System.out.println(areaEntities);
-        for (Obstacle item : obstacleEntities) {
-            System.out.println(item instanceof IInteractable);
+        for (Npc item : npcEntities) {
+            System.out.println(item instanceof ICharacter);
         }
 
         return new GameEntities();

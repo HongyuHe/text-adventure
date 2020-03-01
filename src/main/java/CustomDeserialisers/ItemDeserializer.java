@@ -2,6 +2,7 @@ package CustomDeserialisers;
 
 import Entities.IEntity;
 import Entities.Item;
+import Entities.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
@@ -15,7 +16,7 @@ public class ItemDeserializer implements JsonDeserializer<Item> {
 
             JsonObject jsonObject = json.getAsJsonObject();
 
-            Item.Stat stat = new Item.Stat(
+            Stat stat = new Stat(
                     jsonObject.get("stat").getAsJsonObject().get("name").getAsString(),
                     jsonObject.get("stat").getAsJsonObject().get("value").getAsInt()
             );
