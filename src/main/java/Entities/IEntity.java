@@ -7,5 +7,4 @@ public interface IEntity {
     String getDescription();
 
 
-
 }
