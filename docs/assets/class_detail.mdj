@@ -10174,7 +10174,7 @@
 								"reference": {
 									"$ref": "AAAAAAFwd0brEnN2OwQ="
 								},
-								"aggregation": "shared"
+								"aggregation": "composite"
 							}
 						}
 					],
@@ -10474,7 +10474,7 @@
 								"reference": {
 									"$ref": "AAAAAAFwdz8HHG1vCeQ="
 								},
-								"aggregation": "composite"
+								"aggregation": "shared"
 							}
 						},
 						{
