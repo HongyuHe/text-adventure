@@ -1936,7 +1936,7 @@
 											"font": "Arial;13;1",
 											"left": 61,
 											"top": 55,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "Engine"
 										},
@@ -1971,7 +1971,7 @@
 									"font": "Arial;13;0",
 									"left": 56,
 									"top": 48,
-									"width": 225,
+									"width": 241.5751953125,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFwd0brEnN6M58="
@@ -2026,7 +2026,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 80,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+games: List<String>",
 											"horizontalAlignment": 0
@@ -2043,7 +2043,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 95,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+currentGame: Game",
 											"horizontalAlignment": 0
@@ -2052,7 +2052,7 @@
 									"font": "Arial;13;0",
 									"left": 56,
 									"top": 73,
-									"width": 225,
+									"width": 241.5751953125,
 									"height": 40
 								},
 								{
@@ -2077,7 +2077,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 118,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+handleGameOver(): String",
 											"horizontalAlignment": 0
@@ -2094,7 +2094,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 133,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+loadGameList(): List<String>",
 											"horizontalAlignment": 0
@@ -2111,9 +2111,9 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 148,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
-											"text": "+startGame(game: Game): void",
+											"text": "+startRunningGame(game: Game): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -2128,7 +2128,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 163,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+quit(): void",
 											"horizontalAlignment": 0
@@ -2145,7 +2145,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 178,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+startNewGame(): bool",
 											"horizontalAlignment": 0
@@ -2162,7 +2162,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 193,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+loadSavedGame(): bool",
 											"horizontalAlignment": 0
@@ -2179,7 +2179,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 208,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+getSave(): Game",
 											"horizontalAlignment": 0
@@ -2196,7 +2196,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 223,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+saveGame(): bool",
 											"horizontalAlignment": 0
@@ -2213,7 +2213,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 238,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+runGame(): void",
 											"horizontalAlignment": 0
@@ -2230,7 +2230,7 @@
 											"font": "Arial;13;0",
 											"left": 61,
 											"top": 253,
-											"width": 215,
+											"width": 231.5751953125,
 											"height": 13,
 											"text": "+main(): void",
 											"horizontalAlignment": 0
@@ -2239,7 +2239,7 @@
 									"font": "Arial;13;0",
 									"left": 56,
 									"top": 113,
-									"width": 225,
+									"width": 241.5751953125,
 									"height": 158
 								},
 								{
@@ -2279,7 +2279,7 @@
 							"containerChangeable": true,
 							"left": 56,
 							"top": 48,
-							"width": 225,
+							"width": 241.5751953125,
 							"height": 223,
 							"nameCompartment": {
 								"$ref": "AAAAAAFwd0brEnN5KG0="
@@ -10766,7 +10766,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwd0brEnN2OwQ="
 							},
-							"name": "startGame",
+							"name": "startRunningGame",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
