@@ -12,15 +12,59 @@ Maximum number of words for this document: 12000
 |---|---|---|
 | F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
 
-### Used modeling tool
-Add here the name of the modeling tool you are using for your project.
+### Used modelling tool
+[StarUML](http://staruml.io/)
 
 ## Class diagram									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-This chapter contains the specification of the UML class diagram of your system, together with a textual description of all its elements.
+![Class Diagram](./assets/class_detail.png "Class diagram")
 
-`Figure representing the UML class diagram`
+**Engine**
+
+**Initializer**
+
+**CommandFactory**
+
+**Command**
+
+**ChangeStat**
+
+**ChangeState**
+
+**ChangeLocation**
+
+**ListContents**
+
+**Describe**
+
+**TakeItem**
+
+**DropItem**
+
+**UIHandler**
+
+**Game**
+
+**GameEntities**
+
+**Entity**
+
+**Area**
+
+**Item**
+
+**State**
+
+**Character**
+
+**NPC**
+
+**Interactable**
+
+**Player**
+
+**Obstacle**
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
 - Brief description about what it represents
