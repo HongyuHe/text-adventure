@@ -837,7 +837,7 @@
 											"font": "Arial;13;1",
 											"left": 133,
 											"top": 687,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
 											"text": "Game"
 										},
@@ -872,7 +872,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 680,
-									"width": 237.96337890625,
+									"width": 271.22509765625,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFwdz8HHG1ziQw="
@@ -909,7 +909,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 710,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
 											"text": "+gameOverItem: String",
 											"horizontalAlignment": 0
@@ -926,7 +926,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 725,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
 											"text": "+playerWon: Bool",
 											"horizontalAlignment": 0
@@ -943,7 +943,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 740,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
 											"text": "+previousCommands: List<String>",
 											"horizontalAlignment": 0
@@ -952,7 +952,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 705,
-									"width": 237.96337890625,
+									"width": 271.22509765625,
 									"height": 53
 								},
 								{
@@ -977,7 +977,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 763,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
 											"text": "+isGameOver(): Bool",
 											"horizontalAlignment": 0
@@ -994,7 +994,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 778,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
 											"text": "+getPreviousCommands(): List<String>",
 											"horizontalAlignment": 0
@@ -1011,16 +1011,16 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 793,
-											"width": 227.96337890625,
+											"width": 261.22509765625,
 											"height": 13,
-											"text": "+handleCommand(input: String): String",
+											"text": "+handleCommand(input: List<String>): String",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 758,
-									"width": 237.96337890625,
+									"width": 271.22509765625,
 									"height": 53
 								},
 								{
@@ -1060,7 +1060,7 @@
 							"containerChangeable": true,
 							"left": 128,
 							"top": 680,
-							"width": 237.96337890625,
+							"width": 271.22509765625,
 							"height": 131,
 							"nameCompartment": {
 								"$ref": "AAAAAAFwdz8HHG1yD1o="
@@ -2028,7 +2028,7 @@
 											"top": 80,
 											"width": 215,
 											"height": 13,
-											"text": "+games: List<Game>",
+											"text": "+games: List<String>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10279,7 +10279,7 @@
 										"$ref": "AAAAAAFwjJD7m3HXU/I="
 									},
 									"name": "input",
-									"type": "String"
+									"type": "List<String>"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10707,7 +10707,7 @@
 								"$ref": "AAAAAAFwd0brEnN2OwQ="
 							},
 							"name": "games",
-							"type": "List<Game>"
+							"type": "List<String>"
 						},
 						{
 							"_type": "UMLAttribute",
