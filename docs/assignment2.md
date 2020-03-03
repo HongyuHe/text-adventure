@@ -64,14 +64,14 @@ Associations
 Operations
 - *createCommand* - Take input from the **Initializer** that has stripped data from the JSON game data files and uses this to create the required **Command** object, preventing the **Initializer** class from having the determine the correct **Command** implementation itself.
 
+Associations
+- **_Command_** - Shared. The **CommandFactory** will create and return **Command** objects.
+
 
 **Command**
 
-Attributes
-- *edit* -
-
 Operations
-- *edit* -
+- *apply(target: String): String* - **Command** objects will be used to check the validity of input instructions given by the user, to do this an object specified by the user will be queried for an appropriate **Command** object (e.g. "use key door" will query the "door" object to see if it contains a command called "use"). If the object contains a matching command then the parameter specified by the user will be passed to this **Command** object and if the parameter matches some internal specification (different implementations for different commands), then the instruction succeeds and a result is performed. The success or failure message will be returned as a String which will, eventually, be passed up the **Engine** object that can then send it to the **UIHandler** to print to the terminal.
 
 Associations
 - *edit* -
