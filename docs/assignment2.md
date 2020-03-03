@@ -61,14 +61,8 @@ Associations
 
 **CommandFactory**
 
-Attributes
-- *edit* -
-
 Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *createCommand* - Take input from the **Initializer** that has stripped data from the JSON game data files and uses this to create the required **Command** object, preventing the **Initializer** class from having the determine the correct **Command** implementation itself.
 
 
 **Command**
