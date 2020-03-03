@@ -136,7 +136,30 @@ This chapter is composed of a UML object diagram of your system, together with a
 Maximum number of words for this section: 1000
 
 ## State machine diagrams									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
+
+In this section we will describe two components of the system that hold different states. There are the **Engine** class and the **UIHandler** class.
+
+### UIHandler
+The state machine diagram for the UIHandler is as follows :-
+![State machine diagrams](./assets/state_ui.png "State machine diagram 1")
+The UI as mentioned earlier will make use of a terminal window that is called using the native terminal application provided by the Operating System and otherwise open a window using the *javax.swing* package. This functionality of opening an application window will be provided by the *Text-IO* package.
+
+The general states can be briefly explained prior to diving into their details as follows :-
+- On running the JAR file an application window is opened up as explained earlier
+- The UI then changes the state to a **Game Menu Display** that allows to user to select the game or quit the application
+- On selecting the *Select Game* option, a list of different games will be displayed to the user that are available on disk.
+- On selecting a particular game the user could then start a new game or load a previously saved game or even quit the game.
+- If the user decides to start a new game or loads a game, the UI enters a new state that can be called the **In Game Display**.
+- Here the menu is cleared from the terminal and the appropriate game files are loaded in the background.
+- The player's starting location is displayed and the UI waits for user input.
+- The success or failure message of each command is displayed to the user and the state returns to waiting for user input.
+- The application keeps alternating between the two internal states till the user does not enter the `quit` command.
+- On `quit` the application window is closed and the application exits. 
+
+The UIHandler will exist in two major states with multiple internal sub-states. The description of the major states are as follows:-
+- Game Menu Display: 
+- In Game Display:
 
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
