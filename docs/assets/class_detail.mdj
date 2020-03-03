@@ -2096,7 +2096,7 @@
 											"top": 133,
 											"width": 215,
 											"height": 13,
-											"text": "+loadGameList(): List<Game>",
+											"text": "+loadGameList(): List<String>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -10755,7 +10755,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwjIBhWwjKlc4="
 									},
-									"type": "List<Game>",
+									"type": "List<String>",
 									"direction": "return"
 								}
 							]
