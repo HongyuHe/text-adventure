@@ -21,7 +21,7 @@ Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 ![Class Diagram](./assets/class_detail.png "Class diagram")
 
 **Engine**
-The engine is the heart of the system and can be considered the (grand) parent of all the other components. It will contain the entry point of the entire project.
+The engine is the heart of the system and can be considered the (grand) parent of all the other components. It will contain the entry point of the entire project and acts as a bridge between the game itself, the UI, and the JSON handling code, whilst also controlling the state of the overall system and handling certain meta-commands meant for the engine itself (e.g. saving the game).
 
 Attributes
 - *games: List\<Game\>* - Initially the player will be presented with a list of different games they are able to load and play, this attribute will hold the names of the different options.
@@ -39,6 +39,9 @@ Operations
 - *main()* - The entry point for the application.
 
 Associations
+- **_Initializer_** - Composite. The engine must contain an **Initializer** to handle loading games from JSON files. The **Initializer** should not exist outside of the **Engine**.
+- **_Game_** - Composite. **Games** should not exist apart from an **Engine**, however an **Engine** is not required to have a current game initialized at all times.
+- **_UIHandler_** - Composite. The **UIHandler** should not exist apart from the **Engine**.
 
 **Initializer**
 
