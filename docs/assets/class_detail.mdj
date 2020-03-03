@@ -588,7 +588,7 @@
 											"font": "Arial;13;1",
 											"left": 133,
 											"top": 319,
-											"width": 234.4697265625,
+											"width": 255.4169921875,
 											"height": 13,
 											"text": "Initializer"
 										},
@@ -623,7 +623,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 312,
-									"width": 244.4697265625,
+									"width": 265.4169921875,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFwdz6NuG1DJqw="
@@ -660,7 +660,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 342,
-											"width": 234.4697265625,
+											"width": 255.4169921875,
 											"height": 13,
 											"text": "+parser: Gson",
 											"horizontalAlignment": 0
@@ -669,7 +669,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 337,
-									"width": 244.4697265625,
+									"width": 265.4169921875,
 									"height": 23
 								},
 								{
@@ -694,9 +694,9 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 365,
-											"width": 234.4697265625,
+											"width": 255.4169921875,
 											"height": 13,
-											"text": "+loadGameFiles(): GameEntities",
+											"text": "+loadGameFiles(path: String): GameEntities",
 											"horizontalAlignment": 0
 										},
 										{
@@ -711,9 +711,9 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 380,
-											"width": 234.4697265625,
+											"width": 255.4169921875,
 											"height": 13,
-											"text": "+loadEntities(): List<Entity>",
+											"text": "+loadEntities(): Map<String Entity>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -728,7 +728,7 @@
 											"font": "Arial;13;0",
 											"left": 133,
 											"top": 395,
-											"width": 234.4697265625,
+											"width": 255.4169921875,
 											"height": 13,
 											"text": "+loadPreviousInputs(): List<String>",
 											"horizontalAlignment": 0
@@ -737,7 +737,7 @@
 									"font": "Arial;13;0",
 									"left": 128,
 									"top": 360,
-									"width": 244.4697265625,
+									"width": 265.4169921875,
 									"height": 53
 								},
 								{
@@ -777,7 +777,7 @@
 							"containerChangeable": true,
 							"left": 128,
 							"top": 312,
-							"width": 244.4697265625,
+							"width": 265.4169921875,
 							"height": 101,
 							"nameCompartment": {
 								"$ref": "AAAAAAFwdz6NuG1CJmA="
@@ -10098,6 +10098,15 @@
 										"$ref": "AAAAAAFwdz/sCG32jwQ="
 									},
 									"direction": "return"
+								},
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAFwof+T+VM+Gqo=",
+									"_parent": {
+										"$ref": "AAAAAAFwjKJes8JxdX0="
+									},
+									"name": "path",
+									"type": "String"
 								}
 							]
 						},
@@ -10115,7 +10124,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwjKMsYMTxP9I="
 									},
-									"type": "List<Entity>",
+									"type": "Map<String Entity>",
 									"direction": "return"
 								}
 							]

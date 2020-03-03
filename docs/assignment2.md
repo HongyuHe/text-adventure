@@ -43,70 +43,272 @@ Associations
 - **_Game_** - Composite. **Games** should not exist apart from an **Engine**, however an **Engine** is not required to have a current game initialized at all times.
 - **_UIHandler_** - Composite. The **UIHandler** should not exist apart from the **Engine**.
 
+
 **Initializer**
+
+Attributes
+- *parser: Gson* - The class for Google's JSON parsing library.
+
+Operations
+- *loadGameFiles: GameEntities* - Finds the JSON game data files associated with the given file path. When the player selects a game from the initial menu the name of this game will be sent to the **Initializer** and the **Initializer** will then open the appropriate folder containing the selected game's game data files. The data from these files will be used to construct a **GameEntities** object which will be sent back to the **Engine** so that it can construct an appropriate game.
+- *loadEntities: Map\<String, Entity\>* - A sub-function that will load **Entity** objects from the appropriate JSON files into a map of name:entity pairs.
+- *loadPreviousInputs: List\<String\>* - Opens and loads into memory the list of commands the player entered when playing previously. These commands will be sent to **Engine** which will replay these commands when loading a saved game.
+
+Associations
+- **_GameEntities_** - Shared. The **Initializer** will use JSON files to create game entity objects which will be stored in a **GameEntities** class. This class will be passed to a **Game** object on construction and will act as the base upon which the game is built.
+- **_CommandFactory_** - Shared. Some entities described in the JSON files can optionally contain commands that describe how the player can interact with them. Commands will be described in the JSON as a name, e.g. "use" for "use key door", followed by a function name that related to a **Command** class such as "changeLocation" or "takeItem". This data will be sent to the **CommandFactory** which builds and returns the correct **Command** type which can then be placed inside the appropriate object (e.g. a door might contain a changeState **Command** that allows a use to type "use key door" to unlock the door).
 
 
 **CommandFactory**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **Command**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **ChangeStat**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **ChangeState**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **ChangeLocation**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **ListContents**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **Describe**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **TakeItem**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **DropItem**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **UIHandler**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **Game**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **GameEntities**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **Entity**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **Area**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **Item**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **State**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **Character**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **NPC**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 **Interactable**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **Player**
 
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
+
 
 **Obstacle**
+
+Attributes
+- *edit* -
+
+Operations
+- *edit* -
+
+Associations
+- *edit* -
 
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
