@@ -1,6 +1,12 @@
-package Entities;
+package entity;
+
+import action.Action;
+import action.DefaultAction;
+import booster.init.ICharacter;
+import booster.init.IInteractable;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,6 +19,8 @@ public class Player implements ICharacter, IInteractable {
     private String currentLocation;
     private Stat stat;
     private Set<Command> commands;
+
+    private HashMap<String, Action> actions;
 
     public Player(String type,
                   String name,
@@ -31,6 +39,7 @@ public class Player implements ICharacter, IInteractable {
         this.currentLocation = currentLocation;
         this.stat = stat;
         this.commands = new HashSet<>(commands);
+        this.actions = null;
     }
 
     @Override
@@ -46,13 +55,20 @@ public class Player implements ICharacter, IInteractable {
     public Boolean isActive() { return active; }
 
     @Override
-    public Set<String> getInventory() { return inventory; }
+    public Set<String> getInventory() { return new HashSet<>(inventory); }
 
     @Override
-    public Set<Command> getCommands() { return commands; }
+    public Set<Command> getCommands() { return new HashSet<>(commands); }
 
     public String getCurrentLocation() { return currentLocation; }
 
     public Stat getStat() { return stat; }
+
+    public void setActions(HashMap<String, Action> actions) {
+        this.actions = actions;
+    }
+    public Action takeActionOrDefault(String cmd) {
+        return actions.getOrDefault(cmd, new DefaultAction());
+    }
 }
 

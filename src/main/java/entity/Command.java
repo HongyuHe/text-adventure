@@ -1,4 +1,4 @@
-package Entities;
+package entity;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -22,6 +22,6 @@ public class Command {
 
     public String getFunction() { return function; }
 
-    public Set<String> getParams() { return params; }
+    public Set<String> getParams() { return new HashSet<>(params); }
 
 }

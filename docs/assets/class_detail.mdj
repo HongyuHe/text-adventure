@@ -182,7 +182,7 @@
 											"top": 382,
 											"width": 791,
 											"height": 13,
-											"text": "Entities"
+											"text": "init.Entities"
 										},
 										{
 											"_type": "LabelView",
@@ -4826,7 +4826,7 @@
 											"top": 20,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -5042,7 +5042,7 @@
 											"top": -424,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6319,7 +6319,7 @@
 											"top": 344,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6517,7 +6517,7 @@
 											"top": 72,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8093,7 +8093,7 @@
 											"top": -524,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8344,7 +8344,7 @@
 											"top": -500,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8593,7 +8593,7 @@
 											"top": -318,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8792,7 +8792,7 @@
 											"top": -184,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from init.Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -11655,7 +11655,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Entities",
+					"name": "init.Entities",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",

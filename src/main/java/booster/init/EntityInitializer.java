@@ -1,22 +1,23 @@
-package Entities;
+package booster.init;
 
-import CustomDeserialisers.*;
+import booster.deserialiser.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
+import entity.*;
+
 import java.io.Reader;
 import java.lang.reflect.Type;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
 import java.util.function.Function;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import static Entities.EmptyEntity.initializeEmptyEntity;
+import static booster.init.EmptyEntity.initializeEmptyEntity;
 
-public abstract class Initializer {
+public abstract class EntityInitializer {
 
     public static GameEntities loadGameFiles() {
         Map<String, Item> itemEntities = load("src/main/resources/data/items.json", new ItemDeserializer(), Item.class)
@@ -78,5 +79,4 @@ public abstract class Initializer {
 
         return null;
     }
-
 }
