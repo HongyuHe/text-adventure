@@ -58,6 +58,12 @@ public class Player implements ICharacter, IInteractable {
     @Override
     public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
 
+    @Override
+    public void setCurrentLocation(String newLocation) {
+        currentLocation = newLocation;
+    }
+
+    @Override
     public String getCurrentLocation() { return currentLocation; }
 
     public Stat getStat() { return stat; }
