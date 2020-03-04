@@ -212,25 +212,14 @@ Attributes
 **Player**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *currentLocation: String* - Indicates the name of the **Area** the player is currently in.
+- *commands: Set\<Command\>* - Indicates which **Command** objects relate to the player.
 
 
 **Obstacle**
 
 Attributes
-- *edit* -
 
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
