@@ -279,9 +279,30 @@ The goal of your state machine diagrams is both descriptive and prescriptive, so
 Maximum number of words for this section: 3000
 
 ## Sequence diagrams									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
+In this section we will describe two crucial parts of the system during its functioning. The first will be a sequence disgram depicting the initialization of a game and the second will be a diagram depicting the game while executing an example command. Both diagrams aim to show the functionality of the engine we are designing and also to document the timeline of events and function calls to make it easier to implement.
+
+### Game Initialization Sequence
+
+The UML diagram for the interaction is as follows :-
+![State machine diagrams](./assets/init_sequence.png "State machine diagram 1")
+
+The game initlization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
+- Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
+    - The `initializer` object is invoked and the initializer starts reading the JSON files available in the game path variable provided to it.
+    - The initializer *deserializes* the JSONs internally and maps them to the respective Entity types and loads a list of entities for each type. These are the Items, Player, Obstacles, Areas and NPCs.
+    - These entities that are returned by means of a `loadEntities()` function are then passed as a parameter to construct the gameEntities object.
+    - The `gameEntities` object being the main dictionary of the architecture is then passed into the game object and saved there to be used persistently.
+    - Once this sequence is completed successfully the final `game` object is returned back to the engine that is then stored as the `currentGame`.
+
+- Post-Initialization: In this state most of the heavy lifting is done by the engine itself as it is responsible for running the game and handling loading of saved files. There are two alternative paths that the sequence flow can take. There are as follows :-
+    - startNewGame: This path is relatively simple. If the user had previously selected the 'Start New Game' option in the UIHandler then the program enters this workflow wherein the engine starts executing the game by calling the `runGame()` function. This is function has an internal loop and persists until the user does not quit the application manually.
+    - loadSavedGame: This workflow is activated if the user decides to load a saved game during game execution or in this case when the user previously selected the option 'Load Saved Game'. The subsequence for this alternate workflow is as follows :-
+        - The engine calls the initializer object again to read the saved game file. This is saved as a *.txt* files holding all the user's previous commands. The invoking is done using the `loadPreviousCommands()` function.
+        - The initializer after parsing the relevant saved file returns the list of commands as strings which are then saved as a parameter `commands` in the engine. This is stored to allow for saving and overwriting previous data without losing previous inputs and provides a valid starting point always.
+        - The commands are then sent to the `handleCommand()` function of the game object one after the other to execute and get the game to the user's last known state before saving.
+        - On success the game returns a message and the execution of the game is continued normally using the `runGame()` function. This last step is almost identical to the 'startNewGame' step mentioned above.
 
 For each sequence diagram you have to provide:
 - a title representing the specific situation you want to describe;
