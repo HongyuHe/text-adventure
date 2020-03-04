@@ -140,13 +140,19 @@ Associations
 **GameEntities**
 
 Attributes
-- *edit* -
+- *areas: Map\<String, Area\>* - Allows access of **Area** objects by their name.
+- *obstacles: Map\<String, Obstacle\>* - Allows access of **Obstacle** objects by their name.
+- *npcs: Map\<String, NPC\>* - Allows access of **NPC** objects by their name.
+- *items: Map\<String, Item\>* - Allows access of **Item** objects by their name.
+- *player: Player* - Holds a reference to the **Player** object.
+- *emptyEntity: Entity* - Holds a reference to an unimportant, generic **Entity** to make carrying out the commands associated with user input more intuitive and less bound to error handling. For example, when an appropriate **Entity** cannot be found for an input (e.g. the user might type "talk merchant" when no merchant is in the current location), then the **Game** will be given this blank **Entity** that can be acted upon without changing anything in the game world, or requiring the **Game** object to handle the missing reference. Instead, commands attempted to be carried out on this empty **Entity** will return error messages like "you cannot do that" to let the player know they did something wrong, as part of an error handling system invisible to the **Game** class.
+- *gameOverItem: Entity* - Holds a reference to the **Item** the player needs to be holding for them to win the game.
 
 Operations
-- *edit* -
+- *findEntityOrElse(name: String): Entity* - Returns a reference to the **Entity** object matching the given name, or a reference to a blank, generic **Entity** as described above.
 
 Associations
-- *edit* -
+- *Entity* - Shared. The **GameEntities** class organises, and provides an access point for, all the **Entities** in the game world.
 
 
 **Entity**
