@@ -9,9 +9,9 @@ public class CommandInitializer {
         HashMap<String, ICommand> actions = new HashMap<>();
         Player player = entities.getPlayer();
 
-        for (CommandBlueprint cmd : player.getCommandBlueprints()) {
+        for (CommandBlueprint cmd : player.getCommands()) {
             actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd));
         }
-        player.setCommands(new HashMap<>(actions));
+        player.setActions(new HashMap<>(actions));
     }
 }

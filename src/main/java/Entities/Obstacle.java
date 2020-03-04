@@ -15,7 +15,7 @@ public class Obstacle implements IEntity, IInteractable {
     private Boolean state;
     private String blocks;
     private String requiredObject;
-    private Set<CommandBlueprint> commandBlueprints;
+    private Set<CommandBlueprint> commands;
 
     private HashMap<String, ICommand> actions;
 
@@ -25,7 +25,7 @@ public class Obstacle implements IEntity, IInteractable {
                     Boolean state,
                     String blocks,
                     String requiredObject,
-                    ArrayList<CommandBlueprint> commandBlueprints) {
+                    ArrayList<CommandBlueprint> commands) {
 
         this.type = type;
         this.name = name;
@@ -33,7 +33,7 @@ public class Obstacle implements IEntity, IInteractable {
         this.state = state;
         this.blocks = blocks;
         this.requiredObject = requiredObject;
-        this.commandBlueprints = new HashSet<>(commandBlueprints);
+        this.commands = new HashSet<>(commands);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class Obstacle implements IEntity, IInteractable {
     public Boolean isActive() { return active; }
 
     @Override
-    public Set<CommandBlueprint> getCommandBlueprints() { return new HashSet<>(commandBlueprints); }
+    public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
 
     public Boolean getState() { return state; }
 

@@ -16,9 +16,9 @@ public class Player implements ICharacter, IInteractable {
     private Boolean active;
     private String currentLocation;
     private Stat stat;
-    private Set<CommandBlueprint> commandBlueprints;
+    private Set<CommandBlueprint> commands;
 
-    private HashMap<String, ICommand> commands;
+    private HashMap<String, ICommand> actions;
 
     public Player(String type,
                   String name,
@@ -27,7 +27,7 @@ public class Player implements ICharacter, IInteractable {
                   Boolean active,
                   String currentLocation,
                   Stat stat,
-                  ArrayList<CommandBlueprint> commandBlueprints) {
+                  ArrayList<CommandBlueprint> commands) {
 
         this.type = type;
         this.name = name;
@@ -36,8 +36,8 @@ public class Player implements ICharacter, IInteractable {
         this.active = active;
         this.currentLocation = currentLocation;
         this.stat = stat;
-        this.commandBlueprints = new HashSet<>(commandBlueprints);
-        this.commands = null;
+        this.commands = new HashSet<>(commands);
+        this.actions = null;
     }
 
     @Override
@@ -56,19 +56,19 @@ public class Player implements ICharacter, IInteractable {
     public Set<String> getInventory() { return new HashSet<>(inventory); }
 
     @Override
-    public Set<CommandBlueprint> getCommandBlueprints() { return new HashSet<>(commandBlueprints); }
+    public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
 
     public String getCurrentLocation() { return currentLocation; }
 
     public Stat getStat() { return stat; }
 
-    public void setCommands(HashMap<String, ICommand> commands) {
-        this.commands = commands;
+    public void setActions(HashMap<String, ICommand> actions) {
+        this.actions = actions;
     }
 
     @Override
     public ICommand findCommandOrElse(String cmd) {
-        return commands.getOrDefault(cmd, new DefaultICommand());
+        return actions.getOrDefault(cmd, new DefaultICommand());
     }
 }
 

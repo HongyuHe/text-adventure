@@ -6,7 +6,7 @@ import java.util.Set;
 
 public interface IInteractable {
 
-    Set<CommandBlueprint> getCommandBlueprints();
+    Set<CommandBlueprint> getCommands();
 
     ICommand findCommandOrElse(String cmd);
 }
