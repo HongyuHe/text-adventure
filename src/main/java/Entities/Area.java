@@ -10,6 +10,7 @@ public class Area implements IEntity {
     private Boolean active;
     private String description;
     private Set<String> inventory;
+    private Set<String> obstacles;
     private Set<String> npcs;
     private HashMap<String, String> connections;
 
@@ -18,6 +19,7 @@ public class Area implements IEntity {
                 Boolean active,
                 String description,
                 Set<String> inventory,
+                Set<String> obstacles,
                 Set<String> npcs,
                 HashMap<String, String> connections) {
 
@@ -26,6 +28,7 @@ public class Area implements IEntity {
         this.active = active;
         this.description = description;
         this.inventory = new HashSet<>(inventory);
+        this.obstacles = new HashSet<>(obstacles);
         this.npcs = npcs;
         this.connections = connections;
     }
@@ -51,6 +54,8 @@ public class Area implements IEntity {
     public Boolean isActive() { return active; }
 
     public Set<String> getInventory() { return inventory; }
+
+    public Set<String> getObstacles() { return obstacles; }
 
     public Set<String> getNpcs() { return npcs; }
 
