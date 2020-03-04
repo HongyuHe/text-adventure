@@ -113,14 +113,13 @@ An implementation of the **Command** interface that allows a **Character** to re
 
 **UIHandler**
 
-Attributes
-- *edit* -
-
 Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *displayGamesMenu(games: List\<String\>): void* - Will print the list of available games in a styled menu for the player to choose from.
+- *displayMainMenu(): void* - The initial menu presented to the player, serves as a kind of splash screen for Cork.
+- *displayGameSubMenu(game: String): void* - Shown once the player has selected the game they would like to play, presents the options to start a new game, load a game, or quit.
+- *getInput(): String* - Blocks waiting on user input and passes the raw result back to the **Engine** to handle as needed.
+- *clearScreen(): void* - Clears the screen to a blank state.
+- *printResult(result: String): void* - Prints the String provided. This will be used frequently to provide the user feedback, for example a description will be printed when the player enters a new **Area**, the success of an action may cause some change in game state (e.g. unlocking a door will notify the player that the door is now unlocked), or the failure of an action to complete (e.g. the input "eat grue" might return a failure message like "You cannot do that", unless a *modder* user makes it possible).
 
 
 **Game**
