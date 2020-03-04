@@ -226,20 +226,6 @@ Attributes
 - *blocks: String* - The name of the **Area** that the **Obstacle** prevents movement into.
 
 
-For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
-- Brief description about what it represents
-- Brief description of the meaning of each attribute
-- Brief description of the meaning of each operation
-- Brief description of the meaning of each association involving it (each association can be described only once in this deliverable)
-
-Also, you can briefly discuss fragments of previous versions of the class diagram (with figures) in order to show how you evolved from initial versions of the class diagram to the final one.
-
-In this document you have to adhere to the following formatting conventions:
-- the name of each **class** is in bold
-- the *attributes*, *operations*, *associations*, and *objects* are in italic.
-
-Maximum number of words for this section: 3000
-
 ## Object diagrams								
 Author(s): `name of the team member(s) responsible for this section`
 
