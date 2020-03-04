@@ -1121,7 +1121,7 @@
 											"top": 79,
 											"width": 248.91064453125,
 											"height": 13,
-											"text": "CommandFactory"
+											"text": "CommandInitializer"
 										},
 										{
 											"_type": "LabelView",
@@ -10394,7 +10394,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "CommandFactory",
+					"name": "CommandInitializer",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
