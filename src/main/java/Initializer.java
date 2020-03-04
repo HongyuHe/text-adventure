@@ -1,3 +1,5 @@
+import Command.CommandFactory;
+import Command.ICommand;
 import deserialiser.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -32,7 +34,7 @@ public abstract class Initializer {
         Player player = loadSingleEntity("src/main/resources/data/player.json", new PlayerDeserializer(), Player.class);
         EmptyEntity emptyEntity = initializeEmptyEntity();
 
-        return new GameEntities(itemEntities,
+        GameEntities gInit = new GameEntities(itemEntities,
                                 areaEntities,
                                 obstacleEntities,
                                 npcEntities,
@@ -40,6 +42,8 @@ public abstract class Initializer {
                                 player,
                                 emptyEntity
                 );
+        populateActions(gInit);
+        return gInit;
     }
 
     private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
@@ -77,5 +81,15 @@ public abstract class Initializer {
         }
 
         return null;
+    }
+
+    private static void populateActions(GameEntities entities) {
+        HashMap<String, ICommand> actions = new HashMap<>();
+        Player player = entities.getPlayer();
+
+        for (CommandBlueprint cmd : player.getCommands()) {
+            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd));
+        }
+        player.setActions(new HashMap<>(actions));
     }
 }

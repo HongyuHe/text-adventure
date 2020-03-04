@@ -11,7 +11,6 @@ public class Main {
 //        engine.runGame();
 
 ////////////////////////////////////////////////// Test actions //////////////////////////////////////////////////////////////////////
-        CommandInitializer.PopulateAction(gameEntities);
 
         String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest");
         System.out.println(action);
