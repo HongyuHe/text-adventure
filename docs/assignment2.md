@@ -219,7 +219,11 @@ Attributes
 **Obstacle**
 
 Attributes
-
+- *state: Boolean* - Indicates whether or not the given **Obstacle** is currently active and thus preventing movement to a certain location.
+- *requiredObject: String* - Holds the name of the **Item** that can change the state of the given **Obstacle**, e.g. a "key" is required by a door, or a "lantern" by darkness.
+- *commands: Set\<Command\>* - Holds the list of **Commands** that relate to the **Obstacle**.
+- *location: String* - The name of the location the **Obstacle** is found in.
+- *blocks: String* - The name of the **Area** that the **Obstacle** prevents movement into.
 
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
