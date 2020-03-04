@@ -431,7 +431,7 @@
 											"top": 894,
 											"width": 277.82421875,
 											"height": 13,
-											"text": "+displayGameSubMenu(game: Game): void",
+											"text": "+displayGameSubMenu(game: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9921,9 +9921,7 @@
 										"$ref": "AAAAAAFwjJPLvIjjwqM="
 									},
 									"name": "game",
-									"type": {
-										"$ref": "AAAAAAFwdz8HHG1vCeQ="
-									}
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
