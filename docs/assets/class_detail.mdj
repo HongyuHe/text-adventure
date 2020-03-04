@@ -182,7 +182,7 @@
 											"top": 382,
 											"width": 791,
 											"height": 13,
-											"text": "init.Entities"
+											"text": "Entities"
 										},
 										{
 											"_type": "LabelView",
@@ -1121,7 +1121,7 @@
 											"top": 79,
 											"width": 248.91064453125,
 											"height": 13,
-											"text": "CommandInitializer"
+											"text": "CommandFactory"
 										},
 										{
 											"_type": "LabelView",
@@ -4790,7 +4790,7 @@
 											"top": 20,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -4865,7 +4865,7 @@
 											"top": 877,
 											"width": 277.798828125,
 											"height": 13,
-											"text": "+commandBlueprints: Set<Command>",
+											"text": "+commands: Set<Command>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -5006,7 +5006,7 @@
 											"top": -424,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6283,7 +6283,7 @@
 											"top": 344,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6481,7 +6481,7 @@
 											"top": 72,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8057,7 +8057,7 @@
 											"top": -524,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8308,7 +8308,7 @@
 											"top": -500,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8417,7 +8417,7 @@
 											"top": 611,
 											"width": 277.798828125,
 											"height": 13,
-											"text": "+commandBlueprints: Set<Command>",
+											"text": "+commands: Set<Command>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8557,7 +8557,7 @@
 											"top": -318,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8756,7 +8756,7 @@
 											"top": -184,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from init.Entities)"
+											"text": "(from Entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -10367,7 +10367,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "CommandInitializer",
+					"name": "CommandFactory",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -11592,7 +11592,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "init.Entities",
+					"name": "Entities",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
@@ -11686,7 +11686,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwd013MJdW3dU="
 									},
-									"name": "commandBlueprints",
+									"name": "commands",
 									"type": "Set<Command>"
 								}
 							]
@@ -12239,7 +12239,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwd03K9pimApI="
 									},
-									"name": "commandBlueprints",
+									"name": "commands",
 									"type": "Set<Command>"
 								}
 							]
@@ -12333,7 +12333,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwkVJIsA0sY+Y="
 									},
-									"name": "commandBlueprints",
+									"name": "commands",
 									"type": "Set<Command>"
 								},
 								{
