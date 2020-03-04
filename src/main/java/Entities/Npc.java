@@ -1,6 +1,5 @@
 package Entities;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -40,7 +39,7 @@ public class Npc implements ICharacter {
     public Boolean isActive() { return active; }
 
     @Override
-    public Set<String> getInventory() { return inventory; }
+    public Set<String> getInventory() { return new HashSet<>(inventory); }
 
     public Stat getStat() { return stat; }
 }

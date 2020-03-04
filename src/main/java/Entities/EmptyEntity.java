@@ -5,7 +5,7 @@ public class EmptyEntity implements IEntity {
 
     private EmptyEntity(){}
 
-    static EmptyEntity initializeEmptyEntity(){
+    public static EmptyEntity initializeEmptyEntity(){
         return EmptyEntityInstance;
     }
 

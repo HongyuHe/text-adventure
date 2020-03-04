@@ -1,6 +1,5 @@
-package CustomDeserialisers;
+package deserialiser;
 
-import Entities.IEntity;
 import Entities.Item;
 import Entities.Stat;
 import com.google.gson.*;

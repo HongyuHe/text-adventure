@@ -1,7 +1,6 @@
-package CustomDeserialisers;
+package deserialiser;
 
 import Entities.GameOverItem;
-import Entities.Player;
 import Entities.Stat;
 import com.google.gson.*;
 

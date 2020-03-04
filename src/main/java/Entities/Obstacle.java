@@ -1,6 +1,10 @@
 package Entities;
 
+import Command.*;
+import deserialiser.CommandBlueprint;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,7 +15,9 @@ public class Obstacle implements IEntity, IInteractable {
     private Boolean state;
     private String blocks;
     private String requiredObject;
-    private Set<Command> commands;
+    private Set<CommandBlueprint> commands;
+
+    private HashMap<String, ICommand> actions;
 
     public Obstacle(String type,
                     String name,
@@ -19,7 +25,7 @@ public class Obstacle implements IEntity, IInteractable {
                     Boolean state,
                     String blocks,
                     String requiredObject,
-                    ArrayList<Command> commands) {
+                    ArrayList<CommandBlueprint> commands) {
 
         this.type = type;
         this.name = name;
@@ -47,7 +53,7 @@ public class Obstacle implements IEntity, IInteractable {
     public Boolean isActive() { return active; }
 
     @Override
-    public Set<Command> getCommands() { return commands; }
+    public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
 
     public Boolean getState() { return state; }
 
@@ -55,5 +61,13 @@ public class Obstacle implements IEntity, IInteractable {
 
     public String getRequiredObject() { return requiredObject; }
 
+    public void setActions(HashMap<String, ICommand> actions) {
+        this.actions = actions;
+    }
+
+    @Override
+    public ICommand findCommandOrElse(String cmd) {
+        return actions.getOrDefault(cmd, new DefaultICommand());
+    }
 }
 

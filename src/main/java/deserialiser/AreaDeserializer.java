@@ -1,11 +1,9 @@
-package CustomDeserialisers;
+package deserialiser;
 
-import Entities.IEntity;
 import Entities.Area;
 import com.google.gson.*;
 import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
