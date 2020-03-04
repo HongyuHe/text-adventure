@@ -6,29 +6,29 @@ public class Main {
 
         //System.out.println("Welcome to Software Design");
         GameEntities gameEntities = Initializer.loadGameFiles();
-        Engine engine = new Engine();
-
-        engine.runGame();
+//        Engine engine = new Engine();
+//
+//        engine.runGame();
 
 ////////////////////////////////////////////////// Test actions //////////////////////////////////////////////////////////////////////
         CommandInitializer.PopulateAction(gameEntities);
 
-        String action = gameEntities.getPlayer().takeActionOrDefault("move").apply("forest");
+        String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest");
         System.out.println(action);
 
-        action = gameEntities.getPlayer().takeActionOrDefault("search").apply("");
+        action = gameEntities.getPlayer().findCommandOrElse("search").apply("");
         System.out.println(action);
 
-        action = gameEntities.getPlayer().takeActionOrDefault("use").apply("blood battle");
+        action = gameEntities.getPlayer().findCommandOrElse("use").apply("blood battle");
         System.out.println(action);
 
-        action = gameEntities.getPlayer().takeActionOrDefault("interact").apply("");
+        action = gameEntities.getPlayer().findCommandOrElse("interact").apply("");
         System.out.println(action);
 
-        action = gameEntities.getPlayer().takeActionOrDefault("inventory").apply("");
+        action = gameEntities.getPlayer().findCommandOrElse("inventory").apply("");
         System.out.println(action);
 
-        action = gameEntities.getPlayer().takeActionOrDefault("I want to fly").apply("Hell");
+        action = gameEntities.getPlayer().findCommandOrElse("I want to fly").apply("Hell");
         System.out.println(action);
     }
 }
