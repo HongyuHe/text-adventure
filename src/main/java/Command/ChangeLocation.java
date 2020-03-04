@@ -14,7 +14,8 @@ public class ChangeLocation implements ICommand {
     }
 
     @Override
-    public String apply(String object) {
+    public String apply(String object)
+    {
         return "Action>>>$ "+ args + " change location to " + object;
     }
 }
