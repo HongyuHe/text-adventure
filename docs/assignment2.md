@@ -79,7 +79,7 @@ Associations
 
 **ChangeStat**
 
-This is an implementation of the **Command** interface that acts to change stats associated with a game **Character**, e.g. picking up a sword may increase the player's strength, eating an apple may increase their health, fighting an NPC may reduce health.
+An implementation of the **Command** interface that acts to change stats associated with a game **Character**, e.g. picking up a sword may increase the player's strength, eating an apple may increase their health, fighting an NPC may reduce health.
 
 
 **ChangeState**
@@ -93,6 +93,7 @@ An implementation of the **Command** interface that operates on **Obstacle** obj
 
 **ListContents**
 
+An implementation of the **Command** interface that gets a list of **Item** names held by any **Entity** class that has an inventory. This is likely to be used frequently when listing the player's current inventory or when printing descriptions of the current **Area**.
 
 
 **Describe**
