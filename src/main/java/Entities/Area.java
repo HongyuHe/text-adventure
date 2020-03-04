@@ -32,6 +32,8 @@ public class Area implements IEntity {
 
     public Boolean connectsTo(String nextArea) { return connections.containsKey(nextArea); }
 
+    public String getConnection(String nextArea) { return connections.get(nextArea); }
+
     @Override
     public String getType() { return type; }
 

@@ -20,8 +20,7 @@ public class Game {
             gameEntities.getPlayer().findCommandOrElse(args[0]).apply("", gameEntities);
 //            System.out.println(args[0] + " player");
         } else if(args.length == 2) {
-            System.out.println("2 args\n");
-            String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest", gameEntities);
+            String action = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
             System.out.println(action);
 //            System.out.println(args[0] + " " + args[1] + " player");
             previousCommands.add(input);
