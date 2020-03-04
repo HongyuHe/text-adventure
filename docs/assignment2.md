@@ -199,13 +199,7 @@ Attributes
 **NPC**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *isFriendly: Boolean* - Indicates whether interaction with the given **NPC** will initiate combat or conversation.
 
 
 **Interactable**
