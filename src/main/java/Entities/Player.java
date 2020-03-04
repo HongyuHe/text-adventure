@@ -1,6 +1,7 @@
 package Entities;
 
 import Command.*;
+import deserialiser.CommandBlueprint;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -15,9 +16,9 @@ public class Player implements ICharacter, IInteractable {
     private Boolean active;
     private String currentLocation;
     private Stat stat;
-    private Set<Command> commands;
+    private Set<CommandBlueprint> commandBlueprints;
 
-    private HashMap<String, ICommand> actions;
+    private HashMap<String, ICommand> commands;
 
     public Player(String type,
                   String name,
@@ -26,7 +27,7 @@ public class Player implements ICharacter, IInteractable {
                   Boolean active,
                   String currentLocation,
                   Stat stat,
-                  ArrayList<Command> commands) {
+                  ArrayList<CommandBlueprint> commandBlueprints) {
 
         this.type = type;
         this.name = name;
@@ -35,8 +36,8 @@ public class Player implements ICharacter, IInteractable {
         this.active = active;
         this.currentLocation = currentLocation;
         this.stat = stat;
-        this.commands = new HashSet<>(commands);
-        this.actions = null;
+        this.commandBlueprints = new HashSet<>(commandBlueprints);
+        this.commands = null;
     }
 
     @Override
@@ -55,19 +56,19 @@ public class Player implements ICharacter, IInteractable {
     public Set<String> getInventory() { return new HashSet<>(inventory); }
 
     @Override
-    public Set<Command> getCommands() { return new HashSet<>(commands); }
+    public Set<CommandBlueprint> getCommandBlueprints() { return new HashSet<>(commandBlueprints); }
 
     public String getCurrentLocation() { return currentLocation; }
 
     public Stat getStat() { return stat; }
 
-    public void setActions(HashMap<String, ICommand> actions) {
-        this.actions = actions;
+    public void setCommands(HashMap<String, ICommand> commands) {
+        this.commands = commands;
     }
 
     @Override
     public ICommand findCommandOrElse(String cmd) {
-        return actions.getOrDefault(cmd, new DefaultICommand());
+        return commands.getOrDefault(cmd, new DefaultICommand());
     }
 }
 

@@ -4884,7 +4884,7 @@
 											"top": 877,
 											"width": 277.798828125,
 											"height": 13,
-											"text": "+commands: Set<Command>",
+											"text": "+commandBlueprints: Set<Command>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -8436,7 +8436,7 @@
 											"top": 611,
 											"width": 277.798828125,
 											"height": 13,
-											"text": "+commands: Set<Command>",
+											"text": "+commandBlueprints: Set<Command>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -11709,7 +11709,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwd013MJdW3dU="
 									},
-									"name": "commands",
+									"name": "commandBlueprints",
 									"type": "Set<Command>"
 								}
 							]
@@ -12262,7 +12262,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwd03K9pimApI="
 									},
-									"name": "commands",
+									"name": "commandBlueprints",
 									"type": "Set<Command>"
 								}
 							]
@@ -12356,7 +12356,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwkVJIsA0sY+Y="
 									},
-									"name": "commands",
+									"name": "commandBlueprints",
 									"type": "Set<Command>"
 								},
 								{

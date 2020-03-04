@@ -5308,7 +5308,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFwkqjalbZYmp8="
 											},
-											"name": "Saved commands executed"
+											"name": "Saved commandBlueprints executed"
 										},
 										{
 											"_type": "UMLState",

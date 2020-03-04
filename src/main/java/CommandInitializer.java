@@ -1,5 +1,6 @@
 import Command.*;
 import Entities.*;
+import deserialiser.CommandBlueprint;
 
 import java.util.HashMap;
 
@@ -8,9 +9,9 @@ public class CommandInitializer {
         HashMap<String, ICommand> actions = new HashMap<>();
         Player player = entities.getPlayer();
 
-        for (Command cmd : player.getCommands()) {
+        for (CommandBlueprint cmd : player.getCommandBlueprints()) {
             actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd));
         }
-        player.setActions(new HashMap<>(actions));
+        player.setCommands(new HashMap<>(actions));
     }
 }

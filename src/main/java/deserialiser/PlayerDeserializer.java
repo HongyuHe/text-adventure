@@ -1,6 +1,5 @@
 package deserialiser;
 
-import Command.Command;
 import Entities.Player;
 import Entities.Stat;
 import com.google.gson.*;
@@ -47,8 +46,8 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
         return arrayList;
     }
 
-    private ArrayList<Command> createCommandArray(JsonArray jArray) {
-        ArrayList<Command> arrayList = new ArrayList<>();
+    private ArrayList<CommandBlueprint> createCommandArray(JsonArray jArray) {
+        ArrayList<CommandBlueprint> arrayList = new ArrayList<>();
 
         if (jArray != null) {
             for (JsonElement e : jArray) {
@@ -59,8 +58,8 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
         return arrayList;
     }
 
-    private Command createObject(JsonObject jObject) {
-        return new Command(
+    private CommandBlueprint createObject(JsonObject jObject) {
+        return new CommandBlueprint(
                 jObject.get("name").getAsString(),
                 jObject.get("function").getAsString(),
                 createArray(jObject.get("params").getAsJsonArray())

@@ -1,17 +1,17 @@
-package Command;
+package deserialiser;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Command {
+public class CommandBlueprint {
     private String name;
     private String function;
     private Set<String> params;
 
-    public Command(String name,
-                    String function,
-                    ArrayList<String> params) {
+    public CommandBlueprint(String name,
+                            String function,
+                            ArrayList<String> params) {
 
         this.name = name;
         this.function = function;

@@ -1,6 +1,5 @@
 package deserialiser;
 
-import Command.Command;
 import Entities.Obstacle;
 import com.google.gson.*;
 
@@ -27,8 +26,8 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
         );
     }
 
-    private ArrayList<Command> createCommandArray(JsonArray jArray) {
-        ArrayList<Command> arrayList = new ArrayList<>();
+    private ArrayList<CommandBlueprint> createCommandArray(JsonArray jArray) {
+        ArrayList<CommandBlueprint> arrayList = new ArrayList<>();
 
         if (jArray != null) {
             for (JsonElement e : jArray) {
@@ -50,8 +49,8 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
         return arrayList;
     }
 
-    private Command createObject(JsonObject jObject) {
-        return new Command(
+    private CommandBlueprint createObject(JsonObject jObject) {
+        return new CommandBlueprint(
                 jObject.get("name").getAsString(),
                 jObject.get("function").getAsString(),
                 createArray(jObject.get("params").getAsJsonArray())
