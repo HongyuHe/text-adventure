@@ -79,86 +79,31 @@ Associations
 
 **ChangeStat**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+This is an implementation of a **Command** interface that acts to change stats associated with a game **Character**, e.g. picking up a sword may increase the player's strength, eating an apple may increase their health, fighting an NPC may reduce health.
 
 
 **ChangeState**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **ChangeLocation**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **ListContents**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **Describe**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **TakeItem**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **DropItem**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **UIHandler**
