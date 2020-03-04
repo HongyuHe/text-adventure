@@ -1,3 +1,5 @@
+import Dictionary.GameEntities;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,16 +17,16 @@ public class Game {
     String handleCommand(String input) {
         String[] args = input.split(" ", 0);
         if(args.length == 1) {
-            gameEntities.getPlayer().findCommandOrElse(args[0]).apply("");
+            gameEntities.getPlayer().findCommandOrElse(args[0]).apply("", gameEntities);
 //            System.out.println(args[0] + " player");
         } else if(args.length == 2) {
             System.out.println("2 args\n");
-            String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest");
+            String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest", gameEntities);
             System.out.println(action);
 //            System.out.println(args[0] + " " + args[1] + " player");
             previousCommands.add(input);
         } else if(args.length == 3) {
-            gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1]);
+            gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
 //            System.out.println(args[0] + " " + args[1] + " " + args[2]);
             previousCommands.add(input);
         } else {

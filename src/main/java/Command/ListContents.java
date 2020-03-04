@@ -1,5 +1,6 @@
 package Command;
 
+import Dictionary.GameEntities;
 import Entities.IInteractable;
 
 import java.util.Set;
@@ -14,7 +15,7 @@ public class ListContents implements ICommand {
     }
 
     @Override
-    public String apply(String object) {
+    public String apply(String object, GameEntities ge) {
         return "Action>>>$ "+ "List contents of " + args;
     }
 }

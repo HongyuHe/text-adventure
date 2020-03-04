@@ -7,6 +7,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 import Entities.*;
 import Entities.EmptyEntity;
+import Dictionary.GameEntities;
 
 import java.io.Reader;
 import java.lang.reflect.Type;

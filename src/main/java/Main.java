@@ -1,7 +1,7 @@
 //import entity.Command;
 
 
-import Entities.IEntity;
+import Dictionary.GameEntities;
 
 public class Main {
     public static void main (String[] args) {
@@ -15,11 +15,11 @@ public class Main {
 
         //engine.runGame();
 
-        IEntity entity = gameEntities.findEntityOrElse("forest");
+//        IEntity entity = gameEntities.findEntityOrElse("forest");
 
-        System.out.println(entity.getName());
-//        String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest");
-//        System.out.println(action);
+//        System.out.println(entity.getName());
+        String action = gameEntities.getPlayer().findCommandOrElse("move").apply("forest", gameEntities);
+        System.out.println(action);
 //
 //        action = gameEntities.getPlayer().findCommandOrElse("search").apply("");
 //        System.out.println(action);
