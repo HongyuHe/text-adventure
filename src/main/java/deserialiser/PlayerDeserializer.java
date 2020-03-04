@@ -1,6 +1,6 @@
 package deserialiser;
 
-import Entities.Command;
+import Command.Command;
 import Entities.Player;
 import Entities.Stat;
 import com.google.gson.*;

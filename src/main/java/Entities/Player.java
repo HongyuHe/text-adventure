@@ -64,7 +64,9 @@ public class Player implements ICharacter, IInteractable {
     public void setActions(HashMap<String, ICommand> actions) {
         this.actions = actions;
     }
-    public ICommand takeActionOrDefault(String cmd) {
+
+    @Override
+    public ICommand findCommandOrElse(String cmd) {
         return actions.getOrDefault(cmd, new DefaultICommand());
     }
 }

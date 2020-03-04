@@ -1,4 +1,4 @@
-package Entities;
+package Command;
 
 import java.util.ArrayList;
 import java.util.HashSet;

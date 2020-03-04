@@ -1,6 +1,6 @@
 package deserialiser;
 
-import Entities.Command;
+import Command.Command;
 import Entities.Obstacle;
 import com.google.gson.*;
 

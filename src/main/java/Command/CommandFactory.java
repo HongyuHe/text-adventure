@@ -1,7 +1,7 @@
 package Command;
 
 public final class CommandFactory {
-    public static ICommand createCommand(Entities.Command cmd){
+    public static ICommand createCommand(Command cmd){
         switch (cmd.getFunction()) {
             case "ChangeLocation": return new ChangeLocation(cmd.getParams());
             case "ListContents": return new ListContents(cmd.getParams());
