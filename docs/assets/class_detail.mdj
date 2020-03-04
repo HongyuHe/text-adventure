@@ -4915,7 +4915,7 @@
 											"top": 862,
 											"width": 277.798828125,
 											"height": 13,
-											"text": "+currentLocation",
+											"text": "+currentLocation: String",
 											"horizontalAlignment": 0
 										},
 										{
@@ -6014,7 +6014,7 @@
 											"font": "Arial;13;0",
 											"left": 685,
 											"top": 757,
-											"width": 136.9443359375,
+											"width": 137.66162109375,
 											"height": 13,
 											"text": "«interface»"
 										},
@@ -6027,7 +6027,7 @@
 											"font": "Arial;13;1",
 											"left": 685,
 											"top": 772,
-											"width": 136.9443359375,
+											"width": 137.66162109375,
 											"height": 13,
 											"text": "Character"
 										},
@@ -6062,7 +6062,7 @@
 									"font": "Arial;13;0",
 									"left": 680,
 									"top": 752,
-									"width": 146.9443359375,
+									"width": 147.66162109375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFwhnBYQLPUj40="
@@ -6099,7 +6099,7 @@
 											"font": "Arial;13;0",
 											"left": 685,
 											"top": 795,
-											"width": 136.9443359375,
+											"width": 137.66162109375,
 											"height": 13,
 											"text": "+inventory: Set<String>",
 											"horizontalAlignment": 0
@@ -6116,16 +6116,16 @@
 											"font": "Arial;13;0",
 											"left": 685,
 											"top": 810,
-											"width": 136.9443359375,
+											"width": 137.66162109375,
 											"height": 13,
-											"text": "+stats: Set<Stat>",
+											"text": "+stats: Set<String Stat>",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 680,
 									"top": 790,
-									"width": 146.9443359375,
+									"width": 147.66162109375,
 									"height": 38
 								},
 								{
@@ -6181,7 +6181,7 @@
 							"containerChangeable": true,
 							"left": 680,
 							"top": 752,
-							"width": 146.9443359375,
+							"width": 147.66162109375,
 							"height": 76,
 							"nameCompartment": {
 								"$ref": "AAAAAAFwhnBYP7PTkbI="
@@ -11742,7 +11742,7 @@
 										"$ref": "AAAAAAFwd013MJdW3dU="
 									},
 									"name": "currentLocation",
-									"type": ""
+									"type": "String"
 								},
 								{
 									"_type": "UMLAttribute",
@@ -12583,7 +12583,7 @@
 								"$ref": "AAAAAAFwhnBYPLPQnns="
 							},
 							"name": "stats",
-							"type": "Set<Stat>"
+							"type": "Set<String Stat>"
 						}
 					]
 				},
