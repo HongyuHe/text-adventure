@@ -179,25 +179,14 @@ Operations
 **Item**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *consumable: Boolean* - Indicates whether or not the **Item** should be destroyed on usage.
 
 
-**State**
+**Stat**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *value: Integer* - Holds the value of a given stat, e.g. the player may have *10* strength or *30* health.
+- *name: String* - The name of the given stat, e.g. "health" or "strength".
 
 
 **Character**
