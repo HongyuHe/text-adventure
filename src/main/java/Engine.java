@@ -13,7 +13,7 @@ public class Engine {
     private UIHandler UI = new UIHandler();
     private Game game = new Game();
 
-    //    String handleGameover() {}
+//    String handleGameover() {}
 
     List<String> loadGameList() {
         try (Stream<Path> walk = Files.walk(Paths.get(".\\savefiles"))) {
@@ -26,9 +26,9 @@ public class Engine {
     }
 
 //    void startGame(game: Game) {}
-//
+
 //    void quit() {}
-//
+
 //    Boolean startNewGame() {
 //        currentGame = new Game();
 //    }
@@ -36,9 +36,9 @@ public class Engine {
     Boolean loadSavedGame() { // TODO: implement
             System.out.println("Game loaded!\n");
             return true;
-        }
+    }
 
-    //    Game getSave() {}
+//    Game getSave() {}
 
     Boolean saveGame() { // TODO: implement
         System.out.println("Game saved!\n");
