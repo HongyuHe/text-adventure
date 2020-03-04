@@ -98,6 +98,7 @@ An implementation of the **Command** interface that gets a list of **Item** name
 
 **Describe**
 
+An implementation of the **Command** interface that gets the String associated with the *describe* attribute in the **Entity** class. This will likely be used frequently as the player moves from **Area** to **Area**, when they look at **Items**, meets **NPCs** etc.
 
 
 **TakeItem**
