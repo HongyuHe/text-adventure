@@ -88,7 +88,7 @@ public abstract class Initializer {
         Player player = entities.getPlayer();
 
         for (CommandBlueprint cmd : player.getCommands()) {
-            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd));
+            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, player));
         }
         player.setActions(new HashMap<>(actions));
     }
