@@ -166,13 +166,14 @@ Attributes
 **Area**
 
 Attributes
-- *edit* -
+- *inventory: Set\<String\>* - Holds the names of all **Items** in the current area. **Entities** do not hold references to other **Entities**, but instead all interaction happens through the **GameEntities** class, in a data-oriented manner.
+- *npcs: Set\<String\>* - Holds the names of all **NPCs** that are in the given **Area**.
+- *connections: Map\<String, String\>* - Holds the names of all possible directions for the given **Area**, mapped to the name of the respective **Area**. For example, the *garden* **Area** might connect to the *palace* **Area**, and so *garden's* *connections* Map might contain the key:value pairs: "north":"palace" and "palace":"palace", allowing the player to type either "move north" or "move palace" and get the desired result.
+- *obstacles: List\<String\>* - Holds the names of all **Obstacles** in the given **Area**, allowing their descriptions to be printed when the player enters a room.
 
 Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *connectsTo(name: String): Boolean* - Verifies whether or not the given **Area** connects to some other **Area**.
+- *getConnection(name: String): String* - Converts the name of a direction to the name of an **Area**.
 
 
 **Item**
