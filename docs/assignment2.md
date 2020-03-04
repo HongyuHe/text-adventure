@@ -108,6 +108,7 @@ An implementation of the **Command** interface that allows a **Character** to ad
 
 **DropItem**
 
+An implementation of the **Command** interface that allows a **Character** to remove an **Item** from their **Inventory** and to drop in the current **Area**.
 
 
 **UIHandler**
