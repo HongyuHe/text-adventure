@@ -7,6 +7,7 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 import Entities.*;
 import Entities.EmptyEntity;
+import Dictionary.GameEntities;
 
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -88,7 +89,7 @@ public abstract class Initializer {
         Player player = entities.getPlayer();
 
         for (CommandBlueprint cmd : player.getCommands()) {
-            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd));
+            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, player));
         }
         player.setActions(new HashMap<>(actions));
     }

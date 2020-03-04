@@ -2,6 +2,7 @@
   "type": "Obstacle",
   "name": "door",
   "active": true,
+  "currentLocation": "forest",
   "state": false,
   "blocks": "castle",
   "requiredObject": "key",

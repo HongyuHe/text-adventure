@@ -1,5 +1,6 @@
 package Command;
+import Dictionary.GameEntities;
 
 public interface ICommand {
-    public String apply(String object);
+    String apply(String object, GameEntities ge);
 }

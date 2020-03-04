@@ -12,6 +12,7 @@ public class Obstacle implements IEntity, IInteractable {
     private String type;
     private String name;
     private Boolean active;
+    private String currentLocation;
     private Boolean state;
     private String blocks;
     private String requiredObject;
@@ -22,6 +23,7 @@ public class Obstacle implements IEntity, IInteractable {
     public Obstacle(String type,
                     String name,
                     Boolean active,
+                    String currentLocation,
                     Boolean state,
                     String blocks,
                     String requiredObject,
@@ -30,6 +32,7 @@ public class Obstacle implements IEntity, IInteractable {
         this.type = type;
         this.name = name;
         this.active = active;
+        this.currentLocation = currentLocation;
         this.state = state;
         this.blocks = blocks;
         this.requiredObject = requiredObject;
@@ -54,6 +57,14 @@ public class Obstacle implements IEntity, IInteractable {
 
     @Override
     public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
+
+    @Override
+    public void setCurrentLocation(String newLocation) {
+        currentLocation = newLocation;
+    }
+
+    @Override
+    public String getCurrentLocation() { return currentLocation; }
 
     public Boolean getState() { return state; }
 
