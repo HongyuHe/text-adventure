@@ -1,6 +1,3 @@
-import Entities.GameEntities;
-import Entities.Initializer;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +17,7 @@ public class Game {
     String handleCommand(String input) {
         String[] args = input.split(" ", 0);
         if(args.length == 2) {
+            gameEntities.getPlayer(); // TODO: eat apple >> findOrElse("player").takeActionOrDefault("eat).apply("apple)
 //            System.out.println(args[0] + " " + args[1] + " player");
             previousCommands.add(input);
         } else if(args.length == 3) {
