@@ -158,124 +158,73 @@ Associations
 **Entity**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *name: String* - All **Entities** should have a unique name that they can be referenced by.
+- *description: String* - All **Entities** should have an accompanying description to allow interaction with the **Describe** **Command**.
+- *active: Boolean* - Indicates whether the **Entity** object is active or not. Inactive objects should not be present in the game world, and this attribute makes it possible for objects to be destroyed (with a garbage collector - not currently planned or implemented - able to remove inactive objects from **GameEntities** collection).
 
 
 **Area**
 
 Attributes
-- *edit* -
+- *inventory: Set\<String\>* - Holds the names of all **Items** in the current area. **Entities** do not hold references to other **Entities**, but instead all interaction happens through the **GameEntities** class, in a data-oriented manner.
+- *npcs: Set\<String\>* - Holds the names of all **NPCs** that are in the given **Area**.
+- *connections: Map\<String, String\>* - Holds the names of all possible directions for the given **Area**, mapped to the name of the respective **Area**. For example, the *garden* **Area** might connect to the *palace* **Area**, and so *garden's* *connections* Map might contain the key:value pairs: "north":"palace" and "palace":"palace", allowing the player to type either "move north" or "move palace" and get the desired result.
+- *obstacles: Set\<String\>* - Holds the names of all **Obstacles** in the given **Area**, allowing their descriptions to be printed when the player enters a room.
 
 Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *connectsTo(name: String): Boolean* - Verifies whether or not the given **Area** connects to some other **Area**.
+- *getConnection(name: String): String* - Converts the name of a direction to the name of an **Area**.
 
 
 **Item**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *consumable: Boolean* - Indicates whether or not the **Item** should be destroyed on usage.
 
 
-**State**
+**Stat**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *value: Integer* - Holds the value of a given stat, e.g. the player may have *10* strength or *30* health.
+- *name: String* - The name of the given stat, e.g. "health" or "strength".
 
 
 **Character**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *inventory: Set\<String\>* - Holds the names of the **Items** held by the given **Character**.
+- *stats: Set\<String, Stat\>* - Holds the **stats** applicable to the given **Character**
 
 
 **NPC**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *isFriendly: Boolean* - Indicates whether interaction with the given **NPC** will initiate combat or conversation.
 
 
 **Interactable**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *emptyCommand: Command* - Provides a generic, blank **Command** object that simplifies error handling when the **Game** class is trying to carry out actions.
+- *findCommandOrElse(name: String): Command* - Returns the **Command** associated with the given name, or else the *emptyCommand* described above.
 
 
 **Player**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *currentLocation: String* - Indicates the name of the **Area** the player is currently in.
+- *commands: Set\<Command\>* - Indicates which **Command** objects relate to the player.
 
 
 **Obstacle**
 
 Attributes
-- *edit* -
+- *state: Boolean* - Indicates whether or not the given **Obstacle** is currently active and thus preventing movement to a certain location.
+- *requiredObject: String* - Holds the name of the **Item** that can change the state of the given **Obstacle**, e.g. a "key" is required by a door, or a "lantern" by darkness.
+- *commands: Set\<Command\>* - Holds the list of **Commands** that relate to the **Obstacle**.
+- *currentLocation: String* - The name of the location the **Obstacle** is found in.
+- *blocks: String* - The name of the **Area** that the **Obstacle** prevents movement into.
 
-Operations
-- *edit* -
-
-Associations
-- *edit* -
-
-
-For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
-- Brief description about what it represents
-- Brief description of the meaning of each attribute
-- Brief description of the meaning of each operation
-- Brief description of the meaning of each association involving it (each association can be described only once in this deliverable)
-
-Also, you can briefly discuss fragments of previous versions of the class diagram (with figures) in order to show how you evolved from initial versions of the class diagram to the final one.
-
-In this document you have to adhere to the following formatting conventions:
-- the name of each **class** is in bold
-- the *attributes*, *operations*, *associations*, and *objects* are in italic.
-
-Maximum number of words for this section: 3000
 
 ## Object diagrams								
 Author(s): `name of the team member(s) responsible for this section`
