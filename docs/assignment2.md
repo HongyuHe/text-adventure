@@ -158,13 +158,9 @@ Associations
 **Entity**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *name: String* - All **Entities** should have a unique name that they can be referenced by.
+- *description: String* - All **Entities** should have an accompanying description to allow interaction with the **Describe** **Command**.
+- *active: Boolean* - Indicates whether the **Entity** object is active or not. Inactive objects should not be present in the game world, and this attribute makes it possible for objects to be destroyed (with a garbage collector - not currently planned or implemented - able to remove inactive objects from **GameEntities** collection).
 
 
 **Area**
