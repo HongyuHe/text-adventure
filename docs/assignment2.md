@@ -205,13 +205,8 @@ Attributes
 **Interactable**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *emptyCommand: Command* - Provides a generic, blank **Command** object that simplifies error handling when the **Game** class is trying to carry out actions.
+- *findCommandOrElse(name: String): Command* - Returns the **Command** associated with the given name, or else the *emptyCommand* described above.
 
 
 **Player**
