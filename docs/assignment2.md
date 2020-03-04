@@ -74,115 +74,67 @@ Operations
 - *apply(target: String): String* - **Command** objects will be used to check the validity of input instructions given by the user, to do this an object specified by the user will be queried for an appropriate **Command** object (e.g. "use key door" will query the "door" object to see if it contains a command called "use"). If the object contains a matching command then the parameter specified by the user will be passed to this **Command** object and if the parameter matches some internal specification (different implementations for different commands), then the instruction succeeds and a result is performed. The success or failure message will be returned as a String which will, eventually, be passed up the **Engine** object that can then send it to the **UIHandler** to print to the terminal.
 
 Associations
-- *edit* -
+- **_Entity_** - Shared. **Command** objects must know about the entities they relate to to allow them to change the attributes of those entities, e.g. a **ChangeState** **Command** would need to inform a related **Obstacle** object to change its state from active to inactive (for example, when unlocking a door).
 
 
 **ChangeStat**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+An implementation of the **Command** interface that acts to change stats associated with a game **Character**, e.g. picking up a sword may increase the player's strength, eating an apple may increase their health, fighting an NPC may reduce health.
 
 
 **ChangeState**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+An implementation of the **Command** interface that operates on **Obstacle** objects. When **Obstacles** are active, they prevent the movement of the player from one particular **Area** to another, when inactive they allow movement. The **ChangeState** **Command** allows **Items** to be used by the player to change an **Obstacle's** state from active to inactive and vice versa.
 
 
 **ChangeLocation**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
 
 
 **ListContents**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+An implementation of the **Command** interface that gets a list of **Item** names held by any **Entity** class that has an inventory. This is likely to be used frequently when listing the player's current inventory or when printing descriptions of the current **Area**.
 
 
 **Describe**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+An implementation of the **Command** interface that gets the String associated with the *describe* attribute in the **Entity** class. This will likely be used frequently as the player moves from **Area** to **Area**, when they look at **Items**, meets **NPCs** etc.
 
 
 **TakeItem**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+An implementation of the **Command** interface that allows a **Character** to add an **Item** in the current **Area** to their inventory.
 
 
 **DropItem**
 
-Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+An implementation of the **Command** interface that allows a **Character** to remove an **Item** from their **Inventory** and to drop in the current **Area**.
 
 
 **UIHandler**
 
-Attributes
-- *edit* -
-
 Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *displayGamesMenu(games: List\<String\>): void* - Will print the list of available games in a styled menu for the player to choose from.
+- *displayMainMenu(): void* - The initial menu presented to the player, serves as a kind of splash screen for Cork.
+- *displayGameSubMenu(game: String): void* - Shown once the player has selected the game they would like to play, presents the options to start a new game, load a game, or quit.
+- *getInput(): String* - Blocks waiting on user input and passes the raw result back to the **Engine** to handle as needed.
+- *clearScreen(): void* - Clears the screen to a blank state.
+- *printResult(result: String): void* - Prints the String provided. This will be used frequently to provide the user feedback, for example a description will be printed when the player enters a new **Area**, the success of an action may cause some change in game state (e.g. unlocking a door will notify the player that the door is now unlocked), or the failure of an action to complete (e.g. the input "eat grue" might return a failure message like "You cannot do that", unless a *modder* user makes it possible).
 
 
 **Game**
 
 Attributes
-- *edit* -
+- *playerWon: Bool* - When the game is over the player has either won the game or lost it, the game is won when the player is holding a specific item, or it may be lost when the player has died.
+- *previousCommands: List\<String\>* - The **Game** class should keep track of all previously played moves so that, if the player wishes, they can save their game and reload it later. Loads will replay the list of saved commands, so keeping track of this properly is important. Note that since the **Engine** handles meta-level commands like *save* or *load*, these commands will never get sent to the **Game** object, and so they will never be added to the save game file - this should prevent problematic behaviour like encountering a *load* command during the loading of a save game file.
 
 Operations
-- *edit* -
+- *isGameOver(): Bool* - Returns whether or not the game is over.
+- *getPreviousCommands(): List\<String\>* - Returns the list of previous inputs by the player, this will be used when 
+- *handleCommand(input: String): String* - The **Engine** will send the **Game** class any relevant input it needs to deal with, this will mainly be input that deals with the interaction between **Entities** such as unlocking doors, interacting with **NPCs**, or moving between **Areas**.
 
 Associations
-- *edit* -
+- **_GameEntities_** - Shared. Since all player input will be in the form of Strings, the **Game** class will need a way to associate String names with specific game **Entities**. The **GameEntities** class will act like a sort of Dictionary to allow this, whilst also providing an interface for the **Game** to interact with **Entities** with.
 
 
 **GameEntities**

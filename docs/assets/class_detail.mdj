@@ -296,7 +296,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -480,
-											"top": 1388,
+											"top": 1372,
 											"height": 13
 										},
 										{
@@ -307,7 +307,7 @@
 											},
 											"font": "Arial;13;1",
 											"left": 109,
-											"top": 831,
+											"top": 823,
 											"width": 277.82421875,
 											"height": 13,
 											"text": "UIHandler"
@@ -321,7 +321,7 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -480,
-											"top": 1388,
+											"top": 1372,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -335,14 +335,14 @@
 											"visible": false,
 											"font": "Arial;13;0",
 											"left": -480,
-											"top": 1388,
+											"top": 1372,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 104,
-									"top": 824,
+									"top": 816,
 									"width": 287.82421875,
 									"height": 25,
 									"stereotypeLabel": {
@@ -369,7 +369,7 @@
 									},
 									"font": "Arial;13;0",
 									"left": 104,
-									"top": 849,
+									"top": 841,
 									"width": 287.82421875,
 									"height": 10
 								},
@@ -394,7 +394,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 864,
+											"top": 856,
 											"width": 277.82421875,
 											"height": 13,
 											"text": "+displayGamesMenu(games: List<String>): void",
@@ -411,7 +411,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 879,
+											"top": 871,
 											"width": 277.82421875,
 											"height": 13,
 											"text": "+displayMainMenu(): void",
@@ -428,10 +428,10 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 894,
+											"top": 886,
 											"width": 277.82421875,
 											"height": 13,
-											"text": "+displayGameSubMenu(game: Game): void",
+											"text": "+displayGameSubMenu(game: String): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -445,7 +445,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 909,
+											"top": 901,
 											"width": 277.82421875,
 											"height": 13,
 											"text": "+getInput(): String",
@@ -462,7 +462,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 924,
+											"top": 916,
 											"width": 277.82421875,
 											"height": 13,
 											"text": "+clearScreen(): void",
@@ -479,7 +479,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 109,
-											"top": 939,
+											"top": 931,
 											"width": 277.82421875,
 											"height": 13,
 											"text": "+printResult(result: String): void",
@@ -488,7 +488,7 @@
 									],
 									"font": "Arial;13;0",
 									"left": 104,
-									"top": 859,
+									"top": 851,
 									"width": 287.82421875,
 									"height": 98
 								},
@@ -504,7 +504,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -240,
-									"top": 694,
+									"top": 686,
 									"width": 10,
 									"height": 10
 								},
@@ -520,7 +520,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": -240,
-									"top": 694,
+									"top": 686,
 									"width": 10,
 									"height": 10
 								}
@@ -528,7 +528,7 @@
 							"font": "Arial;13;0",
 							"containerChangeable": true,
 							"left": 104,
-							"top": 824,
+							"top": 816,
 							"width": 287.82421875,
 							"height": 133,
 							"nameCompartment": {
@@ -899,23 +899,6 @@
 									"subViews": [
 										{
 											"_type": "UMLAttributeView",
-											"_id": "AAAAAAFwjHzYTf777d8=",
-											"_parent": {
-												"$ref": "AAAAAAFwdz8HHG1366Y="
-											},
-											"model": {
-												"$ref": "AAAAAAFwjHzXz/748o8="
-											},
-											"font": "Arial;13;0",
-											"left": 117,
-											"top": 710,
-											"width": 261.22509765625,
-											"height": 13,
-											"text": "+gameOverItem: String",
-											"horizontalAlignment": 0
-										},
-										{
-											"_type": "UMLAttributeView",
 											"_id": "AAAAAAFwjH5HIwBqOoY=",
 											"_parent": {
 												"$ref": "AAAAAAFwdz8HHG1366Y="
@@ -925,7 +908,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 117,
-											"top": 725,
+											"top": 710,
 											"width": 261.22509765625,
 											"height": 13,
 											"text": "+playerWon: Bool",
@@ -942,7 +925,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 117,
-											"top": 740,
+											"top": 725,
 											"width": 261.22509765625,
 											"height": 13,
 											"text": "+previousCommands: List<String>",
@@ -953,7 +936,7 @@
 									"left": 112,
 									"top": 705,
 									"width": 271.22509765625,
-									"height": 53
+									"height": 38
 								},
 								{
 									"_type": "UMLOperationCompartmentView",
@@ -976,7 +959,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 117,
-											"top": 763,
+											"top": 748,
 											"width": 261.22509765625,
 											"height": 13,
 											"text": "+isGameOver(): Bool",
@@ -993,7 +976,7 @@
 											},
 											"font": "Arial;13;0",
 											"left": 117,
-											"top": 778,
+											"top": 763,
 											"width": 261.22509765625,
 											"height": 13,
 											"text": "+getPreviousCommands(): List<String>",
@@ -1010,16 +993,16 @@
 											},
 											"font": "Arial;13;0",
 											"left": 117,
-											"top": 793,
+											"top": 778,
 											"width": 261.22509765625,
 											"height": 13,
-											"text": "+handleCommand(input: List<String>): String",
+											"text": "+handleCommand(input: String): String",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 112,
-									"top": 758,
+									"top": 743,
 									"width": 271.22509765625,
 									"height": 53
 								},
@@ -1061,7 +1044,7 @@
 							"left": 112,
 							"top": 680,
 							"width": 271.22509765625,
-							"height": 131,
+							"height": 116,
 							"nameCompartment": {
 								"$ref": "AAAAAAFwdz8HHG1yD1o="
 							},
@@ -9921,9 +9904,7 @@
 										"$ref": "AAAAAAFwjJPLvIjjwqM="
 									},
 									"name": "game",
-									"type": {
-										"$ref": "AAAAAAFwdz8HHG1vCeQ="
-									}
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -10172,15 +10153,6 @@
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
-							"_id": "AAAAAAFwjHzXz/748o8=",
-							"_parent": {
-								"$ref": "AAAAAAFwdz8HHG1vCeQ="
-							},
-							"name": "gameOverItem",
-							"type": "String"
-						},
-						{
-							"_type": "UMLAttribute",
 							"_id": "AAAAAAFwjH5GsQBnA/U=",
 							"_parent": {
 								"$ref": "AAAAAAFwdz8HHG1vCeQ="
@@ -10252,7 +10224,7 @@
 										"$ref": "AAAAAAFwjJD7m3HXU/I="
 									},
 									"name": "input",
-									"type": "List<String>"
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
