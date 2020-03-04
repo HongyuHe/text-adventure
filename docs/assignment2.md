@@ -169,7 +169,7 @@ Attributes
 - *inventory: Set\<String\>* - Holds the names of all **Items** in the current area. **Entities** do not hold references to other **Entities**, but instead all interaction happens through the **GameEntities** class, in a data-oriented manner.
 - *npcs: Set\<String\>* - Holds the names of all **NPCs** that are in the given **Area**.
 - *connections: Map\<String, String\>* - Holds the names of all possible directions for the given **Area**, mapped to the name of the respective **Area**. For example, the *garden* **Area** might connect to the *palace* **Area**, and so *garden's* *connections* Map might contain the key:value pairs: "north":"palace" and "palace":"palace", allowing the player to type either "move north" or "move palace" and get the desired result.
-- *obstacles: List\<String\>* - Holds the names of all **Obstacles** in the given **Area**, allowing their descriptions to be printed when the player enters a room.
+- *obstacles: Set\<String\>* - Holds the names of all **Obstacles** in the given **Area**, allowing their descriptions to be printed when the player enters a room.
 
 Operations
 - *connectsTo(name: String): Boolean* - Verifies whether or not the given **Area** connects to some other **Area**.
@@ -222,7 +222,7 @@ Attributes
 - *state: Boolean* - Indicates whether or not the given **Obstacle** is currently active and thus preventing movement to a certain location.
 - *requiredObject: String* - Holds the name of the **Item** that can change the state of the given **Obstacle**, e.g. a "key" is required by a door, or a "lantern" by darkness.
 - *commands: Set\<Command\>* - Holds the list of **Commands** that relate to the **Obstacle**.
-- *location: String* - The name of the location the **Obstacle** is found in.
+- *currentLocation: String* - The name of the location the **Obstacle** is found in.
 - *blocks: String* - The name of the **Area** that the **Obstacle** prevents movement into.
 
 
