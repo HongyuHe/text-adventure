@@ -1,6 +1,7 @@
 import Entities.EmptyEntity;
 import Entities.*;
 
+import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -28,6 +29,24 @@ public class GameEntities {
         this.gameOverItem = gameOverItem;
         this.player = player;
         this.emptyEntity = emptyEntity;
+    }
+
+    IEntity findEntityOrElse(String entity) {
+        if (itemEntities.containsKey(entity)) {
+            return itemEntities.get(entity);
+        } else if (areaEntities.containsKey(entity)) {
+            return areaEntities.get(entity);
+        } else if (obstacleEntities.containsKey(entity)) {
+            return obstacleEntities.get(entity);
+        } else if (npcEntities.containsKey(entity)) {
+            return npcEntities.get(entity);
+        } else if (gameOverItem.getName().equals(entity)) {
+            return gameOverItem;
+        } else if (player.getName().equals(entity)) {
+            return player;
+        } else {
+            return emptyEntity;
+        }
     }
 
     public Map<String, Item> getItemEntities() { return new HashMap<>(itemEntities); }
