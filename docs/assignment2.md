@@ -103,6 +103,7 @@ An implementation of the **Command** interface that gets the String associated w
 
 **TakeItem**
 
+An implementation of the **Command** interface that allows a **Character** to add an **Item** in the current **Area** to their inventory.
 
 
 **DropItem**
