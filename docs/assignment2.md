@@ -125,13 +125,16 @@ Operations
 **Game**
 
 Attributes
-- *edit* -
+- *playerWon: Bool* - When the game is over the player has either won the game or lost it, the game is won when the player is holding a specific item, or it may be lost when the player has died.
+- *previousCommands: List\<String\>* - The **Game** class should keep track of all previously played moves so that, if the player wishes, they can save their game and reload it later. Loads will replay the list of saved commands, so keeping track of this properly is important. Note that since the **Engine** handles meta-level commands like *save* or *load*, these commands will never get sent to the **Game** object, and so they will never be added to the save game file - this should prevent problematic behaviour like encountering a *load* command during the loading of a save game file.
 
 Operations
-- *edit* -
+- *isGameOver(): Bool* - Returns whether or not the game is over.
+- *getPreviousCommands(): List\<String\>* - Returns the list of previous inputs by the player, this will be used when 
+- *handleCommand(input: String): String* - The **Engine** will send the **Game** class any relevant input it needs to deal with, this will mainly be input that deals with the interaction between **Entities** such as unlocking doors, interacting with **NPCs**, or moving between **Areas**.
 
 Associations
-- *edit* -
+- **_GameEntities_** - Shared. Since all player input will be in the form of Strings, the **Game** class will need a way to associate String names with specific game **Entities**. The **GameEntities** class will act like a sort of Dictionary to allow this, whilst also providing an interface for the **Game** to interact with **Entities** with.
 
 
 **GameEntities**
