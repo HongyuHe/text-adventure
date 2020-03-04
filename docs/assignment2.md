@@ -192,13 +192,8 @@ Attributes
 **Character**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *inventory: Set\<String\>* - Holds the names of the **Items** held by the given **Character**.
+- *stats: Set\<String, Stat\>* - Holds the **stats** applicable to the given **Character**
 
 
 **NPC**
