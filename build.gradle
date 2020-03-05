@@ -17,3 +17,9 @@ dependencies {
     compile 'org.beryx:text-io:3.4.0'
     compile "org.slf4j:slf4j-simple:1.6.1"
 }
+
+compileJava.options.encoding = 'UTF-8'
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
