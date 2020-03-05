@@ -1,4 +1,4 @@
-package Entities;
+package entity;
 
 public class EmptyEntity extends Entity {
     private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();

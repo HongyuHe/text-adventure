@@ -1,6 +1,6 @@
-package Entities;
+package entity;
 
-public class GameOverItem extends Entity {
+public class Item extends Entity {
     private String type;
     private String name;
     private String description;
@@ -8,12 +8,12 @@ public class GameOverItem extends Entity {
     private Boolean active;
     private Stat stat;
 
-    public GameOverItem(String type,
-                        String name,
-                        String description,
-                        Boolean consumable,
-                        Boolean active,
-                        Stat stat) {
+    public Item(String type,
+                String name,
+                String description,
+                Boolean consumable,
+                Boolean active,
+                Stat stat) {
 
         this.type = type;
         this.name = name;
@@ -27,10 +27,14 @@ public class GameOverItem extends Entity {
     public String getType() { return type; }
 
     @Override
-    public String getName() { return name; }
+    public String getName() {
+        return name;
+    }
 
     @Override
-    public String getDescription() { return description; }
+    public String getDescription() {
+        return description;
+    }
 
     @Override
     public Boolean isActive() { return active; }
@@ -38,4 +42,7 @@ public class GameOverItem extends Entity {
     public Boolean isConsumable() { return consumable; }
 
     public Stat getStat() { return stat; }
+
 }
+
+

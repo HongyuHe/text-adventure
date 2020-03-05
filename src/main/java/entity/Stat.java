@@ -1,4 +1,4 @@
-package Entities;
+package entity;
 
 public class Stat {
     private String name;

@@ -1,6 +1,6 @@
-package Entities;
+package entity;
 
-import Command.*;
+import command.*;
 import deserialiser.CommandBlueprint;
 
 import java.util.ArrayList;

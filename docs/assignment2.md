@@ -243,6 +243,21 @@ Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 In this section we will describe two components of the system that hold different states. There are the **Engine** class and the **UIHandler** class.
 
+### Engine
+![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
+
+The **Engine** class will be the main, top-level control point for the system as a whole. On system start the **Engine** will load the list of available games that the user can play so as to present them in a menu. This list will be determined by the **Initializer** as it is the **Initializer** that should be responsible for interactions with game files. If the **Initializer** fails at any point during this process, it should return a reason why and this error response should be printed to the console before the system exits.
+
+Once the game list has been loaded the user will be shown the main menu which waits either for the user to exit or for a game to be selected. If a game is selected, the **Engine** will notify the **Initializer** which game files to load, and will construct an associated **Game** class (this process is not shown here as it does not relate to the **Engine's** state or the transitions between them). Once the **Game** class is ready, the **Engine** will display the game's menu, which presents the user with the options: *start new game*, *load game*, and *quit*.
+
+If the user chooses to start a new game, the **Engine** will enter into the *game running* state, however if the user chooses to load a game, the **Engine** will notify the **Initializer** that it requires the list of previously played moves (if any), and will start the game without entering the *game running* state. This allows the **Engine** to feed previous player input into the game without requiring the user to type anything in. Since the game world is deterministic, this allows games to be loaded by replaying every action the player had previously typed and end up in the same state as when they saved the game originally.
+
+Once this load process has completed (or if the user chose to start a new game), the **Engine** enters the *Game Running* state, where it will act as a bridge between the **UIHandler** and the **Game** class. Commands typed by the user will first be sent to the **Engine** which will only send them to the **Game** class if appropriate. For example, if the player chooses to save their game, this should be handled by the **Engine** as it does not relate to knowledge the **Game** should have - the **Game** knows about **NPCs** and **Areas**, but not about files and folders.
+
+If the user chooses to quit the game whilst in the *Game Running* state, then the **Engine** should intercept this request and prompt the user to save their game. If the user chooses to do so, this is done just before exiting, otherwise the **Engine** just exits directly.
+
+Finally, if the game ends in the *Game Running* loop (i.e. the player obtains the item which ends the game, or the player dies), then the **Engine** will handle this appropriately - printing some message to let the user know what happened, and then returning back to the main menu to allow the user to choose to play a new game or exit.
+
 ### UIHandler
 The state machine diagram for the UIHandler is as follows :-
 ![State machine diagrams](./assets/state_ui.png "State machine diagram 1")
@@ -267,17 +282,6 @@ The UIHandler will exist in two major states with multiple internal sub-states. 
     - Game Menu Display: This is the internal menu display that is opened once the user picks a game he/she wants to play using the keyboard. This loads a screen similar to the main menu but here three options are available. The user can either start a new game, load a saved game or quit the engine. If the user goes with either option 1 or option 2, the state is changed to the next main state and the menu display would be cleared. There would be no more option to use the arrow keys anymore and quitting would only be possible using the `quit` command. So as a menu display this is the last state a user could quit the engine before loading the in game display.
 - In Game Display: During the transition from the Game Menu Display to this state certain internal states are initialized and executed that are not visible to the user. If the user selects the *Start New Game* option then a state called 'Game Files Loaded' is triggered that reads the JSON files of the game selected and builds the game. On the other hand, if the user selects the *Load Saved Game* option then a state called 'Save Files Loaded' is trigerred. The behaviour of both states is very similar with the only difference being, loading a saved game leads to replaying of previously inputed actions without notifying the user by reading a text based saved file. In the new game option this does not happen. On completion of the loading and execution, the UIHandler enters the game. Here the user's starting location in the game and the inventory is displayed. The UI persists in this stage till the user does the quit the game manually by typing the `quit` command or by closing the application window using the default options of the host's window manager. The UI continues alternates between two sub-states where it continuously waits for a user input, displays the results of the input immediately and waits for user input thus repeating the cycle persistently.
 
-This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
-
-For each state machine you have to provide:
-- the name of the class for which you are representing the internal behavior;
-- a figure representing the part of state machine;
-- a textual description of all its states, transitions, activities, etc. in a narrative manner (you do not need to structure your description into tables in this case). We expect 3-4 lines of text for describing trivial or very simple state machines (e.g., those with one to three states), whereas you will provide longer descriptions (e.g., ~500 words) when describing more complex state machines.
-
-The goal of your state machine diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 3000
-
 ## Sequence diagrams									
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
@@ -290,7 +294,7 @@ The UML diagram for the interaction is as follows :-
 
 The game initlization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
 - Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
-    - The `initializer` object is invoked and the initializer starts reading the JSON files available in the game path variable provided to it.
+    - The `initializer` object is invoked and the initializer starts reading the JSON files available in the game path variable provided to it by means of the `loadGameFiles()` function.
     - The initializer *deserializes* the JSONs internally and maps them to the respective Entity types and loads a list of entities for each type. These are the Items, Player, Obstacles, Areas and NPCs.
     - These entities that are returned by means of a `loadEntities()` function are then passed as a parameter to construct the gameEntities object.
     - The `gameEntities` object being the main dictionary of the architecture is then passed into the game object and saved there to be used persistently.
@@ -299,7 +303,7 @@ The game initlization sequence is divided into two main parts. The upper half of
 - Post-Initialization: In this state most of the heavy lifting is done by the engine itself as it is responsible for running the game and handling loading of saved files. There are two alternative paths that the sequence flow can take. There are as follows :-
     - startNewGame: This path is relatively simple. If the user had previously selected the 'Start New Game' option in the UIHandler then the program enters this workflow wherein the engine starts executing the game by calling the `runGame()` function. This is function has an internal loop and persists until the user does not quit the application manually.
     - loadSavedGame: This workflow is activated if the user decides to load a saved game during game execution or in this case when the user previously selected the option 'Load Saved Game'. The subsequence for this alternate workflow is as follows :-
-        - The engine calls the initializer object again to read the saved game file. This is saved as a *.txt* files holding all the user's previous commands. The invoking is done using the `loadPreviousCommands()` function.
+        - The engine calls the initializer object again to read the saved game file. This is saved as a *.txt* files holding all the user's previous commands. The invoking is done using the `loadPreviousInputs()` function.
         - The initializer after parsing the relevant saved file returns the list of commands as strings which are then saved as a parameter `commands` in the engine. This is stored to allow for saving and overwriting previous data without losing previous inputs and provides a valid starting point always.
         - The commands are then sent to the `handleCommand()` function of the game object one after the other to execute and get the game to the user's last known state before saving.
         - On success the game returns a message and the execution of the game is continued normally using the `runGame()` function. This last step is almost identical to the 'startNewGame' step mentioned above.

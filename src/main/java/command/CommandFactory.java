@@ -1,6 +1,6 @@
-package Command;
+package command;
 
-import Entities.IInteractable;
+import entity.IInteractable;
 import deserialiser.CommandBlueprint;
 
 public final class CommandFactory {

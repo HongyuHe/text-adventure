@@ -1,4 +1,4 @@
-package Entities;
+package entity;
 
 public abstract class Entity {
 

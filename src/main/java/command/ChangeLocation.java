@@ -1,8 +1,8 @@
-package Command;
+package command;
 
-import Dictionary.GameEntities;
-import Entities.Area;
-import Entities.IInteractable;
+import dictionary.GameEntities;
+import entity.Area;
+import entity.IInteractable;
 
 import java.util.Set;
 

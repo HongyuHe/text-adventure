@@ -1,5 +1,5 @@
-package Entities;
-import Command.*;
+package entity;
+import command.*;
 import deserialiser.CommandBlueprint;
 
 import java.util.Set;

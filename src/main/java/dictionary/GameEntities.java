@@ -1,7 +1,7 @@
-package Dictionary;
+package dictionary;
 
-import Entities.EmptyEntity;
-import Entities.*;
+import entity.EmptyEntity;
+import entity.*;
 
 import java.util.HashMap;
 import java.util.Map;

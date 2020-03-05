@@ -1,6 +1,6 @@
 package deserialiser;
 
-import Entities.Obstacle;
+import entity.Obstacle;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

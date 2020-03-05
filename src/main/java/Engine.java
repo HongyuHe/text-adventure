@@ -2,62 +2,93 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Engine {
-    List<Game> games;
-    Game currentGame;
-
+    private Game currentGame;
     private UIHandler UI = new UIHandler();
-    private Game game = new Game();
 
 //    String handleGameover() {}
 
-    List<String> loadGameList() {
-        try (Stream<Path> walk = Files.walk(Paths.get(".\\savefiles"))) {
-            return walk.map(Path::toString).filter(f -> f.endsWith(".txt")).collect(Collectors.toList());
+    private List<String> loadGameList() {
+        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"))) {
+            List<String> gameList = walk.filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
+            gameList.remove(0);
+            return gameList;
         }
         catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return Collections.singletonList("No games found.");
     }
 
 //    void startGame(game: Game) {}
 
-//    void quit() {}
+    private void quit() {
+        System.exit(0);
+    }
 
-//    Boolean startNewGame() {
-//        currentGame = new Game();
-//    }
+    Boolean startNewGame() { // TODO: Implement
+        UI.clearScreen();
+        UI.printResult("Welcome");
+        runGame();
+        return true;
+    }
 
-    Boolean loadSavedGame() { // TODO: implement
-            System.out.println("Game loaded!\n");
-            return true;
+    private Boolean loadSavedGame() { // TODO: implement
+        System.out.println("Loading...\n");
+        runGame();
+        return true;
     }
 
 //    Game getSave() {}
 
-    Boolean saveGame() { // TODO: implement
-        System.out.println("Game saved!\n");
+    private Boolean saveGame() { // TODO: implement
+        System.out.println("Saving...\n");
         return true;
+    }
+
+    void startMenu() {
+        String choice;
+
+        choice = UI.displayMainMenu();
+        if(choice.compareTo("quit") == 0) {
+            quit();
+        }
+
+        choice = UI.displayGamesMenu(loadGameList());
+        if(choice.compareTo("quit") == 0) {
+            quit();
+        } else {
+            currentGame = new Game(choice); //TODO: set current game
+        }
+
+        choice = UI.displayGameSubMenu(choice);
+        if(choice.compareTo("New Game") == 0) {
+            startNewGame();
+        } else if (choice.compareTo("Load Game") == 0) {
+            loadSavedGame();
+        } else {
+            quit();
+        }
     }
 
     void runGame() {
         while(true) {
             String userInput = UI.getInput();
             if(userInput.compareTo("save") == 0) {
-                saveGame();
+                if(saveGame()) { System.out.println("Successfully saved game!"); }
             } else if(userInput.compareTo("load") == 0) {
-                loadSavedGame();
+                if(loadSavedGame()) { System.out.println("Successfully loaded game!"); }
             } else if(userInput.compareTo("quit") == 0) {
-                System.out.println("Quitting game...\n");
+                quit();
             } else {
-                game.handleCommand(userInput);
+                String result = currentGame.handleCommand(userInput);
+                UI.printResult(result);
             }
-            System.out.println("Prev commands: " + game.getPreviousCommands().toString());
         }
     }
 }

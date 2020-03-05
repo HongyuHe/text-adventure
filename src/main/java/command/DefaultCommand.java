@@ -1,6 +1,6 @@
-package Command;
+package command;
 
-import Dictionary.GameEntities;
+import dictionary.GameEntities;
 
 public class DefaultCommand extends Command {
 
