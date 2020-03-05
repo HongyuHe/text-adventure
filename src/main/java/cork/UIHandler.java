@@ -1,5 +1,7 @@
 package cork;
 
+import java.awt.*;
+import java.util.Arrays;
 import java.util.List;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
@@ -21,7 +23,11 @@ public class UIHandler {
             "             ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝\n" +
             "\n";
 
-    private static final String CLEAR_SCREEN = "clear";
+    private static final String DEFAULT_PROMPT = ">";
+    private static final String CLEAR_BOOKMARK = "clear";
+    private static final String QUIT_OPTION    = "Quit";
+    private static final List<String> HOME_SCREEN_OPTIONS = Arrays.asList("Continue", QUIT_OPTION);
+    private static final List<String> GAME_MENU_OPTIONS   = Arrays.asList("New Game", "Load Game", QUIT_OPTION);
 
     private TextIO textIO = TextIoFactory.getTextIO();
     private TextTerminal<?> terminal = textIO.getTextTerminal();
@@ -29,39 +35,40 @@ public class UIHandler {
 
     UIHandler()
     {
-        terminal.setBookmark(CLEAR_SCREEN);
-        terminal.getProperties().setPromptColor("white");
+        terminal.setBookmark(CLEAR_BOOKMARK);
+        terminal.getProperties().setPromptColor(Color.GREEN);
+        terminal.getProperties().setInputColor(Color.WHITE);
     }
-
-    public void exit() { terminal.dispose(); }
-
+    
     public String displayHomeScreen() {
         clearScreen();
         print(CORK_LOGO);
         return textIO.newStringInputReader()
-                .withNumberedPossibleValues("Select Game", "Quit")
-                    .read("Please make your choice:");
+                .withNumberedPossibleValues(HOME_SCREEN_OPTIONS)
+                        .read();
     }
 
     public String displayMainMenu(List<String> games) {
         clearScreen();
-        games.add("Quit");
+        games.add(QUIT_OPTION);
         return textIO.newStringInputReader()
                 .withNumberedPossibleValues(games)
-                    .read("Select a game");
+                        .read("Please select a game to play:");
     }
 
     public String displayGameMenu(String game) {
         clearScreen();
-        print(game + "\n");
+        print(game);
         return textIO.newStringInputReader()
-                .withNumberedPossibleValues("New Game", "Load Game", "Quit")
-                    .read("Select an option");
+                .withNumberedPossibleValues(GAME_MENU_OPTIONS)
+                        .read();
     }
 
-    public void clearScreen() { terminal.resetToBookmark(CLEAR_SCREEN); }
+    public void exit() { terminal.dispose(); }
 
-    public String getInput() { return textIO.newStringInputReader().withDefaultValue(">").read().toLowerCase(); }
+    public void clearScreen() { terminal.resetToBookmark(CLEAR_BOOKMARK); }
+
+    public String getInput() { return textIO.newStringInputReader().withDefaultValue(DEFAULT_PROMPT).read().toLowerCase(); }
 
     public void print(String string) { terminal.println(string); }
 
