@@ -22,7 +22,7 @@ public class Game {
         String[] args = input.split(" ", 0);
         String  result = "";
         if(args.length == 1) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply("", gameEntities);
+            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(null, gameEntities);
         } else if(args.length == 2) {
             result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
             previousCommands.add(input);
