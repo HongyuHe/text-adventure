@@ -1,6 +1,6 @@
 package Entities;
 
-public class EmptyEntity implements IEntity {
+public class EmptyEntity extends Entity {
     private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();
 
     private EmptyEntity(){}

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Player implements ICharacter, IInteractable {
+public class Player extends Character implements IInteractable {
     private String type;
     private String name;
     private String description;
@@ -18,7 +18,7 @@ public class Player implements ICharacter, IInteractable {
     private Stat stat;
     private Set<CommandBlueprint> commands;
 
-    private HashMap<String, ICommand> actions;
+    private HashMap<String, Command> actions;
 
     public Player(String type,
                   String name,
@@ -68,13 +68,13 @@ public class Player implements ICharacter, IInteractable {
 
     public Stat getStat() { return stat; }
 
-    public void setActions(HashMap<String, ICommand> actions) {
+    public void setActions(HashMap<String, Command> actions) {
         this.actions = actions;
     }
 
     @Override
-    public ICommand findCommandOrElse(String cmd) {
-        return actions.getOrDefault(cmd, new DefaultICommand());
+    public Command findCommandOrElse(String cmd) {
+        return actions.getOrDefault(cmd, new DefaultCommand());
     }
 }
 

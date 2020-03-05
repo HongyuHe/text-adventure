@@ -2,9 +2,9 @@ package Command;
 
 import Dictionary.GameEntities;
 
-public class DefaultICommand implements ICommand {
+public class DefaultCommand extends Command {
 
-    public DefaultICommand(){};
+    public DefaultCommand(){};
 
     @Override
     public String apply(String object, GameEntities ge) {

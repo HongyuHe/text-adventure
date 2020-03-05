@@ -1,6 +1,6 @@
 package Entities;
 
-public class Item implements IEntity {
+public class Item extends Entity {
     private String type;
     private String name;
     private String description;

@@ -4,7 +4,7 @@ import Dictionary.GameEntities;
 import Entities.IInteractable;
 import java.util.Set;
 
-public class ChangeStat implements ICommand {
+public class ChangeStat extends Command {
     private IInteractable parent;
     private Set<String> args;
 

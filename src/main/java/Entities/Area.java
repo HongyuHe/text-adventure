@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Area implements IEntity {
+public class Area extends Entity {
     private String type;
     private String name;
     private Boolean active;

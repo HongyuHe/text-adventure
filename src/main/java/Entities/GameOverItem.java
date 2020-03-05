@@ -1,6 +1,6 @@
 package Entities;
 
-public class GameOverItem implements IEntity {
+public class GameOverItem extends Entity {
     private String type;
     private String name;
     private String description;

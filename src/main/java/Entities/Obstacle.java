@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Obstacle implements IEntity, IInteractable {
+public class Obstacle extends Entity implements IInteractable {
     private String type;
     private String name;
     private Boolean active;
@@ -18,7 +18,7 @@ public class Obstacle implements IEntity, IInteractable {
     private String requiredObject;
     private Set<CommandBlueprint> commands;
 
-    private HashMap<String, ICommand> actions;
+    private HashMap<String, Command> actions;
 
     public Obstacle(String type,
                     String name,
@@ -72,13 +72,13 @@ public class Obstacle implements IEntity, IInteractable {
 
     public String getRequiredObject() { return requiredObject; }
 
-    public void setActions(HashMap<String, ICommand> actions) {
+    public void setActions(HashMap<String, Command> actions) {
         this.actions = actions;
     }
 
     @Override
-    public ICommand findCommandOrElse(String cmd) {
-        return actions.getOrDefault(cmd, new DefaultICommand());
+    public Command findCommandOrElse(String cmd) {
+        return actions.getOrDefault(cmd, new DefaultCommand());
     }
 }
 

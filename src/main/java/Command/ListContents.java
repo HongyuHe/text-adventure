@@ -5,7 +5,7 @@ import Entities.IInteractable;
 
 import java.util.Set;
 
-public class ListContents implements ICommand {
+public class ListContents extends Command {
     private IInteractable parent;
     private Set<String> args;
 

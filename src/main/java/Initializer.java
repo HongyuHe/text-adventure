@@ -1,5 +1,5 @@
 import Command.CommandFactory;
-import Command.ICommand;
+import Command.Command;
 import deserialiser.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 import static Entities.EmptyEntity.initializeEmptyEntity;
 
-public abstract class Initializer {
+public class Initializer {
 
     public static GameEntities loadGameFiles() {
         Map<String, Item> itemEntities = load("src/main/resources/data/items.json", new ItemDeserializer(), Item.class)
@@ -50,7 +50,7 @@ public abstract class Initializer {
     private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
         try {
             Gson gson = new GsonBuilder()
-                            .registerTypeAdapter(IEntity.class, deserializer)
+                            .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
             Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
@@ -68,7 +68,7 @@ public abstract class Initializer {
     private static <T> T loadSingleEntity(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
         try {
             Gson gson = new GsonBuilder()
-                            .registerTypeAdapter(IEntity.class, deserializer)
+                            .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
             Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
@@ -85,7 +85,7 @@ public abstract class Initializer {
     }
 
     private static void populateActions(GameEntities entities) {
-        HashMap<String, ICommand> actions = new HashMap<>();
+        HashMap<String, Command> actions = new HashMap<>();
         Player player = entities.getPlayer();
 
         for (CommandBlueprint cmd : player.getCommands()) {
