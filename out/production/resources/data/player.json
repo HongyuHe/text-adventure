@@ -1,0 +1,54 @@
+{
+  "type": "Player",
+  "name": "you",
+  "description": "You're just a regular baseline human.",
+  "inventory": [],
+  "active": true,
+  "currentLocation": "forest",
+  "stat": {
+    "name": "health",
+    "value": 30
+  },
+  
+  "commands": [{
+    "name": "eat",
+    "function": "ChangeStat",
+    "params": ["health"]
+  },
+  {
+    "name": "use",
+    "function": "ChangeStat",
+    "params": ["health"]
+  },
+  {
+    "name": "look",
+    "function": "Describe",
+    "params": ["Entity"]
+  },
+  {
+    "name": "search",
+    "function": "ListContents",
+    "params": ["Area"]
+  },
+  {
+    "name": "interact",
+    "function": "Describe",
+    "params": ["NPC"]
+  },
+  {
+    "name": "inventory",
+    "function": "ListContents",
+    "params": ["Player"]
+  },
+  {
+    "name": "move",
+    "function": "ChangeLocation",
+    "params": ["Player"]
+  },
+  {
+    "name": "take",
+    "function": "ChangeLocation",
+    "params": ["Item", "inventory"]
+  }] 
+  
+}
