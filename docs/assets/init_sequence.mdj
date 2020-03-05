@@ -85,7 +85,7 @@
 															"top": 47,
 															"width": 103.1708984375,
 															"height": 13,
-															"text": "engine: Engine"
+															"text": "engine: cork.Engine"
 														},
 														{
 															"_type": "LabelView",
@@ -199,7 +199,7 @@
 															"top": 47,
 															"width": 130.63720703125,
 															"height": 13,
-															"text": "initializer: Initializer"
+															"text": "initializer: cork.Initializer"
 														},
 														{
 															"_type": "LabelView",
@@ -1221,7 +1221,7 @@
 															"top": 47,
 															"width": 88.03173828125,
 															"height": 13,
-															"text": "game: Game"
+															"text": "game: cork.Game"
 														},
 														{
 															"_type": "LabelView",
@@ -2871,7 +2871,7 @@
 								"$ref": "AAAAAAFwoNy1Ld8eVmc="
 							},
 							"name": "Role1",
-							"type": "Engine"
+							"type": "cork.Engine"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2880,7 +2880,7 @@
 								"$ref": "AAAAAAFwoNy1Ld8eVmc="
 							},
 							"name": "Role2",
-							"type": "Initializer"
+							"type": "cork.Initializer"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -2907,7 +2907,7 @@
 								"$ref": "AAAAAAFwoNy1Ld8eVmc="
 							},
 							"name": "Role5",
-							"type": "Game"
+							"type": "cork.Game"
 						}
 					]
 				}

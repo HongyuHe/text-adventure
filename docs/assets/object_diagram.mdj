@@ -71,7 +71,7 @@
 											"width": 177.4423828125,
 											"height": 13,
 											"underline": true,
-											"text": "engine: Engine"
+											"text": "engine: cork.Engine"
 										},
 										{
 											"_type": "LabelView",
@@ -225,7 +225,7 @@
 											"width": 207.95556640625,
 											"height": 13,
 											"underline": true,
-											"text": "game: Game"
+											"text": "game: cork.Game"
 										},
 										{
 											"_type": "LabelView",
@@ -398,7 +398,7 @@
 											"width": 120.63720703125,
 											"height": 13,
 											"underline": true,
-											"text": "Initializer"
+											"text": "cork.Initializer"
 										},
 										{
 											"_type": "LabelView",
@@ -5991,7 +5991,7 @@
 							}
 						}
 					],
-					"classifier": "Engine",
+					"classifier": "cork.Engine",
 					"slots": [
 						{
 							"_type": "UMLSlot",
@@ -6050,7 +6050,7 @@
 							}
 						}
 					],
-					"classifier": "Game",
+					"classifier": "cork.Game",
 					"slots": [
 						{
 							"_type": "UMLSlot",
@@ -6088,7 +6088,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Initializer",
+					"name": "cork.Initializer",
 					"ownedElements": [
 						{
 							"_type": "UMLLink",

@@ -1,3 +1,5 @@
+package cork;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -25,7 +27,7 @@ public class Engine {
         return Collections.singletonList("No games found.");
     }
 
-//    void startGame(game: Game) {}
+//    void startGame(game: cork.Game) {}
 
     private void quit() { System.exit(0); }
 
@@ -48,7 +50,7 @@ public class Engine {
         return false;
     }
 
-//    Game getSave() {}
+//    cork.Game getSave() {}
 
     private Boolean saveGame() { // TODO: implement
         UI.print("Saving is not yet supported.");
@@ -60,7 +62,7 @@ public class Engine {
         return false;
     }
 
-    void startMenu() {
+    public void startMenu() {
         UI.clearScreen();
         String choice;
 
@@ -77,9 +79,9 @@ public class Engine {
         }
 
         choice = UI.displayGameSubMenu(choice);
-        if(choice.compareTo("New Game") == 0) {
+        if(choice.compareTo("New cork.Game") == 0) {
             startNewGame();
-        } else if (choice.compareTo("Load Game") == 0) {
+        } else if (choice.compareTo("Load cork.Game") == 0) {
             loadSavedGame();
         } else {
             quit();

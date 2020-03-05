@@ -101,7 +101,7 @@
 													"top": 47,
 													"width": 139.29541015625,
 													"height": 13,
-													"text": "uiHandler: UIHandler"
+													"text": "uiHandler: cork.UIHandler"
 												},
 												{
 													"_type": "LabelView",
@@ -221,7 +221,7 @@
 													"top": 47,
 													"width": 103.1708984375,
 													"height": 13,
-													"text": "engine: Engine"
+													"text": "engine: cork.Engine"
 												},
 												{
 													"_type": "LabelView",
@@ -340,7 +340,7 @@
 													"top": 47,
 													"width": 88.03173828125,
 													"height": 13,
-													"text": "game: Game"
+													"text": "game: cork.Game"
 												},
 												{
 													"_type": "LabelView",
@@ -4155,7 +4155,7 @@
 						"$ref": "AAAAAAFwlpqMYEzrCgQ="
 					},
 					"name": "Role1",
-					"type": "UIHandler"
+					"type": "cork.UIHandler"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -4164,7 +4164,7 @@
 						"$ref": "AAAAAAFwlpqMYEzrCgQ="
 					},
 					"name": "Role2",
-					"type": "Engine"
+					"type": "cork.Engine"
 				},
 				{
 					"_type": "UMLAttribute",
@@ -4173,7 +4173,7 @@
 						"$ref": "AAAAAAFwlpqMYEzrCgQ="
 					},
 					"name": "Role3",
-					"type": "Game"
+					"type": "cork.Game"
 				},
 				{
 					"_type": "UMLAttribute",

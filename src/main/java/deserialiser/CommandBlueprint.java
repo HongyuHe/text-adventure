@@ -1,7 +1,7 @@
 package deserialiser;
 
-import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class CommandBlueprint {
@@ -11,7 +11,7 @@ public class CommandBlueprint {
 
     public CommandBlueprint(String name,
                             String function,
-                            ArrayList<String> params) {
+                            List<String> params) {
 
         this.name = name;
         this.function = function;

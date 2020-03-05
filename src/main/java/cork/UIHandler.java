@@ -1,3 +1,5 @@
+package cork;
+
 import java.util.Arrays;
 import java.util.List;
 import org.beryx.textio.TextIO;
@@ -11,7 +13,7 @@ public class UIHandler {
     String displayMainMenu() {
         terminal.setBookmark("x");
         terminal.getProperties().setPromptColor("white");
-        return textIO.newStringInputReader().withNumberedPossibleValues("Select Game", "Quit").read("Welcome to Cork");
+        return textIO.newStringInputReader().withNumberedPossibleValues("Select cork.Game", "Quit").read("Welcome to Cork");
     }
 
     String displayGamesMenu(List<String> games) {
@@ -23,7 +25,7 @@ public class UIHandler {
     String displayGameSubMenu(String game) {
         clearScreen();
         terminal.printf("You chose %s\n", game);
-        List<String> options = Arrays.asList("New Game", "Load Game", "Quit");
+        List<String> options = Arrays.asList("New cork.Game", "Load cork.Game", "Quit");
         return textIO.newStringInputReader().withNumberedPossibleValues(options).read("Select an option");
     }
 

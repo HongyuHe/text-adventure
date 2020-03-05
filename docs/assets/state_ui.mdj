@@ -62,7 +62,7 @@
 											"top": 215,
 											"width": 359,
 											"height": 13,
-											"text": "In Game Display"
+											"text": "In cork.Game Display"
 										},
 										{
 											"_type": "LabelView",
@@ -274,7 +274,7 @@
 											"top": 215,
 											"width": 287,
 											"height": 13,
-											"text": "Game Menu Display"
+											"text": "cork.Game Menu Display"
 										},
 										{
 											"_type": "LabelView",
@@ -826,7 +826,7 @@
 							"top": 232,
 							"width": 104.74267578125,
 							"height": 68,
-							"text": "Options :-\n1. Select Game\n2. Quit"
+							"text": "Options :-\n1. Select cork.Game\n2. Quit"
 						},
 						{
 							"_type": "UMLStateView",
@@ -997,7 +997,7 @@
 							"top": 328,
 							"width": 104.74267578125,
 							"height": 85,
-							"text": "Options :-\n1. Game 1\n2. Game 2\n3. Game 3\n4. Quit"
+							"text": "Options :-\n1. cork.Game 1\n2. cork.Game 2\n3. cork.Game 3\n4. Quit"
 						},
 						{
 							"_type": "UMLStateView",
@@ -1042,7 +1042,7 @@
 											"top": 479,
 											"width": 138.708984375,
 											"height": 13,
-											"text": "Game Menu Displayed"
+											"text": "cork.Game Menu Displayed"
 										},
 										{
 											"_type": "LabelView",
@@ -1168,7 +1168,7 @@
 							"top": 448,
 							"width": 104.74267578125,
 							"height": 85,
-							"text": "Options :-\n1. New Game\n2. Load Game\n3. Quit"
+							"text": "Options :-\n1. New cork.Game\n2. Load cork.Game\n3. Quit"
 						},
 						{
 							"_type": "UMLStateView",
@@ -1370,7 +1370,7 @@
 											"top": 479,
 											"width": 114.87353515625,
 											"height": 13,
-											"text": "Game Files loaded"
+											"text": "cork.Game Files loaded"
 										},
 										{
 											"_type": "LabelView",
@@ -5296,7 +5296,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwkhhgGtPNpUA="
 							},
-							"name": "Game Menu Displayed"
+							"name": "cork.Game Menu Displayed"
 						},
 						{
 							"_type": "UMLState",
@@ -5312,7 +5312,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwkhhgGtPNpUA="
 							},
-							"name": "Game Menu Display",
+							"name": "cork.Game Menu Display",
 							"regions": [
 								{
 									"_type": "UMLRegion",
@@ -5330,7 +5330,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwkhhgGtPNpUA="
 							},
-							"name": "In Game Display",
+							"name": "In cork.Game Display",
 							"regions": [
 								{
 									"_type": "UMLRegion",
@@ -5394,7 +5394,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFwkqjalbZYmp8="
 											},
-											"name": "Game Files loaded"
+											"name": "cork.Game Files loaded"
 										},
 										{
 											"_type": "UMLState",

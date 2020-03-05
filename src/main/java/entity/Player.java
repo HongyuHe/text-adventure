@@ -3,10 +3,7 @@ package entity;
 import command.*;
 import deserialiser.CommandBlueprint;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Player extends Character implements IInteractable {
     private String type;
@@ -18,16 +15,16 @@ public class Player extends Character implements IInteractable {
     private Stat stat;
     private Set<CommandBlueprint> commands;
 
-    private HashMap<String, Command> actions;
+    private Map<String, Command> actions;
 
     public Player(String type,
                   String name,
                   String description,
-                  ArrayList<String> inventory,
+                  List<String> inventory,
                   Boolean active,
                   String currentLocation,
                   Stat stat,
-                  ArrayList<CommandBlueprint> commands) {
+                  List<CommandBlueprint> commands) {
 
         this.type = type;
         this.name = name;
@@ -68,7 +65,7 @@ public class Player extends Character implements IInteractable {
 
     public Stat getStat() { return stat; }
 
-    public void setActions(HashMap<String, Command> actions) {
+    public void setActions(Map<String, Command> actions) {
         this.actions = actions;
     }
 

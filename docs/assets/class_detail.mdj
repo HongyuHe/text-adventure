@@ -415,7 +415,7 @@
 											"top": 799,
 											"width": 277.82421875,
 											"height": 13,
-											"text": "UIHandler"
+											"text": "cork.UIHandler"
 										},
 										{
 											"_type": "LabelView",
@@ -695,7 +695,7 @@
 											"top": 303,
 											"width": 255.4169921875,
 											"height": 13,
-											"text": "Initializer"
+											"text": "cork.Initializer"
 										},
 										{
 											"_type": "LabelView",
@@ -944,7 +944,7 @@
 											"top": 655,
 											"width": 261.22509765625,
 											"height": 13,
-											"text": "Game"
+											"text": "cork.Game"
 										},
 										{
 											"_type": "LabelView",
@@ -1992,7 +1992,7 @@
 											"top": 55,
 											"width": 236.640625,
 											"height": 13,
-											"text": "Engine"
+											"text": "cork.Engine"
 										},
 										{
 											"_type": "LabelView",
@@ -2099,7 +2099,7 @@
 											"top": 95,
 											"width": 236.640625,
 											"height": 13,
-											"text": "+currentGame: Game",
+											"text": "+currentGame: cork.Game",
 											"horizontalAlignment": 0
 										}
 									],
@@ -10034,7 +10034,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "UIHandler",
+					"name": "cork.UIHandler",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10223,7 +10223,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Initializer",
+					"name": "cork.Initializer",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10342,7 +10342,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Game",
+					"name": "cork.Game",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10469,7 +10469,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "UIHandler",
+					"name": "cork.UIHandler",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10802,7 +10802,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Engine",
+					"name": "cork.Engine",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",

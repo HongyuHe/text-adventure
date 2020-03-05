@@ -1,7 +1,7 @@
 package entity;
 
-import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 public class Area extends Entity {
@@ -12,7 +12,7 @@ public class Area extends Entity {
     private Set<String> inventory;
     private Set<String> obstacles;
     private Set<String> npcs;
-    private HashMap<String, String> connections;
+    private Map<String, String> connections;
 
     public Area(String type,
                 String name,
@@ -21,7 +21,7 @@ public class Area extends Entity {
                 Set<String> inventory,
                 Set<String> obstacles,
                 Set<String> npcs,
-                HashMap<String, String> connections) {
+                Map<String, String> connections) {
 
         this.type = type;
         this.name = name;
@@ -59,6 +59,6 @@ public class Area extends Entity {
 
     public Set<String> getNpcs() { return npcs; }
 
-    public HashMap<String, String> getConnections() { return connections; }
+    public Map<String, String> getConnections() { return connections; }
 
 }

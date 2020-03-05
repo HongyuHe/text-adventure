@@ -1296,7 +1296,7 @@
 											"top": 159,
 											"width": 145.93896484375,
 											"height": 13,
-											"text": "Game Menu"
+											"text": "cork.Game Menu"
 										},
 										{
 											"_type": "LabelView",
@@ -1582,7 +1582,7 @@
 											"top": 231,
 											"width": 167.146484375,
 											"height": 13,
-											"text": "Game Running"
+											"text": "cork.Game Running"
 										},
 										{
 											"_type": "LabelView",
@@ -1851,7 +1851,7 @@
 											"top": 287,
 											"width": 143.0888671875,
 											"height": 13,
-											"text": "Load Game"
+											"text": "Load cork.Game"
 										},
 										{
 											"_type": "LabelView",
@@ -2406,7 +2406,7 @@
 										"$ref": "AAAAAAFwll4Ab439dk8="
 									},
 									"edgePosition": 1,
-									"text": "Game over"
+									"text": "cork.Game over"
 								},
 								{
 									"_type": "EdgeLabelView",
@@ -2885,7 +2885,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwlh/cE4m/y1w="
 							},
-							"name": "Game Menu",
+							"name": "cork.Game Menu",
 							"entryActivities": [
 								{
 									"_type": "UMLActivity",
@@ -2913,7 +2913,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwlh/cE4m/y1w="
 							},
-							"name": "Game Running",
+							"name": "cork.Game Running",
 							"doActivities": [
 								{
 									"_type": "UMLActivity",
@@ -2931,7 +2931,7 @@
 							"_parent": {
 								"$ref": "AAAAAAFwlh/cE4m/y1w="
 							},
-							"name": "Load Game",
+							"name": "Load cork.Game",
 							"entryActivities": [
 								{
 									"_type": "UMLActivity",
@@ -3322,7 +3322,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwll4Ab438uZM="
 									},
-									"name": "Game over"
+									"name": "cork.Game over"
 								}
 							]
 						},
