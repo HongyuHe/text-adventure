@@ -1,3 +1,5 @@
+package cork;
+
 import command.CommandFactory;
 import command.Command;
 import deserialiser.*;
@@ -22,6 +24,7 @@ import static entity.EmptyEntity.initializeEmptyEntity;
 public class Initializer {
 
     public static GameEntities loadGameFiles(String game) {
+        game = "./games/" +  game;
         Map<String, Item> itemEntities = load(game + "/items.json", new ItemDeserializer(), Item.class)
                 .stream().collect(Collectors.toMap(Item::getName, Function.identity()));
         Map<String, Area> areaEntities = load(game + "/areas.json", new AreaDeserializer(), Area.class)

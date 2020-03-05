@@ -1,3 +1,5 @@
+package cork;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -14,8 +16,8 @@ public class Engine {
 //    String handleGameover() {}
 
     private List<String> loadGameList() {
-        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"))) {
-            List<String> gameList = walk.filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
+        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"), 1)) {
+            List<String> gameList = walk.filter(Files::isDirectory).map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
             return gameList;
         }
@@ -25,51 +27,61 @@ public class Engine {
         return Collections.singletonList("No games found.");
     }
 
-//    void startGame(game: Game) {}
+//    void startGame(game: cork.Game) {}
 
-    private void quit() {
-        System.exit(0);
-    }
+    private void quit() { System.exit(0); }
 
     Boolean startNewGame() { // TODO: Implement
         UI.clearScreen();
-        UI.printResult("Welcome");
+        UI.print("Welcome");
         runGame();
         return true;
     }
 
     private Boolean loadSavedGame() { // TODO: implement
-        System.out.println("Loading...\n");
-        runGame();
-        return true;
+        UI.clearScreen();
+        UI.print("Loading is not yet supported.");
+        if(UI.promptUser("Return to main menu?")) {
+            startMenu();
+        } else {
+            quit();
+        }
+//        runGame();
+        return false;
     }
 
-//    Game getSave() {}
+//    cork.Game getSave() {}
 
     private Boolean saveGame() { // TODO: implement
-        System.out.println("Saving...\n");
-        return true;
+        UI.print("Saving is not yet supported.");
+        if(UI.promptUser("Return to main menu?")) {
+            startMenu();
+        } else {
+            quit();
+        }
+        return false;
     }
 
-    void startMenu() {
+    public void startMenu() {
+        UI.clearScreen();
         String choice;
 
         choice = UI.displayMainMenu();
-        if(choice.compareTo("quit") == 0) {
+        if(choice.compareTo("Quit") == 0) {
             quit();
         }
 
         choice = UI.displayGamesMenu(loadGameList());
-        if(choice.compareTo("quit") == 0) {
+        if(choice.compareTo("Quit") == 0) {
             quit();
         } else {
             currentGame = new Game(choice); //TODO: set current game
         }
 
         choice = UI.displayGameSubMenu(choice);
-        if(choice.compareTo("New Game") == 0) {
+        if(choice.compareTo("New cork.Game") == 0) {
             startNewGame();
-        } else if (choice.compareTo("Load Game") == 0) {
+        } else if (choice.compareTo("Load cork.Game") == 0) {
             loadSavedGame();
         } else {
             quit();
@@ -80,14 +92,21 @@ public class Engine {
         while(true) {
             String userInput = UI.getInput();
             if(userInput.compareTo("save") == 0) {
-                if(saveGame()) { System.out.println("Successfully saved game!"); }
+                if(saveGame()) {
+                    ; // TODO Implement
+                }
             } else if(userInput.compareTo("load") == 0) {
-                if(loadSavedGame()) { System.out.println("Successfully loaded game!"); }
+                if(loadSavedGame()) {
+                    ; // TODO Implement
+                }
             } else if(userInput.compareTo("quit") == 0) {
+                if(UI.promptUser("Would you like to save before quitting?")) {
+                    saveGame();
+                }
                 quit();
             } else {
                 String result = currentGame.handleCommand(userInput);
-                UI.printResult(result);
+                UI.print(result);
             }
         }
     }

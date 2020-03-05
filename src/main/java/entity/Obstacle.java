@@ -3,10 +3,7 @@ package entity;
 import command.*;
 import deserialiser.CommandBlueprint;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Obstacle extends Entity implements IInteractable {
     private String type;
@@ -18,7 +15,7 @@ public class Obstacle extends Entity implements IInteractable {
     private String requiredObject;
     private Set<CommandBlueprint> commands;
 
-    private HashMap<String, Command> actions;
+    private Map<String, Command> actions;
 
     public Obstacle(String type,
                     String name,
@@ -27,7 +24,7 @@ public class Obstacle extends Entity implements IInteractable {
                     Boolean state,
                     String blocks,
                     String requiredObject,
-                    ArrayList<CommandBlueprint> commands) {
+                    List<CommandBlueprint> commands) {
 
         this.type = type;
         this.name = name;
@@ -72,7 +69,7 @@ public class Obstacle extends Entity implements IInteractable {
 
     public String getRequiredObject() { return requiredObject; }
 
-    public void setActions(HashMap<String, Command> actions) {
+    public void setActions(Map<String, Command> actions) {
         this.actions = actions;
     }
 

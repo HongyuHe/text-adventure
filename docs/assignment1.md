@@ -21,7 +21,7 @@ The customizations available to the *modder* will be as follows:
 The main modules of the system will be as follows:
 - Scenario: The scenario will be written in structured JSONs and describe all entities in the game which have been mentioned above.
 - Parser: This will be the middleware that parses the JSONs and maps these to pre-built java classes.
-- Game Engine: This will be the main module that parses the user input into pre-built commandBlueprints and executes the corresponding interactions.
+- cork.Game cork.Engine: This will be the main module that parses the user input into pre-built commandBlueprints and executes the corresponding interactions.
 - UI: This will be the game window where the main user I/O operations will take place. The gamer's commandBlueprints will be entered here and the output of the game engine will be logged here. There will be no graphical components in the UI as this would violate adherence to the style of the original Zork.
 
 The system will be implemented as a form of a terminal/text-based game in a game window where the user will interact with the game engine by means of text based inputs typed by means of a keyboard only. The way the game will generally work will be as follows:

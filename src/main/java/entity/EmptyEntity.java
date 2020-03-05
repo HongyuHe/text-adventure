@@ -24,6 +24,6 @@ public class EmptyEntity extends Entity {
 
     @Override
     public Boolean isActive() {
-        return null;
+        return false;
     }
 }

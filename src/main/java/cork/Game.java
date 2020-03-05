@@ -1,3 +1,5 @@
+package cork;
+
 import dictionary.GameEntities;
 
 import java.util.ArrayList;
