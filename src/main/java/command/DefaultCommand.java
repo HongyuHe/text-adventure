@@ -4,10 +4,10 @@ import dictionary.GameEntities;
 
 public class DefaultCommand extends Command {
 
-    public DefaultCommand(){};
+    public DefaultCommand() {}
 
     @Override
     public String apply(String object, GameEntities ge) {
-        return "Action>>>$ "+ "You can't do that";
+        return "You cannot do that.";
     }
 }

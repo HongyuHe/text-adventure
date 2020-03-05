@@ -16,14 +16,14 @@ public class ChangeLocation extends Command {
     }
 
     @Override
-    public String apply(String newLocation, GameEntities ge)
-    {
+    public String apply(String newLocation, GameEntities ge) {
         Area area = (Area) ge.findEntityOrElse(parent.getCurrentLocation());
 
-        if (area.connectsTo(newLocation)) {
-            parent.setCurrentLocation(area.getConnection(newLocation));
-            return "You are now in the area: " + parent.getCurrentLocation();
-        }
-        return "Why not try flying to Mars instead?";
+        if (!area.connectsTo(newLocation)) { return "Why not try flying to Mars instead?"; }
+
+        final String newLocationName = area.getConnection(newLocation);
+        parent.setCurrentLocation(newLocationName);
+
+        return ge.findEntityOrElse(newLocationName).getDescription();
     }
 }
