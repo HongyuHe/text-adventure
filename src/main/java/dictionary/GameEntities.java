@@ -1,9 +1,8 @@
-package Dictionary;
+package dictionary;
 
-import Entities.EmptyEntity;
-import Entities.*;
+import entity.EmptyEntity;
+import entity.*;
 
-import java.lang.reflect.Field;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,7 +32,7 @@ public class GameEntities {
         this.emptyEntity = emptyEntity;
     }
 
-    public IEntity findEntityOrElse(String entity) {
+    public Entity findEntityOrElse(String entity) {
         if (itemEntities.containsKey(entity)) {
             return itemEntities.get(entity);
         } else if (areaEntities.containsKey(entity)) {

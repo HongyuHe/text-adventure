@@ -1,7 +1,7 @@
 package deserialiser;
 
-import Entities.Npc;
-import Entities.Stat;
+import entity.Npc;
+import entity.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

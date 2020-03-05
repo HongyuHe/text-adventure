@@ -1,13 +1,13 @@
-package Entities;
-import Command.*;
+package entity;
+import command.*;
 import deserialiser.CommandBlueprint;
 
 import java.util.Set;
 
-public interface IInteractable extends IEntity {
+public interface IInteractable {
 
     String getCurrentLocation();
     void setCurrentLocation(String newLocation);
     Set<CommandBlueprint> getCommands();
-    ICommand findCommandOrElse(String cmd);
+    Command findCommandOrElse(String cmd);
 }

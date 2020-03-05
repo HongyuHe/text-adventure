@@ -1,10 +1,10 @@
-package Command;
+package command;
 
-import Dictionary.GameEntities;
-import Entities.IInteractable;
+import dictionary.GameEntities;
+import entity.IInteractable;
 import java.util.Set;
 
-public class Describe implements ICommand {
+public class Describe extends Command {
     private IInteractable parent;
     private Set<String> args;
 

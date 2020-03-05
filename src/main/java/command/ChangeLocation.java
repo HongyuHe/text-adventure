@@ -1,12 +1,12 @@
-package Command;
+package command;
 
-import Dictionary.GameEntities;
-import Entities.Area;
-import Entities.IInteractable;
+import dictionary.GameEntities;
+import entity.Area;
+import entity.IInteractable;
 
 import java.util.Set;
 
-public class ChangeLocation implements ICommand {
+public class ChangeLocation extends Command {
     private IInteractable parent;
     private Set<String> args;
 

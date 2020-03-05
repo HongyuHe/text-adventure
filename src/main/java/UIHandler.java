@@ -1,17 +1,37 @@
-import java.util.Scanner;
+import java.util.Arrays;
+import java.util.List;
+import org.beryx.textio.TextIO;
+import org.beryx.textio.TextIoFactory;
+import org.beryx.textio.TextTerminal;
 
 public class UIHandler {
-    private Scanner scanner = new Scanner(System.in);
+    private TextIO textIO = TextIoFactory.getTextIO();
+    private TextTerminal terminal = textIO.getTextTerminal();
 
-//    void displayGamesMenu(List<String> games) {}
+    String displayMainMenu() {
+        terminal.setBookmark("x");
+        terminal.getProperties().setPromptColor("white");
+        return textIO.newStringInputReader().withNumberedPossibleValues("Select Game", "Quit").read("Welcome to Cork");
+    }
 
-//    void displayMainMenu() {}
+    String displayGamesMenu(List<String> games) {
+        clearScreen();
+        games.add("Quit");
+        return textIO.newStringInputReader().withNumberedPossibleValues(games).read("Select a game");
+    }
 
-//    void displayGameSubMenu() {}
+    String displayGameSubMenu(String game) {
+        clearScreen();
+        terminal.printf("You chose %s\n", game);
+        List<String> options = Arrays.asList("New Game", "Load Game", "Quit");
+        return textIO.newStringInputReader().withNumberedPossibleValues(options).read("Select an option");
+    }
 
-    String getInput() { return scanner.nextLine(); }
+    void clearScreen() { terminal.resetToBookmark("x"); }
 
-//    void clearScreen() {}
+    String getInput() { return textIO.newStringInputReader().read(); }
 
-//    void printResult(String result) {}
+    void print(String string) { terminal.println(string); } // TODO: change name in UML accordingly
+
+    Boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
 }

@@ -1,14 +1,14 @@
-package Command;
+package command;
 
-import Dictionary.GameEntities;
-import Entities.IInteractable;
+import dictionary.GameEntities;
+import entity.IInteractable;
 import java.util.Set;
 
-public class ChangeStat implements ICommand {
+public class ChangeState extends Command {
     private IInteractable parent;
     private Set<String> args;
 
-    public ChangeStat(Set<String> args, IInteractable parent) {
+    public ChangeState(Set<String> args, IInteractable parent) {
         this.args = args;
         this.parent = parent;
     }
