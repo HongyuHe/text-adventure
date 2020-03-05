@@ -2,6 +2,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -15,9 +16,11 @@ public class Engine {
 
 //    String handleGameover() {}
 
-    List<String> loadGameList() {
+    private List<String> loadGameList() {
         try (Stream<Path> walk = Files.walk(Paths.get(".\\savefiles"))) {
-            return walk.map(Path::toString).filter(f -> f.endsWith(".txt")).collect(Collectors.toList());
+            List<String> gameList = walk.filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
+            gameList.remove(0);
+            return gameList;
         }
         catch (IOException e) {
             e.printStackTrace();
@@ -27,33 +30,48 @@ public class Engine {
 
 //    void startGame(game: Game) {}
 
-//    void quit() {}
+    private void quit() {
+        System.out.println("Quitting...\n");
+    }
 
 //    Boolean startNewGame() {
 //        currentGame = new Game();
 //    }
 
-    Boolean loadSavedGame() { // TODO: implement
-            System.out.println("Game loaded!\n");
-            return true;
+    private Boolean loadSavedGame() { // TODO: implement
+        System.out.println("Loading...\n");
+        return true;
     }
 
 //    Game getSave() {}
 
-    Boolean saveGame() { // TODO: implement
-        System.out.println("Game saved!\n");
+    private Boolean saveGame() { // TODO: implement
+        System.out.println("Saving...\n");
         return true;
+    }
+
+    void startMenu() {
+        if(UI.displayMainMenu()) {
+            String choice = UI.displayGamesMenu(loadGameList());
+            if(choice.compareTo("quit") == 0) {
+                quit();
+            } else {
+                UI.displayGameSubMenu(choice);
+            }
+        } else {
+            quit();
+        }
     }
 
     void runGame() {
         while(true) {
             String userInput = UI.getInput();
             if(userInput.compareTo("save") == 0) {
-                saveGame();
+                if(saveGame()) { System.out.println("Successfully saved game!"); }
             } else if(userInput.compareTo("load") == 0) {
-                loadSavedGame();
+                if(loadSavedGame()) { System.out.println("Successfully loaded game!"); }
             } else if(userInput.compareTo("quit") == 0) {
-                System.out.println("Quitting game...\n");
+                quit();
             } else {
                 game.handleCommand(userInput);
             }
