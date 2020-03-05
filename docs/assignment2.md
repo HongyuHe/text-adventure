@@ -227,16 +227,27 @@ Attributes
 
 
 ## Object diagrams								
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-This chapter contains the description of a "snapshot" of the status of your system during its execution. 
-This chapter is composed of a UML object diagram of your system, together with a textual description of its key elements.
+The figure representing the UML object diagram is as follows :-
+![Object Diagram](./assets/object_diagram.png "State machine diagram for the Engine class")
 
-`Figure representing the UML class diagram`
-  
-`Textual description`
+In the above diagram the system is in a state wherein the game has been loaded successfully and the gamer just inputed the command `eat apple` into the system. The description of the various objects and the states of their variables are as follows :-
+- **engine**: The engine object is the main controlling object of the system itself. It is also responsible for running a game. The selected game is stored as a variable called `currentGame` and the list of games found on the system are saved as a list of strings called `games`. The engine builds the `currentGame` with the help of the `Initializer` class.
+- **game**: The game object holds the state of the game that has been initialized. It holds the `playerWon` boolean variable that is trigerred when the player holds a `gameOverItem` in his/her inventory. This is currently set to false as the game has just started. The second variable is the `previousCommands`. This is a list of string commands that the gamer has typed in earlier. In our current case it holds the string "eat apple" which the player inputed into the console. The last variable is an object of the type `GameEntities`. This is the main dictionary object holding all the game objects and it is initialized using the `Initializer` which will be described in the next point.
+- **Initializer**: The Initializer is a static class that reads the JSON files for the game and returns the correct `GameEntities` object called `gInit` after deserializing the files. It is used as a one-off class during initialization and does not hold any valuable data.
+- **ge**: This is the main dictionary object for the entire game and is used as a storage for the various game objects. There can only be one object of the type `GameEntities` and it is persistent in memory till the system is not exited. It also holds the states of the various objects. It stores these in the form of maps of all the entities supported by the engine such as the `areas, obstacles, npcs and items`. It also holds the main `player` object, the `emptyEntity` and the `gameOverItem`. The maps are shown with a 1-to-many relation in the UML and the player, emptyEntity and gameOverItem as a 1-to-1 relation.
+- **area**: A game needs to have atleast one area and this is where the player is spawned. In our case the area in view is the forest. It currently has a diamond in it, a troll NPC and is connected to the castle which lies to it's north. This connection is however blocked by an obstacle called the door.
+- **npc**: A game can have zero or multiple NPCs. In our case we are focusing on an NPC called the troll who does not have any items in his inventory, is friendly to the player and is active in the game. This means that the user can interact with him.
+- **item**: A game can have zero or more items. In our case we will focus on the item apple as this is the subject of the user's previous command. The item's name is apple, it is consumable meaning that it can only be used once and it's active flag is set to false. As eating an apple is only possible once, it is considered to be a consumable. This is different from an object such as a key that does not get consumed. As the user has already eaten the apple, the active flag has been set to false to show that the object is not a part of the gameplay anymore.
+- **itemStat**: The apple holds a `Stat` object called health that increases the value of its consumer by `10` as defined in the object. This change can be observed in the player.
+- **player**: This is the main entity responsible for interacting with the game world and other entities. It holds a `playerStat` called health which has been increased from `100 to 110` because of eating the apple. The player is in the area forest which is stored as a String variable called `currentLocation`. He holds an apple in his inventory and has the command `eat` attached to him.
+- **eat**: Our system allows modders to design their own custom commands into the game they are modding by editing the JSON files appropriately. In our case one such custom command is the `eat` command that is an object of the type `ChangeStat`. This command object accepts the apple as a parameter and applies the stat health of the apple to the player' stat with the matching name on activation using an `apply()` function. This beahviour is abstracted away in this diagram. 
+- **obstacle**: A game can have zero or more obstacles. In our case we have an obstacle called the door that exists inside the forest and blocks the user's path to the castle. The door just like the player has a command object called `use` of the type `ChangeState`. This checks for a `requiredObject` called key when the command is executed by the player. On a sucess the state of the obstacle is set to true and the area is no longer blocked.
+- **emptyEntity**: This is the placeholder or the default entity that the `ge` should contain. It is used whenever a find entity command fails. This helps in supressing errors and throwing exceptions.
+- **gameOverItem**: As mentioned earlier this is the main item in the game that when acquired by the player changes the flag `playerWon` and causes to game to finish. In our case the object is called a diamond and as previously mentioned it is stored in the forest's inventory. 
 
-Maximum number of words for this section: 1000
+This sums up the objects during execution of a game. Some objects such as the deserializers and the UI have been abstracted away as they do not hold variables and states. 
 
 ## State machine diagrams									
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
