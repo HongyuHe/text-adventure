@@ -3,3 +3,4 @@
 build/*
 *.class
 build/classes/java/main/Main.class
+.project
