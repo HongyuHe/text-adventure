@@ -13,7 +13,7 @@ public class UIHandler {
     String displayMainMenu() {
         terminal.setBookmark("x");
         terminal.getProperties().setPromptColor("white");
-        return textIO.newStringInputReader().withNumberedPossibleValues("Select cork.Game", "Quit").read("Welcome to Cork");
+        return textIO.newStringInputReader().withNumberedPossibleValues("Select Game", "Quit").read("Welcome to Cork");
     }
 
     String displayGamesMenu(List<String> games) {
@@ -25,13 +25,13 @@ public class UIHandler {
     String displayGameSubMenu(String game) {
         clearScreen();
         terminal.printf("You chose %s\n", game);
-        List<String> options = Arrays.asList("New cork.Game", "Load cork.Game", "Quit");
+        List<String> options = Arrays.asList("New Game", "Load Game", "Quit");
         return textIO.newStringInputReader().withNumberedPossibleValues(options).read("Select an option");
     }
 
     void clearScreen() { terminal.resetToBookmark("x"); }
 
-    String getInput() { return textIO.newStringInputReader().read(); }
+    String getInput() { return textIO.newStringInputReader().read().toLowerCase(); }
 
     void print(String string) { terminal.println(string); }
 
