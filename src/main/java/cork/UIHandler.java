@@ -1,39 +1,69 @@
 package cork;
 
-import java.util.Arrays;
 import java.util.List;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
 
 public class UIHandler {
-    private TextIO textIO = TextIoFactory.getTextIO();
-    private TextTerminal terminal = textIO.getTextTerminal();
+    private static final String CORK_LOGO =
+            " __        __   _                            _        \n" +
+            " \\ \\      / ___| | ___ ___  _ __ ___   ___  | |_ ___  \n" +
+            "  \\ \\ /\\ / / _ | |/ __/ _ \\| '_ ` _ \\ / _ \\ | __/ _ \\ \n" +
+            "   \\ V  V |  __| | (_| (_) | | | | | |  __/ | || (_) |\n" +
+            "    \\_/\\_/ \\___|_|\\___\\___/|_| |_| |_|\\___|  \\__\\___/ \n" +
+            "\n" +
+            "             ██████╗ ██████╗ ██████╗ ██╗  ██╗\n" +
+            "            ██╔════╝██╔═══██╗██╔══██╗██║ ██╔╝\n" +
+            "            ██║     ██║   ██║██████╔╝█████╔╝ \n" +
+            "            ██║     ██║   ██║██╔══██╗██╔═██╗ \n" +
+            "            ╚██████╗╚██████╔╝██║  ██║██║  ██╗\n" +
+            "             ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝\n" +
+            "\n";
 
-    String displayMainMenu() {
-        terminal.setBookmark("x");
+    private static final String CLEAR_SCREEN = "clear";
+
+    private TextIO textIO = TextIoFactory.getTextIO();
+    private TextTerminal<?> terminal = textIO.getTextTerminal();
+
+
+    UIHandler()
+    {
+        terminal.setBookmark(CLEAR_SCREEN);
         terminal.getProperties().setPromptColor("white");
-        return textIO.newStringInputReader().withNumberedPossibleValues("Select Game", "Quit").read("Welcome to Cork");
     }
 
-    String displayGamesMenu(List<String> games) {
+    public void exit() { terminal.dispose(); }
+
+    public String displayHomeScreen() {
+        clearScreen();
+        print(CORK_LOGO);
+        return textIO.newStringInputReader()
+                .withNumberedPossibleValues("Select Game", "Quit")
+                    .read("Please make your choice:");
+    }
+
+    public String displayMainMenu(List<String> games) {
         clearScreen();
         games.add("Quit");
-        return textIO.newStringInputReader().withNumberedPossibleValues(games).read("Select a game");
+        return textIO.newStringInputReader()
+                .withNumberedPossibleValues(games)
+                    .read("Select a game");
     }
 
-    String displayGameSubMenu(String game) {
+    public String displayGameMenu(String game) {
         clearScreen();
-        terminal.printf("You chose %s\n", game);
-        List<String> options = Arrays.asList("New Game", "Load Game", "Quit");
-        return textIO.newStringInputReader().withNumberedPossibleValues(options).read("Select an option");
+        print(game + "\n");
+        return textIO.newStringInputReader()
+                .withNumberedPossibleValues("New Game", "Load Game", "Quit")
+                    .read("Select an option");
     }
 
-    void clearScreen() { terminal.resetToBookmark("x"); }
+    public void clearScreen() { terminal.resetToBookmark(CLEAR_SCREEN); }
 
-    String getInput() { return textIO.newStringInputReader().read().toLowerCase(); }
+    public String getInput() { return textIO.newStringInputReader().withDefaultValue(">").read().toLowerCase(); }
 
-    void print(String string) { terminal.println(string); }
+    public void print(String string) { terminal.println(string); }
 
-    boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
+    public boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
 }

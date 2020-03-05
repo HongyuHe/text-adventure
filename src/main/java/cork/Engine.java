@@ -10,18 +10,91 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Engine {
+    enum State {HOME_SCREEN, MAIN_MENU, GAME_MENU, GAME_RUNNING, QUIT }
+
+    private State state = State.HOME_SCREEN;
     private Game currentGame;
+    private String gameName = "";
     private UIHandler uiHandler = new UIHandler();
 
     public static void main (String[] args) {
         Engine engine = new Engine();
-        engine.startMenu();
+        engine.run();
     }
 
-//    String handleGameover() {}
+    public void run()
+    {
+        while (state != State.QUIT)
+        {
+            switch (state)
+            {
+                case HOME_SCREEN:
+                    displayHomeScreen();
+                    break;
+                case MAIN_MENU:
+                    displayMainMenu();
+                    break;
+                case GAME_MENU:
+                    displayGameMenu();
+                    break;
+                case GAME_RUNNING:
+                    runGame();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        uiHandler.exit();
+    }
+
+    private void changeState(final String choice)
+    {
+        if (choice.equalsIgnoreCase("quit")) {
+            state = State.QUIT;
+        } else {
+            switch (state)
+            {
+                case HOME_SCREEN:
+                    state = State.MAIN_MENU;
+                    break;
+                case MAIN_MENU:
+                    gameName = choice;
+                    state = State.GAME_MENU;
+                    break;
+                case GAME_MENU:
+                    if (choice.equals("Load Game")) { loadGame(); }
+                    state = State.GAME_RUNNING;
+                    break;
+                case GAME_RUNNING:
+                    state = State.HOME_SCREEN;
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    private void displayHomeScreen()
+    {
+        changeState(uiHandler.displayHomeScreen());
+    }
+
+    private void displayMainMenu()
+    {
+        changeState(uiHandler.displayMainMenu(loadGameList()));
+    }
+
+    private void displayGameMenu()
+    {
+        currentGame = new Game(gameName);
+        changeState(uiHandler.displayGameMenu(gameName));
+    }
 
     private List<String> loadGameList() {
-        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"), 1)) {
+        final String GAMES_DIRECTORY_PATH = ".\\games";
+
+        try (Stream<Path> walk = Files.walk(Paths.get(GAMES_DIRECTORY_PATH), 1)) {
             List<String> gameList = walk.filter(Files::isDirectory).map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
             return gameList;
@@ -29,86 +102,42 @@ public class Engine {
         catch (IOException e) {
             e.printStackTrace();
         }
+
         return Collections.singletonList("No games found.");
     }
 
-//    void startGame(game: Game) {}
+    private void loadGame() {
+        uiHandler.print("Loading is not yet supported. Hit enter to continue.");
+        uiHandler.getInput();
+    }
 
-    private void quit() { System.exit(0); }
+    private void saveGame() {
+        uiHandler.print("Saving is not yet supported. Hit enter to continue.");
+        uiHandler.getInput();
+    }
 
-    Boolean startNewGame() {
+    private void runGame() {
         uiHandler.clearScreen();
-        uiHandler.print("Welcome");
-        runGame();
-        return true;
-    }
-
-    private Boolean loadSavedGame() {
-        uiHandler.clearScreen();
-        uiHandler.print("Loading is not yet supported.");
-        if(uiHandler.promptUser("Return to main menu?")) {
-            startMenu();
-        } else {
-            quit();
-        }
-
-        return false;
-    }
-
-//    cork.Game getSave() {}
-
-    private Boolean saveGame() {
-        uiHandler.print("Saving is not yet supported.");
-        if(uiHandler.promptUser("Return to main menu?")) {
-            startMenu();
-        } else {
-            quit();
-        }
-
-        return false;
-    }
-
-    public void startMenu() {
-        uiHandler.clearScreen();
-        String choice;
-
-        choice = uiHandler.displayMainMenu();
-        if(choice.equals("Quit")) { quit(); }
-
-        choice = uiHandler.displayGamesMenu(loadGameList());
-        if(choice.equals("Quit")) { quit(); } else { currentGame = new Game(choice); }
-
-        choice = uiHandler.displayGameSubMenu(choice);
-        if(choice.equals("New Game")) {
-            startNewGame();
-        } else if (choice.equals("Load Game")) {
-            loadSavedGame();
-        } else {
-            quit();
-        }
-    }
-
-    void runGame() {
         uiHandler.print(currentGame.handleCommand("look"));
 
         while(!currentGame.isGameOver()) {
-            String userInput = uiHandler.getInput();
-            if(userInput.equals("save")) {
-                if(saveGame()) {
-                    ; // TODO Implement
-                }
-            } else if(userInput.equals("load")) {
-                if(loadSavedGame()) {
-                    ; // TODO Implement
-                }
-            } else if(userInput.equals("quit")) {
-                if(uiHandler.promptUser("Would you like to save before quitting?")) {
+            final String userInput = uiHandler.getInput();
+
+            switch (userInput) {
+                case "save":
                     saveGame();
-                }
-                quit();
-            } else {
-                String result = currentGame.handleCommand(userInput);
-                uiHandler.print(result);
+                    break;
+                case "load":
+                    loadGame();
+                    break;
+                case "quit":
+                    if (uiHandler.promptUser("Would you like to save before quitting?")) { saveGame(); }
+                    state = State.QUIT;
+                    return;
+                default:
+                    String result = currentGame.handleCommand(userInput);
+                    uiHandler.print(result);
+                    break;
             }
         }
     }
