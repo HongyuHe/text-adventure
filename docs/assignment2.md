@@ -308,6 +308,11 @@ The game initlization sequence is divided into two main parts. The upper half of
         - The commands are then sent to the `handleCommand()` function of the game object one after the other to execute and get the game to the user's last known state before saving.
         - On success the game returns a message and the execution of the game is continued normally using the `runGame()` function. This last step is almost identical to the 'startNewGame' step mentioned above.
 
+
+### User Input Handling
+
+![User Input Handling](./assets/input_sequence.png "Seqeuence diagram for user input")
+
 For each sequence diagram you have to provide:
 - a title representing the specific situation you want to describe;
 - a figure representing the sequence diagram;
