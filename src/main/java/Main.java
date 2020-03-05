@@ -8,6 +8,5 @@ public class Main {
 //        GameEntities gameEntities = Initializer.loadGameFiles();
         Engine engine = new Engine();
         engine.startMenu();
-        engine.runGame();
     }
 }

@@ -2,22 +2,19 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Engine {
-    List<Game> games;
-    Game currentGame;
-
+    private Game currentGame;
     private UIHandler UI = new UIHandler();
-    private Game game = new Game();
 
 //    String handleGameover() {}
 
     private List<String> loadGameList() {
-        try (Stream<Path> walk = Files.walk(Paths.get(".\\savefiles"))) {
+        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"))) {
             List<String> gameList = walk.filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
             return gameList;
@@ -25,21 +22,25 @@ public class Engine {
         catch (IOException e) {
             e.printStackTrace();
         }
-        return null;
+        return Collections.singletonList("No games found.");
     }
 
 //    void startGame(game: Game) {}
 
     private void quit() {
-        System.out.println("Quitting...\n");
+        System.exit(0);
     }
 
-//    Boolean startNewGame() {
-//        currentGame = new Game();
-//    }
+    Boolean startNewGame() { // TODO: Implement
+        UI.clearScreen();
+        UI.printResult("Welcome");
+        runGame();
+        return true;
+    }
 
     private Boolean loadSavedGame() { // TODO: implement
         System.out.println("Loading...\n");
+        runGame();
         return true;
     }
 
@@ -51,13 +52,25 @@ public class Engine {
     }
 
     void startMenu() {
-        if(UI.displayMainMenu()) {
-            String choice = UI.displayGamesMenu(loadGameList());
-            if(choice.compareTo("quit") == 0) {
-                quit();
-            } else {
-                UI.displayGameSubMenu(choice);
-            }
+        String choice;
+
+        choice = UI.displayMainMenu();
+        if(choice.compareTo("quit") == 0) {
+            quit();
+        }
+
+        choice = UI.displayGamesMenu(loadGameList());
+        if(choice.compareTo("quit") == 0) {
+            quit();
+        } else {
+            currentGame = new Game(choice); //TODO: set current game
+        }
+
+        choice = UI.displayGameSubMenu(choice);
+        if(choice.compareTo("New Game") == 0) {
+            startNewGame();
+        } else if (choice.compareTo("Load Game") == 0) {
+            loadSavedGame();
         } else {
             quit();
         }
@@ -73,9 +86,9 @@ public class Engine {
             } else if(userInput.compareTo("quit") == 0) {
                 quit();
             } else {
-                game.handleCommand(userInput);
+                String result = currentGame.handleCommand(userInput);
+                UI.printResult(result);
             }
-            System.out.println("Prev commands: " + game.getPreviousCommands().toString());
         }
     }
 }

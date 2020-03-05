@@ -21,18 +21,18 @@ import static Entities.EmptyEntity.initializeEmptyEntity;
 
 public abstract class Initializer {
 
-    public static GameEntities loadGameFiles() {
-        Map<String, Item> itemEntities = load("src/main/resources/data/items.json", new ItemDeserializer(), Item.class)
+    public static GameEntities loadGameFiles(String game) {
+        Map<String, Item> itemEntities = load(game + "/items.json", new ItemDeserializer(), Item.class)
                 .stream().collect(Collectors.toMap(Item::getName, Function.identity()));
-        Map<String, Area> areaEntities = load("src/main/resources/data/areas.json", new AreaDeserializer(), Area.class)
+        Map<String, Area> areaEntities = load(game + "/areas.json", new AreaDeserializer(), Area.class)
                 .stream().collect(Collectors.toMap(Area::getName, Function.identity()));
-        Map<String, Obstacle> obstacleEntities = load("src/main/resources/data/obstacles.json", new ObstacleDeserializer(), Obstacle.class)
+        Map<String, Obstacle> obstacleEntities = load(game + "/obstacles.json", new ObstacleDeserializer(), Obstacle.class)
                 .stream().collect(Collectors.toMap(Obstacle::getName, Function.identity()));
-        Map<String, Npc> npcEntities = load("src/main/resources/data/npcs.json", new NpcDeserializer(), Npc.class)
+        Map<String, Npc> npcEntities = load(game + "/npcs.json", new NpcDeserializer(), Npc.class)
                 .stream().collect(Collectors.toMap(Npc::getName, Function.identity()));
 
-        GameOverItem gameOverItem = loadSingleEntity("src/main/resources/data/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
-        Player player = loadSingleEntity("src/main/resources/data/player.json", new PlayerDeserializer(), Player.class);
+        GameOverItem gameOverItem = loadSingleEntity(game + "/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
+        Player player = loadSingleEntity(game + "/player.json", new PlayerDeserializer(), Player.class);
         EmptyEntity emptyEntity = initializeEmptyEntity();
 
         GameEntities gInit = new GameEntities(itemEntities,
