@@ -31,7 +31,7 @@ public class UIHandler {
 
     String getInput() { return textIO.newStringInputReader().read(); }
 
-    void print(String string) { terminal.println(string); } // TODO: change name in UML accordingly
+    void print(String string) { terminal.println(string); }
 
     Boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
 }

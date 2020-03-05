@@ -14,8 +14,8 @@ public class Engine {
 //    String handleGameover() {}
 
     private List<String> loadGameList() {
-        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"))) {
-            List<String> gameList = walk.filter(Files::isDirectory).map(Path::toString).collect(Collectors.toList());
+        try (Stream<Path> walk = Files.walk(Paths.get(".\\games"), 1)) {
+            List<String> gameList = walk.filter(Files::isDirectory).map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
             return gameList;
         }
