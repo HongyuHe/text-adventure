@@ -10,16 +10,16 @@ public class EmptyEntity extends Entity {
     }
 
     @Override
-    public String getType() { return null; }
+    public String getType() { return "EmptyEntity"; }
 
     @Override
     public String getName() {
-        return null;
+        return "EmptyEntity";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "You cannot find that here.";
     }
 
     @Override
