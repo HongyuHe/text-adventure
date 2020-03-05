@@ -243,6 +243,9 @@ Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 In this section we will describe two components of the system that hold different states. There are the **Engine** class and the **UIHandler** class.
 
+### Engine
+![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
+
 ### UIHandler
 The state machine diagram for the UIHandler is as follows :-
 ![State machine diagrams](./assets/state_ui.png "State machine diagram 1")
@@ -263,10 +266,6 @@ The general states can be briefly explained prior to diving into their details a
 The UIHandler will exist in two major states with multiple internal sub-states. The description of the major states are as follows:-
 - Game Menu Display: 
 - In Game Display:
-
-
-### Engine State Machine
-![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
 
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
