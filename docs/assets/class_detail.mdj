@@ -7479,7 +7479,7 @@
 											"_parent": {
 												"$ref": "AAAAAAFwqo4RVsX7SLg="
 											},
-											"font": "Arial;13;1",
+											"font": "Arial;13;3",
 											"left": 437,
 											"top": 183,
 											"width": 162.93798828125,
@@ -13131,7 +13131,8 @@
 										}
 									]
 								}
-							]
+							],
+							"isAbstract": true
 						}
 					]
 				},
