@@ -264,6 +264,10 @@ The UIHandler will exist in two major states with multiple internal sub-states. 
 - Game Menu Display: 
 - In Game Display:
 
+
+### Engine State Machine
+![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
+
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
 For each state machine you have to provide:
