@@ -23,6 +23,7 @@ public class AreaDeserializer implements JsonDeserializer<Area> {
                 jsonObject.get("active").getAsBoolean(),
                 jsonObject.get("description").getAsString(),
                 createArray(jsonObject.get("inventory").getAsJsonArray()),
+                createArray(jsonObject.get("obstacles").getAsJsonArray()),
                 createArray(jsonObject.get("npcs").getAsJsonArray()),
                 createMap(jsonObject.get("connections").getAsJsonObject())
         );

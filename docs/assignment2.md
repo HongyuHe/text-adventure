@@ -140,136 +140,91 @@ Associations
 **GameEntities**
 
 Attributes
-- *edit* -
+- *areas: Map\<String, Area\>* - Allows access of **Area** objects by their name.
+- *obstacles: Map\<String, Obstacle\>* - Allows access of **Obstacle** objects by their name.
+- *npcs: Map\<String, NPC\>* - Allows access of **NPC** objects by their name.
+- *items: Map\<String, Item\>* - Allows access of **Item** objects by their name.
+- *player: Player* - Holds a reference to the **Player** object.
+- *emptyEntity: Entity* - Holds a reference to an unimportant, generic **Entity** to make carrying out the commands associated with user input more intuitive and less bound to error handling. For example, when an appropriate **Entity** cannot be found for an input (e.g. the user might type "talk merchant" when no merchant is in the current location), then the **Game** will be given this blank **Entity** that can be acted upon without changing anything in the game world, or requiring the **Game** object to handle the missing reference. Instead, commands attempted to be carried out on this empty **Entity** will return error messages like "you cannot do that" to let the player know they did something wrong, as part of an error handling system invisible to the **Game** class.
+- *gameOverItem: Entity* - Holds a reference to the **Item** the player needs to be holding for them to win the game.
 
 Operations
-- *edit* -
+- *findEntityOrElse(name: String): Entity* - Returns a reference to the **Entity** object matching the given name, or a reference to a blank, generic **Entity** as described above.
 
 Associations
-- *edit* -
+- *Entity* - Shared. The **GameEntities** class organises, and provides an access point for, all the **Entities** in the game world.
 
 
 **Entity**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *name: String* - All **Entities** should have a unique name that they can be referenced by.
+- *description: String* - All **Entities** should have an accompanying description to allow interaction with the **Describe** **Command**.
+- *active: Boolean* - Indicates whether the **Entity** object is active or not. Inactive objects should not be present in the game world, and this attribute makes it possible for objects to be destroyed (with a garbage collector - not currently planned or implemented - able to remove inactive objects from **GameEntities** collection).
 
 
 **Area**
 
 Attributes
-- *edit* -
+- *inventory: Set\<String\>* - Holds the names of all **Items** in the current area. **Entities** do not hold references to other **Entities**, but instead all interaction happens through the **GameEntities** class, in a data-oriented manner.
+- *npcs: Set\<String\>* - Holds the names of all **NPCs** that are in the given **Area**.
+- *connections: Map\<String, String\>* - Holds the names of all possible directions for the given **Area**, mapped to the name of the respective **Area**. For example, the *garden* **Area** might connect to the *palace* **Area**, and so *garden's* *connections* Map might contain the key:value pairs: "north":"palace" and "palace":"palace", allowing the player to type either "move north" or "move palace" and get the desired result.
+- *obstacles: Set\<String\>* - Holds the names of all **Obstacles** in the given **Area**, allowing their descriptions to be printed when the player enters a room.
 
 Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *connectsTo(name: String): Boolean* - Verifies whether or not the given **Area** connects to some other **Area**.
+- *getConnection(name: String): String* - Converts the name of a direction to the name of an **Area**.
 
 
 **Item**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *consumable: Boolean* - Indicates whether or not the **Item** should be destroyed on usage.
 
 
-**State**
+**Stat**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *value: Integer* - Holds the value of a given stat, e.g. the player may have *10* strength or *30* health.
+- *name: String* - The name of the given stat, e.g. "health" or "strength".
 
 
 **Character**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *inventory: Set\<String\>* - Holds the names of the **Items** held by the given **Character**.
+- *stats: Set\<String, Stat\>* - Holds the **stats** applicable to the given **Character**
 
 
 **NPC**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *isFriendly: Boolean* - Indicates whether interaction with the given **NPC** will initiate combat or conversation.
 
 
 **Interactable**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *emptyCommand: Command* - Provides a generic, blank **Command** object that simplifies error handling when the **Game** class is trying to carry out actions.
+- *findCommandOrElse(name: String): Command* - Returns the **Command** associated with the given name, or else the *emptyCommand* described above.
 
 
 **Player**
 
 Attributes
-- *edit* -
-
-Operations
-- *edit* -
-
-Associations
-- *edit* -
+- *currentLocation: String* - Indicates the name of the **Area** the player is currently in.
+- *commands: Set\<Command\>* - Indicates which **Command** objects relate to the player.
 
 
 **Obstacle**
 
 Attributes
-- *edit* -
+- *state: Boolean* - Indicates whether or not the given **Obstacle** is currently active and thus preventing movement to a certain location.
+- *requiredObject: String* - Holds the name of the **Item** that can change the state of the given **Obstacle**, e.g. a "key" is required by a door, or a "lantern" by darkness.
+- *commands: Set\<Command\>* - Holds the list of **Commands** that relate to the **Obstacle**.
+- *currentLocation: String* - The name of the location the **Obstacle** is found in.
+- *blocks: String* - The name of the **Area** that the **Obstacle** prevents movement into.
 
-Operations
-- *edit* -
-
-Associations
-- *edit* -
-
-
-For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
-- Brief description about what it represents
-- Brief description of the meaning of each attribute
-- Brief description of the meaning of each operation
-- Brief description of the meaning of each association involving it (each association can be described only once in this deliverable)
-
-Also, you can briefly discuss fragments of previous versions of the class diagram (with figures) in order to show how you evolved from initial versions of the class diagram to the final one.
-
-In this document you have to adhere to the following formatting conventions:
-- the name of each **class** is in bold
-- the *attributes*, *operations*, *associations*, and *objects* are in italic.
-
-Maximum number of words for this section: 3000
 
 ## Object diagrams								
 Author(s): `name of the team member(s) responsible for this section`
@@ -287,6 +242,21 @@ Maximum number of words for this section: 1000
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 In this section we will describe two components of the system that hold different states. There are the **Engine** class and the **UIHandler** class.
+
+### Engine
+![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
+
+The **Engine** class will be the main, top-level control point for the system as a whole. On system start the **Engine** will load the list of available games that the user can play so as to present them in a menu. This list will be determined by the **Initializer** as it is the **Initializer** that should be responsible for interactions with game files. If the **Initializer** fails at any point during this process, it should return a reason why and this error response should be printed to the console before the system exits.
+
+Once the game list has been loaded the user will be shown the main menu which waits either for the user to exit or for a game to be selected. If a game is selected, the **Engine** will notify the **Initializer** which game files to load, and will construct an associated **Game** class (this process is not shown here as it does not relate to the **Engine's** state or the transitions between them). Once the **Game** class is ready, the **Engine** will display the game's menu, which presents the user with the options: *start new game*, *load game*, and *quit*.
+
+If the user chooses to start a new game, the **Engine** will enter into the *game running* state, however if the user chooses to load a game, the **Engine** will notify the **Initializer** that it requires the list of previously played moves (if any), and will start the game without entering the *game running* state. This allows the **Engine** to feed previous player input into the game without requiring the user to type anything in. Since the game world is deterministic, this allows games to be loaded by replaying every action the player had previously typed and end up in the same state as when they saved the game originally.
+
+Once this load process has completed (or if the user chose to start a new game), the **Engine** enters the *Game Running* state, where it will act as a bridge between the **UIHandler** and the **Game** class. Commands typed by the user will first be sent to the **Engine** which will only send them to the **Game** class if appropriate. For example, if the player chooses to save their game, this should be handled by the **Engine** as it does not relate to knowledge the **Game** should have - the **Game** knows about **NPCs** and **Areas**, but not about files and folders.
+
+If the user chooses to quit the game whilst in the *Game Running* state, then the **Engine** should intercept this request and prompt the user to save their game. If the user chooses to do so, this is done just before exiting, otherwise the **Engine** just exits directly.
+
+Finally, if the game ends in the *Game Running* loop (i.e. the player obtains the item which ends the game, or the player dies), then the **Engine** will handle this appropriately - printing some message to let the user know what happened, and then returning back to the main menu to allow the user to choose to play a new game or exit.
 
 ### UIHandler
 The state machine diagram for the UIHandler is as follows :-
@@ -306,24 +276,37 @@ The general states can be briefly explained prior to diving into their details a
 - On `quit` the application window is closed and the application exits. 
 
 The UIHandler will exist in two major states with multiple internal sub-states. The description of the major states are as follows:-
-- Game Menu Display: 
-- In Game Display:
-
-This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
-
-For each state machine you have to provide:
-- the name of the class for which you are representing the internal behavior;
-- a figure representing the part of state machine;
-- a textual description of all its states, transitions, activities, etc. in a narrative manner (you do not need to structure your description into tables in this case). We expect 3-4 lines of text for describing trivial or very simple state machines (e.g., those with one to three states), whereas you will provide longer descriptions (e.g., ~500 words) when describing more complex state machines.
-
-The goal of your state machine diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 3000
+- Game Menu Display: The game menu is one of the two primary states of the UI provided by our engine. It holds the different sub-states that allows the user to select a game from a list of games found on the system. A depiction of the possible options and the menu can be observed from the notes attached to the state diagram. The application window is loaded and stays open persistently until the application is not closed. It is possible to exit the workflow and enter the final exit state if a user wishes to in any of the internal sub-states. Thus allowing for a better user experience. There are three internal substates which can be described as follows :-
+    - Main Menu Display: This is a state of the UIHandler that is loaded inside the Game Menu Display and holds the state for the main menu of the engine. There are two available options *Select Game* or *Quit*. The state persistently waits for user input and only changes once the user presses an arrow key. As mentioned earlier we will be making use of the Text-IO library. This library allows for input of arrow keys and the user's choice will be registered on the menu as a form of an arrow key pointing to a selection. On keyboard return or the enter key press the selection would be registered and the game will continue to either the next state or quit. This state is to help the user get familiarized with the UI as the menu's that follow work similarly. No internal processing on the side of the engine is done here in the background.
+    - Games List Display: This state just like the previous state displays a list of games found on disk and provides the list in the form of a menu if the user's previous selection was *Select Game*. All games exist in a designated folder and the name of the folder containing the game files is used as a title for the menu list item. No other processing is done here. The user can make one choice from possibly several games or quit the engine just like the previous display state. This menu shows the core functioning of our engine to the user and also allows the user to see that our engine supports various scenarios or in this games.
+    - Game Menu Display: This is the internal menu display that is opened once the user picks a game he/she wants to play using the keyboard. This loads a screen similar to the main menu but here three options are available. The user can either start a new game, load a saved game or quit the engine. If the user goes with either option 1 or option 2, the state is changed to the next main state and the menu display would be cleared. There would be no more option to use the arrow keys anymore and quitting would only be possible using the `quit` command. So as a menu display this is the last state a user could quit the engine before loading the in game display.
+- In Game Display: During the transition from the Game Menu Display to this state certain internal states are initialized and executed that are not visible to the user. If the user selects the *Start New Game* option then a state called 'Game Files Loaded' is triggered that reads the JSON files of the game selected and builds the game. On the other hand, if the user selects the *Load Saved Game* option then a state called 'Save Files Loaded' is trigerred. The behaviour of both states is very similar with the only difference being, loading a saved game leads to replaying of previously inputed actions without notifying the user by reading a text based saved file. In the new game option this does not happen. On completion of the loading and execution, the UIHandler enters the game. Here the user's starting location in the game and the inventory is displayed. The UI persists in this stage till the user does the quit the game manually by typing the `quit` command or by closing the application window using the default options of the host's window manager. The UI continues alternates between two sub-states where it continuously waits for a user input, displays the results of the input immediately and waits for user input thus repeating the cycle persistently.
 
 ## Sequence diagrams									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
+In this section we will describe two crucial parts of the system during its functioning. The first will be a sequence disgram depicting the initialization of a game and the second will be a diagram depicting the game while executing an example command. Both diagrams aim to show the functionality of the engine we are designing and also to document the timeline of events and function calls to make it easier to implement.
+
+### Game Initialization Sequence
+
+The UML diagram for the interaction is as follows :-
+![State machine diagrams](./assets/init_sequence.png "State machine diagram 1")
+
+The game initlization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
+- Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
+    - The `initializer` object is invoked and the initializer starts reading the JSON files available in the game path variable provided to it.
+    - The initializer *deserializes* the JSONs internally and maps them to the respective Entity types and loads a list of entities for each type. These are the Items, Player, Obstacles, Areas and NPCs.
+    - These entities that are returned by means of a `loadEntities()` function are then passed as a parameter to construct the gameEntities object.
+    - The `gameEntities` object being the main dictionary of the architecture is then passed into the game object and saved there to be used persistently.
+    - Once this sequence is completed successfully the final `game` object is returned back to the engine that is then stored as the `currentGame`.
+
+- Post-Initialization: In this state most of the heavy lifting is done by the engine itself as it is responsible for running the game and handling loading of saved files. There are two alternative paths that the sequence flow can take. There are as follows :-
+    - startNewGame: This path is relatively simple. If the user had previously selected the 'Start New Game' option in the UIHandler then the program enters this workflow wherein the engine starts executing the game by calling the `runGame()` function. This is function has an internal loop and persists until the user does not quit the application manually.
+    - loadSavedGame: This workflow is activated if the user decides to load a saved game during game execution or in this case when the user previously selected the option 'Load Saved Game'. The subsequence for this alternate workflow is as follows :-
+        - The engine calls the initializer object again to read the saved game file. This is saved as a *.txt* files holding all the user's previous commands. The invoking is done using the `loadPreviousCommands()` function.
+        - The initializer after parsing the relevant saved file returns the list of commands as strings which are then saved as a parameter `commands` in the engine. This is stored to allow for saving and overwriting previous data without losing previous inputs and provides a valid starting point always.
+        - The commands are then sent to the `handleCommand()` function of the game object one after the other to execute and get the game to the user's last known state before saving.
+        - On success the game returns a message and the execution of the game is continued normally using the `runGame()` function. This last step is almost identical to the 'startNewGame' step mentioned above.
 
 For each sequence diagram you have to provide:
 - a title representing the specific situation you want to describe;
