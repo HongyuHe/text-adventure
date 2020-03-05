@@ -377,14 +377,14 @@
 													"left": 578,
 													"top": 204,
 													"width": 1,
-													"height": 50
+													"height": 51
 												}
 											],
 											"font": "Arial;13;0",
 											"left": 504,
 											"top": 164,
 											"width": 147.86083984375,
-											"height": 90,
+											"height": 91,
 											"nameCompartment": {
 												"$ref": "AAAAAAFwoRU1yt+yt4c="
 											},
@@ -412,9 +412,9 @@
 														"$ref": "AAAAAAFwoSTNA+CSY40="
 													},
 													"font": "Arial;13;0",
-													"left": 125,
+													"left": 122,
 													"top": 96,
-													"width": 167.62890625,
+													"width": 173.41162109375,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -422,7 +422,7 @@
 														"$ref": "AAAAAAFwoSTNA+CTm+k="
 													},
 													"edgePosition": 1,
-													"text": "1 : initializeGame(gamePath)"
+													"text": "1 : loadGameFiles(gamePath)"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -523,17 +523,17 @@
 														"$ref": "AAAAAAFwoTdWu+Gv3Hs="
 													},
 													"font": "Arial;13;0",
-													"left": 335,
+													"left": 320,
 													"top": 128,
-													"width": 146.67529296875,
+													"width": 113.67529296875,
 													"height": 13,
-													"alpha": 1.9614023187174419,
-													"distance": 73.53910524340094,
+													"alpha": 2.2318383610302224,
+													"distance": 45.60701700396552,
 													"hostEdge": {
 														"$ref": "AAAAAAFwoTdWu+Gwlic="
 													},
 													"edgePosition": 1,
-													"text": "2 : readJSON(gamePath)"
+													"text": "2 : deserialize"
 												},
 												{
 													"_type": "EdgeLabelView",
@@ -2004,9 +2004,9 @@
 														"$ref": "AAAAAAFwodkjheRtkvE="
 													},
 													"font": "Arial;13;0",
-													"left": 119,
+													"left": 94,
 													"top": 671,
-													"width": 214.2587890625,
+													"width": 265.56689453125,
 													"height": 13,
 													"alpha": 2.4805497539697825,
 													"distance": 22.80350850198276,
@@ -2116,9 +2116,9 @@
 														"$ref": "AAAAAAFwod3Kn+SnvcM="
 													},
 													"font": "Arial;13;0",
-													"left": 371,
+													"left": 346,
 													"top": 688,
-													"width": 196.5361328125,
+													"width": 247.84423828125,
 													"height": 13,
 													"alpha": 1.5707963267948966,
 													"distance": 10,
@@ -2227,9 +2227,9 @@
 														"$ref": "AAAAAAFwod4vrOS9Ooo="
 													},
 													"font": "Arial;13;0",
-													"left": 337,
+													"left": 312,
 													"top": 736,
-													"width": 258.3115234375,
+													"width": 309.61962890625,
 													"height": 13,
 													"alpha": 1.4141949633264363,
 													"distance": 19.235384061671343,
@@ -2545,7 +2545,7 @@
 									"_parent": {
 										"$ref": "AAAAAAFwoNy1Lt8fvXI="
 									},
-									"name": "initializeGame",
+									"name": "loadGameFiles",
 									"source": {
 										"$ref": "AAAAAAFwoQV6AN8z8Yw="
 									},
@@ -2560,14 +2560,13 @@
 									"_parent": {
 										"$ref": "AAAAAAFwoNy1Lt8fvXI="
 									},
-									"name": "readJSON",
+									"name": "deserialize",
 									"source": {
 										"$ref": "AAAAAAFwoRFBWN9WvDM="
 									},
 									"target": {
 										"$ref": "AAAAAAFwoRFBWN9WvDM="
-									},
-									"arguments": "gamePath"
+									}
 								},
 								{
 									"_type": "UMLMessage",
