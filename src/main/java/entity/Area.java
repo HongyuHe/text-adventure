@@ -41,13 +41,19 @@ public class Area extends Entity {
     public String getType() { return type; }
 
     @Override
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
 
     @Override
-    public String getDescription() {
-        return description;
+    public String getDescription()
+    {
+        StringBuilder d = new StringBuilder(description);
+
+        if (!inventory.isEmpty()) { d.append("\nYou can see the following items here:\n"); }
+        for (String item : inventory) { d.append(item).append(", "); }
+
+        d.delete(d.length() - 2, d.length());
+
+        return d.toString();
     }
 
     @Override

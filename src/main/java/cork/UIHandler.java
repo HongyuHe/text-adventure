@@ -35,5 +35,5 @@ public class UIHandler {
 
     void print(String string) { terminal.println(string); }
 
-    Boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
+    boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
 }

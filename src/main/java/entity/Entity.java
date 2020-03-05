@@ -9,6 +9,4 @@ public abstract class Entity {
     public abstract String getDescription();
 
     public abstract Boolean isActive();
-
-
 }

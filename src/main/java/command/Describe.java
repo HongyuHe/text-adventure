@@ -1,7 +1,6 @@
 package command;
 
 import dictionary.GameEntities;
-import entity.Entity;
 import entity.IInteractable;
 import java.util.Set;
 
@@ -16,10 +15,7 @@ public class Describe extends Command {
 
     @Override
     public String apply(String object, GameEntities ge) {
-        if (object == null)
-        {
-            return ge.findEntityOrElse(ge.getPlayer().getCurrentLocation()).getDescription();
-        }
+        if (object == null) { object = ge.getPlayer().getCurrentLocation(); }
 
         return ge.findEntityOrElse(object).getDescription();
     }

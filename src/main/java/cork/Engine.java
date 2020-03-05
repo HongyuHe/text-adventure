@@ -11,7 +11,12 @@ import java.util.stream.Stream;
 
 public class Engine {
     private Game currentGame;
-    private UIHandler UI = new UIHandler();
+    private UIHandler uiHandler = new UIHandler();
+
+    public static void main (String[] args) {
+        Engine engine = new Engine();
+        engine.startMenu();
+    }
 
 //    String handleGameover() {}
 
@@ -31,57 +36,52 @@ public class Engine {
 
     private void quit() { System.exit(0); }
 
-    Boolean startNewGame() { // TODO: Implement
-        UI.clearScreen();
-        UI.print("Welcome");
+    Boolean startNewGame() {
+        uiHandler.clearScreen();
+        uiHandler.print("Welcome");
         runGame();
         return true;
     }
 
-    private Boolean loadSavedGame() { // TODO: implement
-        UI.clearScreen();
-        UI.print("Loading is not yet supported.");
-        if(UI.promptUser("Return to main menu?")) {
+    private Boolean loadSavedGame() {
+        uiHandler.clearScreen();
+        uiHandler.print("Loading is not yet supported.");
+        if(uiHandler.promptUser("Return to main menu?")) {
             startMenu();
         } else {
             quit();
         }
-//        runGame();
+
         return false;
     }
 
 //    cork.Game getSave() {}
 
-    private Boolean saveGame() { // TODO: implement
-        UI.print("Saving is not yet supported.");
-        if(UI.promptUser("Return to main menu?")) {
+    private Boolean saveGame() {
+        uiHandler.print("Saving is not yet supported.");
+        if(uiHandler.promptUser("Return to main menu?")) {
             startMenu();
         } else {
             quit();
         }
+
         return false;
     }
 
     public void startMenu() {
-        UI.clearScreen();
+        uiHandler.clearScreen();
         String choice;
 
-        choice = UI.displayMainMenu();
-        if(choice.compareTo("Quit") == 0) {
-            quit();
-        }
+        choice = uiHandler.displayMainMenu();
+        if(choice.equals("Quit")) { quit(); }
 
-        choice = UI.displayGamesMenu(loadGameList());
-        if(choice.compareTo("Quit") == 0) {
-            quit();
-        } else {
-            currentGame = new Game(choice); //TODO: set current game
-        }
+        choice = uiHandler.displayGamesMenu(loadGameList());
+        if(choice.equals("Quit")) { quit(); } else { currentGame = new Game(choice); }
 
-        choice = UI.displayGameSubMenu(choice);
-        if(choice.compareTo("New Game") == 0) {
+        choice = uiHandler.displayGameSubMenu(choice);
+        if(choice.equals("New Game")) {
             startNewGame();
-        } else if (choice.compareTo("Load Game") == 0) {
+        } else if (choice.equals("Load Game")) {
             loadSavedGame();
         } else {
             quit();
@@ -89,26 +89,26 @@ public class Engine {
     }
 
     void runGame() {
-        UI.print(currentGame.handleCommand("look"));
+        uiHandler.print(currentGame.handleCommand("look"));
 
-        while(true) {
-            String userInput = UI.getInput();
-            if(userInput.compareTo("save") == 0) {
+        while(!currentGame.isGameOver()) {
+            String userInput = uiHandler.getInput();
+            if(userInput.equals("save")) {
                 if(saveGame()) {
                     ; // TODO Implement
                 }
-            } else if(userInput.compareTo("load") == 0) {
+            } else if(userInput.equals("load")) {
                 if(loadSavedGame()) {
                     ; // TODO Implement
                 }
-            } else if(userInput.compareTo("quit") == 0) {
-                if(UI.promptUser("Would you like to save before quitting?")) {
+            } else if(userInput.equals("quit")) {
+                if(uiHandler.promptUser("Would you like to save before quitting?")) {
                     saveGame();
                 }
                 quit();
             } else {
                 String result = currentGame.handleCommand(userInput);
-                UI.print(result);
+                uiHandler.print(result);
             }
         }
     }

@@ -73,5 +73,9 @@ public class Player extends Character implements IInteractable {
     public Command findCommandOrElse(String cmd) {
         return actions.getOrDefault(cmd, new DefaultCommand());
     }
+
+    public boolean has(String item) { return inventory.contains(item); }
+
+    public boolean isDead() { return (stat.getValue() <= 0); }
 }
 
