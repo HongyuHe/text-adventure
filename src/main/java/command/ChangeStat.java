@@ -5,7 +5,7 @@ import entity.IInteractable;
 import java.util.Set;
 
 public class ChangeStat extends Command {
-    private IInteractable parent;
+    private IInteractable parent; // NOSONAR
     private Set<String> args;
 
     public ChangeStat(Set<String> args, IInteractable parent) {

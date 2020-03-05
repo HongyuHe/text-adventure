@@ -11,7 +11,7 @@ public class GameOverItemDeserializer implements JsonDeserializer<GameOverItem> 
     @Override
     public GameOverItem deserialize(JsonElement json,
                               Type typeOfT,
-                              JsonDeserializationContext context) throws JsonParseException {
+                              JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
         JsonObject jsonObject = json.getAsJsonObject();
 

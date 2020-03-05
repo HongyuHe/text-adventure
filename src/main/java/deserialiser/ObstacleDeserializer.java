@@ -11,7 +11,7 @@ public class ObstacleDeserializer implements JsonDeserializer<Obstacle> {
     @Override
     public Obstacle deserialize(JsonElement json,
                                      Type typeOfT,
-                                     JsonDeserializationContext context) throws JsonParseException {
+                                     JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
         JsonObject jsonObject = json.getAsJsonObject();
 

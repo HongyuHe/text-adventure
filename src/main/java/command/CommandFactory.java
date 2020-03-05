@@ -4,6 +4,8 @@ import entity.IInteractable;
 import deserialiser.CommandBlueprint;
 
 public final class CommandFactory {
+    private CommandFactory() {}
+
     public static Command createCommand(CommandBlueprint cmd, IInteractable parent) {
         switch (cmd.getFunction()) {
             case "ChangeLocation": return new ChangeLocation(cmd.getParams(), parent);

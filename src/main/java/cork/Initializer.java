@@ -10,6 +10,7 @@ import com.google.gson.reflect.TypeToken;
 import entity.*;
 import entity.EmptyEntity;
 import dictionary.GameEntities;
+import org.tinylog.Logger;
 
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -22,6 +23,7 @@ import java.util.stream.Collectors;
 import static entity.EmptyEntity.initializeEmptyEntity;
 
 public class Initializer {
+    private Initializer() {}
 
     public static GameEntities loadGameFiles(String game) {
         game = "./games/" +  game;
@@ -50,25 +52,23 @@ public class Initializer {
         return gInit;
     }
 
-    private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
-        try {
+    private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation))) {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
-            Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
             Type entitySetType = TypeToken.getParameterized(ArrayList.class, c).getType();
-            ArrayList<T> entitySet = gson.fromJson(reader, entitySetType);
-            reader.close();
-            return entitySet;
+            return gson.fromJson(reader, entitySetType);
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            Logger.error(ex.getMessage());
         }
-        return null;
+
+        return new ArrayList<>();
     }
 
-    private static <T> T loadSingleEntity(String jsonLocation, JsonDeserializer deserializer, Class<T> c) {
+    private static <T> T loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c) {
         try {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
@@ -81,7 +81,7 @@ public class Initializer {
             return singleEntity;
 
         } catch (Exception ex) {
-            ex.printStackTrace();
+            Logger.error(ex.getMessage());
         }
 
         return null;

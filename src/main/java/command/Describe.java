@@ -5,8 +5,8 @@ import entity.IInteractable;
 import java.util.Set;
 
 public class Describe extends Command {
-    private IInteractable parent;
-    private Set<String> args;
+    private IInteractable parent; // NOSONAR
+    private Set<String> args; // NOSONAR
 
     public Describe(Set<String> args, IInteractable parent) {
         this.args = args;

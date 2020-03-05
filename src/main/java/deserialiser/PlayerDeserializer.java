@@ -12,7 +12,7 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
     @Override
     public Player deserialize(JsonElement json,
                               Type typeOfT,
-                              JsonDeserializationContext context) throws JsonParseException {
+                              JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
         JsonObject jsonObject = json.getAsJsonObject();
 

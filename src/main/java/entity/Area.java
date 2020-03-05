@@ -14,7 +14,7 @@ public class Area extends Entity {
     private Set<String> npcs;
     private Map<String, String> connections;
 
-    public Area(String type,
+    public Area(String type, // NOSONAR - 8 parameters are required to allow deserialization
                 String name,
                 Boolean active,
                 String description,

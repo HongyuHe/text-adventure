@@ -17,7 +17,7 @@ public class Player extends Character implements IInteractable {
 
     private Map<String, Command> actions;
 
-    public Player(String type,
+    public Player(String type, // NOSONAR - 8 parameters are required to allow deserialization
                   String name,
                   String description,
                   List<String> inventory,

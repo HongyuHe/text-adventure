@@ -1,6 +1,6 @@
 package entity;
 
-public abstract class Entity {
+public abstract class Entity { // NOSONAR - Entity is intended to be used as an API, an interface is not appropriate here
 
     public abstract String getType();
 

@@ -1,5 +1,7 @@
 package cork;
 
+import org.tinylog.Logger;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -92,15 +94,15 @@ public class Engine {
     }
 
     private List<String> loadGameList() {
-        final String GAMES_DIRECTORY_PATH = ".\\games";
+        final String GAMES_DIRECTORY_PATH = "./games";
 
-        try (Stream<Path> walk = Files.walk(Paths.get(GAMES_DIRECTORY_PATH), 1)) {
-            List<String> gameList = walk.filter(Files::isDirectory).map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
+        try (Stream<Path> paths = Files.find(Paths.get(GAMES_DIRECTORY_PATH), 1, (path, attributes) -> attributes.isDirectory())) {
+            List<String> gameList = paths.map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
             return gameList;
         }
         catch (IOException e) {
-            e.printStackTrace();
+            Logger.error(e.getMessage());
         }
 
         return Collections.singletonList("No games found.");

@@ -6,7 +6,7 @@ import entity.IInteractable;
 import java.util.Set;
 
 public class ListContents extends Command {
-    private IInteractable parent;
+    private IInteractable parent; // NOSONAR
     private Set<String> args;
 
     public ListContents(Set<String> args, IInteractable parent) {

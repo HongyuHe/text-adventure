@@ -13,7 +13,7 @@ public class AreaDeserializer implements JsonDeserializer<Area> {
     @Override
     public Area deserialize(JsonElement json,
                                Type typeOfT,
-                               JsonDeserializationContext context) throws JsonParseException {
+                               JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
         JsonObject jsonObject = json.getAsJsonObject();
 

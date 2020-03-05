@@ -12,7 +12,7 @@ public class NpcDeserializer implements JsonDeserializer<Npc> {
     @Override
     public Npc deserialize(JsonElement json,
                             Type typeOfT,
-                            JsonDeserializationContext context) throws JsonParseException {
+                            JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
         JsonObject jsonObject = json.getAsJsonObject();
 

@@ -17,7 +17,7 @@ public class Obstacle extends Entity implements IInteractable {
 
     private Map<String, Command> actions;
 
-    public Obstacle(String type,
+    public Obstacle(String type, // NOSONAR - 8 parameters are required to allow deserialization
                     String name,
                     Boolean active,
                     String currentLocation,
