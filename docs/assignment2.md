@@ -230,7 +230,7 @@ Attributes
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 The figure representing the UML object diagram is as follows :-
-![Object Diagram](./assets/object_diagram.png "State machine diagram for the Engine class")
+![Object Diagram](./assets/object_diagram.PNG "State machine diagram for the Engine class")
 
 In the above diagram the system is in a state wherein the game has been loaded successfully and the gamer just inputed the command `eat apple` into the system. The description of the various objects and the states of their variables are as follows :-
 - **engine**: The engine object is the main controlling object of the system itself. It is also responsible for running a game. The selected game is stored as a variable called `currentGame` and the list of games found on the system are saved as a list of strings called `games`. The engine builds the `currentGame` with the help of the `Initializer` class.
@@ -301,7 +301,7 @@ In this section we will describe two crucial parts of the system during its func
 ### Game Initialization Sequence
 
 The UML diagram for the interaction is as follows :-
-![State machine diagrams](./assets/init_sequence.png "State machine diagram 1")
+![State machine diagrams](./assets/init_sequence.PNG "State machine diagram 1")
 
 The game initlization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
 - Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
