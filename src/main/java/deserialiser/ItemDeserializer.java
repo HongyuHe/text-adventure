@@ -22,7 +22,7 @@ public class ItemDeserializer implements JsonDeserializer<Item> {
 
             return new Item(
                     jsonObject.get("type").getAsString(),
-                    jsonObject.get("name").getAsString(),
+                    jsonObject.get("name").getAsString().toLowerCase(),
                     jsonObject.get("description").getAsString(),
                     jsonObject.get("consumable").getAsBoolean(),
                     jsonObject.get("active").getAsBoolean(),

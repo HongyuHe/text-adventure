@@ -23,7 +23,7 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
 
         return new Player(
                 jsonObject.get("type").getAsString(),
-                jsonObject.get("name").getAsString(),
+                jsonObject.get("name").getAsString().toLowerCase(),
                 jsonObject.get("description").getAsString(),
                 createArray(jsonObject.get("inventory").getAsJsonArray()),
                 jsonObject.get("active").getAsBoolean(),

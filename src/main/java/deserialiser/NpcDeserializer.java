@@ -23,7 +23,7 @@ public class NpcDeserializer implements JsonDeserializer<Npc> {
 
         return new Npc(
                 jsonObject.get("type").getAsString(),
-                jsonObject.get("name").getAsString(),
+                jsonObject.get("name").getAsString().toLowerCase(),
                 jsonObject.get("description").getAsString(),
                 createArray(jsonObject.get("inventory").getAsJsonArray()),
                 jsonObject.get("active").getAsBoolean(),

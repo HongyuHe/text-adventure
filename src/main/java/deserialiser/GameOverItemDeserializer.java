@@ -22,7 +22,7 @@ public class GameOverItemDeserializer implements JsonDeserializer<GameOverItem> 
 
         return new GameOverItem(
                 jsonObject.get("type").getAsString(),
-                jsonObject.get("name").getAsString(),
+                jsonObject.get("name").getAsString().toLowerCase(),
                 jsonObject.get("description").getAsString(),
                 jsonObject.get("consumable").getAsBoolean(),
                 jsonObject.get("active").getAsBoolean(),

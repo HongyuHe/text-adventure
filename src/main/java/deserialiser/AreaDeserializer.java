@@ -19,7 +19,7 @@ public class AreaDeserializer implements JsonDeserializer<Area> {
 
         return new Area(
                 jsonObject.get("type").getAsString(),
-                jsonObject.get("name").getAsString(),
+                jsonObject.get("name").getAsString().toLowerCase(),
                 jsonObject.get("active").getAsBoolean(),
                 jsonObject.get("description").getAsString(),
                 createArray(jsonObject.get("inventory").getAsJsonArray()),
