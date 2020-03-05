@@ -33,7 +33,7 @@ public class Area extends Entity {
         this.connections = connections;
     }
 
-    public Boolean connectsTo(String nextArea) { return connections.containsKey(nextArea); }
+    public boolean connectsTo(String nextArea) { return connections.containsKey(nextArea); }
 
     public String getConnection(String nextArea) { return connections.get(nextArea); }
 
