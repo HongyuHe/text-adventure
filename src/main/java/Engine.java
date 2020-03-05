@@ -27,31 +27,41 @@ public class Engine {
 
 //    void startGame(game: Game) {}
 
-    private void quit() {
-        System.exit(0);
-    }
+    private void quit() { System.exit(0); }
 
     Boolean startNewGame() { // TODO: Implement
         UI.clearScreen();
-        UI.printResult("Welcome");
+        UI.print("Welcome");
         runGame();
         return true;
     }
 
     private Boolean loadSavedGame() { // TODO: implement
-        System.out.println("Loading...\n");
-        runGame();
-        return true;
+        UI.clearScreen();
+        UI.print("Loading is not yet supported.");
+        if(UI.promptUser("Return to main menu?")) {
+            startMenu();
+        } else {
+            quit();
+        }
+//        runGame();
+        return false;
     }
 
 //    Game getSave() {}
 
     private Boolean saveGame() { // TODO: implement
-        System.out.println("Saving...\n");
-        return true;
+        UI.print("Saving is not yet supported.");
+        if(UI.promptUser("Return to main menu?")) {
+            startMenu();
+        } else {
+            quit();
+        }
+        return false;
     }
 
     void startMenu() {
+        UI.clearScreen();
         String choice;
 
         choice = UI.displayMainMenu();
@@ -80,14 +90,21 @@ public class Engine {
         while(true) {
             String userInput = UI.getInput();
             if(userInput.compareTo("save") == 0) {
-                if(saveGame()) { System.out.println("Successfully saved game!"); }
+                if(saveGame()) {
+                    ; // TODO Implement
+                }
             } else if(userInput.compareTo("load") == 0) {
-                if(loadSavedGame()) { System.out.println("Successfully loaded game!"); }
+                if(loadSavedGame()) {
+                    ; // TODO Implement
+                }
             } else if(userInput.compareTo("quit") == 0) {
+                if(UI.promptUser("Would you like to save before quitting?")) {
+                    saveGame();
+                }
                 quit();
             } else {
                 String result = currentGame.handleCommand(userInput);
-                UI.printResult(result);
+                UI.print(result);
             }
         }
     }
