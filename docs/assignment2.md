@@ -20,49 +20,49 @@ Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 ![Class Diagram](./assets/class_detail.png "Class diagram")
 
-**cork.Engine**
+**Engine**
 The engine is the heart of the system and can be considered the (grand) parent of all the other components. It will contain the entry point of the entire project and acts as a bridge between the game itself, the UI, and the JSON handling code, whilst also controlling the state of the overall system and handling certain meta-commandBlueprints meant for the engine itself (e.g. saving the game).
 
 Attributes
-- *games: List\<cork.Game\>* - Initially the player will be presented with a list of different games they are able to load and play, this attribute will hold the names of the different options.
-- *currentGame: cork.Game* - Once the player has selected a certain game to play, the game data will be loaded from the respective JSON files and a new cork.Game object will be created. This attribute will hold a reference to this currently running game.
+- *games: List\<Game\>* - Initially the player will be presented with a list of different games they are able to load and play, this attribute will hold the names of the different options.
+- *currentGame: Game* - Once the player has selected a certain game to play, the game data will be loaded from the respective JSON files and a new Game object will be created. This attribute will hold a reference to this currently running game.
 
 Operations
 - *handleGameOver()* - When the player either wins or loses the game this function will handle reloading from a prior save, starting a new game, changing the engine state back to the initial menu, or quitting.
 - *loadGameList()* - Gets the names of all available games that can be loaded and played. Available games will be folders of JSON game data files where the name of the folder will be the name given in the menu and presented to the player.
-- *initializeGame(game: cork.Game)* - Loads the game files selected by the player. Instructs the **cork.Initializer** to load the appropriate JSON files then passes the required parameters to the **cork.Game** constructor and sets *currentGame* to hold the reference to this new game. *initializeGame* will be called when the player selects an option from the initial menu.
+- *initializeGame(game: Game)* - Loads the game files selected by the player. Instructs the **Initializer** to load the appropriate JSON files then passes the required parameters to the **Game** constructor and sets *currentGame* to hold the reference to this new game. *initializeGame* will be called when the player selects an option from the initial menu.
 - *quit()* - If a game is currently running, this function will prompt the user to save before exiting, otherwise will simply close the engine and exit.
 - *startNewGame()* - Once the player has selected a game to play from the initial menu, they can start the game from the initial state without loading a prior save.
 - *loadSavedGame()* - If the player wishes to load a prior save, this function will allow them to do so. Save game files hold a list of all prior successful actions (with meta-commandBlueprints stripped out - this includes things like "save", "load", and "quit"), and these actions are replayed to get the current game into the prior state.
 - *saveGame()* - Saves the list of prior successful, non-meta-commandBlueprints to a file with the game data JSON files of the current game.
-- *runGame()* - A loop that runs whilst the current game is not over. This loop will ask the cork.UIHandler to block for user input, then determines if this input needs to be passed to the game or not (e.g. a "save" command is handled by the engine itself, and is not passed to the game). If required, the user input is passed to the game through the game's *handleCommand* function.
+- *runGame()* - A loop that runs whilst the current game is not over. This loop will ask the UIHandler to block for user input, then determines if this input needs to be passed to the game or not (e.g. a "save" command is handled by the engine itself, and is not passed to the game). If required, the user input is passed to the game through the game's *handleCommand* function.
 - *main()* - The entry point for the application.
 
 Associations
-- **_Initializer_** - Composite. The engine must contain an **cork.Initializer** to handle loading games from JSON files. The **cork.Initializer** should not exist outside of the **cork.Engine**.
-- **_Game_** - Composite. **Games** should not exist apart from an **cork.Engine**, however an **cork.Engine** is not required to have a current game initialized at all times.
-- **_UIHandler_** - Composite. The **cork.UIHandler** should not exist apart from the **cork.Engine**.
+- **_Initializer_** - Composite. The engine must contain an **Initializer** to handle loading games from JSON files. The **Initializer** should not exist outside of the **Engine**.
+- **_Game_** - Composite. **Games** should not exist apart from an **Engine**, however an **Engine** is not required to have a current game initialized at all times.
+- **_UIHandler_** - Composite. The **UIHandler** should not exist apart from the **Engine**.
 
 
-**cork.Initializer**
+**Initializer**
 
 Attributes
 - *parser: Gson* - The class for Google's JSON parsing library.
 
 Operations
-- *loadGameFiles: GameEntities* - Finds the JSON game data files associated with the given file path. When the player selects a game from the initial menu the name of this game will be sent to the **cork.Initializer** and the **cork.Initializer** will then open the appropriate folder containing the selected game's game data files. The data from these files will be used to construct a **GameEntities** object which will be sent back to the **cork.Engine** so that it can construct an appropriate game.
+- *loadGameFiles: GameEntities* - Finds the JSON game data files associated with the given file path. When the player selects a game from the initial menu the name of this game will be sent to the **Initializer** and the **Initializer** will then open the appropriate folder containing the selected game's game data files. The data from these files will be used to construct a **GameEntities** object which will be sent back to the **Engine** so that it can construct an appropriate game.
 - *loadEntities: Map\<String, Entity\>* - A sub-function that will load **Entity** objects from the appropriate JSON files into a map of name:entity pairs.
-- *loadPreviousInputs: List\<String\>* - Opens and loads into memory the list of commands the player entered when playing previously. These commands will be sent to **cork.Engine** which will replay these commands when loading a saved game.
+- *loadPreviousInputs: List\<String\>* - Opens and loads into memory the list of commands the player entered when playing previously. These commands will be sent to **Engine** which will replay these commands when loading a saved game.
 
 Associations
-- **_GameEntities_** - Shared. The **cork.Initializer** will use JSON files to create game entity objects which will be stored in a **GameEntities** class. This class will be passed to a **cork.Game** object on construction and will act as the base upon which the game is built.
+- **_GameEntities_** - Shared. The **Initializer** will use JSON files to create game entity objects which will be stored in a **GameEntities** class. This class will be passed to a **Game** object on construction and will act as the base upon which the game is built.
 - **_CommandFactory_** - Shared. Some entities described in the JSON files can optionally contain commands that describe how the player can interact with them. Commands will be described in the JSON as a name, e.g. "use" for "use key door", followed by a function name that related to a **Command** class such as "changeLocation" or "takeItem". This data will be sent to the **CommandFactory** which builds and returns the correct **Command** type which can then be placed inside the appropriate object (e.g. a door might contain a changeState **Command** that allows a use to type "use key door" to unlock the door).
 
 
 **CommandFactory**
 
 Operations
-- *createCommand* - Take input from the **cork.Initializer** that has stripped data from the JSON game data files and uses this to create the required **Command** object, preventing the **cork.Initializer** class from having the determine the correct **Command** implementation itself.
+- *createCommand* - Take input from the **Initializer** that has stripped data from the JSON game data files and uses this to create the required **Command** object, preventing the **Initializer** class from having the determine the correct **Command** implementation itself.
 
 Associations
 - **_Command_** - Shared. The **CommandFactory** will create and return **Command** objects.
@@ -71,7 +71,7 @@ Associations
 **Command**
 
 Operations
-- *apply(target: String): String* - **Command** objects will be used to check the validity of input instructions given by the user, to do this an object specified by the user will be queried for an appropriate **Command** object (e.g. "use key door" will query the "door" object to see if it contains a command called "use"). If the object contains a matching command then the parameter specified by the user will be passed to this **Command** object and if the parameter matches some internal specification (different implementations for different commands), then the instruction succeeds and a result is performed. The success or failure message will be returned as a String which will, eventually, be passed up the **cork.Engine** object that can then send it to the **cork.UIHandler** to print to the terminal.
+- *apply(target: String): String* - **Command** objects will be used to check the validity of input instructions given by the user, to do this an object specified by the user will be queried for an appropriate **Command** object (e.g. "use key door" will query the "door" object to see if it contains a command called "use"). If the object contains a matching command then the parameter specified by the user will be passed to this **Command** object and if the parameter matches some internal specification (different implementations for different commands), then the instruction succeeds and a result is performed. The success or failure message will be returned as a String which will, eventually, be passed up the **Engine** object that can then send it to the **UIHandler** to print to the terminal.
 
 Associations
 - **_Entity_** - Shared. **Command** objects must know about the entities they relate to to allow them to change the attributes of those entities, e.g. a **ChangeState** **Command** would need to inform a related **Obstacle** object to change its state from active to inactive (for example, when unlocking a door).
@@ -111,30 +111,30 @@ An implementation of the **Command** interface that allows a **Character** to ad
 An implementation of the **Command** interface that allows a **Character** to remove an **Item** from their **Inventory** and to drop in the current **Area**.
 
 
-**cork.UIHandler**
+**UIHandler**
 
 Operations
 - *displayGamesMenu(games: List\<String\>): void* - Will print the list of available games in a styled menu for the player to choose from.
 - *displayMainMenu(): void* - The initial menu presented to the player, serves as a kind of splash screen for Cork.
 - *displayGameSubMenu(game: String): void* - Shown once the player has selected the game they would like to play, presents the options to start a new game, load a game, or quit.
-- *getInput(): String* - Blocks waiting on user input and passes the raw result back to the **cork.Engine** to handle as needed.
+- *getInput(): String* - Blocks waiting on user input and passes the raw result back to the **Engine** to handle as needed.
 - *clearScreen(): void* - Clears the screen to a blank state.
 - *printResult(result: String): void* - Prints the String provided. This will be used frequently to provide the user feedback, for example a description will be printed when the player enters a new **Area**, the success of an action may cause some change in game state (e.g. unlocking a door will notify the player that the door is now unlocked), or the failure of an action to complete (e.g. the input "eat grue" might return a failure message like "You cannot do that", unless a *modder* user makes it possible).
 
 
-**cork.Game**
+**Game**
 
 Attributes
 - *playerWon: Bool* - When the game is over the player has either won the game or lost it, the game is won when the player is holding a specific item, or it may be lost when the player has died.
-- *previousCommands: List\<String\>* - The **cork.Game** class should keep track of all previously played moves so that, if the player wishes, they can save their game and reload it later. Loads will replay the list of saved commands, so keeping track of this properly is important. Note that since the **cork.Engine** handles meta-level commands like *save* or *load*, these commands will never get sent to the **cork.Game** object, and so they will never be added to the save game file - this should prevent problematic behaviour like encountering a *load* command during the loading of a save game file.
+- *previousCommands: List\<String\>* - The **Game** class should keep track of all previously played moves so that, if the player wishes, they can save their game and reload it later. Loads will replay the list of saved commands, so keeping track of this properly is important. Note that since the **Engine** handles meta-level commands like *save* or *load*, these commands will never get sent to the **Game** object, and so they will never be added to the save game file - this should prevent problematic behaviour like encountering a *load* command during the loading of a save game file.
 
 Operations
 - *isGameOver(): Bool* - Returns whether or not the game is over.
 - *getPreviousCommands(): List\<String\>* - Returns the list of previous inputs by the player, this will be used when 
-- *handleCommand(input: String): String* - The **cork.Engine** will send the **cork.Game** class any relevant input it needs to deal with, this will mainly be input that deals with the interaction between **Entities** such as unlocking doors, interacting with **NPCs**, or moving between **Areas**.
+- *handleCommand(input: String): String* - The **Engine** will send the **Game** class any relevant input it needs to deal with, this will mainly be input that deals with the interaction between **Entities** such as unlocking doors, interacting with **NPCs**, or moving between **Areas**.
 
 Associations
-- **_GameEntities_** - Shared. Since all player input will be in the form of Strings, the **cork.Game** class will need a way to associate String names with specific game **Entities**. The **GameEntities** class will act like a sort of Dictionary to allow this, whilst also providing an interface for the **cork.Game** to interact with **Entities** with.
+- **_GameEntities_** - Shared. Since all player input will be in the form of Strings, the **Game** class will need a way to associate String names with specific game **Entities**. The **GameEntities** class will act like a sort of Dictionary to allow this, whilst also providing an interface for the **Game** to interact with **Entities** with.
 
 
 **GameEntities**
@@ -145,7 +145,7 @@ Attributes
 - *npcs: Map\<String, NPC\>* - Allows access of **NPC** objects by their name.
 - *items: Map\<String, Item\>* - Allows access of **Item** objects by their name.
 - *player: Player* - Holds a reference to the **Player** object.
-- *emptyEntity: Entity* - Holds a reference to an unimportant, generic **Entity** to make carrying out the commands associated with user input more intuitive and less bound to error handling. For example, when an appropriate **Entity** cannot be found for an input (e.g. the user might type "talk merchant" when no merchant is in the current location), then the **cork.Game** will be given this blank **Entity** that can be acted upon without changing anything in the game world, or requiring the **cork.Game** object to handle the missing reference. Instead, commands attempted to be carried out on this empty **Entity** will return error messages like "you cannot do that" to let the player know they did something wrong, as part of an error handling system invisible to the **cork.Game** class.
+- *emptyEntity: Entity* - Holds a reference to an unimportant, generic **Entity** to make carrying out the commands associated with user input more intuitive and less bound to error handling. For example, when an appropriate **Entity** cannot be found for an input (e.g. the user might type "talk merchant" when no merchant is in the current location), then the **Game** will be given this blank **Entity** that can be acted upon without changing anything in the game world, or requiring the **Game** object to handle the missing reference. Instead, commands attempted to be carried out on this empty **Entity** will return error messages like "you cannot do that" to let the player know they did something wrong, as part of an error handling system invisible to the **Game** class.
 - *gameOverItem: Entity* - Holds a reference to the **Item** the player needs to be holding for them to win the game.
 
 Operations
@@ -205,7 +205,7 @@ Attributes
 **Interactable**
 
 Attributes
-- *emptyCommand: Command* - Provides a generic, blank **Command** object that simplifies error handling when the **cork.Game** class is trying to carry out actions.
+- *emptyCommand: Command* - Provides a generic, blank **Command** object that simplifies error handling when the **Game** class is trying to carry out actions.
 - *findCommandOrElse(name: String): Command* - Returns the **Command** associated with the given name, or else the *emptyCommand* described above.
 
 
@@ -227,73 +227,84 @@ Attributes
 
 
 ## Object diagrams								
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-This chapter contains the description of a "snapshot" of the status of your system during its execution. 
-This chapter is composed of a UML object diagram of your system, together with a textual description of its key elements.
+The figure representing the UML object diagram is as follows :-
+![Object Diagram](./assets/object_diagram.png "State machine diagram for the Engine class")
 
-`Figure representing the UML class diagram`
-  
-`Textual description`
+In the above diagram the system is in a state wherein the game has been loaded successfully and the gamer just inputed the command `eat apple` into the system. The description of the various objects and the states of their variables are as follows :-
+- **engine**: The engine object is the main controlling object of the system itself. It is also responsible for running a game. The selected game is stored as a variable called `currentGame` and the list of games found on the system are saved as a list of strings called `games`. The engine builds the `currentGame` with the help of the `Initializer` class.
+- **game**: The game object holds the state of the game that has been initialized. It holds the `playerWon` boolean variable that is trigerred when the player holds a `gameOverItem` in his/her inventory. This is currently set to false as the game has just started. The second variable is the `previousCommands`. This is a list of string commands that the gamer has typed in earlier. In our current case it holds the string "eat apple" which the player inputed into the console. The last variable is an object of the type `GameEntities`. This is the main dictionary object holding all the game objects and it is initialized using the `Initializer` which will be described in the next point.
+- **Initializer**: The Initializer is a static class that reads the JSON files for the game and returns the correct `GameEntities` object called `gInit` after deserializing the files. It is used as a one-off class during initialization and does not hold any valuable data.
+- **ge**: This is the main dictionary object for the entire game and is used as a storage for the various game objects. There can only be one object of the type `GameEntities` and it is persistent in memory till the system is not exited. It also holds the states of the various objects. It stores these in the form of maps of all the entities supported by the engine such as the `areas, obstacles, npcs and items`. It also holds the main `player` object, the `emptyEntity` and the `gameOverItem`. The maps are shown with a 1-to-many relation in the UML and the player, emptyEntity and gameOverItem as a 1-to-1 relation.
+- **area**: A game needs to have atleast one area and this is where the player is spawned. In our case the area in view is the forest. It currently has a diamond in it, a troll NPC and is connected to the castle which lies to it's north. This connection is however blocked by an obstacle called the door.
+- **npc**: A game can have zero or multiple NPCs. In our case we are focusing on an NPC called the troll who does not have any items in his inventory, is friendly to the player and is active in the game. This means that the user can interact with him.
+- **item**: A game can have zero or more items. In our case we will focus on the item apple as this is the subject of the user's previous command. The item's name is apple, it is consumable meaning that it can only be used once and it's active flag is set to false. As eating an apple is only possible once, it is considered to be a consumable. This is different from an object such as a key that does not get consumed. As the user has already eaten the apple, the active flag has been set to false to show that the object is not a part of the gameplay anymore.
+- **itemStat**: The apple holds a `Stat` object called health that increases the value of its consumer by `10` as defined in the object. This change can be observed in the player.
+- **player**: This is the main entity responsible for interacting with the game world and other entities. It holds a `playerStat` called health which has been increased from `100 to 110` because of eating the apple. The player is in the area forest which is stored as a String variable called `currentLocation`. He holds an apple in his inventory and has the command `eat` attached to him.
+- **eat**: Our system allows modders to design their own custom commands into the game they are modding by editing the JSON files appropriately. In our case one such custom command is the `eat` command that is an object of the type `ChangeStat`. This command object accepts the apple as a parameter and applies the stat health of the apple to the player' stat with the matching name on activation using an `apply()` function. This beahviour is abstracted away in this diagram. 
+- **obstacle**: A game can have zero or more obstacles. In our case we have an obstacle called the door that exists inside the forest and blocks the user's path to the castle. The door just like the player has a command object called `use` of the type `ChangeState`. This checks for a `requiredObject` called key when the command is executed by the player. On a sucess the state of the obstacle is set to true and the area is no longer blocked.
+- **emptyEntity**: This is the placeholder or the default entity that the `ge` should contain. It is used whenever a find entity command fails. This helps in supressing errors and throwing exceptions.
+- **gameOverItem**: As mentioned earlier this is the main item in the game that when acquired by the player changes the flag `playerWon` and causes to game to finish. In our case the object is called a diamond and as previously mentioned it is stored in the forest's inventory. 
 
-Maximum number of words for this section: 1000
+This sums up the objects during execution of a game. Some objects such as the deserializers and the UI have been abstracted away as they do not hold variables and states. 
 
 ## State machine diagrams									
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-In this section we will describe two components of the system that hold different states. There are the **cork.Engine** class and the **cork.UIHandler** class.
+In this section we will describe two components of the system that hold different states. There are the **Engine** class and the **UIHandler** class.
 
-### cork.Engine
-![cork.Engine State Machine](./assets/engine_state.png "State machine diagram for the cork.Engine class")
+### Engine
+![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
 
-The **cork.Engine** class will be the main, top-level control point for the system as a whole. On system start the **cork.Engine** will load the list of available games that the user can play so as to present them in a menu. This list will be determined by the **cork.Initializer** as it is the **cork.Initializer** that should be responsible for interactions with game files. If the **cork.Initializer** fails at any point during this process, it should return a reason why and this error response should be printed to the console before the system exits.
+The **Engine** class will be the main, top-level control point for the system as a whole. On system start the **Engine** will load the list of available games that the user can play so as to present them in a menu. This list will be determined by the **Initializer** as it is the **Initializer** that should be responsible for interactions with game files. If the **Initializer** fails at any point during this process, it should return a reason why and this error response should be printed to the console before the system exits.
 
-Once the game list has been loaded the user will be shown the main menu which waits either for the user to exit or for a game to be selected. If a game is selected, the **cork.Engine** will notify the **cork.Initializer** which game files to load, and will construct an associated **cork.Game** class (this process is not shown here as it does not relate to the **cork.Engine's** state or the transitions between them). Once the **cork.Game** class is ready, the **cork.Engine** will display the game's menu, which presents the user with the options: *start new game*, *load game*, and *quit*.
+Once the game list has been loaded the user will be shown the main menu which waits either for the user to exit or for a game to be selected. If a game is selected, the **Engine** will notify the **Initializer** which game files to load, and will construct an associated **Game** class (this process is not shown here as it does not relate to the **Engine's** state or the transitions between them). Once the **Game** class is ready, the **Engine** will display the game's menu, which presents the user with the options: *start new game*, *load game*, and *quit*.
 
-If the user chooses to start a new game, the **cork.Engine** will enter into the *game running* state, however if the user chooses to load a game, the **cork.Engine** will notify the **cork.Initializer** that it requires the list of previously played moves (if any), and will start the game without entering the *game running* state. This allows the **cork.Engine** to feed previous player input into the game without requiring the user to type anything in. Since the game world is deterministic, this allows games to be loaded by replaying every action the player had previously typed and end up in the same state as when they saved the game originally.
+If the user chooses to start a new game, the **Engine** will enter into the *game running* state, however if the user chooses to load a game, the **Engine** will notify the **Initializer** that it requires the list of previously played moves (if any), and will start the game without entering the *game running* state. This allows the **Engine** to feed previous player input into the game without requiring the user to type anything in. Since the game world is deterministic, this allows games to be loaded by replaying every action the player had previously typed and end up in the same state as when they saved the game originally.
 
-Once this load process has completed (or if the user chose to start a new game), the **cork.Engine** enters the *cork.Game Running* state, where it will act as a bridge between the **cork.UIHandler** and the **cork.Game** class. Commands typed by the user will first be sent to the **cork.Engine** which will only send them to the **cork.Game** class if appropriate. For example, if the player chooses to save their game, this should be handled by the **cork.Engine** as it does not relate to knowledge the **cork.Game** should have - the **cork.Game** knows about **NPCs** and **Areas**, but not about files and folders.
+Once this load process has completed (or if the user chose to start a new game), the **Engine** enters the *Game Running* state, where it will act as a bridge between the **UIHandler** and the **Game** class. Commands typed by the user will first be sent to the **Engine** which will only send them to the **Game** class if appropriate. For example, if the player chooses to save their game, this should be handled by the **Engine** as it does not relate to knowledge the **Game** should have - the **Game** knows about **NPCs** and **Areas**, but not about files and folders.
 
-If the user chooses to quit the game whilst in the *cork.Game Running* state, then the **cork.Engine** should intercept this request and prompt the user to save their game. If the user chooses to do so, this is done just before exiting, otherwise the **cork.Engine** just exits directly.
+If the user chooses to quit the game whilst in the *Game Running* state, then the **Engine** should intercept this request and prompt the user to save their game. If the user chooses to do so, this is done just before exiting, otherwise the **Engine** just exits directly.
 
-Finally, if the game ends in the *cork.Game Running* loop (i.e. the player obtains the item which ends the game, or the player dies), then the **cork.Engine** will handle this appropriately - printing some message to let the user know what happened, and then returning back to the main menu to allow the user to choose to play a new game or exit.
+Finally, if the game ends in the *Game Running* loop (i.e. the player obtains the item which ends the game, or the player dies), then the **Engine** will handle this appropriately - printing some message to let the user know what happened, and then returning back to the main menu to allow the user to choose to play a new game or exit.
 
-### cork.UIHandler
-The state machine diagram for the cork.UIHandler is as follows :-
+### UIHandler
+The state machine diagram for the UIHandler is as follows :-
 ![State machine diagrams](./assets/state_ui.png "State machine diagram 1")
 The UI as mentioned earlier will make use of a terminal window that is called using the native terminal application provided by the Operating System and otherwise open a window using the *javax.swing* package. This functionality of opening an application window will be provided by the *Text-IO* package.
 
 The general states can be briefly explained prior to diving into their details as follows :-
 - On running the JAR file an application window is opened up as explained earlier
-- The UI then changes the state to a **cork.Game Menu Display** that allows to user to select the game or quit the application
-- On selecting the *Select cork.Game* option, a list of different games will be displayed to the user that are available on disk.
+- The UI then changes the state to a **Game Menu Display** that allows to user to select the game or quit the application
+- On selecting the *Select Game* option, a list of different games will be displayed to the user that are available on disk.
 - On selecting a particular game the user could then start a new game or load a previously saved game or even quit the game.
-- If the user decides to start a new game or loads a game, the UI enters a new state that can be called the **In cork.Game Display**.
+- If the user decides to start a new game or loads a game, the UI enters a new state that can be called the **In Game Display**.
 - Here the menu is cleared from the terminal and the appropriate game files are loaded in the background.
 - The player's starting location is displayed and the UI waits for user input.
 - The success or failure message of each command is displayed to the user and the state returns to waiting for user input.
 - The application keeps alternating between the two internal states till the user does not enter the `quit` command.
 - On `quit` the application window is closed and the application exits. 
 
-The cork.UIHandler will exist in two major states with multiple internal sub-states. The description of the major states are as follows:-
-- cork.Game Menu Display: The game menu is one of the two primary states of the UI provided by our engine. It holds the different sub-states that allows the user to select a game from a list of games found on the system. A depiction of the possible options and the menu can be observed from the notes attached to the state diagram. The application window is loaded and stays open persistently until the application is not closed. It is possible to exit the workflow and enter the final exit state if a user wishes to in any of the internal sub-states. Thus allowing for a better user experience. There are three internal substates which can be described as follows :-
-    - Main Menu Display: This is a state of the cork.UIHandler that is loaded inside the cork.Game Menu Display and holds the state for the main menu of the engine. There are two available options *Select cork.Game* or *Quit*. The state persistently waits for user input and only changes once the user presses an arrow key. As mentioned earlier we will be making use of the Text-IO library. This library allows for input of arrow keys and the user's choice will be registered on the menu as a form of an arrow key pointing to a selection. On keyboard return or the enter key press the selection would be registered and the game will continue to either the next state or quit. This state is to help the user get familiarized with the UI as the menu's that follow work similarly. No internal processing on the side of the engine is done here in the background.
-    - Games List Display: This state just like the previous state displays a list of games found on disk and provides the list in the form of a menu if the user's previous selection was *Select cork.Game*. All games exist in a designated folder and the name of the folder containing the game files is used as a title for the menu list item. No other processing is done here. The user can make one choice from possibly several games or quit the engine just like the previous display state. This menu shows the core functioning of our engine to the user and also allows the user to see that our engine supports various scenarios or in this games.
-    - cork.Game Menu Display: This is the internal menu display that is opened once the user picks a game he/she wants to play using the keyboard. This loads a screen similar to the main menu but here three options are available. The user can either start a new game, load a saved game or quit the engine. If the user goes with either option 1 or option 2, the state is changed to the next main state and the menu display would be cleared. There would be no more option to use the arrow keys anymore and quitting would only be possible using the `quit` command. So as a menu display this is the last state a user could quit the engine before loading the in game display.
-- In cork.Game Display: During the transition from the cork.Game Menu Display to this state certain internal states are initialized and executed that are not visible to the user. If the user selects the *Start New cork.Game* option then a state called 'cork.Game Files Loaded' is triggered that reads the JSON files of the game selected and builds the game. On the other hand, if the user selects the *Load Saved cork.Game* option then a state called 'Save Files Loaded' is trigerred. The behaviour of both states is very similar with the only difference being, loading a saved game leads to replaying of previously inputed actions without notifying the user by reading a text based saved file. In the new game option this does not happen. On completion of the loading and execution, the cork.UIHandler enters the game. Here the user's starting location in the game and the inventory is displayed. The UI persists in this stage till the user does the quit the game manually by typing the `quit` command or by closing the application window using the default options of the host's window manager. The UI continues alternates between two sub-states where it continuously waits for a user input, displays the results of the input immediately and waits for user input thus repeating the cycle persistently.
+The UIHandler will exist in two major states with multiple internal sub-states. The description of the major states are as follows:-
+- Game Menu Display: The game menu is one of the two primary states of the UI provided by our engine. It holds the different sub-states that allows the user to select a game from a list of games found on the system. A depiction of the possible options and the menu can be observed from the notes attached to the state diagram. The application window is loaded and stays open persistently until the application is not closed. It is possible to exit the workflow and enter the final exit state if a user wishes to in any of the internal sub-states. Thus allowing for a better user experience. There are three internal substates which can be described as follows :-
+    - Main Menu Display: This is a state of the UIHandler that is loaded inside the Game Menu Display and holds the state for the main menu of the engine. There are two available options *Select Game* or *Quit*. The state persistently waits for user input and only changes once the user presses an arrow key. As mentioned earlier we will be making use of the Text-IO library. This library allows for input of arrow keys and the user's choice will be registered on the menu as a form of an arrow key pointing to a selection. On keyboard return or the enter key press the selection would be registered and the game will continue to either the next state or quit. This state is to help the user get familiarized with the UI as the menu's that follow work similarly. No internal processing on the side of the engine is done here in the background.
+    - Games List Display: This state just like the previous state displays a list of games found on disk and provides the list in the form of a menu if the user's previous selection was *Select Game*. All games exist in a designated folder and the name of the folder containing the game files is used as a title for the menu list item. No other processing is done here. The user can make one choice from possibly several games or quit the engine just like the previous display state. This menu shows the core functioning of our engine to the user and also allows the user to see that our engine supports various scenarios or in this games.
+    - Game Menu Display: This is the internal menu display that is opened once the user picks a game he/she wants to play using the keyboard. This loads a screen similar to the main menu but here three options are available. The user can either start a new game, load a saved game or quit the engine. If the user goes with either option 1 or option 2, the state is changed to the next main state and the menu display would be cleared. There would be no more option to use the arrow keys anymore and quitting would only be possible using the `quit` command. So as a menu display this is the last state a user could quit the engine before loading the in game display.
+- In Game Display: During the transition from the Game Menu Display to this state certain internal states are initialized and executed that are not visible to the user. If the user selects the *Start New Game* option then a state called 'Game Files Loaded' is triggered that reads the JSON files of the game selected and builds the game. On the other hand, if the user selects the *Load Saved Game* option then a state called 'Save Files Loaded' is trigerred. The behaviour of both states is very similar with the only difference being, loading a saved game leads to replaying of previously inputed actions without notifying the user by reading a text based saved file. In the new game option this does not happen. On completion of the loading and execution, the UIHandler enters the game. Here the user's starting location in the game and the inventory is displayed. The UI persists in this stage till the user does the quit the game manually by typing the `quit` command or by closing the application window using the default options of the host's window manager. The UI continues alternates between two sub-states where it continuously waits for a user input, displays the results of the input immediately and waits for user input thus repeating the cycle persistently.
 
 ## Sequence diagrams									
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 In this section we will describe two crucial parts of the system during its functioning. The first will be a sequence disgram depicting the initialization of a game and the second will be a diagram depicting the game while executing an example command. Both diagrams aim to show the functionality of the engine we are designing and also to document the timeline of events and function calls to make it easier to implement.
 
-### cork.Game Initialization Sequence
+### Game Initialization Sequence
 
 The UML diagram for the interaction is as follows :-
 ![State machine diagrams](./assets/init_sequence.png "State machine diagram 1")
 
 The game initlization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
-- Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the cork.UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
+- Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
     - The `initializer` object is invoked and the initializer starts reading the JSON files available in the game path variable provided to it by means of the `loadGameFiles()` function.
     - The initializer *deserializes* the JSONs internally and maps them to the respective Entity types and loads a list of entities for each type. These are the Items, Player, Obstacles, Areas and NPCs.
     - These entities that are returned by means of a `loadEntities()` function are then passed as a parameter to construct the gameEntities object.
@@ -301,8 +312,8 @@ The game initlization sequence is divided into two main parts. The upper half of
     - Once this sequence is completed successfully the final `game` object is returned back to the engine that is then stored as the `currentGame`.
 
 - Post-Initialization: In this state most of the heavy lifting is done by the engine itself as it is responsible for running the game and handling loading of saved files. There are two alternative paths that the sequence flow can take. There are as follows :-
-    - startNewGame: This path is relatively simple. If the user had previously selected the 'Start New cork.Game' option in the cork.UIHandler then the program enters this workflow wherein the engine starts executing the game by calling the `runGame()` function. This is function has an internal loop and persists until the user does not quit the application manually.
-    - loadSavedGame: This workflow is activated if the user decides to load a saved game during game execution or in this case when the user previously selected the option 'Load Saved cork.Game'. The subsequence for this alternate workflow is as follows :-
+    - startNewGame: This path is relatively simple. If the user had previously selected the 'Start New Game' option in the UIHandler then the program enters this workflow wherein the engine starts executing the game by calling the `runGame()` function. This is function has an internal loop and persists until the user does not quit the application manually.
+    - loadSavedGame: This workflow is activated if the user decides to load a saved game during game execution or in this case when the user previously selected the option 'Load Saved Game'. The subsequence for this alternate workflow is as follows :-
         - The engine calls the initializer object again to read the saved game file. This is saved as a *.txt* files holding all the user's previous commands. The invoking is done using the `loadPreviousInputs()` function.
         - The initializer after parsing the relevant saved file returns the list of commands as strings which are then saved as a parameter `commands` in the engine. This is stored to allow for saving and overwriting previous data without losing previous inputs and provides a valid starting point always.
         - The commands are then sent to the `handleCommand()` function of the game object one after the other to execute and get the game to the user's last known state before saving.
