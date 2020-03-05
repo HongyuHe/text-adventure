@@ -246,6 +246,18 @@ In this section we will describe two components of the system that hold differen
 ### Engine
 ![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
 
+The **Engine** class will be the main, top-level control point for the system as a whole. On system start the **Engine** will load the list of available games that the user can play so as to present them in a menu. This list will be determined by the **Initializer** as it is the **Initializer** that should be responsible for interactions with game files. If the **Initializer** fails at any point during this process, it should return a reason why and this error response should be printed to the console before the system exits.
+
+Once the game list has been loaded the user will be shown the main menu which waits either for the user to exit or for a game to be selected. If a game is selected, the **Engine** will notify the **Initializer** which game files to load, and will construct an associated **Game** class (this process is not shown here as it does not relate to the **Engine's** state or the transitions between them). Once the **Game** class is ready, the **Engine** will display the game's menu, which presents the user with the options: *start new game*, *load game*, and *quit*.
+
+If the user chooses to start a new game, the **Engine** will enter into the *game running* state, however if the user chooses to load a game, the **Engine** will notify the **Initializer** that it requires the list of previously played moves (if any), and will start the game without entering the *game running* state. This allows the **Engine** to feed previous player input into the game without requiring the user to type anything in. Since the game world is deterministic, this allows games to be loaded by replaying every action the player had previously typed and end up in the same state as when they saved the game originally.
+
+Once this load process has completed (or if the user chose to start a new game), the **Engine** enters the *Game Running* state, where it will act as a bridge between the **UIHandler** and the **Game** class. Commands typed by the user will first be sent to the **Engine** which will only send them to the **Game** class if appropriate. For example, if the player chooses to save their game, this should be handled by the **Engine** as it does not relate to knowledge the **Game** should have - the **Game** knows about **NPCs** and **Areas**, but not about files and folders.
+
+If the user chooses to quit the game whilst in the *Game Running* state, then the **Engine** should intercept this request and prompt the user to save their game. If the user chooses to do so, this is done just before exiting, otherwise the **Engine** just exits directly.
+
+Finally, if the game ends in the *Game Running* loop (i.e. the player obtains the item which ends the game, or the player dies), then the **Engine** will handle this appropriately - printing some message to let the user know what happened, and then returning back to the main menu to allow the user to choose to play a new game or exit.
+
 ### UIHandler
 The state machine diagram for the UIHandler is as follows :-
 ![State machine diagrams](./assets/state_ui.png "State machine diagram 1")
