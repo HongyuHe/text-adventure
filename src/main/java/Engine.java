@@ -65,12 +65,12 @@ public class Engine {
         String choice;
 
         choice = UI.displayMainMenu();
-        if(choice.compareTo("quit") == 0) {
+        if(choice.compareTo("Quit") == 0) {
             quit();
         }
 
         choice = UI.displayGamesMenu(loadGameList());
-        if(choice.compareTo("quit") == 0) {
+        if(choice.compareTo("Quit") == 0) {
             quit();
         } else {
             currentGame = new Game(choice); //TODO: set current game
