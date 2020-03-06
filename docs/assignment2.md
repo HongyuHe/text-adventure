@@ -357,11 +357,13 @@ follows the UML diagram, which greatly simplifies any further modifications we w
 While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
 needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
 
-- Initialisation: Before the game can get started, all entities should be deserialized from the json files. The way we do that is by creating
-a static Initializer to load json files and map them into game entities. Since non-static entities mainly provide two sets of services represented 
-by two interfaces namely, ICharacter and Interactable, and the entities providing Interactable services are relatively special in the sense that the 
-commands they take need to be dynamically bound with specified functionalities. To this end, after creating all entities from the json files, we populate 
-commands for those interactable entities based on the specification of their json metadata.
+- Initialisation: Before the game can get started, all entities should be deserialized from the json files. The way we do that is by creating 
+a static `Initializer` to load json files and map them into game entities. Since non-static entities mainly provide two sets of services represented 
+by two interfaces namely, `ICharacter` and `IInteractable`, and the entities providing `IInteractable` services are relatively special in the sense 
+that the commands they take need to be dynamically bound with specified functionalities. To this end, after creating all entities from the json files, 
+we populate commands for those interactable entities based on the specification of their json metadata, which enable users to create the commands 
+they want and map them to different functionalities. Later, to facilitate a range of behaviours of interactable entities, the `Command` interface with 
+compile-time polymorphism will come into play.
 
 - Areas: Initially, we came up with the idea of connecting our areas through the use of a graph. In this setting the areas would
 form the nodes of the graph, with the edges functioning as connections between the areas. We discovered, however, that this was not
