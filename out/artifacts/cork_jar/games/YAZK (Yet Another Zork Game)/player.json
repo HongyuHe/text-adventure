@@ -46,6 +46,11 @@
     "params": ["Player"]
   },
   {
+    "name": "go",
+    "function": "ChangeLocation",
+    "params": ["Player"]
+  },
+  {
     "name": "take",
     "function": "ChangeLocation",
     "params": ["Item", "inventory"]
