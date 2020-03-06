@@ -74,7 +74,7 @@
 											"top": 430,
 											"width": 287,
 											"height": 13,
-											"text": "Dictionary"
+											"text": "dictionary"
 										},
 										{
 											"_type": "LabelView",
@@ -284,7 +284,7 @@
 											"top": 382,
 											"width": 791,
 											"height": 13,
-											"text": "Entities"
+											"text": "entities"
 										},
 										{
 											"_type": "LabelView",
@@ -415,7 +415,7 @@
 											"top": 799,
 											"width": 277.82421875,
 											"height": 13,
-											"text": "cork.UIHandler"
+											"text": "UIHandler"
 										},
 										{
 											"_type": "LabelView",
@@ -695,7 +695,7 @@
 											"top": 303,
 											"width": 255.4169921875,
 											"height": 13,
-											"text": "cork.Initializer"
+											"text": "Initializer"
 										},
 										{
 											"_type": "LabelView",
@@ -944,7 +944,7 @@
 											"top": 655,
 											"width": 261.22509765625,
 											"height": 13,
-											"text": "cork.Game"
+											"text": "Game"
 										},
 										{
 											"_type": "LabelView",
@@ -1992,7 +1992,7 @@
 											"top": 55,
 											"width": 236.640625,
 											"height": 13,
-											"text": "cork.Engine"
+											"text": "Engine"
 										},
 										{
 											"_type": "LabelView",
@@ -2099,7 +2099,7 @@
 											"top": 95,
 											"width": 236.640625,
 											"height": 13,
-											"text": "+currentGame: cork.Game",
+											"text": "+currentGame: Game",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4183,7 +4183,7 @@
 											"top": 20,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -4584,7 +4584,7 @@
 											"top": 88,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -4782,7 +4782,7 @@
 											"top": 232,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -5814,7 +5814,7 @@
 											"top": -508,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6099,7 +6099,7 @@
 											"top": -500,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6365,7 +6365,7 @@
 											"top": -190,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -6564,7 +6564,7 @@
 											"top": -184,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -8634,7 +8634,7 @@
 											"top": 24,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -9551,7 +9551,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 729,
-									"top": 593,
+									"top": 577,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -9572,7 +9572,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 714,
-									"top": 593,
+									"top": 577,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -9592,8 +9592,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 759,
-									"top": 594,
+									"left": 758,
+									"top": 578,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -9610,7 +9610,7 @@
 							"tail": {
 								"$ref": "AAAAAAFwd03K9piopIw="
 							},
-							"points": "896:600;744:600;744:503",
+							"points": "896:584;744:584;744:503",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFwqyXTacyesiA="
@@ -9737,7 +9737,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 857,
-									"top": 741,
+									"top": 729,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -9758,7 +9758,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 842,
-									"top": 741,
+									"top": 729,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -9779,7 +9779,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 886,
-									"top": 742,
+									"top": 730,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -9796,7 +9796,7 @@
 							"tail": {
 								"$ref": "AAAAAAFwd013MJdYsCM="
 							},
-							"points": "936:832;936:800;872:800;872:696;744:696;744:503",
+							"points": "936:832;936:800;872:800;872:672;744:672;744:503",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFwqyYfes7YLII="
@@ -9866,7 +9866,7 @@
 											"top": -104,
 											"width": 80.90087890625,
 											"height": 13,
-											"text": "(from Entities)"
+											"text": "(from entities)"
 										},
 										{
 											"_type": "LabelView",
@@ -10034,7 +10034,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "cork.UIHandler",
+					"name": "UIHandler",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10223,7 +10223,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "cork.Initializer",
+					"name": "Initializer",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10342,7 +10342,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "cork.Game",
+					"name": "Game",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -10373,7 +10373,6 @@
 							}
 						}
 					],
-					"stereotype": "",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -10802,7 +10801,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "cork.Engine",
+					"name": "Engine",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -11798,7 +11797,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Entities",
+					"name": "entities",
 					"ownedElements": [
 						{
 							"_type": "UMLClass",
@@ -13214,7 +13213,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Dictionary"
+					"name": "dictionary"
 				},
 				{
 					"_type": "UMLClass",
@@ -13223,6 +13222,14 @@
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
 					"name": "Class1"
+				},
+				{
+					"_type": "UMLPackage",
+					"_id": "AAAAAAFwsbLyfj7RS3w=",
+					"_parent": {
+						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
+					},
+					"name": "cork"
 				}
 			]
 		}
