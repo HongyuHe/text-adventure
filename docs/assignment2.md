@@ -352,7 +352,8 @@ Through this process it should be clear to see that the results the player can r
 ## Implementation									
 Author(s): `Luca Taglialatela and Hongyu He`
 
-**UML to Implementation Strategy**<br>
+### UML to Implementation Strategy
+
 Once we started with the implementation of our prototype game, we decided to divide up the roles based on everyone's preference.
 The total coding workload was split up in to three groups; one group for constructing individual commands, another one working on
 all the entities in our game (e.g. areas, items, NPCs), and another group for combining everything into a Game object as well as
@@ -363,9 +364,10 @@ how to interact with it (e.g. what inputs does it accept and what outputs does i
 to specific groups. This worked pretty well as we very quickly had a lot of code, within each of the groups, which could run on itself.
 However, we also ran into the problem where parts of the code became so complex, they started conflicting with the simplicity of our UML diagram.
 This lead to the need for refactoring a lot of the code. While this was quite some work, it was totally worth it, because the code now strictly
-follows the UML diagram, which greatly simplifies any further modifications we wish to implement.<br>
+follows the UML diagram, which greatly simplifies any further modifications we wish to implement.
 
-**Key Solutions for Implementation**<br>
+### Key Solutions for Implementation*
+
 While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
 needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
 
@@ -399,12 +401,13 @@ commands we could have. We cut this down to three types; single word commands, c
 interact between the user and their environment.
 - Engine and UI: 
 
-**Main Execution**<br>
+### Main Execution
+
 Our current main Java class is Engine. As shown in our UML diagram it functions as intersection between all our other classes.
 Upon running Engine, the UI is initialised and presented to the user. They can then choose how to proceed next by selecting
 one of the games located in their /games folder.
 
-**Jar Location**<br>
+### Jar Location
 
 Maximum number of words for this section: 2000
 
