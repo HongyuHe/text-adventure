@@ -10,7 +10,7 @@ public class ChangeLocation extends Command {
     private IInteractable parent;
     private Set<String> args; // NOSONAR
 
-    public ChangeLocation(Set<String> args, IInteractable parent) {
+    ChangeLocation(Set<String> args, IInteractable parent) {
         this.args = args;
         this.parent = parent;
     }
