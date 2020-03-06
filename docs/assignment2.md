@@ -355,16 +355,6 @@ Through this process it should be clear to see that the results the player can r
 - The player misspelled the item name (or tried to use an item they are not holding) meaning the *handleCommand* exits early with a message like "You do not have a keye on you".
 
 
-
-For each sequence diagram you have to provide:
-- a title representing the specific situation you want to describe;
-- a figure representing the sequence diagram;
-- a textual description of all its elements in a narrative manner (you do not need to structure your description into tables in this case). We expect a detailed description of all the interaction partners, their exchanged messages, and the fragments of interaction where they are involved. For each sequence diagram we expect a description of about 300-500 words.
-
-The goal of your sequence diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 3000
-
 ## Implementation									
 Author(s): `Luca Taglialatela and Hongyu He`
 
