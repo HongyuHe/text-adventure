@@ -350,23 +350,17 @@ Through this process it should be clear to see that the results the player can r
 
 
 ## Implementation									
-Author(s): `Luca Taglialatela and Hongyu He`
+Author(s): `Jim Cuijpers, Luca Taglialatela and Hongyu He`
 
 ### UML to Implementation Strategy
 
-Once we started with the implementation of our prototype game, we decided to divide up the roles based on everyone's preference.
-The total coding workload was split up in to three groups; one group for constructing individual commands, another one working on
-all the entities in our game (e.g. areas, items, NPCs), and another group for combining everything into a Game object as well as
-creating the engine and user interface. This approach seemed very intuitive to us since each of the groups consisted of a part of the
-code which could interact as a stand-alone interface to the other parts. This gave us a lot of room for abstracting the workload.
-Not everyone had to be aware of what was happening inside the codebase of a group they were not working on, as long as they knew
-how to interact with it (e.g. what inputs does it accept and what outputs does it deliver). Initially, we had individual people assigned
-to specific groups. This worked pretty well as we very quickly had a lot of code, within each of the groups, which could run on itself.
-However, we also ran into the problem where parts of the code became so complex, they started conflicting with the simplicity of our UML diagram.
-This lead to the need for refactoring a lot of the code. While this was quite some work, it was totally worth it, because the code now strictly
-follows the UML diagram, which greatly simplifies any further modifications we wish to implement.
+Since the design of **Cork** was based around user customizability, it was imperative that the system was planned out in detail before any implementation happened - writing too much code before it was clear how the system would work would be very likely to lead to dead ends and a lot of refactoring. Likewise, it was important that the system was planned in detail so that confidence the system would actually work was high. Since **Cork** is intended to allow *modders* as a type of user, it meant that the design of the system had to reflect the creativity that the users might want to express. This required a highly prescriptive approach to planning to ensure all eventualities had been covered.
 
-### Key Solutions for Implementation*
+The system model was designed in stages starting from high-level, descriptive class diagrams which slowly evolved as they increased in detail towards the final, prescriptive design. Once the final design was reached the sequence diagrams were developed to ensure that the most important sequences in the system would work as intended (creating the game objects from the JSON files and handling user input interaction with the game world).
+
+The team was then split in two where three members wrote the code for the game whilst following the UML model, and the remaining two members finished the remaining UML diagrams and updated the UML when any issues were encountered (both from the team that worked on the code and during writing the report e.g. a function that was written into the UML originally might no longer have been relevant, or an overly prescriptive function was added that could be removed as it was not relevant to the model but only the code).
+
+### Key Solutions for Implementation
 
 While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
 needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
