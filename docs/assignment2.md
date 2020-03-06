@@ -307,7 +307,7 @@ In this section we will describe two crucial parts of the system during its func
 The UML diagram for the interaction is as follows :-
 ![State machine diagrams](./assets/init_sequence.PNG "State machine diagram 1")
 
-The game initlization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
+The game initialization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
 - Pre-Initialization: The engine being the main controller of the game invokes the initializer object by passing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
     - The `initializer` object is invoked and the initializer starts reading the JSON files available in the game path variable provided to it by means of the `loadGameFiles()` function.
     - The initializer *deserializes* the JSONs internally and maps them to the respective Entity types and loads a list of entities for each type. These are the Items, Player, Obstacles, Areas and NPCs.
@@ -327,6 +327,8 @@ The game initlization sequence is divided into two main parts. The upper half of
 ### User Input Handling
 
 ![User Input Handling](./assets/input_sequence.png "Seqeuence diagram for user input")
+
+The sequence diagram above follows the processes that occur after the user has typed in the command "use key door" during gameplay. To enable input to be captured the **Engine** must be inside the *runGame* loop, where it calls the *getInput* function inside the **UIHandler** which blocks waiting for the user to type something in. Once input has been received, the **UIHandler** returns the String input to the **Engine**. At this point control flow splits up based on what value the input holds. If the input is a meta-command (e.g. "save", "load", or "quit"), then the **Engine** deals with this command directly before continuing with the *runGame* loop's next iteration (note that, since this diagram is looking to describing the **Engine's** interaction with the game-world, only the alternate process for "save" is shown as, at this level of detail, the other meta-command functions would be identical).
 
 For each sequence diagram you have to provide:
 - a title representing the specific situation you want to describe;
