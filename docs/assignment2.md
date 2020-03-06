@@ -330,6 +330,32 @@ The game initialization sequence is divided into two main parts. The upper half 
 
 The sequence diagram above follows the processes that occur after the user has typed in the command "use key door" during gameplay. To enable input to be captured the **Engine** must be inside the *runGame* loop, where it calls the *getInput* function inside the **UIHandler** which blocks waiting for the user to type something in. Once input has been received, the **UIHandler** returns the String input to the **Engine**. At this point control flow splits up based on what value the input holds. If the input is a meta-command (e.g. "save", "load", or "quit"), then the **Engine** deals with this command directly before continuing with the *runGame* loop's next iteration (note that, since this diagram is looking to describing the **Engine's** interaction with the game-world, only the alternate process for "save" is shown as, at this level of detail, the other meta-command functions would be identical).
 
+If the user has typed some input that is relevant to the game-world itself (or, conversely, has typed input that is not relevant for the **Engine**) then the **Engine** will pass this input on to the **Game** class through the *handleCommand* function. The **Game** class is then responsible for finding the relevant game entities and commands and executing the action the player has requested, if possible.
+
+First, the **Game** class will try and find the object that owns the specified command. In the case of all commands, this will be the final name given, so for "use key door", the **Game** will search for an entity called "door" by asking the **GameEntities** class for it. The first path explored will assume such an **Entity** does exist, and then cover the result of no such **Entity** existing.
+
+Under the assumption that a relevant **Entity** has been found, the **Game** class then queries this class to see if it has a command bound to the given name - the name of the command will be the first word in the player's input. In the case of "use key door" the **Game** will look for a command with the name "use".
+
+Assuming such a command exists, the *door* object returns it and the **Game** class must now verify that the player is able to use the object they have referred to. In this case the **Player** object's inventory is queried for an **Item** with the name "key" - if the **Item** does not exist then the **Game** can terminate *handleCommand* early, returning with a message that informs the player what has happened, such as "You cannot use that item", allowing them to try something else.
+
+If the **Player** object is holding the specified **Item**, however, then the **Game** can call the *apply* function on the relevant **Command** object it has a reference to with the given argument being the **Item** specified in the input - in this case "key". Once the **Command's** *apply* function has completed it will return a String with an explanation of what happened (e.g. if they key unlocks the door, then *apply* might return "The door unlocks", whilst if it was the wrong key it could return "You try the key in the lock, but it doesn't fit"). This result is then returned from the *handleCommand* function and the **Engine** routes the message through to the **UIHandler** which then prints it to the player.
+
+The above explanation largely assumes that the given input leads to a successful command, however it is also possible that the player writes input that doesn't work, for example they might make spelling mistakes like "youse keey doro". In this instance, the system has been designed so that errors in the user input do not need to be handled explicitly, allowing the code written inside of **Game** to be free of exceptions and other error handling methods.
+
+At the first stage of command completion, it's possible for the target **Entity** to not exist - in this case, there is not **Entity** called "doro". Instead of returning a null value that would require explicit checking, the **GameEntities** object returns a dummy **Entity** that has no effect on the game world, but can still be interacted with in an expected manner.
+
+Next, it is possible that the command specified doesn't exist - in this case "youse" will not be found in the specified **Entity**. Note that if the player had spelled "door" correctly, the *door* object would return a dummy **Command** in the same way that the dummy **Entity** was returned previously (the dummy **Entity** will always return a dummy **Command**). This dummy **Command** can be used with the *apply* function just like any other, however the result returned will always signify that something went wrong (but no other action will be taken).
+
+Through this process it should be clear to see that the results the player can receive will be something like the following:
+
+- The player tried something successfully, and gets a message like "The door unlocks".
+- The player misspelled or used the wrong target entity's name, upon which a dummy **Entity** provides a dummy **Command** that returns something like "You cannot see a doro here".
+- The player misspelled or used the wrong name for the command, meaning a real **Entity** returns a dummy **Command** which returns something like "You cannot do that".
+- The player used the wrong item name, meaning a real **Entity** returns a real **Command** that returns something like "You cannot use the apple to unlock the door" (assuming the apple is in their inventory)
+- The player misspelled the item name (or tried to use an item they are not holding) meaning the *handleCommand* exits early with a message like "You do not have a keye on you".
+
+
+
 For each sequence diagram you have to provide:
 - a title representing the specific situation you want to describe;
 - a figure representing the sequence diagram;
