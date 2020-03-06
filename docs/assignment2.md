@@ -350,7 +350,7 @@ Through this process it should be clear to see that the results the player can r
 
 
 ## Implementation									
-Author(s): `Luca Taglialatela and Hongyu He`
+Author(s): `Jim Cuijpers, Luca Taglialatela and Hongyu He`
 
 ### UML to Implementation Strategy
 
@@ -366,7 +366,7 @@ However, we also ran into the problem where parts of the code became so complex,
 This lead to the need for refactoring a lot of the code. While this was quite some work, it was totally worth it, because the code now strictly
 follows the UML diagram, which greatly simplifies any further modifications we wish to implement.
 
-### Key Solutions for Implementation*
+### Key Solutions for Implementation
 
 While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
 needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
