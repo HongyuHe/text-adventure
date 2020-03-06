@@ -379,14 +379,19 @@ would have also caused a conflict with the initialization of our game as it woul
 
 ### Main Execution
 
-Our current main Java class is Engine. As shown in our UML diagram it functions as intersection between all our other classes.
+Our current main Java class is Engine. (Here: `src/main/java/cork/Engine.java`) As shown in our UML diagram it functions as intersection between all our other classes.
 Upon running Engine, the UI is initialised and presented to the user. They can then choose how to proceed next by selecting
-one of the games located in their /games folder.
+one of the games located in their `/games` folder which is in the directory as the executable JAR.
 
 ### Jar Location
+- The location of the JAR file is:
+https://github.com/HongyuHe/text-adventure/blob/Assignment2/out/artifacts/cork_jar/software-design-vu-2020.main.jar
+<br>[On disk: `/out/artifacts/cork_jar/`]
 
-Maximum number of words for this section: 2000
+- **_It is imperative that the `/games` folder is in the same directory as the JAR file, otherwise the engine will not find any games to run!_**
 
-## References
+### Execution Video
 
-References, if needed.
+[![Execution Video](https://img.youtube.com/vi/qOCYWU9dryA/0.jpg)](https://www.youtube.com/watch?v=qOCYWU9dryA&feature=youtu.be)
+
+
