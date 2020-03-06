@@ -56,6 +56,14 @@ public class Area extends Entity {
 
         d.delete(d.length() - 2, d.length());
 
+        if (!npcs.isEmpty()) { d.append("\nYou can see the following NPCs here:\n"); }
+        for (String item : npcs) { d.append(item).append(", "); }
+
+        if (!obstacles.isEmpty()) { d.append("\nYou can see the following obstacles here:\n"); }
+        for (String item : obstacles) { d.append(item).append(", "); }
+
+        d.delete(d.length() - 2, d.length());
+
         return d.toString();
     }
 

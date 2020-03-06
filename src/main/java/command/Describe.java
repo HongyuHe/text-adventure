@@ -19,4 +19,6 @@ public class Describe extends Command {
 
         return ge.findEntityOrElse(object).getDescription();
     }
+
+
 }

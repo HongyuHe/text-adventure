@@ -32,7 +32,7 @@
   },
   {
     "name": "interact",
-    "function": "Describe",
+    "function": "Interact",
     "params": ["NPC"]
   },
   {

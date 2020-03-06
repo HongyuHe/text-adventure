@@ -1,9 +1,11 @@
 [{
   "type": "NPC",
   "name": "chad",
-  "description": "The chad tells you to stay away from his princess.",
+  "description": "A strong looking chad with big muscles.",
+  "interaction": "The chad tells you to stay away from his princess.",
   "inventory": [],
   "active": true,
+  "isFriendly": true,
   
   "stat": {
     "name": "health",
@@ -13,9 +15,11 @@
 {
   "type": "NPC",
   "name": "princess",
-  "description": "The princess tells you that you were warned to stay away from her!",
+  "description": "A harmless looking beautiful princess.",
+  "interaction": "The princess tells you that you were warned to stay away from her!",
   "inventory": [],
   "active": true,
+  "isFriendly": true,
   
   "stat": {
     "name": "health",

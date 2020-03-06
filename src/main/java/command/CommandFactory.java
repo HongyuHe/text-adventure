@@ -13,7 +13,8 @@ public final class CommandFactory {
             case "ChangeStat": return new ChangeStat(cmd.getParams(), parent);
             case "ChangeState": return new ChangeState(cmd.getParams(), parent);
             case "Describe": return new Describe(cmd.getParams(), parent);
-            default: return null;
+            case "Interact": return new Interact(cmd.getParams(), parent);
+            default: return new DefaultCommand();
         }
     }
 }
