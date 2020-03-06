@@ -1,5 +1,8 @@
 package entity;
 
+import command.Command;
+import command.DefaultCommand;
+
 public class GameOverItem extends Entity {
     private String type;
     private String name;
@@ -38,4 +41,9 @@ public class GameOverItem extends Entity {
     public Boolean isConsumable() { return consumable; }
 
     public Stat getStat() { return stat; }
+
+    @Override
+    public Command findCommandOrElse(String cmd) {
+        return new DefaultCommand();
+    }
 }

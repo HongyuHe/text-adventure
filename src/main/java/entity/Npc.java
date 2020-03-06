@@ -1,5 +1,8 @@
 package entity;
 
+import command.Command;
+import command.DefaultCommand;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,4 +45,9 @@ public class Npc extends Character {
     public Set<String> getInventory() { return new HashSet<>(inventory); }
 
     public Stat getStat() { return stat; }
+
+    @Override
+    public Command findCommandOrElse(String cmd) {
+        return new DefaultCommand();
+    }
 }

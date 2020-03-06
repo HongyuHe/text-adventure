@@ -29,7 +29,7 @@ public class Game {
         } else if(args.length == 2) {
             result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
         } else if(args.length == 3) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
+            result = gameEntities.findEntityOrElse(args[2]).findCommandOrElse(args[0]).apply(args[1], gameEntities);
         }
 
         return result;

@@ -95,5 +95,15 @@ public class Initializer {
             actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, player));
         }
         player.setActions(new HashMap<>(actions));
+
+        Map<String, Obstacle> obstacles = entities.getObstacleEntities();
+
+        for (Map.Entry<String,Obstacle> obstacle : obstacles.entrySet()) {
+            HashMap<String, Command> t_actions = new HashMap<>();
+            for (CommandBlueprint cmd : obstacle.getValue().getCommands()) {
+                t_actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, obstacle.getValue()));
+            }
+            obstacle.getValue().setActions(new HashMap<>(t_actions));
+        }
     }
 }

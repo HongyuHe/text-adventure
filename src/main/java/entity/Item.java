@@ -1,5 +1,8 @@
 package entity;
 
+import command.Command;
+import command.DefaultCommand;
+
 public class Item extends Entity {
     private String type;
     private String name;
@@ -38,6 +41,11 @@ public class Item extends Entity {
 
     @Override
     public Boolean isActive() { return active; }
+
+    @Override
+    public Command findCommandOrElse(String cmd) {
+        return new DefaultCommand();
+    }
 
     public Boolean isConsumable() { return consumable; }
 

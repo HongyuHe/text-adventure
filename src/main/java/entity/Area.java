@@ -1,5 +1,8 @@
 package entity;
 
+import command.Command;
+import command.DefaultCommand;
+
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
@@ -66,5 +69,10 @@ public class Area extends Entity {
     public Set<String> getNpcs() { return npcs; }
 
     public Map<String, String> getConnections() { return connections; }
+
+    @Override
+    public Command findCommandOrElse(String cmd) {
+        return new DefaultCommand();
+    }
 
 }

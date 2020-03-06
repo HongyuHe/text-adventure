@@ -1,5 +1,8 @@
 package entity;
 
+import command.Command;
+import command.DefaultCommand;
+
 public class EmptyEntity extends Entity {
     private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();
 
@@ -25,5 +28,10 @@ public class EmptyEntity extends Entity {
     @Override
     public Boolean isActive() {
         return false;
+    }
+
+    @Override
+    public Command findCommandOrElse(String cmd) {
+        return new DefaultCommand();
     }
 }
