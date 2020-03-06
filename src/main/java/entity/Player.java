@@ -5,7 +5,7 @@ import deserialiser.CommandBlueprint;
 
 import java.util.*;
 
-public class Player extends Character implements IInteractable {
+public class Player extends Entity implements ICharacter, IInteractable {
     private String type;
     private String name;
     private String description;

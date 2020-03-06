@@ -3,7 +3,7 @@ package entity;
 import java.util.HashSet;
 import java.util.Set;
 
-public class Npc extends Character {
+public class Npc extends Entity implements ICharacter {
     private String type;
     private String name;
     private String description;
