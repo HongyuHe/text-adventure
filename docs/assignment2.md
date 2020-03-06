@@ -338,16 +338,58 @@ The goal of your sequence diagrams is both descriptive and prescriptive, so put 
 Maximum number of words for this section: 3000
 
 ## Implementation									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): Luca Taglialatela
 
-In this chapter you will describe the following aspects of your project:
 - the strategy that you followed when moving from the UML models to the implementation code;
-- the key solutions that you applied when implementing your system (for example, how you implemented the syntax highlighting feature of your code snippet manager, how you manage fantasy soccer matches, etc.);
+- the key solutions that you applied when implementing your system (for example, how you implemented the syntax highlighting feature of your code
+snippet manager, how you manage fantasy soccer matches, etc.);
 - the location of the main Java class needed for executing your system in your source code;
 - the location of the Jar file for directly executing your system;
 - the 30-seconds video showing the execution of your system (you can embed the video directly in your md file on GitHub).
 
-IMPORTANT: remember that your implementation must be consistent with your UML models. Also, your implementation must run without the need from any other external software or tool. Failing to meet this requirement means 0 points for the implementation part of your project.
+**UML to Implementation Strategy**<br>
+Once we started with the implementation of our prototype game, we decided to divide up the roles based on everyone's preference.
+The total coding workload was split up in to three groups; one group for constructing individual commands, another one working on
+all the entities in our game (e.g. areas, items, NPCs), and another group for combining everything into a Game object as well as
+creating the engine and user interface. This approach seemed very intuitive to us since each of the groups consisted of a part of the
+code which could interact as a stand-alone interface to the other parts. This gave us a lot of room for abstracting the workload.
+Not everyone had to be aware of what was happening inside the codebase of a group they were not working on, as long as they knew
+how to interact with it (e.g. what inputs does it accept and what outputs does it deliver). Initially, we had individual people assigned
+to specific groups. This worked pretty well as we very quickly had a lot of code, within each of the groups, which could run on itself.
+However, we also ran into the problem where parts of the code became so complex, they started conflicting with the simplicity of our UML diagram.
+This lead to the need for refactoring a lot of the code. While this was quite some work, it was totally worth it, because the code now strictly
+follows the UML diagram, which greatly simplifies any further modifications we wish to implement.<br>
+
+**Key Solutions for Implementation**<br>
+While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
+needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
+- Areas: Initially, we came up with the idea of connecting our areas through the use of a graph. In this setting the areas would
+form the nodes of the graph, with the edges functioning as connections between the areas. We discovered, however, that this was not
+as good of an idea as we had thought at first. Representing the areas in a graph would first of all have meant that we would lose out
+on the simplicity of just having four different directions (north, east, south and west) to work with. Additionally, this implementation
+would also cause conflict during the initialisation of our game unless we were to trade-off for more added complexity. This is because 
+the initialisation of our game relies on reading in data from a JSON file. Part of the data included in these JSON files are related
+to the various areas which exist inside the game. If we were to use a graph to represent all areas and their connections, then the nodes
+and edges would have to be included in the JSON as well. The conflict is then caused by the order in which data is read from the JSON.
+Finally, we also had to figure out how to make a graph representation work with the concept of having obstacles blocking certain areas
+from being accessible. All these downsides of using a graph did not weigh out well against the simplicity and robustness of instead 
+giving each area four different directions (north, east, south, west), each containing information about what connects to it in that
+specific direction.
+- Commands: We decided on creating a command factory for implementing commands in our game. The idea behind the command factory is that
+it takes in some arguments (user input in our case) and returns a corresponding command which can then be used for the game. Before the
+factory could be made working, however, we needed to decide what commands the game should support. For this we ended up taking the
+generic approach, because it complements the concept of modularity very well. The list of commands that we had up until then, was anything
+but generic, so we had to look at each command individually and figure out which ones could be merged and which ones could not. Similarly,
+not all of the commands needed to have the same structure type, but for the command factory it was important to limit the various types of
+commands we could have. We cut this down to three types; single word commands, commands which interact with the user and commands which
+interact between the user and their environment.
+
+**Main Execution**<br>
+Our current main Java class is Engine. As shown in our UML diagram it functions as intersection between all our other classes.
+Upon running Engine, the UI is initialised and presented to the user. They can then choose how to proceed next by selecting
+one of the games located in their /games folder.
+
+**Jar Location**<br>
 
 Maximum number of words for this section: 2000
 
