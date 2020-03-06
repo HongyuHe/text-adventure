@@ -357,26 +357,14 @@ follows the UML diagram, which greatly simplifies any further modifications we w
 While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
 needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
 
-- Initialisation: Before the game can get started, all entities should be deserialized from the json files. The way we do that is by creating 
-a static `Initializer` to load json files and map them into game entities. Since non-static entities mainly provide two sets of services represented 
-by two interfaces namely, `ICharacter` and `IInteractable`, and the entities providing `IInteractable` services are relatively special in the sense 
-that the commands they take need to be dynamically bound with specified functionalities. To this end, after creating all entities from the json files, 
-we populate commands for those interactable entities based on the specification of their json metadata, which enable users to create the commands 
-they want and map them to different functionalities. Later, to facilitate a range of behaviours of interactable entities, the `Command` interface with 
-compile-time polymorphism will come into play.
+- Initialization: This was one of the most challenging module we had to work on. Our idea was to make use of JSON files and map them to Java classes. This proved to be a bit more work than expected. We had to built deserializers making use of JSON paresers and at the same time had to make sure that that the final deserialized objects mapped perfectly to the objects. For this we first built the JSON files for the game and the `Entity` classes corresponding to these JSON files in Java by following the UML. We then built the deserializers using the `JsonDeserializer` provided by Google's `gson` library to map the JSON to the actual classes. Once each entity correctly mapped to the JSON, it was a matter of building the dictionary-style class called `GameEntities` for it, which stored all the different `Entity` objects in maps. This initialization was abstracted away into a class called `Initializer` which just built the `GameEntities` object and we saved this object for the entire game.
 
 - Areas: Initially, we came up with the idea of connecting our areas through the use of a graph. In this setting the areas would
 form the nodes of the graph, with the edges functioning as connections between the areas. We discovered, however, that this was not
 as good of an idea as we had thought at first. Representing the areas in a graph would first of all have meant that we would lose out
 on the simplicity of just having four different directions (north, east, south and west) to work with. Additionally, this implementation
-would also cause conflict during the initialisation of our game unless we were to trade-off for more added complexity. This is because 
-the initialisation of our game relies on reading in data from a JSON file. Part of the data included in these JSON files are related
-to the various areas which exist inside the game. If we were to use a graph to represent all areas and their connections, then the nodes
-and edges would have to be included in the JSON as well. The conflict is then caused by the order in which data is read from the JSON.
-Finally, we also had to figure out how to make a graph representation work with the concept of having obstacles blocking certain areas
-from being accessible. All these downsides of using a graph did not weigh out well against the simplicity and robustness of instead 
-giving each area four different directions (north, east, south, west), each containing information about what connects to it in that
-specific direction.
+would have also caused a conflict with the initialization of our game as it would require building a graph and then utilizing it correctly with our dictionary-based structure. This would mean maintaining to different versions of the same information in different formats with no additional value. Hence with these ideas in mind, we implemented the feature `F3` by designing a connection set which held an area and its direction. (for e.g. an area named forest having a connection to a castle in the northern direction is represented as `{"north": "castle", "castle": "castle"}`). This representation allowed us to access a given area using its direction or its name as both are held as keys pointing to the same area. 
+
 - Commands: We decided on creating a command factory for implementing commands in our game. The idea behind the command factory is that
 it takes in some arguments (user input in our case) and returns a corresponding command which can then be used for the game. Before the
 factory could be made working, however, we needed to decide what commands the game should support. For this we ended up taking the
@@ -385,6 +373,7 @@ but generic, so we had to look at each command individually and figure out which
 not all of the commands needed to have the same structure type, but for the command factory it was important to limit the various types of
 commands we could have. We cut this down to three types; single word commands, commands which interact with the user and commands which
 interact between the user and their environment.
+
 - Engine and UI: 
 
 **Main Execution**<br>
