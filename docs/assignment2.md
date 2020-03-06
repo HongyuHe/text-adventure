@@ -6,11 +6,15 @@ Maximum number of words for this document: 12000
 
 **Format**: establish formatting conventions when describing your models in this document. For example, you style the name of each class in bold, whereas the attributes, operations, and associations as underlined text, objects are in italic, etc.
 
-### Implemented feature
+### Implemented features
+
+The list of features that have been implemented can be found in the table below. A more profound description of these features can be found later in the document under the **Implementation** section.
 
 | ID  | Short name  | Description  |
 |---|---|---|
-| F1  | Tags | Code snippets can be tagged via freely-defined labels called tags  |
+| F2  | Movements | The player can move between areas freely using the `move [direction / area]` command. No obstacles have been implemented yet. |
+| F3  | Areas | Two areas are connected by means of an edge. Each edge is defined using a connection set entry comprising of a direction and the name of the connected area. Each area's (unique) description is also displayed once the player enter's the area. |
+
 
 ### Used modelling tool
 [StarUML](http://staruml.io/)
