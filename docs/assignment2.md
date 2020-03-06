@@ -13,7 +13,7 @@ The list of features that have been implemented can be found in the table below.
 | ID  | Short name  | Description  |
 |---|---|---|
 | F2  | Movements | The player can move between areas freely using the `move [direction / area]` command. No obstacles have been implemented yet. |
-| F3  | Areas | Two areas are connected by means of an edge. Each edge is defined using a connection set entry comprising of a direction and the name of the connected area. Each area's (unique) description is also displayed once the player enter's the area. |
+| F3  | Areas | Two areas are connected by means of an edge. Each edge is defined using a connection set entry comprising of a direction and the name of the connected area. The area's (unique) description is also displayed once the player enters that area. |
 
 
 ### Used modelling tool
