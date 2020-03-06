@@ -338,14 +338,7 @@ The goal of your sequence diagrams is both descriptive and prescriptive, so put 
 Maximum number of words for this section: 3000
 
 ## Implementation									
-Author(s): Luca Taglialatela
-
-- the strategy that you followed when moving from the UML models to the implementation code;
-- the key solutions that you applied when implementing your system (for example, how you implemented the syntax highlighting feature of your code
-snippet manager, how you manage fantasy soccer matches, etc.);
-- the location of the main Java class needed for executing your system in your source code;
-- the location of the Jar file for directly executing your system;
-- the 30-seconds video showing the execution of your system (you can embed the video directly in your md file on GitHub).
+Author(s): `Luca Taglialatela and Hongyu He`
 
 **UML to Implementation Strategy**<br>
 Once we started with the implementation of our prototype game, we decided to divide up the roles based on everyone's preference.
@@ -363,6 +356,7 @@ follows the UML diagram, which greatly simplifies any further modifications we w
 **Key Solutions for Implementation**<br>
 While a game such as Cork may look simple at first glance, a lot is going on in the background. There have been lots of details which
 needed special attention and thought before their implementation, because a wrong approach could be very expensive later on.
+- Initialisation: WRITE HERE HONGYU
 - Areas: Initially, we came up with the idea of connecting our areas through the use of a graph. In this setting the areas would
 form the nodes of the graph, with the edges functioning as connections between the areas. We discovered, however, that this was not
 as good of an idea as we had thought at first. Representing the areas in a graph would first of all have meant that we would lose out
@@ -383,6 +377,7 @@ but generic, so we had to look at each command individually and figure out which
 not all of the commands needed to have the same structure type, but for the command factory it was important to limit the various types of
 commands we could have. We cut this down to three types; single word commands, commands which interact with the user and commands which
 interact between the user and their environment.
+- Engine and UI: 
 
 **Main Execution**<br>
 Our current main Java class is Engine. As shown in our UML diagram it functions as intersection between all our other classes.
