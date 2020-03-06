@@ -375,7 +375,7 @@ would have also caused a conflict with the initialization of our game as it woul
 
 - Commands: We wanted the modders to build custom commands and name them as they liked. This is mentioned as a feature `F1B` in the `assignment1.md` file. To do this we had to first deserialize each command mentioned in the JSON to a `commandBlueprint` that held the name and the type of command. This `commandBlueprint` was useless to us in-game in its original form as it was just pure data. To convert this into usable command objects we built a `populateCommands()` function into the `Initializer` that took a completed `GameEntities` object as a parameter and built the corresponding command objects using the `commandBlueprints` for the player and each obstacle. This allowed us to have support multiple commands with the same functionality (for e.g. `go` and `move` both implement feature `F2`)  
 
-- Engine and UI: 
+- Engine and UI: The **Engine** was designed to be the heart of the **Cork** game system, and so it acts as the main point of control for the system's state (modelled in the state machine diagrams above). The **UIHandler** had a state that was closely tied into the **Engine's** state - since the **UIHandler's** responsibility was only about presenting output and reading input, it made sense to allow the state of the **Engine** to control the state of the UI (thus encapsulating all system state into one location). In this way the descriptions given in the UML were adhered to - the **Engine** follows a specific process when moving from menu to menu, and the **UIHandler** can only show the menus it is asked to when it is asked to.
 
 ### Main Execution
 
