@@ -1,11 +1,13 @@
 package deserialiser;
 
+import com.google.gson.reflect.TypeToken;
 import entity.Player;
 import entity.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class PlayerDeserializer implements JsonDeserializer<Player> {
 
@@ -16,11 +18,6 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
 
         JsonObject jsonObject = json.getAsJsonObject();
 
-        Stat stat = new Stat(
-                jsonObject.get("stat").getAsJsonObject().get("name").getAsString(),
-                jsonObject.get("stat").getAsJsonObject().get("value").getAsInt()
-        );
-
         return new Player(
                 jsonObject.get("type").getAsString(),
                 jsonObject.get("name").getAsString().toLowerCase(),
@@ -28,7 +25,7 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
                 createArray(jsonObject.get("inventory").getAsJsonArray()),
                 jsonObject.get("active").getAsBoolean(),
                 jsonObject.get("currentLocation").getAsString(),
-                stat,
+                createMap(jsonObject.get("stats").getAsJsonObject()),
                 createCommandArray(jsonObject.get("commands").getAsJsonArray())
 
         );
@@ -64,5 +61,16 @@ public class PlayerDeserializer implements JsonDeserializer<Player> {
                 jObject.get("function").getAsString(),
                 createArray(jObject.get("params").getAsJsonArray())
         );
+    }
+
+    private HashMap<String, Integer> createMap(JsonObject jObject) {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        if (jObject != null) {
+            Type type = new TypeToken<HashMap<String, Integer>>(){}.getType();
+            map = new Gson().fromJson(jObject.getAsString(), type);
+        }
+
+        return map;
     }
 }

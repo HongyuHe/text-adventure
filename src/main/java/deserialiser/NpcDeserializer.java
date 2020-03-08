@@ -1,10 +1,12 @@
 package deserialiser;
 
+import com.google.gson.reflect.TypeToken;
 import entity.Npc;
 import entity.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,18 +18,13 @@ public class NpcDeserializer implements JsonDeserializer<Npc> {
 
         JsonObject jsonObject = json.getAsJsonObject();
 
-        Stat stat = new Stat(
-                jsonObject.get("stat").getAsJsonObject().get("name").getAsString(),
-                jsonObject.get("stat").getAsJsonObject().get("value").getAsInt()
-        );
-
         return new Npc(
                 jsonObject.get("type").getAsString(),
                 jsonObject.get("name").getAsString().toLowerCase(),
                 jsonObject.get("description").getAsString(),
                 createArray(jsonObject.get("inventory").getAsJsonArray()),
                 jsonObject.get("active").getAsBoolean(),
-                stat
+                createMap(jsonObject.get("stats").getAsJsonObject())
         );
 
     }
@@ -41,6 +38,17 @@ public class NpcDeserializer implements JsonDeserializer<Npc> {
         }
 
         return arrayList;
+    }
+
+    private HashMap<String, Integer> createMap(JsonObject jObject) {
+        HashMap<String, Integer> map = new HashMap<>();
+
+        if (jObject != null) {
+            Type type = new TypeToken<HashMap<String, Integer>>(){}.getType();
+            map = new Gson().fromJson(jObject.getAsString(), type);
+        }
+
+        return map;
     }
 }
 
