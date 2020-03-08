@@ -1,8 +1,7 @@
 package command;
 
 import dictionary.GameEntities;
-import entity.ICharacter;
-import entity.IInteractable;
+import entity.*;
 
 import java.util.Map;
 import java.util.Set;
@@ -28,5 +27,25 @@ public class ListStats extends Command {
         for (final Map.Entry<String, Integer> stat : p.getStats().entrySet()) { contents.append(String.format("\t%s: %d%n", stat.getKey(), stat.getValue())); }
 
         return contents.toString();
+    }
+
+    public String apply(final Area object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Item object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Npc object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Obstacle object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Player object, final GameEntities ge) {
+        return "";
     }
 }

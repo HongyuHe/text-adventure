@@ -1,8 +1,7 @@
 package command;
 
 import dictionary.GameEntities;
-import entity.ICharacter;
-import entity.IInteractable;
+import entity.*;
 
 import java.util.Set;
 
@@ -29,5 +28,25 @@ public class ListContents extends Command {
         if (!p.getInventory().isEmpty()) { contents.delete(contents.length() - 2, contents.length()); }
 
         return contents.toString();
+    }
+
+    public String apply(final Area object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Item object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Npc object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Obstacle object, final GameEntities ge) {
+        return "";
+    }
+
+    public String apply(final Player object, final GameEntities ge) {
+        return "";
     }
 }
