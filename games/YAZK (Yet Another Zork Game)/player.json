@@ -52,8 +52,13 @@
   },
   {
     "name": "take",
-    "function": "ChangeLocation",
+    "function": "TakeItem",
     "params": ["Item", "inventory"]
-  }] 
+  },
+  {
+    "name": "drop",
+    "function": "DropItem",
+    "params": ["Item", "inventory"]
+  }]
   
 }
