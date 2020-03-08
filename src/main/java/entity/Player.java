@@ -53,6 +53,15 @@ public class Player extends Entity implements ICharacter, IInteractable {
     public Set<String> getInventory() { return new HashSet<>(inventory); }
 
     @Override
+    public void addToInventory(final String object) { inventory.add(object); }
+
+    @Override
+    public void removeFromInventory(String object) { inventory.remove(object); }
+
+    @Override
+    public boolean hasInInventory(String object) { return inventory.contains(object); }
+
+    @Override
     public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
 
     @Override

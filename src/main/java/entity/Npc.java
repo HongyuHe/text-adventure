@@ -41,5 +41,14 @@ public class Npc extends Entity implements ICharacter {
     @Override
     public Set<String> getInventory() { return new HashSet<>(inventory); }
 
+    @Override
+    public void addToInventory(String object) { inventory.add(object); }
+
+    @Override
+    public void removeFromInventory(String object) { inventory.remove(object); }
+
+    @Override
+    public boolean hasInInventory(String object) { return inventory.contains(object); }
+
     public Stat getStat() { return stat; }
 }

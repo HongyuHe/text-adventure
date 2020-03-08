@@ -40,6 +40,19 @@ public class EmptyEntity extends Entity implements ICharacter, IInteractable {
     }
 
     @Override
+    public void addToInventory(String object) {
+        // Do nothing
+    }
+
+    @Override
+    public void removeFromInventory(String object) {
+        // Do nothing
+    }
+
+    @Override
+    public boolean hasInInventory(String object) { return false; }
+
+    @Override
     public String getCurrentLocation() {
         return "";
     }

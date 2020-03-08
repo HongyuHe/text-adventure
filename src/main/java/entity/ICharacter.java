@@ -2,7 +2,13 @@ package entity;
 
 import java.util.Set;
 
-interface ICharacter {
+public interface ICharacter {
 
-    public abstract Set<String> getInventory();
+    Set<String> getInventory();
+
+    void addToInventory(final String object);
+
+    void removeFromInventory(final String object);
+
+    boolean hasInInventory(final String object);
 }
