@@ -4,12 +4,16 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Engine {
     enum State {HOME_SCREEN, MAIN_MENU, GAME_MENU, GAME_RUNNING, QUIT }
+
+    private static final String GAMES_DIRECTORY_PATH = "./games";
+    private static final String SAVE_FILE_NAME = "save.txt";
 
     private static final String QUIT_COMMAND = "quit";
     private static final String SAVE_COMMAND = "save";
@@ -100,8 +104,6 @@ public class Engine {
     }
 
     private List<String> loadGameList() throws IOException {
-        final String GAMES_DIRECTORY_PATH = "./games";
-
         try (Stream<Path> paths = Files.find(Paths.get(GAMES_DIRECTORY_PATH), 1, (path, attributes) -> attributes.isDirectory())) {
             List<String> gameList = paths.map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
@@ -118,7 +120,17 @@ public class Engine {
     }
 
     private void saveGame() {
-        uiHandler.print("Saving is not yet supported. Hit enter to continue.");
+        final String SAVE_PATH = String.format("%s/%s/%s", GAMES_DIRECTORY_PATH, gameName, SAVE_FILE_NAME);
+
+        try {
+            Path file = Paths.get(SAVE_PATH);
+            Files.write(file, currentGame.getPreviousCommands());
+            uiHandler.print("Game saved.");
+        }
+        catch (IOException e) {
+            uiHandler.displayError("Game could not be saved.");
+        }
+
         uiHandler.getInput();
     }
 
