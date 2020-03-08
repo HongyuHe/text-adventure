@@ -15,7 +15,7 @@ public class Game {
 
     boolean playerVictory() { return gameEntities.getPlayer().has(gameEntities.getGameOverItem().getName()); }
 
-    List<String> getPreviousCommands() { return previousCommands; }
+    List<String> getPreviousCommands() { return new ArrayList<>(previousCommands); }
 
     String handleCommand(String input) {
         String  result = "";
