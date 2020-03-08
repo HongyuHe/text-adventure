@@ -1,6 +1,13 @@
 package entity;
 
-public class EmptyEntity extends Entity {
+import command.Command;
+import command.DefaultCommand;
+import deserialiser.CommandBlueprint;
+
+import java.util.Collections;
+import java.util.Set;
+
+public class EmptyEntity extends Entity implements ICharacter, IInteractable {
     private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();
 
     private EmptyEntity(){}
@@ -25,5 +32,30 @@ public class EmptyEntity extends Entity {
     @Override
     public Boolean isActive() {
         return false;
+    }
+
+    @Override
+    public Set<String> getInventory() {
+        return Collections.emptySet();
+    }
+
+    @Override
+    public String getCurrentLocation() {
+        return "";
+    }
+
+    @Override
+    public void setCurrentLocation(String newLocation) {
+        // Do nothing
+    }
+
+    @Override
+    public Set<CommandBlueprint> getCommands() {
+        return Collections.emptySet();
+    }
+
+    @Override
+    public Command findCommandOrElse(String cmd) {
+        return new DefaultCommand();
     }
 }
