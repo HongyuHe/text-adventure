@@ -1,8 +1,6 @@
 package entity;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Area extends Entity {
     private String type;
@@ -13,6 +11,14 @@ public class Area extends Entity {
     private Set<String> obstacles;
     private Set<String> npcs;
     private Map<String, String> connections;
+
+    public Area()
+    {
+        new Area("", "", false, "",
+            Collections.emptySet(), Collections.emptySet(),
+            Collections.emptySet(), Collections.emptyMap()
+        );
+    }
 
     public Area(String type, // NOSONAR - 8 parameters are required to allow deserialization
                 String name,
@@ -48,10 +54,13 @@ public class Area extends Entity {
     {
         StringBuilder d = new StringBuilder(description);
 
-        if (!inventory.isEmpty()) { d.append("\nYou can see the following items here:\n"); }
-        for (String item : inventory) { d.append(item).append(", "); }
+        if (!npcs.isEmpty()) { d.append("\nYou can see the following people here:\n"); }
+        for (final String npc : npcs) { d.append(npc).append(", "); }
+        if (!npcs.isEmpty()) { d.delete(d.length() - 2, d.length()); }
 
-        d.delete(d.length() - 2, d.length());
+        if (!inventory.isEmpty()) { d.append("\nYou can see the following items here:\n"); }
+        for (final String item : inventory) { d.append(item).append(", "); }
+        if (!inventory.isEmpty()) { d.delete(d.length() - 2, d.length()); }
 
         return d.toString();
     }
@@ -59,12 +68,18 @@ public class Area extends Entity {
     @Override
     public Boolean isActive() { return active; }
 
-    public Set<String> getInventory() { return inventory; }
+    public Set<String> getInventory() { return new HashSet<>(inventory); }
 
-    public Set<String> getObstacles() { return obstacles; }
+    public boolean hasInInventory(final String object) { return inventory.contains(object); }
+
+    public void removeFromInventory(final String object) { inventory.remove(object); }
+
+    public void addToInventory(final String object) { inventory.add(object); }
+
+    public Set<String> getObstacles() { return new HashSet<>(obstacles); }
 
     public Set<String> getNpcs() { return npcs; }
 
-    public Map<String, String> getConnections() { return connections; }
+    public Map<String, String> getConnections() { return new HashMap<>(connections); }
 
 }
