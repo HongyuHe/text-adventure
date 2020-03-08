@@ -23,11 +23,15 @@ public class UIHandler {
             "             ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝\n" +
             "\n";
 
-    private static final String DEFAULT_PROMPT = ">";
-    private static final String CLEAR_BOOKMARK = "clear";
-    private static final String QUIT_OPTION    = "Quit";
-    private static final List<String> HOME_SCREEN_OPTIONS = Arrays.asList("Continue", QUIT_OPTION);
-    private static final List<String> GAME_MENU_OPTIONS   = Arrays.asList("New Game", "Load Game", QUIT_OPTION);
+    private static final String DEFAULT_PROMPT   = ">";
+    private static final String CLEAR_BOOKMARK   = "clear";
+    private static final String QUIT_OPTION      = "Quit";
+    private static final String CONTINUE_OPTION  = "Continue";
+    private static final String NEW_GAME_OPTION  = "New Game";
+    public  static final String LOAD_GAME_OPTION = "Load Game";
+
+    private static final List<String> HOME_SCREEN_OPTIONS = Arrays.asList(CONTINUE_OPTION, QUIT_OPTION);
+    private static final List<String> GAME_MENU_OPTIONS   = Arrays.asList(NEW_GAME_OPTION, LOAD_GAME_OPTION, QUIT_OPTION);
 
     private TextIO textIO = TextIoFactory.getTextIO();
     private TextTerminal<?> terminal = textIO.getTextTerminal();

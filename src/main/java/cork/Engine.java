@@ -14,6 +14,10 @@ import java.util.stream.Stream;
 public class Engine {
     enum State {HOME_SCREEN, MAIN_MENU, GAME_MENU, GAME_RUNNING, QUIT }
 
+    private static final String QUIT_COMMAND = "quit";
+    private static final String SAVE_COMMAND = "save";
+    private static final String LOAD_COMMAND = "load";
+
     private State state = State.HOME_SCREEN;
     private Game currentGame;
     private String gameName = "";
@@ -52,7 +56,7 @@ public class Engine {
 
     private void changeState(final String choice)
     {
-        if (choice.equalsIgnoreCase("quit")) {
+        if (choice.equalsIgnoreCase(QUIT_COMMAND)) {
             state = State.QUIT;
         } else {
             switch (state)
@@ -65,7 +69,7 @@ public class Engine {
                     state = State.GAME_MENU;
                     break;
                 case GAME_MENU:
-                    if (choice.equals("Load Game")) { loadGame(); }
+                    if (choice.equals(UIHandler.LOAD_GAME_OPTION)) { loadGame(); }
                     state = State.GAME_RUNNING;
                     break;
                 case GAME_RUNNING:
@@ -130,13 +134,13 @@ public class Engine {
             final String userInput = uiHandler.getInput();
 
             switch (userInput) {
-                case "save":
+                case SAVE_COMMAND:
                     saveGame();
                     break;
-                case "load":
+                case LOAD_COMMAND:
                     loadGame();
                     break;
-                case "quit":
+                case QUIT_COMMAND:
                     if (uiHandler.promptUser("Would you like to save before quitting?")) { saveGame(); }
                     state = State.QUIT;
                     return;
