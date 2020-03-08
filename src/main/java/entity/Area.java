@@ -66,7 +66,10 @@ public class Area extends Entity {
     }
 
     @Override
-    public Boolean isActive() { return active; }
+    public boolean isActive() { return active; }
+
+    @Override
+    public void setActive(boolean value) { active = value; }
 
     public Set<String> getInventory() { return new HashSet<>(inventory); }
 

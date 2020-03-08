@@ -1,9 +1,7 @@
 package command;
 
 import dictionary.GameEntities;
-import entity.Area;
-import entity.ICharacter;
-import entity.IInteractable;
+import entity.*;
 
 import java.util.Set;
 
@@ -26,8 +24,20 @@ public class TakeItem extends Command {
 
         area.removeFromInventory(object);
 
-        ((ICharacter) parent).addToInventory(object);
+        StringBuilder result = new StringBuilder(object + " -> " + parent.getName());
 
-        return object + " -> " + parent.getName();
+        ICharacter p = (ICharacter) parent;
+        p.addToInventory(object);
+
+        Item i = ge.getItemOrElse(object);
+        Stat s = i.getStat();
+
+        if (!i.isConsumable() && !s.getName().equals(""))
+        {
+            p.setStat(s.getName(), p.getStatValue(s.getName()) + s.getValue());
+            result.append("\n").append(s.getName()).append(" changes to ").append(s.getValue());
+        }
+
+        return result.toString();
     }
 }

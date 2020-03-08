@@ -47,7 +47,10 @@ public class Player extends Entity implements ICharacter, IInteractable {
     public String getDescription() { return description; }
 
     @Override
-    public Boolean isActive() { return active; }
+    public boolean isActive() { return active; }
+
+    @Override
+    public void setActive(boolean value) { active = value; }
 
     @Override
     public Set<String> getInventory() { return new HashSet<>(inventory); }

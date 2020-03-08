@@ -31,8 +31,14 @@ public class EmptyEntity extends Entity implements ICharacter, IInteractable {
     }
 
     @Override
-    public Boolean isActive() {
+    public boolean isActive() {
         return false;
+    }
+
+    @Override
+    public void setActive(boolean value)
+    {
+        // Do nothing
     }
 
     @Override

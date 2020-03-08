@@ -6,7 +6,8 @@
   "active": true,
   
   "stats": {
-    "health": 10
+    "health": 10,
+    "strength": 15
   }
 },
 {

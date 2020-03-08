@@ -1,7 +1,6 @@
 package command;
 
 import dictionary.GameEntities;
-import entity.Entity;
 import entity.ICharacter;
 import entity.IInteractable;
 

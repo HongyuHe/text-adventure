@@ -50,7 +50,10 @@ public class Obstacle extends Entity implements IInteractable {
     }
 
     @Override
-    public Boolean isActive() { return active; }
+    public boolean isActive() { return active; }
+
+    @Override
+    public void setActive(boolean value) { active = value; }
 
     @Override
     public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }

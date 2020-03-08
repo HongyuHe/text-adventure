@@ -39,9 +39,12 @@ public class Item extends Entity {
     }
 
     @Override
-    public Boolean isActive() { return active; }
+    public boolean isActive() { return active; }
 
-    public Boolean isConsumable() { return consumable; }
+    @Override
+    public void setActive(final boolean value) { active = value; }
+
+    public boolean isConsumable() { return consumable; }
 
     public Stat getStat() { return stat; }
 

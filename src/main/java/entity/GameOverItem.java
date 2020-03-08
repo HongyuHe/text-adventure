@@ -33,9 +33,12 @@ public class GameOverItem extends Entity {
     public String getDescription() { return description; }
 
     @Override
-    public Boolean isActive() { return active; }
+    public boolean isActive() { return active; }
 
-    public Boolean isConsumable() { return consumable; }
+    @Override
+    public void setActive(boolean value) { active = value; }
+
+    public boolean isConsumable() { return consumable; }
 
     public Stat getStat() { return stat; }
 }

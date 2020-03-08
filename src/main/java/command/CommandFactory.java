@@ -1,6 +1,5 @@
 package command;
 
-import entity.ICharacter;
 import entity.IInteractable;
 import deserialiser.CommandBlueprint;
 

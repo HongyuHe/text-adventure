@@ -1,6 +1,5 @@
 package command;
 
-import cork.Initializer;
 import dictionary.GameEntities;
 import entity.ICharacter;
 import entity.IInteractable;

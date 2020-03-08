@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ChangeLocation extends Command {
     private IInteractable parent;
-    private Set<String> args; // NOSONAR
+    private Set<String> args;
 
     public ChangeLocation(final Set<String> args, final IInteractable parent) {
         this.args = args;

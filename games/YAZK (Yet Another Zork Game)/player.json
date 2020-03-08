@@ -6,7 +6,8 @@
   "active": true,
   "currentLocation": "forest",
   "stats": {
-    "health": 30
+    "health": 30,
+    "strength": 10
   },
   
   "commands": [{

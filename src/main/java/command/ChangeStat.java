@@ -6,7 +6,7 @@ import entity.*;
 import java.util.Set;
 
 public class ChangeStat extends Command {
-    private IInteractable parent; // NOSONAR
+    private IInteractable parent;
     private Set<String> args;
 
     public ChangeStat(final Set<String> args, final IInteractable parent) {
@@ -18,14 +18,21 @@ public class ChangeStat extends Command {
     public String apply(final String object, final GameEntities ge) {
         if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
 
-        Stat s = ge.getItemOrElse(object).getStat();
-
         ICharacter p = (ICharacter) parent;
+
+        if (!p.hasInInventory(object)) { return String.format("You do not have '%s' in your inventory.", object); }
+
+        Item i = ge.getItemOrElse(object);
+        if (!i.isConsumable()) { return "You cannot use that."; }
+
+        Stat s = i.getStat();
+
         final Integer oldValue = p.getStatValue(s.getName());
         p.setStat(s.getName(), oldValue + s.getValue());
 
-        p.removeFromInventory(object); // TODO: set active to false and do garbage collection?
+        p.removeFromInventory(object);
+        i.setActive(false);
 
-        return String.format("%s increases to %d", s.getName(), oldValue + s.getValue());
+        return String.format("%s changes to %d", s.getName(), oldValue + s.getValue());
     }
 }
