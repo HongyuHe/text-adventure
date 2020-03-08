@@ -77,7 +77,7 @@ public class UIHandler {
         terminal.getProperties().setPromptColor(DEFAULT_ERROR_COLOR);
         print(error);
         terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
-        print("Press any key to exit.");
+        print("Press any key to continue.");
         return getInput();
     }
 

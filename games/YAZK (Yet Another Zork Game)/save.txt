@@ -1,0 +1,6 @@
+look
+look apple
+move north
+look
+move south
+go west

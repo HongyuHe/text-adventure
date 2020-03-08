@@ -1,10 +1,11 @@
 package cork;
 
+import org.tinylog.Logger;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.text.MessageFormat;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -114,24 +115,30 @@ public class Engine {
         }
     }
 
+    private Path getSaveFilePath()
+    {
+        return Paths.get(String.format("%s/%s/%s", GAMES_DIRECTORY_PATH, gameName, SAVE_FILE_NAME));
+    }
+
     private void loadGame() {
-        uiHandler.print("Loading is not yet supported. Hit enter to continue.");
-        uiHandler.getInput();
+        try {
+            for (String input : Files.readAllLines(getSaveFilePath())) { currentGame.handleCommand(input); }
+            uiHandler.print("Game loaded.");
+        } catch (IOException e) {
+            Logger.error(e.toString());
+            uiHandler.displayError("Game could not be loaded.");
+        }
     }
 
     private void saveGame() {
-        final String SAVE_PATH = String.format("%s/%s/%s", GAMES_DIRECTORY_PATH, gameName, SAVE_FILE_NAME);
-
         try {
-            Path file = Paths.get(SAVE_PATH);
-            Files.write(file, currentGame.getPreviousCommands());
-            uiHandler.print("Game saved.");
+            Files.write(getSaveFilePath(), currentGame.getPreviousCommands());
+            uiHandler.print("Game saved. Press any key to continue.");
+            uiHandler.getInput();
         }
         catch (IOException e) {
             uiHandler.displayError("Game could not be saved.");
         }
-
-        uiHandler.getInput();
     }
 
     private void runGame() {
