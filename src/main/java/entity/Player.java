@@ -12,7 +12,7 @@ public class Player extends Entity implements ICharacter, IInteractable {
     private Set<String> inventory;
     private Boolean active;
     private String currentLocation;
-    private Stat stat;
+    private Map<String, Integer> stats;
     private Set<CommandBlueprint> commands;
 
     private Map<String, Command> actions;
@@ -23,7 +23,7 @@ public class Player extends Entity implements ICharacter, IInteractable {
                   List<String> inventory,
                   Boolean active,
                   String currentLocation,
-                  Stat stat,
+                  Map<String, Integer> stats,
                   List<CommandBlueprint> commands) {
 
         this.type = type;
@@ -32,7 +32,7 @@ public class Player extends Entity implements ICharacter, IInteractable {
         this.inventory = new HashSet<>(inventory);
         this.active = active;
         this.currentLocation = currentLocation;
-        this.stat = stat;
+        this.stats = stats;
         this.commands = new HashSet<>(commands);
         this.actions = null;
     }
@@ -72,7 +72,13 @@ public class Player extends Entity implements ICharacter, IInteractable {
     @Override
     public String getCurrentLocation() { return currentLocation; }
 
-    public Stat getStat() { return stat; }
+    public Map<String, Integer> getStats() { return stats; }
+
+    @Override
+    public void setStat(String name, Integer value) { stats.replace(name, value); }
+
+    @Override
+    public Integer getStatValue(String name) { return stats.getOrDefault(name, 0); }
 
     public void setActions(Map<String, Command> actions) {
         this.actions = actions;
@@ -85,6 +91,6 @@ public class Player extends Entity implements ICharacter, IInteractable {
 
     public boolean has(String item) { return inventory.contains(item); }
 
-    public boolean isDead() { return (stat.getValue() <= 0); }
+    public boolean isDead() { return (stats.getOrDefault("health", 0) <= 0); }
 }
 

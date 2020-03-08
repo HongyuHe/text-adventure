@@ -8,6 +8,8 @@ public class Item extends Entity {
     private Boolean active;
     private Stat stat;
 
+    public Item() { new Item("", "", "", false, false, new Stat()); }
+
     public Item(String type,
                 String name,
                 String description,

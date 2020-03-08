@@ -1,5 +1,6 @@
 package entity;
 
+import java.util.Map;
 import java.util.Set;
 
 public interface ICharacter {
@@ -11,4 +12,10 @@ public interface ICharacter {
     void removeFromInventory(final String object);
 
     boolean hasInInventory(final String object);
+
+    Map<String, Integer> getStats();
+
+    void setStat(final String name, final Integer value);
+
+    Integer getStatValue(final String name);
 }

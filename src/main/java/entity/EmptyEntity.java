@@ -5,6 +5,7 @@ import command.DefaultCommand;
 import deserialiser.CommandBlueprint;
 
 import java.util.Collections;
+import java.util.Map;
 import java.util.Set;
 
 public class EmptyEntity extends Entity implements ICharacter, IInteractable {
@@ -51,6 +52,17 @@ public class EmptyEntity extends Entity implements ICharacter, IInteractable {
 
     @Override
     public boolean hasInInventory(String object) { return false; }
+
+    @Override
+    public Map<String, Integer> getStats() { return Collections.emptyMap(); }
+
+    @Override
+    public void setStat(String name, Integer value) {
+        // Do nothing
+    }
+
+    @Override
+    public Integer getStatValue(String name) { return 0; }
 
     @Override
     public String getCurrentLocation() {
