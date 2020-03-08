@@ -20,7 +20,7 @@ public class TakeItem extends Command {
     public String apply(String object, GameEntities ge) {
         if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
 
-        Area area = ge.getArea(parent.getCurrentLocation());
+        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
 
         if (!area.hasInInventory(object)) { return String.format("You cannot pick up '%s'", object); }
 

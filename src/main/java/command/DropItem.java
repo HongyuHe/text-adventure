@@ -25,7 +25,7 @@ public class DropItem extends Command {
         if (!p.hasInInventory(object)) { return String.format("You are not holding '%s'", object); }
         p.removeFromInventory(object);
 
-        Area area = ge.getArea(parent.getCurrentLocation());
+        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
 
         area.addToInventory(object);
 
