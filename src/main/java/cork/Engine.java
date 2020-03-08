@@ -1,12 +1,9 @@
 package cork;
 
-import org.tinylog.Logger;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -76,6 +73,7 @@ public class Engine {
                     state = State.HOME_SCREEN;
                     break;
                 default:
+                    state = State.QUIT;
                     break;
             }
         }
@@ -83,12 +81,16 @@ public class Engine {
 
     private void displayHomeScreen()
     {
-        changeState(uiHandler.displayHomeScreen());
+        changeState(uiHandler.displaySplashScreen());
     }
 
     private void displayMainMenu()
     {
-        changeState(uiHandler.displayMainMenu(loadGameList()));
+        try { changeState(uiHandler.displayMainMenu(loadGameList())); }
+        catch (IOException e) {
+            state = State.QUIT;
+            uiHandler.displayError("Please ensure that the Cork JAR is in the same directory as the 'games' folder and that the folder is populated.");
+        }
     }
 
     private void displayGameMenu()
@@ -97,19 +99,17 @@ public class Engine {
         changeState(uiHandler.displayGameMenu(gameName));
     }
 
-    private List<String> loadGameList() {
+    private List<String> loadGameList() throws IOException {
         final String GAMES_DIRECTORY_PATH = "./games";
 
         try (Stream<Path> paths = Files.find(Paths.get(GAMES_DIRECTORY_PATH), 1, (path, attributes) -> attributes.isDirectory())) {
             List<String> gameList = paths.map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
+
+            if (gameList.isEmpty()) { throw new IOException("Games folder empty."); }
+
             return gameList;
         }
-        catch (IOException e) {
-            Logger.error(e.getMessage());
-        }
-
-        return Collections.singletonList("No games found.");
     }
 
     private void loadGame() {

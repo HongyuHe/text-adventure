@@ -33,6 +33,10 @@ public class UIHandler {
     private static final List<String> HOME_SCREEN_OPTIONS = Arrays.asList(CONTINUE_OPTION, QUIT_OPTION);
     private static final List<String> GAME_MENU_OPTIONS   = Arrays.asList(NEW_GAME_OPTION, LOAD_GAME_OPTION, QUIT_OPTION);
 
+    private static final Color DEFAULT_OUTPUT_COLOR = Color.GREEN;
+    private static final Color DEFAULT_INPUT_COLOR  = Color.WHITE;
+    private static final Color DEFAULT_ERROR_COLOR  = Color.RED;
+
     private TextIO textIO = TextIoFactory.getTextIO();
     private TextTerminal<?> terminal = textIO.getTextTerminal();
 
@@ -40,11 +44,11 @@ public class UIHandler {
     UIHandler()
     {
         terminal.setBookmark(CLEAR_BOOKMARK);
-        terminal.getProperties().setPromptColor(Color.GREEN);
-        terminal.getProperties().setInputColor(Color.WHITE);
+        terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
+        terminal.getProperties().setInputColor(DEFAULT_INPUT_COLOR);
     }
     
-    public String displayHomeScreen() {
+    public String displaySplashScreen() {
         clearScreen();
         print(CORK_LOGO);
         return textIO.newStringInputReader()
@@ -65,7 +69,16 @@ public class UIHandler {
         print(game);
         return textIO.newStringInputReader()
                 .withNumberedPossibleValues(GAME_MENU_OPTIONS)
-                        .read();
+                .read();
+    }
+
+    public String displayError(String error) {
+        clearScreen();
+        terminal.getProperties().setPromptColor(DEFAULT_ERROR_COLOR);
+        print(error);
+        terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
+        print("Press any key to exit.");
+        return getInput();
     }
 
     public void exit() { terminal.dispose(); }
