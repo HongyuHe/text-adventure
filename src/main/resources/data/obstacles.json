@@ -1,0 +1,16 @@
+[{
+  "type": "Obstacle",
+  "name": "door",
+  "active": true,
+  "currentLocation": "forest",
+  "state": false,
+  "blocks": "castle",
+  "requiredObject": "key",
+
+  "commands": [{
+    "name": "use",
+    "function": "ChangeState",
+    "params": []
+  }]
+
+}]

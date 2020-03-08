@@ -1,0 +1,13 @@
+{
+  "type": "Item",
+  "name": "diamond",
+  "description": "A very precious diamond.",
+  "consumable": false,
+  "active": true,
+  
+  "stat": {
+    "name": "health",
+    "value": 0
+  }
+  
+}
