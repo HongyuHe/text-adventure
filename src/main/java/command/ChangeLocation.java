@@ -10,13 +10,13 @@ public class ChangeLocation extends Command {
     private IInteractable parent;
     private Set<String> args; // NOSONAR
 
-    public ChangeLocation(Set<String> args, IInteractable parent) {
+    public ChangeLocation(final Set<String> args, final IInteractable parent) {
         this.args = args;
         this.parent = parent;
     }
 
     @Override
-    public String apply(String newLocation, GameEntities ge) {
+    public String apply(final String newLocation, final GameEntities ge) {
         Area area = (Area) ge.findEntityOrElse(parent.getCurrentLocation());
 
         if (!area.connectsTo(newLocation)) { return "Why not try flying to Mars instead?"; }

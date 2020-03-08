@@ -9,7 +9,7 @@ public class Game {
     private List<String> previousCommands = new ArrayList<>();
     private GameEntities gameEntities;
 
-    Game(String game) { gameEntities = Initializer.loadGameFiles(game); }
+    Game(final String game) { gameEntities = Initializer.loadGameFiles(game); }
 
     boolean isGameOver() { return (playerVictory() || gameEntities.getPlayer().isDead()); }
 
@@ -17,7 +17,7 @@ public class Game {
 
     List<String> getPreviousCommands() { return new ArrayList<>(previousCommands); }
 
-    String handleCommand(String input) {
+    String handleCommand(final String input) {
         String  result = "";
 
         previousCommands.add(input);

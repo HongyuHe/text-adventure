@@ -6,7 +6,7 @@ import deserialiser.CommandBlueprint;
 public final class CommandFactory {
     private CommandFactory() {}
 
-    public static Command createCommand(CommandBlueprint cmd, IInteractable parent) {
+    public static Command createCommand(final CommandBlueprint cmd, final IInteractable parent) {
         switch (cmd.getFunction()) {
             case "ChangeLocation": return new ChangeLocation(cmd.getParams(), parent);
             case "ListContents": return new ListContents(cmd.getParams(), parent);

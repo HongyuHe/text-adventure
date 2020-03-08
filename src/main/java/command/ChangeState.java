@@ -8,13 +8,13 @@ public class ChangeState extends Command {
     private IInteractable parent; // NOSONAR
     private Set<String> args;
 
-    public ChangeState(Set<String> args, IInteractable parent) {
+    public ChangeState(final Set<String> args, final IInteractable parent) {
         this.args = args;
         this.parent = parent;
     }
 
     @Override
-    public String apply(String object, GameEntities ge) {
+    public String apply(final String object, final GameEntities ge) {
         return "Action>>>$ "+ object + " change " + args;
     }
 }

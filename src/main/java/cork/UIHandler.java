@@ -64,7 +64,7 @@ public class UIHandler {
                         .read("Please select a game to play:");
     }
 
-    public String displayGameMenu(String game) {
+    public String displayGameMenu(final String game) {
         clearScreen();
         print(game);
         return textIO.newStringInputReader()
@@ -72,7 +72,7 @@ public class UIHandler {
                 .read();
     }
 
-    public String displayError(String error) {
+    public String displayError(final String error) {
         clearScreen();
         terminal.getProperties().setPromptColor(DEFAULT_ERROR_COLOR);
         print(error);
@@ -89,5 +89,5 @@ public class UIHandler {
 
     public void print(String string) { terminal.println(string); }
 
-    public boolean promptUser(String prompt) { return textIO.newBooleanInputReader().read(prompt); }
+    public boolean promptUser(final String prompt) { return textIO.newBooleanInputReader().read(prompt); }
 }

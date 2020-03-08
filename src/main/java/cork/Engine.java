@@ -1,7 +1,5 @@
 package cork;
 
-import org.tinylog.Logger;
-
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -122,10 +120,9 @@ public class Engine {
 
     private void loadGame() {
         try {
-            for (String input : Files.readAllLines(getSaveFilePath())) { currentGame.handleCommand(input); }
+            for (final String input : Files.readAllLines(getSaveFilePath())) { currentGame.handleCommand(input); }
             uiHandler.print("Game loaded.");
         } catch (IOException e) {
-            Logger.error(e.toString());
             uiHandler.displayError("Game could not be loaded.");
         }
     }
