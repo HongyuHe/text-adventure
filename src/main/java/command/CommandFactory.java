@@ -1,5 +1,6 @@
 package command;
 
+import entity.ICharacter;
 import entity.IInteractable;
 import deserialiser.CommandBlueprint;
 
@@ -13,7 +14,9 @@ public final class CommandFactory {
             case "ChangeStat": return new ChangeStat(cmd.getParams(), parent);
             case "ChangeState": return new ChangeState(cmd.getParams(), parent);
             case "Describe": return new Describe(cmd.getParams(), parent);
-            default: return null;
+            case "TakeItem": return new TakeItem(cmd.getParams(), parent);
+            case "DropItem": return new DropItem(cmd.getParams(), parent);
+            default: return new DefaultCommand();
         }
     }
 }
