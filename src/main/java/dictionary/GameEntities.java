@@ -54,7 +54,9 @@ public class GameEntities {
 
     public Map<String, Area> getAreaEntities() { return new HashMap<>(areaEntities); }
 
-    public Area getArea(final String area) { return areaEntities.getOrDefault(area, new Area()); }
+    public Area getAreaOrElse(final String area) { return areaEntities.getOrDefault(area, new Area()); }
+
+    public Item getItemOrElse(final String item) { return itemEntities.getOrDefault(item, new Item()); }
 
     public Map<String, Obstacle> getObstacleEntities() { return new HashMap<>(obstacleEntities); }
 
