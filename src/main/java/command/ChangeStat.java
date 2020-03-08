@@ -1,7 +1,8 @@
 package command;
 
 import dictionary.GameEntities;
-import entity.IInteractable;
+import entity.*;
+
 import java.util.Set;
 
 public class ChangeStat extends Command {
@@ -15,6 +16,16 @@ public class ChangeStat extends Command {
 
     @Override
     public String apply(final String object, final GameEntities ge) {
-        return "Action>>>$ "+ object + " change " + args;
+        if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
+
+        Stat s = ge.getItemOrElse(object).getStat();
+
+        ICharacter p = (ICharacter) parent;
+        final Integer oldValue = p.getStatValue(s.getName());
+        p.setStat(s.getName(), oldValue + s.getValue());
+
+        p.removeFromInventory(object); // TODO: set active to false and do garbage collection?
+
+        return String.format("%s increases to %d", s.getName(), oldValue + s.getValue());
     }
 }
