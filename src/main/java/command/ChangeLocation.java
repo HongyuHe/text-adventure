@@ -24,7 +24,10 @@ public class ChangeLocation extends Command {
         {
             final Obstacle obstacle = ge.getObstacleOrElse(o);
             final String nextArea = area.getConnection(newLocation);
-            if (obstacle.getBlocks().equalsIgnoreCase(nextArea)) { return String.format("There is a %s in the way.", obstacle.getName()); }
+            if (obstacle.getState() && obstacle.getBlocks().equalsIgnoreCase(nextArea))
+            {
+                return String.format("There is a %s in the way.", obstacle.getName());
+            }
         }
 
         final String newLocationName = area.getConnection(newLocation);

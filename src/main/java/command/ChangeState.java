@@ -2,6 +2,7 @@ package command;
 
 import dictionary.GameEntities;
 import entity.*;
+import org.tinylog.Logger;
 
 import java.util.Set;
 
@@ -16,7 +17,17 @@ public class ChangeState extends Command {
 
     @Override
     public String apply(final String object, final GameEntities ge) {
-        return "Action>>>$ "+ object + " change " + args;
+        if (!ge.getPlayer().hasInInventory(object)) { return String.format("You do not have '%s' in your inventory.", object); }
+        if (!(parent instanceof Obstacle)) { return "That doesn't seem to do anything."; }
+
+        Obstacle o = (Obstacle) parent;
+
+        if (!o.getState()) { return "You don't need to."; }
+        if (!o.getRequiredObject().equalsIgnoreCase(object)) { return "That doesn't work here."; }
+
+        o.setState(false);
+
+        return "It works!";
     }
 
     public String apply(final Area object, final GameEntities ge) {

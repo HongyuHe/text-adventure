@@ -3,7 +3,7 @@
   "name": "door",
   "active": true,
   "currentLocation": "forest",
-  "state": false,
+  "state": true,
   "blocks": "castle",
   "requiredObject": "key",
 

@@ -52,6 +52,13 @@ public class GameEntities {
         }
     }
 
+    public IInteractable findInteractableOrElse(final String interactable)
+    {
+        if (player.getName().equals(interactable)) { return player; }
+        else if (obstacleEntities.containsKey(interactable)) { return obstacleEntities.get(interactable); }
+        else { return emptyEntity; }
+    }
+
     public Map<String, Item> getItemEntities() { return new HashMap<>(itemEntities); }
 
     public Map<String, Area> getAreaEntities() { return new HashMap<>(areaEntities); }

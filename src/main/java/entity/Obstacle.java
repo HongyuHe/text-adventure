@@ -10,7 +10,7 @@ public class Obstacle extends Entity implements IInteractable {
     private String name;
     private Boolean active;
     private String currentLocation;
-    private Boolean state;
+    private boolean state;
     private String blocks;
     private String requiredObject;
     private Set<CommandBlueprint> commands;
@@ -23,7 +23,7 @@ public class Obstacle extends Entity implements IInteractable {
                     String name,
                     Boolean active,
                     String currentLocation,
-                    Boolean state,
+                    boolean state,
                     String blocks,
                     String requiredObject,
                     List<CommandBlueprint> commands) {
@@ -68,7 +68,9 @@ public class Obstacle extends Entity implements IInteractable {
     @Override
     public String getCurrentLocation() { return currentLocation; }
 
-    public Boolean getState() { return state; }
+    public boolean getState() { return state; }
+
+    public void setState(final boolean state) { this.state = state; }
 
     public String getBlocks() { return blocks; }
 
@@ -79,8 +81,6 @@ public class Obstacle extends Entity implements IInteractable {
     }
 
     @Override
-    public Command findCommandOrElse(String cmd) {
-        return actions.getOrDefault(cmd, new DefaultCommand());
-    }
+    public Command findCommandOrElse(String cmd) { return actions.getOrDefault(cmd, new DefaultCommand()); }
 }
 
