@@ -34,7 +34,7 @@ public class UIHandler {
     private static final List<String> GAME_MENU_OPTIONS   = Arrays.asList(NEW_GAME_OPTION, LOAD_GAME_OPTION, QUIT_OPTION);
 
     private static final Color DEFAULT_OUTPUT_COLOR = Color.GREEN;
-    private static final Color DEFAULT_INPUT_COLOR  = Color.WHITE;
+    private static final Color DEFAULT_INPUT_COLOR  = Color.CYAN;
     private static final Color DEFAULT_ERROR_COLOR  = Color.RED;
 
     private TextIO textIO = TextIoFactory.getTextIO();

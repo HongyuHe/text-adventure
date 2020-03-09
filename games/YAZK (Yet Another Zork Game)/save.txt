@@ -1,3 +1,6 @@
 look
-inventory
+look apple
 take apple
+take key
+use key door
+move north

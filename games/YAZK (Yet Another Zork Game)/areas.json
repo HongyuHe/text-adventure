@@ -3,7 +3,7 @@
   "name": "forest",
   "active": true,
   "description": "You are surrounded by trees. There is a castle to the north and a house to your west.",
-  "inventory": ["apple", "key"],
+  "inventory": ["apple"],
   "obstacles": ["door"],
   "npcs": [],
   "connections": {
@@ -18,7 +18,7 @@
   "name": "house",
   "active": true,
   "description": "You are inside a house. There is a forest to your east.",
-  "inventory": ["sword"],
+  "inventory": ["sword", "key"],
   "obstacles": [],
   "npcs": ["chad"],
   "connections": {

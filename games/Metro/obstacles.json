@@ -1,0 +1,36 @@
+[
+  {
+    "type": "Obstacle",
+    "name": "darkness",
+    "active": true,
+    "currentLocation": "control-room",
+    "state": true,
+    "blocks": "storage",
+    "requiredObject": "flashlight",
+    "commands":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState",
+        "params": []
+      }
+    ]
+  },
+  {
+    "type": "Obstacle",
+    "name": "monster",
+    "active": true,
+    "currentLocation": "station",
+    "state": true,
+    "blocks": "outside",
+    "requiredObject": "rifle",
+    "commands":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState",
+        "params": []
+      }
+    ]
+  }
+]

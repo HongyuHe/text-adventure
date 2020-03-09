@@ -1,0 +1,12 @@
+{
+  "type": "Item",
+  "name": "medicine",
+  "description": "A box of medical supplies that you desperately need.",
+  "consumable": true,
+  "active": true,
+  
+  "stats": {
+    "health": 10
+  }
+  
+}
