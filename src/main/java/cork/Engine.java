@@ -132,8 +132,7 @@ public class Engine {
     private void saveGame() {
         try {
             Files.write(getSaveFilePath(), currentGame.getPreviousCommands());
-            uiHandler.print("Game saved. Press any key to continue.");
-            uiHandler.getInput();
+            uiHandler.print("Game saved.");
         }
         catch (IOException e) {
             uiHandler.displayError("Game could not be saved.");
