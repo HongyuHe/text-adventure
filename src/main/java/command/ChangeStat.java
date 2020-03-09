@@ -3,6 +3,8 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 
 public class ChangeStat extends Command {
@@ -25,15 +27,20 @@ public class ChangeStat extends Command {
         Item i = ge.getItemOrElse(object);
         if (!i.isConsumable()) { return "You cannot use that."; }
 
-        Stat s = i.getStat();
+        StringBuilder result = new StringBuilder();
+        for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
+        {
+            final Integer oldValue = p.getStatValue(stat.getKey());
+            final Integer newValue = oldValue + stat.getValue();
+            p.setStat(stat.getKey(), newValue);
 
-        final Integer oldValue = p.getStatValue(s.getName());
-        p.setStat(s.getName(), oldValue + s.getValue());
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
+        }
 
         p.removeFromInventory(object);
         i.setActive(false);
 
-        return String.format("%s changes to %d", s.getName(), oldValue + s.getValue());
+        return result.toString();
     }
 
     public String apply(final Area object, final GameEntities ge) {

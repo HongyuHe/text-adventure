@@ -2,7 +2,6 @@ package deserialiser;
 
 import com.google.gson.reflect.TypeToken;
 import entity.Player;
-import entity.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;

@@ -5,9 +5,6 @@
   "consumable": false,
   "active": true,
   
-  "stat": {
-    "name": "health",
-    "value": 0
-  }
+  "stats": {}
   
 }

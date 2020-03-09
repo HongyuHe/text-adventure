@@ -5,9 +5,8 @@
   "consumable": true,
   "active": true,
 
-  "stat": {
-    "name": "health",
-    "value": 10
+  "stats": {
+    "health": 10
   }
 },
 
@@ -18,10 +17,7 @@
     "consumable": false,
     "active": true,
 
-    "stat": {
-      "name": "",
-      "value": 0
-    }
+    "stats": {}
   },
 
   {
@@ -31,8 +27,7 @@
     "consumable": false,
     "active": true,
 
-    "stat": {
-      "name": "strength",
-      "value": 10
+    "stats": {
+      "strength": 10
     }
   }]

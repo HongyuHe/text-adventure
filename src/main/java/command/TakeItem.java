@@ -3,6 +3,7 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
+import java.util.Map;
 import java.util.Set;
 
 public class TakeItem extends Command {
@@ -30,13 +31,16 @@ public class TakeItem extends Command {
         p.addToInventory(object);
 
         Item i = ge.getItemOrElse(object);
-        Stat s = i.getStat();
 
+        if (i.isConsumable()) { return result.toString(); }
 
-        if (!i.isConsumable() && !s.getName().equals(""))
+        for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
         {
-            p.setStat(s.getName(), p.getStatValue(s.getName()) + s.getValue());
-            result.append("\n").append(s.getName()).append(" changes to ").append(s.getValue());
+            final Integer oldValue = p.getStatValue(stat.getKey());
+            final Integer newValue = oldValue + stat.getValue();
+            p.setStat(stat.getKey(), newValue);
+
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
         }
 
         return result.toString();
