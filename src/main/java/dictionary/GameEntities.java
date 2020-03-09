@@ -60,6 +60,8 @@ public class GameEntities {
 
     public Item getItemOrElse(final String item) { return itemEntities.getOrDefault(item, new Item()); }
 
+    public Obstacle getObstacleOrElse(final String obstacle) { return obstacleEntities.getOrDefault(obstacle, new Obstacle()); }
+
     public Map<String, Obstacle> getObstacleEntities() { return new HashMap<>(obstacleEntities); }
 
     public Map<String, Npc> getNpcEntities() { return new HashMap<>(npcEntities); }
