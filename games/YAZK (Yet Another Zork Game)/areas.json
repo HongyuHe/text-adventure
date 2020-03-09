@@ -30,7 +30,7 @@
   "name": "castle",
   "active": true,
   "description": "You are inside an ominous castle. There is a forest to your south.",
-  "inventory": ["diamond"],
+  "inventory": ["diamond", "potion"],
   "npcs": ["princess"],
   "connections": {
     "south": "forest",
