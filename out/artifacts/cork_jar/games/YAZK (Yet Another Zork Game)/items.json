@@ -1,15 +1,28 @@
-[{
-  "type": "Item",
-  "name": "apple",
-  "description": "A delicious looking apple!",
-  "consumable": true,
-  "active": true,
+[
+  {
+    "type": "Item",
+    "name": "apple",
+    "description": "A delicious looking apple!",
+    "consumable": true,
+    "active": true,
 
-  "stat": {
-    "name": "health",
-    "value": 10
-  }
-},
+    "stats": {
+      "health": 10
+    }
+  },
+
+  {
+    "type": "Item",
+    "name": "potion",
+    "description": "It looks delicious.",
+    "consumable": true,
+    "active": true,
+
+    "stats": {
+      "health": 10,
+      "strength": 5
+    }
+  },
 
   {
     "type": "Item",
@@ -18,10 +31,7 @@
     "consumable": false,
     "active": true,
 
-    "stat": {
-      "name": "empty",
-      "value": 0
-    }
+    "stats": {}
   },
 
   {
@@ -31,8 +41,8 @@
     "consumable": false,
     "active": true,
 
-    "stat": {
-      "name": "health",
-      "value": -10
+    "stats": {
+      "strength": 10
     }
-  }]
+  }
+]

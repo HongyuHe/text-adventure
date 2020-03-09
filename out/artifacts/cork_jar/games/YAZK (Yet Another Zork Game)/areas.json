@@ -19,6 +19,7 @@
   "active": true,
   "description": "You are inside a house. There is a forest to your east.",
   "inventory": ["sword"],
+  "obstacles": [],
   "npcs": ["chad"],
   "connections": {
     "east": "forest",
@@ -30,7 +31,8 @@
   "name": "castle",
   "active": true,
   "description": "You are inside an ominous castle. There is a forest to your south.",
-  "inventory": ["diamond"],
+  "inventory": ["diamond", "potion"],
+  "obstacles": [],
   "npcs": ["princess"],
   "connections": {
     "south": "forest",

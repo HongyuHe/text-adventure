@@ -2,7 +2,6 @@ package command;
 
 import dictionary.GameEntities;
 import entity.*;
-import org.tinylog.Logger;
 
 import java.util.Set;
 

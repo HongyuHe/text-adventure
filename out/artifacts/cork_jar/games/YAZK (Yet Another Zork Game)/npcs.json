@@ -5,9 +5,9 @@
   "inventory": [],
   "active": true,
   
-  "stat": {
-    "name": "health",
-    "value": 10
+  "stats": {
+    "health": 10,
+    "strength": 15
   }
 },
 {
@@ -17,9 +17,8 @@
   "inventory": [],
   "active": true,
   
-  "stat": {
-    "name": "health",
-    "value": 30
+  "stats": {
+    "health": 30
   }
 }
 ]

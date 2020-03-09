@@ -5,15 +5,20 @@
   "inventory": [],
   "active": true,
   "currentLocation": "forest",
-  "stat": {
-    "name": "health",
-    "value": 30
+  "stats": {
+    "health": 30,
+    "strength": 10
   },
   
   "commands": [{
     "name": "eat",
     "function": "ChangeStat",
     "params": ["health"]
+  },
+  {
+    "name": "stats",
+    "function": "ListStats",
+    "params": ["Player"]
   },
   {
     "name": "use",
@@ -52,8 +57,13 @@
   },
   {
     "name": "take",
-    "function": "ChangeLocation",
+    "function": "TakeItem",
     "params": ["Item", "inventory"]
-  }] 
+  },
+  {
+    "name": "drop",
+    "function": "DropItem",
+    "params": ["Item", "inventory"]
+  }]
   
 }
