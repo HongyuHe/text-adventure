@@ -21,7 +21,7 @@ public class ChangeState extends Command {
 
         Obstacle o = (Obstacle) parent;
 
-        if (!o.getState()) { return "You don't need to."; }
+        if (!o.getState()) { return "You don't need to do that."; }
         if (!o.getRequiredObject().equalsIgnoreCase(object)) { return "That doesn't work here."; }
 
         o.setState(false);

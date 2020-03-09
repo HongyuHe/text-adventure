@@ -141,10 +141,6 @@ public class Engine {
 
     private void runGame() {
         uiHandler.clearScreen();
-        uiHandler.print("Please be aware that this is not yet a complete deliverable - only moving is supported currently.\n" +
-                "You can use the command \"move\" (or \"go\") coupled with a direction or location to get around, e.g. \"move castle\" or \"move north\".\n" +
-                "The command \"look\" can be used on its own, or coupled with the name of an item, e.g. \"look apple\".\n" +
-                "Type \"quit\" to exit the game.\n\n");
         uiHandler.print(currentGame.handleCommand("look"));
 
         while(!currentGame.isGameOver()) {
@@ -167,6 +163,11 @@ public class Engine {
                     break;
             }
         }
+
+        uiHandler.clearScreen();
+        if (currentGame.playerVictory()) { uiHandler.print("You won!"); }
+        else { uiHandler.print("You died."); }
+        uiHandler.getInput();
 
         changeState();
     }

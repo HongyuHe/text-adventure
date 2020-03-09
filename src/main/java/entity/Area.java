@@ -52,15 +52,17 @@ public class Area extends Entity {
     @Override
     public String getDescription()
     {
+        final String DELIMITER = ", ";
+
         StringBuilder d = new StringBuilder(description);
 
         if (!npcs.isEmpty()) { d.append("\nYou can see the following people here:\n"); }
-        for (final String npc : npcs) { d.append(npc).append(", "); }
-        if (!npcs.isEmpty()) { d.delete(d.length() - 2, d.length()); }
+        for (final String npc : npcs) { d.append(npc).append(DELIMITER); }
+        if (!npcs.isEmpty()) { d.delete(d.length() - DELIMITER.length(), d.length()); }
 
         if (!inventory.isEmpty()) { d.append("\nYou can see the following items here:\n"); }
-        for (final String item : inventory) { d.append(item).append(", "); }
-        if (!inventory.isEmpty()) { d.delete(d.length() - 2, d.length()); }
+        for (final String item : inventory) { d.append(item).append(DELIMITER); }
+        if (!inventory.isEmpty()) { d.delete(d.length() - DELIMITER.length(), d.length()); }
 
         return d.toString();
     }

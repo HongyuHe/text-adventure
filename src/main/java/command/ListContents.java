@@ -17,15 +17,16 @@ public class ListContents extends Command {
     @Override
     public String apply(final String object, final GameEntities ge)
     {
+        final String DELIMITER = ", ";
+
         if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
 
         final ICharacter p = (ICharacter) parent;
 
         StringBuilder contents = new StringBuilder("Contents: ");
 
-        for (final String item : p.getInventory()) { contents.append(item).append(", "); }
-
-        if (!p.getInventory().isEmpty()) { contents.delete(contents.length() - 2, contents.length()); }
+        for (final String item : p.getInventory()) { contents.append(item).append(DELIMITER); }
+        if (!p.getInventory().isEmpty()) { contents.delete(contents.length() - DELIMITER.length(), contents.length()); }
 
         return contents.toString();
     }

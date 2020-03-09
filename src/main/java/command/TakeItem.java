@@ -21,7 +21,7 @@ public class TakeItem extends Command {
 
         Area area = ge.getAreaOrElse(parent.getCurrentLocation());
 
-        if (!area.hasInInventory(object)) { return String.format("You cannot pick up '%s'", object); }
+        if (!area.hasInInventory(object)) { return String.format("You cannot see '%s' here.", object); }
 
         area.removeFromInventory(object);
 
