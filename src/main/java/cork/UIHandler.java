@@ -74,8 +74,10 @@ public class UIHandler {
 
     public String displayError(final String error) {
         clearScreen();
-        terminal.getProperties().setPromptColor(DEFAULT_ERROR_COLOR);
-        print(error);
+        terminal.executeWithPropertiesConfigurator(
+                p -> p.setPromptColor(DEFAULT_ERROR_COLOR),
+                t -> t.println(error)
+        );
         terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
         print("Press any key to continue.");
         return getInput();
