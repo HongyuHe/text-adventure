@@ -54,6 +54,8 @@ public class Engine {
         uiHandler.exit();
     }
 
+    private void changeState() { changeState(""); }
+
     private void changeState(final String choice)
     {
         if (choice.equalsIgnoreCase(QUIT_COMMAND)) {
@@ -166,5 +168,7 @@ public class Engine {
                     break;
             }
         }
+
+        changeState();
     }
 }

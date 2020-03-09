@@ -1,17 +1,17 @@
 package deserialiser;
 
-import entity.GameOverItem;
+import entity.Item;
 import entity.Stat;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
 
-public class GameOverItemDeserializer implements JsonDeserializer<GameOverItem> {
+public class GameOverItemDeserializer implements JsonDeserializer<Item> {
 
     @Override
-    public GameOverItem deserialize(JsonElement json,
-                              Type typeOfT,
-                              JsonDeserializationContext context) throws JsonParseException { // NOSONAR
+    public Item deserialize(JsonElement json,
+                            Type typeOfT,
+                            JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
         JsonObject jsonObject = json.getAsJsonObject();
 
@@ -20,7 +20,7 @@ public class GameOverItemDeserializer implements JsonDeserializer<GameOverItem> 
                 jsonObject.get("stat").getAsJsonObject().get("value").getAsInt()
         );
 
-        return new GameOverItem(
+        return new Item(
                 jsonObject.get("type").getAsString(),
                 jsonObject.get("name").getAsString().toLowerCase(),
                 jsonObject.get("description").getAsString(),

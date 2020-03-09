@@ -36,7 +36,7 @@ public class Initializer {
         Map<String, Npc> npcEntities = load(game + "/npcs.json", new NpcDeserializer(), Npc.class)
                 .stream().collect(Collectors.toMap(Npc::getName, Function.identity()));
 
-        GameOverItem gameOverItem = loadSingleEntity(game + "/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
+        Item gameOverItem = loadSingleEntity(game + "/gameOverItem.json", new GameOverItemDeserializer(), Item.class);
         Player player = loadSingleEntity(game + "/player.json", new PlayerDeserializer(), Player.class);
         EmptyEntity emptyEntity = initializeEmptyEntity();
 

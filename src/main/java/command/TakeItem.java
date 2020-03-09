@@ -32,6 +32,7 @@ public class TakeItem extends Command {
         Item i = ge.getItemOrElse(object);
         Stat s = i.getStat();
 
+
         if (!i.isConsumable() && !s.getName().equals(""))
         {
             p.setStat(s.getName(), p.getStatValue(s.getName()) + s.getValue());

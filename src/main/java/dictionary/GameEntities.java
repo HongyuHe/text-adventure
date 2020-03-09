@@ -11,7 +11,7 @@ public class GameEntities {
     private Map<String, Area> areaEntities;
     private Map<String, Obstacle> obstacleEntities;
     private Map<String, Npc> npcEntities;
-    private GameOverItem gameOverItem;
+    private Item gameOverItem;
     private Player player;
     private EmptyEntity emptyEntity;
 
@@ -19,7 +19,7 @@ public class GameEntities {
                         Map<String, Area> areaEntities,
                         Map<String, Obstacle> obstacleEntities,
                         Map<String, Npc> npcEntities,
-                        GameOverItem gameOverItem,
+                        Item gameOverItem,
                         Player player,
                         EmptyEntity emptyEntity) {
 
@@ -30,6 +30,8 @@ public class GameEntities {
         this.gameOverItem = gameOverItem;
         this.player = player;
         this.emptyEntity = emptyEntity;
+
+        itemEntities.put(gameOverItem.getName(), gameOverItem);
     }
 
     public Entity findEntityOrElse(String entity) {
@@ -62,7 +64,7 @@ public class GameEntities {
 
     public Map<String, Npc> getNpcEntities() { return new HashMap<>(npcEntities); }
 
-    public GameOverItem getGameOverItem() { return gameOverItem; }
+    public Item getGameOverItem() { return gameOverItem; }
 
     public Player getPlayer() { return player; }
 
