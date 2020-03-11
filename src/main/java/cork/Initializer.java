@@ -93,7 +93,7 @@ public class Initializer {
             return gson.fromJson(reader, entitySetType);
 
         } catch (Exception ex) {
-            Logger.error(ex.getMessage());
+            Logger.error("JSON file: " + jsonLocation + "\n" + ex.toString());
         }
 
         return new ArrayList<>();

@@ -32,6 +32,18 @@ public abstract class Deserializer
         return arrayList;
     }
 
+    protected <T> HashMap<String, T>
+    createMap(JsonObject jObject) {
+        HashMap<String, T> map = new HashMap<>();
+
+        if (jObject != null) {
+            Type type = new TypeToken<HashMap<String, T>>(){}.getType();
+            map = new Gson().fromJson(jObject.getAsString(), type);
+        }
+
+        return map;
+    }
+
     protected Set<CommandBlueprint>
     createCommandSet(JsonArray jArray) {
         Set<CommandBlueprint> set = new HashSet<>();
@@ -43,18 +55,6 @@ public abstract class Deserializer
         }
 
         return set;
-    }
-
-    protected <T> HashMap<String, T>
-    createMap(JsonObject jObject) {
-        HashMap<String, T> map = new HashMap<>();
-
-        if (jObject != null) {
-            Type type = new TypeToken<HashMap<String, T>>(){}.getType();
-            map = new Gson().fromJson(jObject.getAsString(), type);
-        }
-
-        return map;
     }
 
     protected CommandBlueprint

@@ -1,48 +1,52 @@
 [
   {
+    "active": true,
     "type": "Item",
     "name": "apple",
     "description": "A delicious looking apple!",
-    "consumable": true,
-    "active": true,
-
+    "inventory": [],
     "stats": {
       "health": 10
-    }
+    },
+    "commands": [],
+    "consumable": true
   },
 
   {
+    "active": true,
     "type": "Item",
     "name": "potion",
     "description": "It looks delicious.",
-    "consumable": true,
-    "active": true,
-
+    "inventory": [],
     "stats": {
       "health": 10,
       "strength": 5
-    }
+    },
+    "commands": [],
+    "consumable": true
   },
 
   {
+    "active": true,
     "type": "Item",
     "name": "key",
     "description": "It looks like a key that unlocks something.",
-    "consumable": false,
-    "active": true,
-
-    "stats": {}
+    "inventory": [],
+    "stats": {},
+    "commands": [],
+    "consumable": false
   },
 
   {
+    "active": true,
     "type": "Item",
     "name": "sword",
     "description": "A sharp sword, probably useful in a fight.",
-    "consumable": false,
-    "active": true,
-
+    "inventory": [],
     "stats": {
       "strength": 10
-    }
+    },
+    "commands": [],
+    "consumable": false
   }
 ]

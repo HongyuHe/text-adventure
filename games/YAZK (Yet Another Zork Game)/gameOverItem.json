@@ -1,10 +1,10 @@
 {
+  "active": true,
   "type": "Item",
   "name": "diamond",
   "description": "A very precious diamond.",
-  "consumable": false,
-  "active": true,
-  
-  "stats": {}
-  
+  "inventory": [],
+  "stats": {},
+  "commands": [],
+  "consumable": false
 }

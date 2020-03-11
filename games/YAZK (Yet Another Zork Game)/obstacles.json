@@ -1,16 +1,20 @@
-[{
-  "type": "Obstacle",
-  "name": "door",
-  "active": true,
-  "currentLocation": "forest",
-  "state": true,
-  "blocks": "castle",
-  "requiredObject": "key",
-
-  "commands": [{
-    "name": "use",
-    "function": "ChangeState",
-    "params": []
-  }]
-
-}]
+[
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "door",
+    "description": "A sturdy door.",
+    "inventory": [],
+    "stats": {},
+    "commands": [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "forest",
+    "state": true,
+    "blocks": "castle",
+    "requiredObject": "key"
+  }
+]

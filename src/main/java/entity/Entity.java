@@ -13,7 +13,7 @@ public abstract class Entity {
     protected final String description;
     protected final Set<String> inventory;
     protected final Map<String, Integer> stats;
-    protected Map<String, Command> commands;
+    private Map<String, Command> commands;
 
     private final Set<CommandBlueprint> commandBlueprints;
 

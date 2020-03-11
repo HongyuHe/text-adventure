@@ -1,5 +1,9 @@
 package deserialiser;
 
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 public class CommandBlueprint {
     private final String name;
     private final String function;
