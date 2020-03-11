@@ -55,7 +55,7 @@
     "active": true,
     "description": "Everyone seems hoachin', is there a global disease going on? Ma works here too, maybe one of her co-workers can help me. I should enter the cantine, but a sad wean is blocking the door, I might have to cheer him up before the wean lets me through.",
     "inventory": [],
-    "obstacles": [],
+    "obstacles": [ "wean" ],
     "npcs": [],
     "connections": {
       "nursery": "nursery",
@@ -71,7 +71,7 @@
     "active": true,
     "description": "It smells like Haggis here, I ask around, but nobody can tell me where the smell comes from. An old woman in the corner whispers to me that if I want the best Haggis I should visit the church.",
     "inventory": [],
-    "obstacles": [ "wean" ],
+    "obstacles": [ ],
     "npcs": [],
     "connections": {
       "back": "nursery",
@@ -85,7 +85,7 @@
     "active": true,
     "description": "The church looks auld and stourly, in the chambers I see an auld nun. She only lets me in if I solve her riddle and have money with me. I hear her talking to herself: 'Mony a mickle maks a muckle!'",
     "inventory": [ "answer" ],
-    "obstacles": [],
+    "obstacles": [ "riddle" ],
     "npcs": [],
     "connections": {
       "church": "church",
@@ -102,7 +102,7 @@
     "active": true,
     "description": "The auld nun has a secret Haggis scullery here, she is willing to sell ye some Haggis, Ma is gonna be so happy!",
     "inventory": [ "haggis" ],
-    "obstacles": [ "riddle" ],
+    "obstacles": [],
     "npcs": [],
     "connections": {
       "back": "church",
