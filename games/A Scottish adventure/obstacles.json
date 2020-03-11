@@ -1,12 +1,12 @@
 [
   {
     "type": "Obstacle",
-    "name": "wean",
+    "name": "child",
     "active": true,
-    "currentLocation": "nursery",
+    "currentLocation": "control-room",
     "state": true,
-    "blocks": "cantine",
-    "requiredObject": "note",
+    "blocks": "storage",
+    "requiredObject": "flashlight",
     "commands":
     [
       {
@@ -18,12 +18,12 @@
   },
   {
     "type": "Obstacle",
-    "name": "monster",
+    "name": "riddle",
     "active": true,
-    "currentLocation": "station",
+    "currentLocation": "church",
     "state": true,
-    "blocks": "outside",
-    "requiredObject": "rifle",
+    "blocks": "chamber",
+    "requiredObject": "answer",
     "commands":
     [
       {

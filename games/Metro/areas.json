@@ -18,7 +18,7 @@
     "type": "Area",
     "name": "cave-in",
     "active": true,
-    "description": "The tunnel has collapsed here, bits of broken pipes and wiring stick out of the rubble. You can see light shining from above. The tunnel leads north.",
+    "description": "The tunnel has collapsed here, bits of broken pipes and wiring stick out of the rubble. You can see light shining from above, it looks like a control-room. The tunnel leads north.",
     "inventory": [],
     "obstacles": [ ],
     "npcs": [],
@@ -39,6 +39,7 @@
     "npcs": [],
     "connections": {
       "storage": "storage",
+      "storage-room": "storage",
       "back": "storage",
       "down": "cave-in",
       "cave-in": "cave-in"
@@ -62,7 +63,7 @@
     "type": "Area",
     "name": "station",
     "active": true,
-    "description": "An abandoned metro station. It's eerily quiet. You can head up the broken escalator to get outside.",
+    "description": "An abandoned metro station. It's eerily quiet. You can head up the broken escalator to get outside, or go back into the tunnel.",
     "inventory": [],
     "obstacles": [ "monster" ],
     "npcs": [],
