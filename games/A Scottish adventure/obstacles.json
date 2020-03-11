@@ -1,12 +1,12 @@
 [
   {
     "type": "Obstacle",
-    "name": "child",
+    "name": "wean",
     "active": true,
-    "currentLocation": "control-room",
+    "currentLocation": "nursery",
     "state": true,
-    "blocks": "storage",
-    "requiredObject": "flashlight",
+    "blocks": "cantine",
+    "requiredObject": "note",
     "commands":
     [
       {
