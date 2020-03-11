@@ -8,7 +8,6 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 import entity.*;
-import entity.EmptyEntity;
 import dictionary.GameEntities;
 import org.tinylog.Logger;
 
@@ -25,19 +24,49 @@ import static entity.EmptyEntity.initializeEmptyEntity;
 public class Initializer {
     private Initializer() {}
 
-    public static GameEntities loadGameFiles(String game) {
-        game = "./games/" +  game;
-        Map<String, Item> itemEntities = load(game + "/items.json", new ItemDeserializer(), Item.class)
-                .stream().collect(Collectors.toMap(Item::getName, Function.identity()));
-        Map<String, Area> areaEntities = load(game + "/areas.json", new AreaDeserializer(), Area.class)
-                .stream().collect(Collectors.toMap(Area::getName, Function.identity()));
-        Map<String, Obstacle> obstacleEntities = load(game + "/obstacles.json", new ObstacleDeserializer(), Obstacle.class)
-                .stream().collect(Collectors.toMap(Obstacle::getName, Function.identity()));
-        Map<String, Npc> npcEntities = load(game + "/npcs.json", new NpcDeserializer(), Npc.class)
-                .stream().collect(Collectors.toMap(Npc::getName, Function.identity()));
+    public static
+    GameEntities loadGameFiles(String game)
+    {
+        final String jsonLocation = "./games/" + game;
+        final String itemLocation = jsonLocation + "/items.json";
+        final String areaLocation = jsonLocation + "/areas.json";
+        final String obstacleLocation = jsonLocation + "/obstacles.json";
+        final String npcLocation = jsonLocation + "/npcs.json";
+        final String gameOverItemLocation = jsonLocation + "/gameOverItem.json";
+        final String playerLocation = jsonLocation + "/player.json";
 
-        Item gameOverItem = loadSingleEntity(game + "/gameOverItem.json", new ItemDeserializer(), Item.class);
-        Player player = loadSingleEntity(game + "/player.json", new PlayerDeserializer(), Player.class);
+        Map<String, Item> itemEntities =
+                load(itemLocation, new ItemDeserializer(), Item.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Item::getName,
+                                Function.identity()));
+
+        Map<String, Area> areaEntities =
+                load(areaLocation, new AreaDeserializer(), Area.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Area::getName,
+                                Function.identity()));
+
+        Map<String, Obstacle> obstacleEntities =
+                load(obstacleLocation, new ObstacleDeserializer(), Obstacle.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Obstacle::getName,
+                                Function.identity()));
+
+        Map<String, Npc> npcEntities =
+                load(npcLocation, new NpcDeserializer(), Npc.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Npc::getName,
+                                Function.identity()));
+
+        Item gameOverItem = loadSingleEntity(gameOverItemLocation, new ItemDeserializer(), Item.class);
+
+        Player player = loadSingleEntity(playerLocation, new PlayerDeserializer(), Player.class);
+
         EmptyEntity emptyEntity = initializeEmptyEntity();
 
         GameEntities gInit = new GameEntities(itemEntities,
@@ -52,7 +81,9 @@ public class Initializer {
         return gInit;
     }
 
-    private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c) {
+    private static <T> ArrayList<T>
+    load(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
+    {
         try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation))) {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
@@ -68,7 +99,9 @@ public class Initializer {
         return new ArrayList<>();
     }
 
-    private static <T> T loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c) {
+    private static <T> T
+    loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
+    {
         try {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
@@ -87,7 +120,9 @@ public class Initializer {
         return null;
     }
 
-    private static void populateActions(GameEntities entities) {
+    private static void
+    populateActions(GameEntities entities)
+    {
         HashMap<String, Command> actions = new HashMap<>();
         Player player = entities.getPlayer();
 

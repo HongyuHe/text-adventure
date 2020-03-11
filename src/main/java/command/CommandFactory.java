@@ -1,21 +1,22 @@
 package command;
 
-import entity.IInteractable;
+import entity.Entity;
 import deserialiser.CommandBlueprint;
+import entity.Locatable;
 
 public final class CommandFactory {
     private CommandFactory() {}
 
-    public static Command createCommand(final CommandBlueprint cmd, final IInteractable parent) {
+    public static Command createCommand(final CommandBlueprint cmd, final Entity parent) {
         switch (cmd.getFunction()) {
-            case "ChangeLocation": return new ChangeLocation(cmd.getParams(), parent);
-            case "ListContents":   return new ListContents(cmd.getParams(),   parent);
-            case "ChangeStat":     return new ChangeStat(cmd.getParams(),     parent);
-            case "ChangeState":    return new ChangeState(cmd.getParams(),    parent);
-            case "Describe":       return new Describe(cmd.getParams(),       parent);
-            case "TakeItem":       return new TakeItem(cmd.getParams(),       parent);
-            case "DropItem":       return new DropItem(cmd.getParams(),       parent);
-            case "ListStats":      return new ListStats(cmd.getParams(),      parent);
+            case "ChangeLocation": return new ChangeLocation((Locatable) parent);
+            case "ListContents":   return new ListContents(parent);
+            case "ChangeStat":     return new ChangeStat(parent);
+            case "ChangeState":    return new ChangeState(parent);
+            case "Describe":       return new Describe(parent);
+            case "TakeItem":       return new TakeItem((Locatable) parent);
+            case "DropItem":       return new DropItem((Locatable) parent);
+            case "ListStats":      return new ListStats(parent);
             default:               return new DefaultCommand();
         }
     }

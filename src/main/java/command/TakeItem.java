@@ -4,21 +4,16 @@ import dictionary.GameEntities;
 import entity.*;
 
 import java.util.Map;
-import java.util.Set;
 
-public class TakeItem extends Command {
-    private IInteractable parent;
-    private Set<String> args;
+public class TakeItem implements Command {
+    private final Locatable parent;
 
-    public TakeItem(final Set<String> args, final IInteractable parent) {
-        this.args = args;
+    public TakeItem(final Locatable parent) {
         this.parent = parent;
     }
 
     @Override
     public String apply(String object, GameEntities ge) {
-        if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
-
         Area area = ge.getAreaOrElse(parent.getCurrentLocation());
 
         if (!area.hasInInventory(object)) { return String.format("You cannot see '%s' here.", object); }
@@ -27,8 +22,7 @@ public class TakeItem extends Command {
 
         StringBuilder result = new StringBuilder(object + " -> " + parent.getName());
 
-        ICharacter p = (ICharacter) parent;
-        p.addToInventory(object);
+        parent.addToInventory(object);
 
         Item i = ge.getItemOrElse(object);
 
@@ -36,9 +30,9 @@ public class TakeItem extends Command {
 
         for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
         {
-            final Integer oldValue = p.getStatValue(stat.getKey());
+            final Integer oldValue = parent.getStatValue(stat.getKey());
             final Integer newValue = oldValue + stat.getValue();
-            p.setStat(stat.getKey(), newValue);
+            parent.setStat(stat.getKey(), newValue);
 
             result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
         }

@@ -21,7 +21,7 @@ public class Engine {
     private State state = State.HOME_SCREEN;
     private Game currentGame;
     private String gameName = "";
-    private UIHandler uiHandler = new UIHandler();
+    private final UIHandler uiHandler = new UIHandler();
 
     public static void main (String[] args) {
         Engine engine = new Engine();

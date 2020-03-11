@@ -8,85 +8,68 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class EmptyEntity extends Entity implements ICharacter, IInteractable {
+public class EmptyEntity extends Entity {
     private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();
 
-    private EmptyEntity(){}
+    private EmptyEntity() {}
 
-    public static EmptyEntity initializeEmptyEntity(){
-        return EmptyEntityInstance;
-    }
+    public static EmptyEntity initializeEmptyEntity() { return EmptyEntityInstance; }
 
     @Override
-    public String getType() { return "EmptyEntity"; }
+    public String
+    getType() { return "EmptyEntity"; }
 
     @Override
-    public String getName() {
-        return "EmptyEntity";
-    }
+    public String
+    getName() { return "EmptyEntity"; }
 
     @Override
-    public String getDescription() {
-        return "You cannot find that here.";
-    }
+    public String
+    getDescription() { return "You cannot find that here."; }
 
     @Override
-    public boolean isActive() {
-        return false;
-    }
+    public boolean
+    isActive() { return false; }
 
     @Override
-    public void setActive(boolean value)
-    {
-        // Do nothing
-    }
+    public void
+    setActive(boolean value) { /* Do nothing */ }
 
     @Override
-    public Set<String> getInventory() {
-        return Collections.emptySet();
-    }
+    public void
+    addToInventory(String object) { /* Do nothing */ }
 
     @Override
-    public void addToInventory(String object) {
-        // Do nothing
-    }
+    public void
+    removeFromInventory(String object) { /* Do nothing */ }
 
     @Override
-    public void removeFromInventory(String object) {
-        // Do nothing
-    }
+    public boolean
+    hasInInventory(String object) { return false; }
 
     @Override
-    public boolean hasInInventory(String object) { return false; }
+    public Map<String, Integer>
+    getStats() { return Collections.emptyMap(); }
 
     @Override
-    public Map<String, Integer> getStats() { return Collections.emptyMap(); }
+    public void
+    setStat(String name, Integer value) { /* Do nothing */ }
 
     @Override
-    public void setStat(String name, Integer value) {
-        // Do nothing
-    }
+    public Integer
+    getStatValue(String name) { return 0; }
+
+    public String
+    getCurrentLocation() { return ""; }
+
+    public void
+    setCurrentLocation(String newLocation) { /* Do nothing */ }
 
     @Override
-    public Integer getStatValue(String name) { return 0; }
+    public Set<CommandBlueprint>
+    getCommands() { return Collections.emptySet(); }
 
     @Override
-    public String getCurrentLocation() {
-        return "";
-    }
-
-    @Override
-    public void setCurrentLocation(String newLocation) {
-        // Do nothing
-    }
-
-    @Override
-    public Set<CommandBlueprint> getCommands() {
-        return Collections.emptySet();
-    }
-
-    @Override
-    public Command findCommandOrElse(String cmd) {
-        return new DefaultCommand();
-    }
+    public Command
+    findCommandOrElse(String cmd) { return new DefaultCommand(); }
 }

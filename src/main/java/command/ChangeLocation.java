@@ -3,16 +3,10 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-import java.util.Set;
+public class ChangeLocation implements Command {
+    private final Locatable parent;
 
-public class ChangeLocation extends Command {
-    private IInteractable parent;
-    private Set<String> args;
-
-    public ChangeLocation(final Set<String> args, final IInteractable parent) {
-        this.args = args;
-        this.parent = parent;
-    }
+    public ChangeLocation(final Locatable parent) { this.parent = parent; }
 
     @Override
     public String apply(final String newLocation, final GameEntities ge) {

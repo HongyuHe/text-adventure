@@ -37,8 +37,8 @@ public class UIHandler {
     private static final Color DEFAULT_INPUT_COLOR  = Color.CYAN;
     private static final Color DEFAULT_ERROR_COLOR  = Color.RED;
 
-    private TextIO textIO = TextIoFactory.getTextIO();
-    private TextTerminal<?> terminal = textIO.getTextTerminal();
+    private final TextIO textIO = TextIoFactory.getTextIO();
+    private final TextTerminal<?> terminal = textIO.getTextTerminal();
 
 
     UIHandler()
@@ -72,7 +72,7 @@ public class UIHandler {
                 .read();
     }
 
-    public String displayError(final String error) {
+    public void displayError(final String error) {
         clearScreen();
         terminal.executeWithPropertiesConfigurator(
                 p -> p.setPromptColor(DEFAULT_ERROR_COLOR),
@@ -80,7 +80,7 @@ public class UIHandler {
         );
         terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
         print("Press any key to continue.");
-        return getInput();
+        getInput();
     }
 
     public void exit() { terminal.dispose(); }

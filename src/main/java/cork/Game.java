@@ -6,18 +6,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<String> previousCommands = new ArrayList<>();
-    private GameEntities gameEntities;
+    private final List<String> previousCommands = new ArrayList<>();
+    private final GameEntities gameEntities;
 
+    public
     Game(final String game) { gameEntities = Initializer.loadGameFiles(game); }
 
-    boolean isGameOver() { return (playerVictory() || gameEntities.getPlayer().isDead()); }
+    public boolean
+    isGameOver() { return (playerVictory() || gameEntities.getPlayer().isDead()); }
 
-    boolean playerVictory() { return gameEntities.getPlayer().has(gameEntities.getGameOverItem().getName()); }
+    public boolean
+    playerVictory() { return gameEntities.getPlayer().hasInInventory(gameEntities.getGameOverItem().getName()); }
 
-    List<String> getPreviousCommands() { return new ArrayList<>(previousCommands); }
+    public List<String>
+    getPreviousCommands() { return new ArrayList<>(previousCommands); }
 
-    String handleCommand(final String input) {
+    public String
+    handleCommand(final String input)
+    {
         String  result = "";
 
         previousCommands.add(input);
@@ -29,7 +35,7 @@ public class Game {
         } else if(args.length == 2) {
             result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
         } else if(args.length == 3) {
-            result = gameEntities.findInteractableOrElse(args[2]).findCommandOrElse(args[0]).apply(args[1], gameEntities);
+            result = gameEntities.findEntityOrElse(args[2]).findCommandOrElse(args[0]).apply(args[1], gameEntities);
         }
 
         return result;

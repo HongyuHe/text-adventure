@@ -3,16 +3,10 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-import java.util.Set;
+public class ChangeState implements Command {
+    private final Entity parent;
 
-public class ChangeState extends Command {
-    private IInteractable parent;
-    private Set<String> args;
-
-    public ChangeState(final Set<String> args, final IInteractable parent) {
-        this.args = args;
-        this.parent = parent;
-    }
+    public ChangeState(final Entity parent) { this.parent = parent; }
 
     @Override
     public String apply(final String object, final GameEntities ge) {

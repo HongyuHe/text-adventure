@@ -3,26 +3,16 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-import java.util.Set;
+public class Describe implements Command {
+    private final Entity parent;
 
-public class Describe extends Command {
-    private IInteractable parent;
-    private Set<String> args;
-
-    public Describe(final Set<String> args, final IInteractable parent) {
-        this.args = args;
-        this.parent = parent;
-    }
+    public Describe(final Entity parent) { this.parent = parent; }
 
     @Override
     public String apply(String object, final GameEntities ge) {
-        if (object.equals("")) { object = ge.getPlayer().getCurrentLocation(); }
+        if (!parent.isActive()) { return String.format("You cannot see '%s'.", object); }
 
-        Entity e = ge.findEntityOrElse(object);
-
-        if (!e.isActive()) { return String.format("You cannot see '%s'.", object); }
-
-        return e.getDescription();
+        return parent.getDescription();
     }
 
     public String apply(final Area object, final GameEntities ge) {

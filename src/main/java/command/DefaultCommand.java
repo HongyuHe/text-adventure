@@ -3,7 +3,7 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-public class DefaultCommand extends Command {
+public class DefaultCommand implements Command {
     @Override
     public String apply(final String object, final GameEntities ge) { return "You cannot do that."; }
 

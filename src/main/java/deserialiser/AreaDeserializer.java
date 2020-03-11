@@ -2,13 +2,9 @@ package deserialiser;
 
 import entity.Area;
 import com.google.gson.*;
-import com.google.gson.reflect.TypeToken;
 import java.lang.reflect.Type;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
 
-public class AreaDeserializer implements JsonDeserializer<Area> {
+public class AreaDeserializer extends Deserializer implements JsonDeserializer<Area> {
 
     @Override
     public Area deserialize(JsonElement json,
@@ -18,39 +14,16 @@ public class AreaDeserializer implements JsonDeserializer<Area> {
         JsonObject jsonObject = json.getAsJsonObject();
 
         return new Area(
+                jsonObject.get("active").getAsBoolean(),
                 jsonObject.get("type").getAsString(),
                 jsonObject.get("name").getAsString().toLowerCase(),
-                jsonObject.get("active").getAsBoolean(),
                 jsonObject.get("description").getAsString(),
-                createArray(jsonObject.get("inventory").getAsJsonArray()),
-                createArray(jsonObject.get("obstacles").getAsJsonArray()),
-                createArray(jsonObject.get("npcs").getAsJsonArray()),
+                createSet(jsonObject.get("inventory").getAsJsonArray()),
+                createMap(jsonObject.get("stats").getAsJsonObject()),
+                createCommandSet(jsonObject.get("commands").getAsJsonArray()),
+                createSet(jsonObject.get("obstacles").getAsJsonArray()),
+                createSet(jsonObject.get("npcs").getAsJsonArray()),
                 createMap(jsonObject.get("connections").getAsJsonObject())
         );
     }
-
-    private Set<String> createArray(JsonArray jArray) {
-        Set<String> arrayList = new HashSet<>();
-
-        if (jArray != null) {
-            for (JsonElement e : jArray) {
-                arrayList.add(e.getAsString());
-            }
-        }
-
-        return arrayList;
-    }
-
-    private HashMap<String, String> createMap(JsonObject jObject) {
-        HashMap<String, String> map = new HashMap<>();
-
-        if (jObject != null) {
-            Type type = new TypeToken<HashMap<String, String>>(){}.getType();
-            map = new Gson().fromJson(jObject.getAsString(), type);
-        }
-
-        return map;
-    }
-
-
 }

@@ -1,19 +1,18 @@
 package dictionary;
 
-import entity.EmptyEntity;
 import entity.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameEntities {
-    private Map<String, Item> itemEntities;
-    private Map<String, Area> areaEntities;
-    private Map<String, Obstacle> obstacleEntities;
-    private Map<String, Npc> npcEntities;
-    private Item gameOverItem;
-    private Player player;
-    private EmptyEntity emptyEntity;
+    private final Map<String, Item> itemEntities;
+    private final Map<String, Area> areaEntities;
+    private final Map<String, Obstacle> obstacleEntities;
+    private final Map<String, Npc> npcEntities;
+    private final Item gameOverItem;
+    private final Player player;
+    private final EmptyEntity emptyEntity;
 
     public GameEntities(Map<String, Item> itemEntities,
                         Map<String, Area> areaEntities,
@@ -50,13 +49,6 @@ public class GameEntities {
         } else {
             return emptyEntity;
         }
-    }
-
-    public IInteractable findInteractableOrElse(final String interactable)
-    {
-        if (player.getName().equals(interactable)) { return player; }
-        else if (obstacleEntities.containsKey(interactable)) { return obstacleEntities.get(interactable); }
-        else { return emptyEntity; }
     }
 
     public Map<String, Item> getItemEntities() { return new HashMap<>(itemEntities); }
