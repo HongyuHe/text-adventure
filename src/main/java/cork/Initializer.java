@@ -19,8 +19,6 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static entity.EmptyEntity.initializeEmptyEntity;
-
 public class Initializer {
     private Initializer() {}
 
@@ -67,7 +65,7 @@ public class Initializer {
 
         Player player = loadSingleEntity(playerLocation, new PlayerDeserializer(), Player.class);
 
-        EmptyEntity emptyEntity = initializeEmptyEntity();
+        EmptyEntity emptyEntity = EmptyEntity.instance();
 
         GameEntities gInit = new GameEntities(itemEntities,
                                 areaEntities,
@@ -77,7 +75,7 @@ public class Initializer {
                                 player,
                                 emptyEntity
                 );
-        populateActions(gInit);
+        populateCommands(gInit);
         return gInit;
     }
 
@@ -117,25 +115,39 @@ public class Initializer {
     }
 
     private static void
-    populateActions(GameEntities entities)
+    populateCommands(GameEntities entities)
     {
-        HashMap<String, Command> actions = new HashMap<>();
-        Player player = entities.getPlayer();
+        iterateAndPopulate(entities.getItemEntities());
+        iterateAndPopulate(entities.getAreaEntities());
+        iterateAndPopulate(entities.getObstacleEntities());
+        iterateAndPopulate(entities.getNpcEntities());
 
-        for (CommandBlueprint cmd : player.getCommands()) {
-            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, player));
-        }
-        player.setActions(new HashMap<>(actions));
+        Item goi = entities.getGameOverItem();
+        goi.setActions(createCommandMap(goi));
 
-        for (Obstacle o : entities.getObstacleEntities().values())
-        {
-            actions = new HashMap<>();
+        Player p = entities.getPlayer();
+        p.setActions(createCommandMap(p));
 
-            for (CommandBlueprint cmd : o.getCommands()) {
-                actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, o));
-            }
+        EmptyEntity ee = entities.getEmptyEntity();
+        ee.setActions(createCommandMap(ee));
+    }
 
-            o.setActions(new HashMap<>(actions));
-        }
+    private static <T extends Entity> void
+    iterateAndPopulate(final Map<String, T> c)
+    {
+        c.values().forEach(e -> e.setActions(createCommandMap(e)));
+    }
+
+    private static Map<String, Command>
+    createCommandMap(final Entity e)
+    {
+        return e.getCommandBlueprints()
+                .stream()
+                .collect(Collectors.toMap(
+                        CommandBlueprint::getName,
+                        cb -> CommandFactory.createCommand(cb, e),
+                        (a, b) -> b,
+                        HashMap::new)
+                );
     }
 }
