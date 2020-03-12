@@ -1,75 +1,47 @@
 package entity;
 
-import command.Command;
-import command.DefaultCommand;
 import deserialiser.CommandBlueprint;
 
 import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class EmptyEntity extends Entity {
-    private static final EmptyEntity EmptyEntityInstance = new EmptyEntity();
+public class EmptyEntity extends Locatable {
+    private static final EmptyEntity EmptyEntityInstance =
+            new EmptyEntity(true, "EmptyEntity", "EmptyEntity", "You cannot find that here.",
+                    Collections.emptySet(), Collections.emptyMap(), Collections.emptySet(), "");
 
-    private EmptyEntity() {}
+    private EmptyEntity(final boolean active, // NOSONAR - many parameters required for deserialization
+                        final String type,
+                        final String name,
+                        final String description,
+                        final Set<String> inventory,
+                        final Map<String, Integer> stats,
+                        final Set<CommandBlueprint> commandBlueprints,
+                        final String currentLocation)
+    {
+        super(active, type, name, description, inventory, stats, commandBlueprints, currentLocation);
+    }
 
-    public static EmptyEntity initializeEmptyEntity() { return EmptyEntityInstance; }
-
-    @Override
-    public String
-    getType() { return "EmptyEntity"; }
-
-    @Override
-    public String
-    getName() { return "EmptyEntity"; }
-
-    @Override
-    public String
-    getDescription() { return "You cannot find that here."; }
-
-    @Override
-    public boolean
-    isActive() { return false; }
+    public static EmptyEntity instance() { return EmptyEntityInstance; }
 
     @Override
     public void
-    setActive(boolean value) { /* Do nothing */ }
+    setActive(final boolean value) { /* Do nothing */ }
 
     @Override
     public void
-    addToInventory(String object) { /* Do nothing */ }
+    addToInventory(final String object) { /* Do nothing */ }
 
     @Override
     public void
-    removeFromInventory(String object) { /* Do nothing */ }
-
-    @Override
-    public boolean
-    hasInInventory(String object) { return false; }
-
-    @Override
-    public Map<String, Integer>
-    getStats() { return Collections.emptyMap(); }
+    removeFromInventory(final String object) { /* Do nothing */ }
 
     @Override
     public void
-    setStat(String name, Integer value) { /* Do nothing */ }
+    setStat(final String name, final Integer value) { /* Do nothing */ }
 
     @Override
-    public Integer
-    getStatValue(String name) { return 0; }
-
-    public String
-    getCurrentLocation() { return ""; }
-
     public void
-    setCurrentLocation(String newLocation) { /* Do nothing */ }
-
-    @Override
-    public Set<CommandBlueprint>
-    getCommands() { return Collections.emptySet(); }
-
-    @Override
-    public Command
-    findCommandOrElse(String cmd) { return new DefaultCommand(); }
+    setCurrentLocation(final String newLocation) { /* Do nothing */ }
 }

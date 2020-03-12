@@ -31,7 +31,7 @@ public abstract class Locatable extends Entity {
     }
 
     public void
-    setCurrentLocation(String newLocation) { currentLocation = newLocation; }
+    setCurrentLocation(final String newLocation) { currentLocation = newLocation; }
 
     public String
     getCurrentLocation() { return currentLocation; }

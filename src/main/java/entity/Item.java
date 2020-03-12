@@ -20,13 +20,13 @@ public class Item extends Entity {
 
     public
     Item(final boolean active, // NOSONAR - Many parameters are required to allow deserialization
-                final String type,
-                final String name,
-                final String description,
-                final Set<String> inventory,
-                final Map<String, Integer> stats,
-                final Set<CommandBlueprint> commandBlueprints,
-                final boolean consumable)
+         final String type,
+         final String name,
+         final String description,
+         final Set<String> inventory,
+         final Map<String, Integer> stats,
+         final Set<CommandBlueprint> commandBlueprints,
+         final boolean consumable)
     {
         super(active, type, name, description, inventory, stats, commandBlueprints);
         this.consumable = consumable;

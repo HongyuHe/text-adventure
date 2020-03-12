@@ -38,10 +38,10 @@ public class Area extends Entity {
     }
 
     public boolean
-    connectsTo(String nextArea) { return connections.containsKey(nextArea); }
+    connectsTo(final String nextArea) { return connections.containsKey(nextArea); }
 
     public String
-    getConnection(String nextArea) { return connections.get(nextArea); }
+    getConnection(final String nextArea) { return connections.get(nextArea); }
 
     @Override
     public String

@@ -87,7 +87,7 @@ public abstract class Entity {
     findCommandOrElse(final String cmd) { return commands.getOrDefault(cmd, new DefaultCommand()); }
 
     public Set<CommandBlueprint>
-    getCommands() { return new HashSet<>(commandBlueprints); }
+    getCommandBlueprints() { return new HashSet<>(commandBlueprints); }
 
     public void
     setActions(final Map<String, Command> commands) { this.commands = new HashMap<>(commands); }
