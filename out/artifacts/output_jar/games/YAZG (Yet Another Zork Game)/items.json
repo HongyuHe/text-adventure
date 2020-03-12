@@ -8,7 +8,7 @@
     "stats": {
       "health": 10
     },
-    "commands": [],
+    "commandBlueprints": [],
     "consumable": true
   },
 
@@ -22,7 +22,7 @@
       "health": 10,
       "strength": 5
     },
-    "commands": [],
+    "commandBlueprints": [],
     "consumable": true
   },
 
@@ -33,7 +33,7 @@
     "description": "It looks like a key that unlocks something.",
     "inventory": [],
     "stats": {},
-    "commands": [],
+    "commandBlueprints": [],
     "consumable": false
   },
 
@@ -46,7 +46,7 @@
     "stats": {
       "strength": 10
     },
-    "commands": [],
+    "commandBlueprints": [],
     "consumable": false
   }
 ]

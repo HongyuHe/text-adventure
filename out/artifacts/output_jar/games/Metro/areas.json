@@ -1,10 +1,12 @@
 [
   {
+    "active": true,
     "type": "Area",
     "name": "tunnel",
-    "active": true,
     "description": "You are in an old metro tunnel, the rusted and broken tracks stretch off into the darkness in either direction, both north and south.",
     "inventory": [ "bullets" ],
+    "stats": {},
+    "commandBlueprints": [],
     "obstacles": [],
     "npcs": [],
     "connections": {
@@ -15,12 +17,14 @@
     }
   },
   {
+    "active": true,
     "type": "Area",
     "name": "cave-in",
-    "active": true,
     "description": "The tunnel has collapsed here, bits of broken pipes and wiring stick out of the rubble. You can see light shining from above, it looks like a control-room. The tunnel leads north.",
     "inventory": [],
-    "obstacles": [ ],
+    "stats": {},
+    "commandBlueprints": [],
+    "obstacles": [],
     "npcs": [],
     "connections": {
       "north": "tunnel",
@@ -30,11 +34,13 @@
     }
   },
   {
+    "active": true,
     "type": "Area",
     "name": "control-room",
-    "active": true,
     "description": "You clamber up the rubble and squeeze through the jagged hole of a broken floor to enter a long-abandoned control-room. There looks to be a storage room in the back, but it's too dark to see. You can go down to reach the cave-in.",
     "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
     "obstacles": [ "darkness" ],
     "npcs": [],
     "connections": {
@@ -46,11 +52,13 @@
     }
   },
   {
+    "active": true,
     "type": "Area",
     "name": "storage",
-    "active": true,
     "description": "You can see a rifle lying on a table here, there are no bullets, though. The control-room is behind you.",
     "inventory": [ "rifle" ],
+    "stats": {},
+    "commandBlueprints": [],
     "obstacles": [],
     "npcs": [],
     "connections": {
@@ -60,11 +68,13 @@
     }
   },
   {
+    "active": true,
     "type": "Area",
     "name": "station",
-    "active": true,
     "description": "An abandoned metro station. It's eerily quiet. You can head up the broken escalator to get outside, or go back into the tunnel.",
     "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
     "obstacles": [ "monster" ],
     "npcs": [],
     "connections": {
@@ -75,11 +85,13 @@
     }
   },
   {
+    "active": true,
     "type": "Area",
     "name": "outside",
-    "active": true,
     "description": "The outside world. The toxic air chokes up your lungs. You can head back down to re-enter the metro station.",
     "inventory": [ "medicine" ],
+    "stats": {},
+    "commandBlueprints": [],
     "obstacles": [],
     "npcs": [],
     "connections": {

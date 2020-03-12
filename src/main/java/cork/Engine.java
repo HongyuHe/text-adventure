@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Engine {
-    enum State {HOME_SCREEN, MAIN_MENU, GAME_MENU, GAME_RUNNING, QUIT }
+    enum State { HOME_SCREEN, MAIN_MENU, GAME_MENU, GAME_RUNNING, QUIT }
 
     private static final String GAMES_DIRECTORY_PATH = "./games";
     private static final String SAVE_FILE_NAME = "save.txt";

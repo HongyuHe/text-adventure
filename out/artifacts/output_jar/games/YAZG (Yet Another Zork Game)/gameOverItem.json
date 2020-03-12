@@ -5,6 +5,6 @@
   "description": "A very precious diamond.",
   "inventory": [],
   "stats": {},
-  "commands": [],
+  "commandBlueprints": [],
   "consumable": false
 }
