@@ -50,15 +50,15 @@ public class Area extends Entity {
         return description + buildOutputList("people", npcs) + buildOutputList("items", inventory);
     }
 
-    private String
-    buildOutputList(final String noun, final Collection<?> c)
+    private <T> String
+    buildOutputList(final String noun, final Collection<T> c)
     {
         final String DELIMITER = ", ";
 
         if (c.isEmpty()) { return ""; }
 
         StringBuilder sb = new StringBuilder(String.format("%nYou can see the following %s here:%n", noun));
-        for (final String npc : npcs) { sb.append(npc).append(DELIMITER); }
+        for (final T e : c) { sb.append(e).append(DELIMITER); }
 
         return sb.substring(0, sb.length() - DELIMITER.length());
     }

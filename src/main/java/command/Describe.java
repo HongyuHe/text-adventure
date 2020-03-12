@@ -10,9 +10,13 @@ public class Describe implements Command {
 
     @Override
     public String apply(String object, final GameEntities ge) {
-        if (!parent.isActive()) { return String.format("You cannot see '%s'.", object); }
+        if (object.equals("")) { object = ge.getPlayer().getCurrentLocation(); }
 
-        return parent.getDescription();
+        Entity e = ge.findEntityOrElse(object);
+
+        if (!e.isActive()) { return String.format("You cannot see '%s'.", object); }
+
+        return e.getDescription();
     }
 
     public String apply(final Area object, final GameEntities ge) {
