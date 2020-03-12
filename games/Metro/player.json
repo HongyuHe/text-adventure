@@ -1,10 +1,10 @@
 {
+  "active": true,
   "type": "Player",
   "name": "you",
   "description": "You're just a regular baseline human.",
-  "inventory": [ "knife", "flashlight" ],
-  "active": true,
   "currentLocation": "tunnel",
+  "inventory": [ "knife", "flashlight" ],
   "stats":
   {
     "health": 30,
@@ -12,57 +12,47 @@
     "strength": 10,
     "bullets": 1
   },
-  "commands":
+  "commandBlueprints":
   [
     {
       "name": "use",
-      "function": "ChangeState",
-      "params": ["Player"]
+      "function": "ChangeState"
     },
     {
       "name": "stats",
-      "function": "ListStats",
-      "params": ["Player"]
+      "function": "ListStats"
     },
     {
       "name": "look",
-      "function": "Describe",
-      "params": ["Entity"]
+      "function": "Describe"
     },
     {
       "name": "search",
-      "function": "ListContents",
-      "params": ["Area"]
+      "function": "ListContents"
     },
     {
       "name": "interact",
-      "function": "Describe",
-      "params": ["NPC"]
+      "function": "Describe"
     },
     {
       "name": "inventory",
-      "function": "ListContents",
-      "params": ["Player"]
+      "function": "ListContents"
     },
     {
       "name": "move",
-      "function": "ChangeLocation",
-      "params": ["Player"]
+      "function": "ChangeLocation"
     },
     {
       "name": "go",
-      "function": "ChangeLocation",
-      "params": ["Player"]
+      "function": "ChangeLocation"
     },
     {
       "name": "take",
-      "function": "TakeItem",
-      "params": ["Item", "inventory"]
+      "function": "TakeItem"
     },
     {
       "name": "drop",
-      "function": "DropItem",
-      "params": ["Item", "inventory"]
+      "function": "DropItem"
     }
   ]
   

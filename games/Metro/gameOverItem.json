@@ -1,12 +1,12 @@
 {
+  "active": true,
   "type": "Item",
   "name": "medicine",
   "description": "A box of medical supplies that you desperately need.",
-  "consumable": true,
-  "active": true,
-  
+  "inventory": [],
   "stats": {
     "health": 10
-  }
-  
+  },
+  "commandBlueprints": [],
+  "consumable": true
 }

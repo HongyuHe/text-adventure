@@ -1,40 +1,44 @@
 [
   {
+    "active": true,
     "type": "Item",
     "name": "knife",
     "description": "An old but sturdy trench knife.",
-    "consumable": false,
-    "active": true,
-
-    "stats": {}
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
+    "consumable": false
   },
   {
+    "active": true,
     "type": "Item",
     "name": "bullets",
     "description": "A hand-full of bullets.",
-    "consumable": false,
-    "active": true,
-
+    "inventory": [],
     "stats": {
       "bullets": 4
-    }
+    },
+    "commandBlueprints": [],
+    "consumable": false
   },
   {
+    "active": true,
     "type": "Item",
     "name": "flashlight",
     "description": "A flashlight salvaged from the hat of an old metro worker.",
-    "consumable": false,
-    "active": true,
-
-    "stats": {}
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
+    "consumable": false
   },
   {
+    "active": true,
     "type": "Item",
     "name": "rifle",
     "description": "An old soviet bolt-action from before the war.",
-    "consumable": false,
-    "active": true,
-
-    "stats": {}
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
+    "consumable": false
   }
 ]
