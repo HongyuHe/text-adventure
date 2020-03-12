@@ -5,7 +5,8 @@ import deserialiser.CommandBlueprint;
 import java.util.*;
 
 public class Player extends Locatable {
-    public Player(final boolean active, // NOSONAR - Many parameters are required to allow deserialization
+    public
+    Player(final boolean active, // NOSONAR - Many parameters are required to allow deserialization
                   final String type,
                   final String name,
                   final String description,

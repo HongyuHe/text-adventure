@@ -6,7 +6,7 @@
     "description": "A sturdy door.",
     "inventory": [],
     "stats": {},
-    "commands": [
+    "commandBlueprints": [
       {
         "name": "use",
         "function": "ChangeState"

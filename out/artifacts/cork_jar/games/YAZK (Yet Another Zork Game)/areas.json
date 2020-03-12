@@ -1,9 +1,11 @@
 [{
+  "active": true,
   "type": "Area",
   "name": "forest",
-  "active": true,
   "description": "You are surrounded by trees. There is a castle to the north and a house to your west.",
-  "inventory": ["apple", "key"],
+  "inventory": ["apple"],
+  "stats": {},
+  "commands": [],
   "obstacles": ["door"],
   "npcs": [],
   "connections": {
@@ -14,11 +16,13 @@
   }
 },
 {
+  "active": true,
   "type": "Area",
   "name": "house",
-  "active": true,
   "description": "You are inside a house. There is a forest to your east.",
-  "inventory": ["sword"],
+  "inventory": ["sword", "key"],
+  "stats": {},
+  "commands": [],
   "obstacles": [],
   "npcs": ["chad"],
   "connections": {
@@ -27,11 +31,13 @@
   }
 },
 {
+  "active": true,
   "type": "Area",
   "name": "castle",
-  "active": true,
   "description": "You are inside an ominous castle. There is a forest to your south.",
   "inventory": ["diamond", "potion"],
+  "stats": {},
+  "commands": [],
   "obstacles": [],
   "npcs": ["princess"],
   "connections": {

@@ -102,19 +102,15 @@ public class Initializer {
     private static <T> T
     loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
     {
-        try {
+        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation))) {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
-            Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
-            T singleEntity = gson.fromJson(reader, c);
-
-            reader.close();
-            return singleEntity;
+            return gson.fromJson(reader, c);
 
         } catch (Exception ex) {
-            Logger.error(ex.getMessage());
+            Logger.error("JSON file: " + jsonLocation + "\n" + ex.toString());
         }
 
         return null;

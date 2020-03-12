@@ -5,7 +5,7 @@
   "description": "You are surrounded by trees. There is a castle to the north and a house to your west.",
   "inventory": ["apple"],
   "stats": {},
-  "commands": [],
+  "commandBlueprints": [],
   "obstacles": ["door"],
   "npcs": [],
   "connections": {

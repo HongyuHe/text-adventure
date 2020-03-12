@@ -8,7 +8,7 @@
     "health": 10,
     "strength": 15
   },
-  "commands": []
+  "commandBlueprints": []
 },
 {
   "active": true,
@@ -19,6 +19,6 @@
   "stats": {
     "health": 30
   },
-  "commands": []
+  "commandBlueprints": []
 }
 ]

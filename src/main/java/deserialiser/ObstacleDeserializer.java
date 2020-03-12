@@ -4,13 +4,15 @@ import entity.Obstacle;
 import com.google.gson.*;
 
 import java.lang.reflect.Type;
+import java.util.Collections;
 
 public class ObstacleDeserializer extends Deserializer implements JsonDeserializer<Obstacle> {
 
     @Override
     public Obstacle deserialize(JsonElement json,
                                      Type typeOfT,
-                                     JsonDeserializationContext context) throws JsonParseException { // NOSONAR
+                                     JsonDeserializationContext context) throws JsonParseException // NOSONAR
+    {
 
         JsonObject jsonObject = json.getAsJsonObject();
 

@@ -3,6 +3,8 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
+import java.util.Map;
+
 public class DropItem implements Command {
     private final Locatable parent;
 
@@ -17,7 +19,21 @@ public class DropItem implements Command {
 
         area.addToInventory(object);
 
-        return object + " -> " + area.getName();
+        StringBuilder result = new StringBuilder(object + " -> " + area.getName());
+
+        Item i = ge.getItemOrElse(object);
+        if(i.isConsumable()) { return result.toString(); }
+
+        for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
+        {
+            final Integer oldValue = parent.getStatValue(stat.getKey());
+            final Integer newValue = oldValue - stat.getValue();
+            parent.setStat(stat.getKey(), newValue);
+
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
+        }
+
+        return result.toString();
     }
 
     public String apply(final Area object, final GameEntities ge) {

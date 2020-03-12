@@ -9,8 +9,8 @@
     "health": 30,
     "strength": 10
   },
-  
-  "commands": [{
+
+  "commandBlueprints": [{
     "name": "eat",
     "function": "ChangeStat",
     "params": ["health"]
@@ -65,5 +65,5 @@
     "function": "DropItem",
     "params": ["Item", "inventory"]
   }]
-  
+
 }

@@ -1,10 +1,10 @@
 {
+  "active": true,
   "type": "Player",
   "name": "you",
   "description": "You're just a regular baseline human.",
-  "inventory": [],
-  "active": true,
   "currentLocation": "forest",
+  "inventory": [],
   "stats": {
     "health": 30,
     "strength": 10

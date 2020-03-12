@@ -1,0 +1,91 @@
+[
+  {
+    "type": "Area",
+    "name": "tunnel",
+    "active": true,
+    "description": "You are in an old metro tunnel, the rusted and broken tracks stretch off into the darkness in either direction, both north and south.",
+    "inventory": [ "bullets" ],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "north": "station",
+      "station": "station",
+      "south": "cave-in",
+      "cave-in": "cave-in"
+    }
+  },
+  {
+    "type": "Area",
+    "name": "cave-in",
+    "active": true,
+    "description": "The tunnel has collapsed here, bits of broken pipes and wiring stick out of the rubble. You can see light shining from above, it looks like a control-room. The tunnel leads north.",
+    "inventory": [],
+    "obstacles": [ ],
+    "npcs": [],
+    "connections": {
+      "north": "tunnel",
+      "tunnel": "tunnel",
+      "up": "control-room",
+      "control-room": "control-room"
+    }
+  },
+  {
+    "type": "Area",
+    "name": "control-room",
+    "active": true,
+    "description": "You clamber up the rubble and squeeze through the jagged hole of a broken floor to enter a long-abandoned control-room. There looks to be a storage room in the back, but it's too dark to see. You can go down to reach the cave-in.",
+    "inventory": [],
+    "obstacles": [ "darkness" ],
+    "npcs": [],
+    "connections": {
+      "storage": "storage",
+      "storage-room": "storage",
+      "back": "storage",
+      "down": "cave-in",
+      "cave-in": "cave-in"
+    }
+  },
+  {
+    "type": "Area",
+    "name": "storage",
+    "active": true,
+    "description": "You can see a rifle lying on a table here, there are no bullets, though. The control-room is behind you.",
+    "inventory": [ "rifle" ],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "back": "control-room",
+      "behind": "control-room",
+      "control-room": "control-room"
+    }
+  },
+  {
+    "type": "Area",
+    "name": "station",
+    "active": true,
+    "description": "An abandoned metro station. It's eerily quiet. You can head up the broken escalator to get outside, or go back into the tunnel.",
+    "inventory": [],
+    "obstacles": [ "monster" ],
+    "npcs": [],
+    "connections": {
+      "south": "tunnel",
+      "tunnel": "tunnel",
+      "up": "outside",
+      "outside": "outside"
+    }
+  },
+  {
+    "type": "Area",
+    "name": "outside",
+    "active": true,
+    "description": "The outside world. The toxic air chokes up your lungs. You can head back down to re-enter the metro station.",
+    "inventory": [ "medicine" ],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "back": "station",
+      "down": "station",
+      "station": "station"
+    }
+  }
+]
