@@ -51,7 +51,7 @@ public class Area extends Entity {
     }
 
     private <T> String
-    buildOutputList(final String noun, final Collection<T> c)
+    buildOutputList(final String noun, Collection<T> c)
     {
         final String DELIMITER = ", ";
 

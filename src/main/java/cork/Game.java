@@ -24,20 +24,18 @@ public class Game {
     public String
     handleCommand(final String input)
     {
-        String  result = "";
+        final String SPLIT_DELIMITER = " ";
+        final String[] args = input.split(SPLIT_DELIMITER);
 
         previousCommands.add(input);
 
-        String[] args = input.split(" ", 0);
-
-        if(args.length == 1) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply("", gameEntities);
-        } else if(args.length == 2) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
-        } else if(args.length == 3) {
-            result = gameEntities.findEntityOrElse(args[2]).findCommandOrElse(args[0]).apply(args[1], gameEntities);
+        switch (args.length)
+        {
+            case 0:  return "Commands must consist of at least one word.";
+            case 1:  return gameEntities.getPlayer().findCommandOrElse(args[0]).apply("", gameEntities);
+            case 2:  return gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
+            case 3:  return gameEntities.findEntityOrElse(args[2]).findCommandOrElse(args[0]).apply(args[1], gameEntities);
+            default: return "Commands should only consist of three words at maximum.";
         }
-
-        return result;
     }
 }

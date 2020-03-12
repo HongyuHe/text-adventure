@@ -37,8 +37,12 @@
   },
   {
     "name": "interact",
-    "function": "Describe",
+    "function": "Fight",
     "params": ["NPC"]
+  },
+  {
+    "name": "fight",
+    "function": "Fight"
   },
   {
     "name": "inventory",
