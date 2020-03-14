@@ -1,6 +1,3 @@
 look
-look apple
 take apple
-take key
-use key door
-move north
+stats apple

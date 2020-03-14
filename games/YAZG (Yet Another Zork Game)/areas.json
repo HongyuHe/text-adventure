@@ -3,7 +3,7 @@
   "type": "Area",
   "name": "forest",
   "description": "You are surrounded by trees. There is a castle to the north and a house to your west.",
-  "inventory": ["apple"],
+  "inventory": ["apple", "potion"],
   "stats": {},
   "commandBlueprints": [],
   "obstacles": ["door"],
