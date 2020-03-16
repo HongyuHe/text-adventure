@@ -1,0 +1,24 @@
+[{
+  "type": "NPC",
+  "name": "chad",
+  "description": "The chad tells you to stay away from his princess.",
+  "inventory": [],
+  "active": true,
+  
+  "stats": {
+    "health": 10,
+    "strength": 15
+  }
+},
+{
+  "type": "NPC",
+  "name": "princess",
+  "description": "The princess tells you that you were warned to stay away from her!",
+  "inventory": [],
+  "active": true,
+  
+  "stats": {
+    "health": 30
+  }
+}
+]
