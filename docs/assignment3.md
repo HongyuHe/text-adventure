@@ -31,6 +31,12 @@ For each application of any design pattern you have to provide a table conformin
 
 Maximum number of words for this section: 2000
 
+---
+---
+**EngineStateMachine implements both the state machine and singleton patterns**
+---
+---
+
 ## Class diagram									
 Author(s): `name of the team member(s) responsible for this section`
 
