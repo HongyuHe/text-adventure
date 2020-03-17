@@ -7,21 +7,24 @@ Maximum number of words for this document: 18000
 **Format**: establish formatting conventions when describing your models in this document. For example, you style the name of each class in bold, whereas the attributes, operations, and associations as underlined text, objects are in italic, etc.
 
 ### Summary of changes of Assignment 2
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes`
 
-'wait for user input is not an event', so wait for input transition is redundant -> remove from UML
+- *"Object diagrams should not have arrows"*, Ferch42 (TA)  
+   **These arrows were removed form the UML.**
 
-Object diagram should not have arrows - remove from UML
+- *"Wait for user input does not correspond to an event, so the wait for input transition is redundant. It is an activity the object performs"*, Ferch42 (TA)  
+   **Wait for input transitions were removed from the UML.**
 
-make 'findXOrElse' naming more clear
+- *"'p' 's' and 'ge' are vague names."*, anhphi99 (reviewer)  
+    **Short variable names were confined to very short scopes only, and limited to having only one single letter variable in scope at a time.**
 
-make nullobject names consistent
+- *"Dictionary package holds one class, which creates GameEntities, -and- has the functionality 'findEntityOrElse'. (I don't know if this is typical naming that I'm not familiar with yet, but I'd say its unclear what happens when 'else'.)"*, Ece-Doganer (reviewer)  
+   - Made null object names consistent (team choice, linked to the above)  
+   
+   **All getXOrElse functions were all renamed to getXOrDefault, and all null object classes were renamed to Default\<ClassName\> to make the intention clearer.**
 
-add emptyEntity, desrializer stuff, and gameOverItem to class diagram
-
-Provide a bullet list summarizing all the changes you performed in Assignment 2 for addressing our feedback.
-
-Maximum number of words for this section: 1000
+- *"EmptyEntity and GameOverItem are missing in class diagram and description. The save and load features, including deserialiser package contents, is missing in class diagram and description as well"*, Ece-Doganer (reviewer)  
+   **These classes and features were added where relevant.**
 
 ### Application of design patterns
 Author(s): `name of the team member(s) responsible for this section`
