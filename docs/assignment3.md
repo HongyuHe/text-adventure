@@ -34,6 +34,7 @@ Maximum number of words for this section: 2000
 ---
 ---
 **EngineStateMachine implements both the state machine and singleton patterns**
+**The EmptyEntity and DefaultCommand implement the NullObject Pattern**
 ---
 ---
 
