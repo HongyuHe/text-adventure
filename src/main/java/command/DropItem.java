@@ -15,13 +15,13 @@ public class DropItem implements Command {
         if (!parent.hasInInventory(object)) { return String.format("You are not holding '%s'", object); }
         parent.removeFromInventory(object);
 
-        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
+        Area area = ge.getAreaOrDefault(parent.getCurrentLocation());
 
         area.addToInventory(object);
 
         StringBuilder result = new StringBuilder(object + " -> " + area.getName());
 
-        Item i = ge.getItemOrElse(object);
+        Item i = ge.getItemOrDefault(object);
         if(i.isConsumable()) { return result.toString(); }
 
         for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())

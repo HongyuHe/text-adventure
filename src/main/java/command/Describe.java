@@ -12,7 +12,7 @@ public class Describe implements Command {
     public String apply(String object, final GameEntities ge) {
         if (object.equals("")) { object = ge.getPlayer().getCurrentLocation(); }
 
-        Entity e = ge.findEntityOrElse(object);
+        Entity e = ge.findEntityOrDefault(object);
 
         if (!e.isActive()) { return String.format("You cannot see '%s'.", object); }
 

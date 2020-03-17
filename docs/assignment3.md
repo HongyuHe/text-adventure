@@ -9,6 +9,16 @@ Maximum number of words for this document: 18000
 ### Summary of changes of Assignment 2
 Author(s): `name of the team member(s) responsible for this section`
 
+'wait for user input is not an event', so wait for input transition is redundant -> remove from UML
+
+Object diagram should not have arrows - remove from UML
+
+make 'findXOrElse' naming more clear
+
+make nullobject names consistent
+
+add emptyEntity, desrializer stuff, and gameOverItem to class diagram
+
 Provide a bullet list summarizing all the changes you performed in Assignment 2 for addressing our feedback.
 
 Maximum number of words for this section: 1000

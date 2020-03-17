@@ -18,7 +18,7 @@ public class ChangeStat implements Command {
             return String.format("You do not have '%s' in your inventory.", object);
         }
 
-        Item i = ge.getItemOrElse(object);
+        Item i = ge.getItemOrDefault(object);
         if (!i.isConsumable()) { return "You cannot use that."; }
 
         StringBuilder result = new StringBuilder();

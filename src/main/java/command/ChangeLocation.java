@@ -10,13 +10,13 @@ public class ChangeLocation implements Command {
 
     @Override
     public String apply(final String newLocation, final GameEntities ge) {
-        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
+        Area area = ge.getAreaOrDefault(parent.getCurrentLocation());
 
         if (!area.connectsTo(newLocation)) { return "You cannot go there from here."; }
 
         for (final String o : area.getObstacles())
         {
-            final Obstacle obstacle = ge.getObstacleOrElse(o);
+            final Obstacle obstacle = ge.getObstacleOrDefault(o);
             final String nextArea   = area.getConnection(newLocation);
             if (obstacle.getState() && obstacle.getBlocks().equalsIgnoreCase(nextArea))
             {
@@ -27,7 +27,7 @@ public class ChangeLocation implements Command {
         final String newLocationName = area.getConnection(newLocation);
         parent.setCurrentLocation(newLocationName);
 
-        return ge.findEntityOrElse(newLocationName).getDescription();
+        return ge.findEntityOrDefault(newLocationName).getDescription();
     }
 
     public String apply(final Area object, final GameEntities ge) {

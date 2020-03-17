@@ -14,7 +14,7 @@ public class TakeItem implements Command {
 
     @Override
     public String apply(String object, GameEntities ge) {
-        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
+        Area area = ge.getAreaOrDefault(parent.getCurrentLocation());
 
         if (!area.hasInInventory(object)) { return String.format("You cannot see '%s' here.", object); }
 
@@ -24,7 +24,7 @@ public class TakeItem implements Command {
 
         parent.addToInventory(object);
 
-        Item i = ge.getItemOrElse(object);
+        Item i = ge.getItemOrDefault(object);
 
         if (i.isConsumable()) { return result.toString(); }
 

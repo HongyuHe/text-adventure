@@ -16,7 +16,7 @@ public class Fight implements Command {
         final String REDUCTION_STAT  = "health";
         final String COMPARISON_STAT = "strength";
 
-        final Entity opponent = ge.findEntityOrElse(object);
+        final Entity opponent = ge.findEntityOrDefault(object);
 
         final Integer opponentStrength = opponent.getStatValue(COMPARISON_STAT);
         final Integer parentStrength   = parent.getStatValue(COMPARISON_STAT);

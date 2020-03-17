@@ -33,7 +33,7 @@ public class GameEntities {
         itemEntities.put(gameOverItem.getName(), gameOverItem);
     }
 
-    public Entity findEntityOrElse(String entity) {
+    public Entity findEntityOrDefault(String entity) {
         if (itemEntities.containsKey(entity)) {
             return itemEntities.get(entity);
         } else if (areaEntities.containsKey(entity)) {
@@ -55,11 +55,11 @@ public class GameEntities {
 
     public Map<String, Area> getAreaEntities() { return new HashMap<>(areaEntities); }
 
-    public Area getAreaOrElse(final String area) { return areaEntities.getOrDefault(area, new Area()); }
+    public Area getAreaOrDefault(final String area) { return areaEntities.getOrDefault(area, new Area()); }
 
-    public Item getItemOrElse(final String item) { return itemEntities.getOrDefault(item, new Item()); }
+    public Item getItemOrDefault(final String item) { return itemEntities.getOrDefault(item, new Item()); }
 
-    public Obstacle getObstacleOrElse(final String obstacle) { return obstacleEntities.getOrDefault(obstacle, new Obstacle()); }
+    public Obstacle getObstacleOrDefault(final String obstacle) { return obstacleEntities.getOrDefault(obstacle, new Obstacle()); }
 
     public Map<String, Obstacle> getObstacleEntities() { return new HashMap<>(obstacleEntities); }
 
