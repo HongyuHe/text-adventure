@@ -18,12 +18,12 @@ public class ChangeStat implements Command {
             return String.format("You do not have '%s' in your inventory.", object);
         }
 
-        Item i = ge.getItemOrDefault(object);
-        if (!i.isConsumable()) { return "You cannot use that."; }
+        Item item = ge.getItemOrDefault(object);
+        if (!item.isConsumable()) { return "You cannot use that."; }
 
         StringBuilder result = new StringBuilder();
         result.append(parent.getName()).append(":");
-        for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
+        for (final Map.Entry<String, Integer> stat : item.getStats().entrySet())
         {
             final Integer oldValue = parent.getStatValue(stat.getKey());
             final Integer newValue = oldValue + stat.getValue();
@@ -33,7 +33,7 @@ public class ChangeStat implements Command {
         }
 
         ge.getPlayer().removeFromInventory(object);
-        i.setActive(false);
+        item.setActive(false);
 
         return result.toString();
     }

@@ -24,11 +24,11 @@ public class TakeItem implements Command {
 
         parent.addToInventory(object);
 
-        Item i = ge.getItemOrDefault(object);
+        Item item = ge.getItemOrDefault(object);
 
-        if (i.isConsumable()) { return result.toString(); }
+        if (item.isConsumable()) { return result.toString(); }
 
-        for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
+        for (final Map.Entry<String, Integer> stat : item.getStats().entrySet())
         {
             final Integer oldValue = parent.getStatValue(stat.getKey());
             final Integer newValue = oldValue + stat.getValue();

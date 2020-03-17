@@ -21,10 +21,10 @@ public class DropItem implements Command {
 
         StringBuilder result = new StringBuilder(object + " -> " + area.getName());
 
-        Item i = ge.getItemOrDefault(object);
-        if(i.isConsumable()) { return result.toString(); }
+        Item item = ge.getItemOrDefault(object);
+        if(item.isConsumable()) { return result.toString(); }
 
-        for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
+        for (final Map.Entry<String, Integer> stat : item.getStats().entrySet())
         {
             final Integer oldValue = parent.getStatValue(stat.getKey());
             final Integer newValue = oldValue - stat.getValue();
