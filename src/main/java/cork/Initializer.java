@@ -65,7 +65,7 @@ public class Initializer {
 
         Player player = loadSingleEntity(playerLocation, new PlayerDeserializer(), Player.class);
 
-        EmptyEntity emptyEntity = EmptyEntity.instance();
+        DefaultEntity defaultEntity = DefaultEntity.instance();
 
         GameEntities gInit = new GameEntities(itemEntities,
                                 areaEntities,
@@ -73,7 +73,7 @@ public class Initializer {
                                 npcEntities,
                                 gameOverItem,
                                 player,
-                                emptyEntity
+                defaultEntity
                 );
         populateCommands(gInit);
         return gInit;
@@ -128,7 +128,7 @@ public class Initializer {
         Player p = entities.getPlayer();
         p.setActions(createCommandMap(p));
 
-        EmptyEntity ee = entities.getEmptyEntity();
+        DefaultEntity ee = entities.getDefaultEntity();
         ee.setActions(createCommandMap(ee));
     }
 

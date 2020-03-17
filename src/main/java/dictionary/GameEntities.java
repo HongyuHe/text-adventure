@@ -12,7 +12,7 @@ public class GameEntities {
     private final Map<String, Npc> npcEntities;
     private final Item gameOverItem;
     private final Player player;
-    private final EmptyEntity emptyEntity;
+    private final DefaultEntity defaultEntity;
 
     public GameEntities(Map<String, Item> itemEntities,
                         Map<String, Area> areaEntities,
@@ -20,7 +20,7 @@ public class GameEntities {
                         Map<String, Npc> npcEntities,
                         Item gameOverItem,
                         Player player,
-                        EmptyEntity emptyEntity) {
+                        DefaultEntity defaultEntity) {
 
         this.itemEntities = itemEntities;
         this.areaEntities = areaEntities;
@@ -28,7 +28,7 @@ public class GameEntities {
         this.npcEntities = npcEntities;
         this.gameOverItem = gameOverItem;
         this.player = player;
-        this.emptyEntity = emptyEntity;
+        this.defaultEntity = defaultEntity;
 
         itemEntities.put(gameOverItem.getName(), gameOverItem);
     }
@@ -47,7 +47,7 @@ public class GameEntities {
         } else if (player.getName().equals(entity)) {
             return player;
         } else {
-            return emptyEntity;
+            return defaultEntity;
         }
     }
 
@@ -69,6 +69,6 @@ public class GameEntities {
 
     public Player getPlayer() { return player; }
 
-    public EmptyEntity getEmptyEntity() { return emptyEntity; }
+    public DefaultEntity getDefaultEntity() { return defaultEntity; }
 
 }
