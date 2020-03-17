@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -51,18 +52,19 @@ public class Engine {
     public void
     displayMainMenu()
     {
-        try
-        {
-            final String choice = uiHandler.displayMainMenu(loadGameList());
-            if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
+        final List<String> gameList = loadGameList();
 
-            gameName = choice;
-        }
-        catch (IOException e)
+        if (gameList.isEmpty())
         {
             running = false;
             uiHandler.displayError("Please ensure that the Cork JAR is in the same directory as the 'games' folder and that the folder is populated.");
+            return;
         }
+
+        final String choice = uiHandler.displayMainMenu(gameList);
+        if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
+
+        gameName = choice;
     }
 
     public void
@@ -76,17 +78,16 @@ public class Engine {
     }
 
     private List<String>
-    loadGameList() throws IOException
+    loadGameList()
     {
         try (Stream<Path> paths = Files.find(Paths.get(GAMES_DIRECTORY_PATH), 1, (path, attributes) -> attributes.isDirectory()))
         {
             List<String> gameList = paths.map(Path::getFileName).map(Path::toString).collect(Collectors.toList());
             gameList.remove(0);
 
-            if (gameList.isEmpty()) { throw new IOException("Games folder empty."); }
-
             return gameList;
         }
+        catch (IOException e) { return Collections.emptyList(); }
     }
 
     private Path
