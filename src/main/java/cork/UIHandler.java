@@ -6,6 +6,7 @@ import java.util.List;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
+import org.tinylog.Logger;
 
 public class UIHandler {
     private static final String CORK_LOGO =
@@ -46,6 +47,7 @@ public class UIHandler {
         terminal.setBookmark(CLEAR_BOOKMARK);
         terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
         terminal.getProperties().setInputColor(DEFAULT_INPUT_COLOR);
+        terminal.registerUserInterruptHandler(t -> {}, false);
     }
     
     public String
