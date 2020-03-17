@@ -15,10 +15,6 @@
   "commandBlueprints":
   [
     {
-      "name": "use",
-      "function": "ChangeState"
-    },
-    {
       "name": "stats",
       "function": "ListStats"
     },
