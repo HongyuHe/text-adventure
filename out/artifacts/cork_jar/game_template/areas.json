@@ -1,0 +1,24 @@
+/* ########## AREA TEMPLATE ########## */
+[
+  {
+    "type": "Area",     // Entity type
+    "name": "",         // Entity name
+    "description": "",  // Entity description
+    "active": true,     // Current status
+    "inventory": [],    // List of active items
+    "obstacles": [],    // List of active obstacles
+    "npcs": [],         // List of active NPCs
+    "connections": {}   // List of connected areas
+  },
+  {
+    "type": "Area",
+    "name": "",
+    "description": "",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {}
+  },
+  // (...)
+]
