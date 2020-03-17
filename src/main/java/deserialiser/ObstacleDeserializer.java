@@ -27,7 +27,8 @@ public class ObstacleDeserializer extends Deserializer implements JsonDeserializ
                 jsonObject.get("currentLocation").getAsString(),
                 jsonObject.get("state").getAsBoolean(),
                 jsonObject.get("blocks").getAsString(),
-                jsonObject.get("requiredObject").getAsString()
+                jsonObject.get("requiredObject").getAsString(),
+                jsonObject.get("message").getAsString()
         );
     }
 }

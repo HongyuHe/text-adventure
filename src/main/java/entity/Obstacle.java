@@ -8,13 +8,14 @@ public class Obstacle extends Locatable {
     private boolean state;
     private String blocks;
     private String requiredObject;
+    private String message;
 
     public
     Obstacle()
     {
         new Obstacle(false, "", "", "",
                 Collections.emptySet(), Collections.emptyMap(),
-                Collections.emptySet(), "", false, "", ""
+                Collections.emptySet(), "", false, "", "", ""
         );
     }
 
@@ -29,12 +30,14 @@ public class Obstacle extends Locatable {
              final String currentLocation,
              final boolean state,
              final String blocks,
-             final String requiredObject)
+             final String requiredObject,
+             final String message)
     {
         super(active, type, name, description, inventory, stats, commandBlueprints, currentLocation);
         this.state = state;
         this.blocks = blocks;
         this.requiredObject = requiredObject;
+        this.message = message;
     }
 
     public void
@@ -48,5 +51,8 @@ public class Obstacle extends Locatable {
 
     public String
     getRequiredObject() { return requiredObject; }
+
+    public String
+    getMessage() { return message; }
 }
 

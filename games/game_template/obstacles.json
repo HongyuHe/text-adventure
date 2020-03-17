@@ -1,0 +1,42 @@
+/* ########## OBSTACLE TEMPLATE ########## */
+[
+  {
+    "type": "Obstacle",     // Entity type
+    "name": "",             // Entity name
+    "description": "",      // Entity description
+    "active": true,         // Current status
+    "state": true,          // Current state
+    "currentLocation": "",  // Location (area) of obstacle
+    "blocks": "",           // Area blocked by obstacle
+    "requiredObject": "",   // Item required to remove obstacle
+    "message": "",          // Blocking message
+    "stats": {},            // -
+    "inventory": [],        // -
+    "commandBlueprints": [  // List of applicable functions
+    {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ]
+  },
+  {
+    "type": "Obstacle",
+    "name": "",
+    "description": "",
+    "active": true,
+    "state": true,
+    "currentLocation": "",
+    "blocks": "",
+    "requiredObject": "",
+    "message": "",
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": [
+    {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ]
+  },
+  // (...)
+]
