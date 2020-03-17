@@ -12,12 +12,17 @@ public class ChangeStat implements Command {
 
     @Override
     public String apply(final String object, final GameEntities ge) {
-        if (!parent.hasInInventory(object)) { return String.format("You do not have '%s' in your inventory.", object); }
+        if (!ge.getPlayer().hasInInventory(parent.getName())
+                && !ge.getPlayer().hasInInventory(object)
+        ) {
+            return String.format("You do not have '%s' in your inventory.", object);
+        }
 
         Item i = ge.getItemOrElse(object);
         if (!i.isConsumable()) { return "You cannot use that."; }
 
         StringBuilder result = new StringBuilder();
+        result.append(parent.getName()).append(":");
         for (final Map.Entry<String, Integer> stat : i.getStats().entrySet())
         {
             final Integer oldValue = parent.getStatValue(stat.getKey());
@@ -27,7 +32,7 @@ public class ChangeStat implements Command {
             result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
         }
 
-        parent.removeFromInventory(object);
+        ge.getPlayer().removeFromInventory(object);
         i.setActive(false);
 
         return result.toString();

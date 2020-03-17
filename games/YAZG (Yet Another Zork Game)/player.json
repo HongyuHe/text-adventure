@@ -1,16 +1,19 @@
 {
-  "active": true,
   "type": "Player",
   "name": "you",
+  "active": true,
   "description": "You're just a regular baseline human.",
   "currentLocation": "forest",
   "inventory": [],
   "stats": {
     "health": 30,
-    "strength": 10
+    "strength": 10,
+    "dexterity": 10,
+    "bullets": 1
   },
-
-  "commandBlueprints": [{
+  "commandBlueprints":
+  [
+    {
     "name": "eat",
     "function": "ChangeStat",
     "params": ["health"]

@@ -1,0 +1,70 @@
+/* ########## PLAYER TEMPLATE ########## */
+{
+  "type": "Player",       // Entity type
+  "name": "",             // Entity name
+  "description": "",      // Entity description
+  "active": true,         // Current status
+  "currentLocation": "",  // Player starting location (area)
+  "stats": {              // List of active stats
+    "health": 100,
+    "strength": 10
+  },
+  "inventory": [],        // List of current items
+  "commandBlueprints": [  // List of applicable functions
+    {
+    "name": "eat",
+    "function": "ChangeStat",
+    "params": ["health"]
+  },
+  {
+    "name": "stats",
+    "function": "ListStats",
+    "params": ["Player"]
+  },
+  {
+    "name": "use",
+    "function": "ChangeStat",
+    "params": ["health"]
+  },
+  {
+    "name": "look",
+    "function": "Describe",
+    "params": ["Entity"]
+  },
+  {
+    "name": "search",
+    "function": "ListContents",
+    "params": ["Area"]
+  },
+  {
+    "name": "interact",
+    "function": "Describe",
+    "params": ["NPC"]
+  },
+  {
+    "name": "inventory",
+    "function": "ListContents",
+    "params": ["Player"]
+  },
+  {
+    "name": "move",
+    "function": "ChangeLocation",
+    "params": ["Player"]
+  },
+  {
+    "name": "go",
+    "function": "ChangeLocation",
+    "params": ["Player"]
+  },
+  {
+    "name": "take",
+    "function": "TakeItem",
+    "params": ["Item", "inventory"]
+  },
+  {
+    "name": "drop",
+    "function": "DropItem",
+    "params": ["Item", "inventory"]
+  }]
+
+}

@@ -14,8 +14,10 @@ public class ListStats implements Command {
     public String apply(final String object, final GameEntities ge)
     {
         StringBuilder contents = new StringBuilder("Stats:\n");
-
-        for (final Map.Entry<String, Integer> stat : parent.getStats().entrySet()) { contents.append(String.format("\t%s: %d%n", stat.getKey(), stat.getValue())); }
+        Entity target = ge.findEntityOrElse(object);
+        for (final Map.Entry<String, Integer> stat : target.getStats().entrySet()) {
+            contents.append(String.format("\t%s: %d%n", stat.getKey(), stat.getValue()));
+        }
 
         return contents.toString();
     }

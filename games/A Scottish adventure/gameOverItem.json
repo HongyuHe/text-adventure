@@ -4,9 +4,6 @@
   "description": "Some delicious looking haggis.",
   "consumable": true,
   "active": true,
-  
-  "stats": {
-    "health": 10
-  }
-  
+  "inventory": [],
+  "stats": {}
 }

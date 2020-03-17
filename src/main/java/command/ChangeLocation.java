@@ -20,7 +20,7 @@ public class ChangeLocation implements Command {
             final String nextArea   = area.getConnection(newLocation);
             if (obstacle.getState() && obstacle.getBlocks().equalsIgnoreCase(nextArea))
             {
-                return String.format("There is a %s in the way.", obstacle.getName());
+                return obstacle.getMessage();
             }
         }
 
