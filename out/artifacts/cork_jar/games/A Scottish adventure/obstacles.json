@@ -1,0 +1,36 @@
+[
+  {
+    "type": "Obstacle",
+    "name": "wean",
+    "active": true,
+    "currentLocation": "nursery",
+    "state": true,
+    "blocks": "cantine",
+    "requiredObject": "note",
+    "commands":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState",
+        "params": []
+      }
+    ]
+  },
+  {
+    "type": "Obstacle",
+    "name": "riddle",
+    "active": true,
+    "currentLocation": "church",
+    "state": true,
+    "blocks": "chamber",
+    "requiredObject": "answer",
+    "commands":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState",
+        "params": []
+      }
+    ]
+  }
+]

@@ -1,0 +1,20 @@
+[
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "door",
+    "description": "A sturdy door.",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "forest",
+    "state": true,
+    "blocks": "castle",
+    "requiredObject": "key"
+  }
+]
