@@ -144,6 +144,10 @@ Since state is an integral part of **Engine** it is important that the method fo
 
 ##### Operations
 
+- *instance(): EngineStateMachine* - Returns the singleton instance of the state machine.
+
+- *execute(Engine e): void* - Called by **Engine**. The state machine passes the current state object a reference to the *engine* which calls the appropriate functions, and then the state is switched with the next state in the order. This means that the state objects control the actions of **Engine**, ensuring no deviation from intended behaviour.
+
 ##### Associations
 
 
