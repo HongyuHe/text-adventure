@@ -16,7 +16,7 @@ Author(s): `Anthony Wilkes`
    **Wait for input transitions were removed from the UML.**
 
 - *"'p' 's' and 'ge' are vague names."*, anhphi99 (reviewer)  
-    **Short variable names were confined to very short scopes only, and limited to having only one single letter variable in scope at a time.**
+    **Short variable names were confined to very short scopes only, and limited to have only one single letter variable in scope at a time.**
 
 - *"Dictionary package holds one class, which creates GameEntities, -and- has the functionality 'findEntityOrElse'. (I don't know if this is typical naming that I'm not familiar with yet, but I'd say its unclear what happens when 'else'.)"*, Ece-Doganer (reviewer)  
    - Made null object names consistent (team choice, linked to the above)  
@@ -27,7 +27,7 @@ Author(s): `Anthony Wilkes`
    **These classes and features were added where relevant.**
 
 ### Application of design patterns
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes`
 
 `Figure representing the UML class diagram in which all the applied design patterns are highlighted graphically (for example with a red rectangle/circle with a reference to the ID of the applied design pattern`
 
@@ -36,6 +36,33 @@ For each application of any design pattern you have to provide a table conformin
 | ID  | DP1  |
 |---|---|
 | **Design pattern**  | Name of the applied pattern |
+| **Problem**  | A paragraph describing the problem you want to solve |
+| **Solution**  | A paragraph describing why with the application of the design pattern you solve the identified problem |
+| **Intended use**  | A paragraph describing how you intend to use at run-time the objects involved in the applied design patterns (you can refer to small sequence diagrams here if you want to detail how the involved parties interact at run-time |
+| **Constraints**  | Any additional constraints that the application of the design pattern is imposing, if any |
+| **Additional remarks**  | Optional, only if needed |
+
+| ID  | DP1  |
+|---|---|
+| **Design pattern**  | State Machine |
+| **Problem**  | The Engine class needed to control the state of the system as a whole, with particular actions required in each state. At the end of assignment 2, the code inside the Engine class was beginning to show signs that it was unmaintainable (switch statement to change state), and lacked robustness (state could technically be changed to anything from anywhere). |
+| **Solution**  | Application of the pattern moved the responsibility for changing state into separate classes - this allowed the state changing code in Engine to be localised to a single point, and ensured that more states could be easily added in the future. |
+| **Intended use**  | The Engine object now holds a reference to the EngineStateMachine object which holds a reference to the current state object. When Engine is ready it asks the state machine is execute the current state, which asks the current state object to call the appropriate function in Engine, after which it changes to the next state. |
+| **Constraints**  | Since the state classes now call functions in Engine, the increase in robustness has lead to an increase in the cognitive load required to understand the Engine class. However, the engine_state package is very small, and almost every class acts identically, so this increase should only be minor. |
+| **Additional remarks**  | None. |
+
+| ID  | DP2  |
+|---|---|
+| **Design pattern**  | Singleton |
+| **Problem**  | A paragraph describing the problem you want to solve |
+| **Solution**  | A paragraph describing why with the application of the design pattern you solve the identified problem |
+| **Intended use**  | A paragraph describing how you intend to use at run-time the objects involved in the applied design patterns (you can refer to small sequence diagrams here if you want to detail how the involved parties interact at run-time |
+| **Constraints**  | Any additional constraints that the application of the design pattern is imposing, if any |
+| **Additional remarks**  | Optional, only if needed |
+
+| ID  | DP3  |
+|---|---|
+| **Design pattern**  | Null Object |
 | **Problem**  | A paragraph describing the problem you want to solve |
 | **Solution**  | A paragraph describing why with the application of the design pattern you solve the identified problem |
 | **Intended use**  | A paragraph describing how you intend to use at run-time the objects involved in the applied design patterns (you can refer to small sequence diagrams here if you want to detail how the involved parties interact at run-time |
