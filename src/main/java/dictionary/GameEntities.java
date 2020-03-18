@@ -14,14 +14,15 @@ public class GameEntities {
     private final Player player;
     private final DefaultEntity defaultEntity;
 
-    public GameEntities(Map<String, Item> itemEntities,
+    public
+    GameEntities(Map<String, Item> itemEntities,
                         Map<String, Area> areaEntities,
                         Map<String, Obstacle> obstacleEntities,
                         Map<String, Npc> npcEntities,
                         Item gameOverItem,
                         Player player,
-                        DefaultEntity defaultEntity) {
-
+                        DefaultEntity defaultEntity)
+    {
         this.itemEntities = itemEntities;
         this.areaEntities = areaEntities;
         this.obstacleEntities = obstacleEntities;
@@ -33,42 +34,45 @@ public class GameEntities {
         itemEntities.put(gameOverItem.getName(), gameOverItem);
     }
 
-    public Entity getEntityOrDefault(String entity) {
-        if (itemEntities.containsKey(entity)) {
-            return itemEntities.get(entity);
-        } else if (areaEntities.containsKey(entity)) {
-            return areaEntities.get(entity);
-        } else if (obstacleEntities.containsKey(entity)) {
-            return obstacleEntities.get(entity);
-        } else if (npcEntities.containsKey(entity)) {
-            return npcEntities.get(entity);
-        } else if (gameOverItem.getName().equals(entity)) {
-            return gameOverItem;
-        } else if (player.getName().equals(entity)) {
-            return player;
-        } else {
-            return defaultEntity;
-        }
+    public Entity
+    getEntityOrDefault(String entity)
+    {
+        if      (itemEntities.containsKey(entity))      { return itemEntities.get(entity); }
+        else if (areaEntities.containsKey(entity))      { return areaEntities.get(entity); }
+        else if (obstacleEntities.containsKey(entity))  { return obstacleEntities.get(entity); }
+        else if (npcEntities.containsKey(entity))       { return npcEntities.get(entity); }
+        else if (gameOverItem.getName().equals(entity)) { return gameOverItem; }
+        else if (player.getName().equals(entity))       { return player; }
+        else                                            { return defaultEntity; }
     }
 
-    public Map<String, Item> getItemEntities() { return new HashMap<>(itemEntities); }
+    public Map<String, Item>
+    getItemEntities() { return new HashMap<>(itemEntities); }
 
-    public Map<String, Area> getAreaEntities() { return new HashMap<>(areaEntities); }
+    public Map<String, Area>
+    getAreaEntities() { return new HashMap<>(areaEntities); }
 
-    public Area getAreaOrDefault(final String area) { return areaEntities.getOrDefault(area, new Area()); }
+    public Area
+    getAreaOrDefault(final String area) { return areaEntities.getOrDefault(area, new Area()); }
 
-    public Item getItemOrDefault(final String item) { return itemEntities.getOrDefault(item, new Item()); }
+    public Item
+    getItemOrDefault(final String item) { return itemEntities.getOrDefault(item, new Item()); }
 
-    public Obstacle getObstacleOrDefault(final String obstacle) { return obstacleEntities.getOrDefault(obstacle, new Obstacle()); }
+    public Obstacle
+    getObstacleOrDefault(final String obstacle) { return obstacleEntities.getOrDefault(obstacle, new Obstacle()); }
 
-    public Map<String, Obstacle> getObstacleEntities() { return new HashMap<>(obstacleEntities); }
+    public Map<String, Obstacle>
+    getObstacleEntities() { return new HashMap<>(obstacleEntities); }
 
-    public Map<String, Npc> getNpcEntities() { return new HashMap<>(npcEntities); }
+    public Map<String, Npc>
+    getNpcEntities() { return new HashMap<>(npcEntities); }
 
-    public Item getGameOverItem() { return gameOverItem; }
+    public Item
+    getGameOverItem() { return gameOverItem; }
 
-    public Player getPlayer() { return player; }
+    public Player
+    getPlayer() { return player; }
 
-    public DefaultEntity getDefaultEntity() { return defaultEntity; }
-
+    public DefaultEntity
+    getDefaultEntity() { return defaultEntity; }
 }
