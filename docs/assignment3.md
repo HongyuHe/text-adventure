@@ -229,7 +229,7 @@ Acts as a dictionary for converting the strings entered by the user into objects
     - *getAreaOrDefault(final String area): Area*
     - *getItemOrDefault(final String item): Item*
     - *getObstacleOrDefault(final String obstacle): Obstacle*
-        - All search for the specified object in the relevant collection, and if no matching name can be found the *DefaultEntity* is returned. 
+  - All search for the specified object in the relevant collection, and if no matching name can be found the *DefaultEntity* is returned. 
 
 ##### Associations
 
@@ -240,12 +240,17 @@ Acts as a dictionary for converting the strings entered by the user into objects
 
 ### Entity
 
+The abstract description of a generic **Entity** with the methods and attributes that **Entity** objects are required to provide.
+
 ##### Attributes
+
+- *commands: Map<String, ICommand>* - A collection of all commands that can be performed on the given **Entity**, held in name:object pairs.
 
 ##### Operations
 
-##### Associations
+- *findCommandOrDefault(final String cmd): ICommand* - Searches for a command with the given name and returns it, or returns the **DefaultCommand** if no appropriate command could be found.
 
+##### Associations
 
 ### Area
 
