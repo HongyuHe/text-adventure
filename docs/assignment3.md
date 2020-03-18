@@ -138,6 +138,10 @@ Since state is an integral part of **Engine** it is important that the method fo
 
 ##### Attributes
 
+- *fsm: EngineStateMachine* - Since the state of the **Engine** should always be globally consistent, the **EngineStateMachine** is a singleton. This prevents any accidental creation of a new state handler. The *fsm* is the only instance of the **EngineStateMachine** that should exists in the system.
+
+- *state: IState* - Holds the current state object.
+
 ##### Operations
 
 ##### Associations
