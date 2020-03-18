@@ -14844,7 +14844,37 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFw7YXDe6c59oc="
+								},
+								"navigable": false,
+								"aggregation": "shared"
+							}
+						},
+						{
+							"_type": "UMLAssociation",
+							"_id": "AAAAAAFw71GFQN3OWrk=",
+							"_parent": {
+								"$ref": "AAAAAAFw7YXdxqe3sQA="
+							},
+							"end1": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAFw71GFQN3P4kg=",
+								"_parent": {
+									"$ref": "AAAAAAFw71GFQN3OWrk="
+								},
+								"reference": {
+									"$ref": "AAAAAAFw7YXdxqe3sQA="
 								}
+							},
+							"end2": {
+								"_type": "UMLAssociationEnd",
+								"_id": "AAAAAAFw71GFQN3QP8M=",
+								"_parent": {
+									"$ref": "AAAAAAFw71GFQN3OWrk="
+								},
+								"reference": {
+									"$ref": "AAAAAAFw7YXDe6c59oc="
+								},
+								"aggregation": "shared"
 							}
 						}
 					],
@@ -15586,7 +15616,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7ZnTzZlR6ZU="
 									},
-									"name": "final String object"
+									"name": "final String object",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",

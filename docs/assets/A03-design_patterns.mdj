@@ -15060,7 +15060,9 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFw7YXDe6c59oc="
-								}
+								},
+								"navigable": false,
+								"aggregation": "shared"
 							}
 						}
 					],
