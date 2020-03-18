@@ -33,7 +33,7 @@ Author(s): `Anthony Wilkes`
 
 For each application of any design pattern you have to provide a table conforming to the template below.
 
-| ID  | DP1  |
+| ID  | DP1 |
 |---|---|
 | **Design pattern**  | Name of the applied pattern |
 | **Problem**  | A paragraph describing the problem you want to solve |
@@ -42,7 +42,7 @@ For each application of any design pattern you have to provide a table conformin
 | **Constraints**  | Any additional constraints that the application of the design pattern is imposing, if any |
 | **Additional remarks**  | Optional, only if needed |
 
-| ID  | DP1  |
+| ID  | DP1 |
 |---|---|
 | **Design pattern**  | State Machine |
 | **Problem**  | The Engine class needed to control the state of the system as a whole, with particular actions required in each state. At the end of assignment 2, the code inside the Engine class was beginning to show signs that it was unmaintainable (switch statement to change state), and lacked robustness (state could technically be changed to anything from anywhere). |
@@ -51,7 +51,7 @@ For each application of any design pattern you have to provide a table conformin
 | **Constraints**  | Since the state classes now call functions in Engine, the increase in robustness has lead to an increase in the cognitive load required to understand the Engine class. However, the engine_state package is very small, and almost every class acts identically, so this increase should only be minor. |
 | **Additional remarks**  | None. |
 
-| ID  | DP2  |
+| ID  | DP2 |
 |---|---|
 | **Design pattern**  | Singleton |
 | **Problem**  | To maintain consistent state, the EngineStateMachine was made into a singleton. If this were not the case, the Engine class could end up with multiple states in different stages doing different things. |
@@ -60,7 +60,7 @@ For each application of any design pattern you have to provide a table conformin
 | **Constraints**  | A singleton reduces the re-usability of the code as it makes it impossible to use this class in multiple scenarios. However, the EngineStateMachine is already very specific to the Engine class, and there is no other part of the system that requires a similar state machine, so this is an acceptable cost. |
 | **Additional remarks**  | None. |
 
-| ID  | DP3  |
+| ID  | DP3 |
 |---|---|
 | **Design pattern**  | Null Object |
 | **Problem**  | Since Strings are an integral part of the project (the user will be typing instructions), it was immensely important to handle errors efficiently. Since the user is part of a tight feedback loop, it was considered fine for the system to fail if the user made a mistake, and to then immediately ask for a correction. |
@@ -69,23 +69,23 @@ For each application of any design pattern you have to provide a table conformin
 | **Constraints**  | The cognitive load to use GameEntities is increased, however the resulting code is simpler and can be understood without requiring to understand this functionality. |
 | **Additional remarks**  | None. |
 
-| ID  | DP2  |
+| ID  | DP4 |
 |---|---|
 | **Design pattern**  | Singleton |
-| **Problem**  | DefaultEntity |
-| **Solution**  |  |
-| **Intended use**  |  |
-| **Constraints**  |  |
+| **Problem**  | The DefaultEntity class is a null object which causes no side-effects when interacted with, creating multiple would be a waste of resources. |
+| **Solution**  | The DefaultEntity was made into a singleton so that any reference to it would interact with the same object instead of creating a new one. |
+| **Intended use**  | Whenever a DefaultEntity is required (e.g. GameEntities cannot find an entity with the given name), a reference to the singleton is returned instead. |
+| **Constraints**  | DefaultEntity can no longer contain any unique state, however, since this would violate the principle of a null object, this should cause no issues. |
 | **Additional remarks**  | None. |
 
 Maximum number of words for this section: 2000
 
 ## Class diagram									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes`
 
 This chapter contains the specification of the UML class diagram of your system, together with a textual description of all its elements.
 
-`Figure representing the UML class diagram`
+![Class Diagram](./assets/A03-class_detail.png "Class diagram")
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
 - Brief description about what it represents
