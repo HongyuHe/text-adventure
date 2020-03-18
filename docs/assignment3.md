@@ -202,7 +202,23 @@ Turns user commands into instructions that can be carried out by the game, then 
 
 ### GameEntities
 
+Acts as a dictionary for converting the strings entered by the user into objects that exist in the game world. This allows every object in the game to access other objects through unique names. As a result this means that no objects need to hold references to any other objects, and so the **GameEntities** class can keep track of everything in a single, localised place. 
+
 ##### Attributes
+
+- *itemEntities: Map\<String, Item\>* - A collection of all **Items** in name:object pairs.
+
+- *areaEntities: Map\<String, Area\>* - A collection of all **Areas** in name:object pairs.
+
+- *obstacleEntities: Map\<String, Obstacle\>* - A collection of all **Obstacles** in name:object pairs.
+
+- *npcEntities: Map\<String, Npc\>* - A collection of all **Npcs** in name:object pairs.
+
+- *gameOverItem: Item* - A reference to the *GameOverItem* for the current game.
+
+- *player: Player* - A reference to the game's *Player*.
+
+- *defaultEntity: DefaultEntity* - A reference to the *DefaultEntity*.
 
 ##### Operations
 
