@@ -168,40 +168,9 @@ Provides an API for the **EngineStateMachine** to interact with the state object
 - **GameMenu**, **HomeScreen**, **MainMenu**, and **GameRunning** interface realization - Each implements the operations defined by **IState**.
 
 
-### HomeScreen
+### HomeScreen, MainMenu, GameMenu, GameRunning
 
-##### Attributes
-
-##### Operations
-
-##### Associations
-
-
-### MainMenu
-
-##### Attributes
-
-##### Operations
-
-##### Associations
-
-
-### GameMenu
-
-##### Attributes
-
-##### Operations
-
-##### Associations
-
-
-### GameRunning
-
-##### Attributes
-
-##### Operations
-
-##### Associations
+Provide functionality to the operations defined by **IState**. Each class decides which functions it calls in **Engine** and which state comes next in the order (HomeScreen -> MainMenu -> GameMenu -> GameRunning -> HomeScreen).
 
 
 ### Game
