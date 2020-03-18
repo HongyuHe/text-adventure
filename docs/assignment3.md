@@ -256,13 +256,18 @@ The abstract description of a generic **Entity** with the methods and attributes
 
 - **Locatable**, **Area**, **Item**, and **Npc** generalizations - Each is a kind of **Entity**.
 
+
 ### Area
+
+Represents a location in the game world where a player can stand.
 
 ##### Attributes
 
-##### Operations
+- *obstacles: Set\<String\>* - Names of all the **Obstacle** objects within the given area.
 
-##### Associations
+- *npcs: Set\<String\>* - Names of all the **Npc** objects within the given area.
+
+- *connections: Set\<String\>* - Names of all the **Area** objects that can be reached from the given area.
 
 
 ### Item
