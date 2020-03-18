@@ -71,6 +71,8 @@ Author(s): `Anthony Wilkes`
 ---
 CommandFactory is actually a factory method? or a builder?
 ---
+The Initializer is a Facade 
+---
 ---
 
 
@@ -332,11 +334,25 @@ A singleton, null object representation of any **Entity** - all operations that 
 
 ### Initializer
 
-##### Attributes
+Sets up all the objects required to build a **Game** by being a central point that owns the deserializers and instructs their actions.
 
 ##### Operations
 
+- *loadGameFiles(game: String): GameEntities* - Entry point for **Engine** to call when it requires a game's files to be loaded.
+
+- *load(jsonLocation: String, deserializer: JsonDeserializer<?>, c: Class<T>): ArrayList<T>* - Reads the appropriate JSON files for a certain collection of game objects.
+
+- *loadSingleEntity(jsonLocation: String, deserializer: JsonDeserializer<?>, c: Class<T>): T* - Same as *load*, but works when the JSON files contains only a single game object. 
+
+- *populateCommands(entities: GameEntities): void* - Goes through all the objects in the **GameEntities** collections and ensures that they have valid **Command** objects (this is not automatically done when reading the JSON files).
+
+- *createCommandMap(e: Entity): Map<String, ICommand>* - Converts the **CommandBlueprint** objects into **Command** objects.
+
 ##### Associations
+
+- **Deserializer** composition - The **Initializer** contains and commands a set of **Deserializers**. These **Deserializers** should not exist outside of the **Initializer** as it acts as the wrapper to the deserializers for the rest of the system. 
+
+- **CommandFactory** directed association - The **Initializer** uses the **CommandFactory** to create objects that implement the **ICommand** interface, however the **CommandFactory** is not a component of the **Initializer** and nor is it unable to exist outside of it.
 
 
 ### Deserializer
