@@ -15785,7 +15785,9 @@
 								},
 								"reference": {
 									"$ref": "AAAAAAFw7YXdxqe3sQA="
-								}
+								},
+								"navigable": false,
+								"aggregation": "shared"
 							}
 						}
 					],
