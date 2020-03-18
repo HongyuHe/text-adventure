@@ -281,11 +281,7 @@ Represents an object in the game world that can be interacted with.
 
 ### Npc
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Represents a Non-player character in the game world.
 
 
 ### Locatable
