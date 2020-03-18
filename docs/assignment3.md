@@ -150,6 +150,8 @@ Since state is an integral part of **Engine** it is important that the method fo
 
 ##### Associations
 
+- **IState** composition - State objects have no purpose outside of the **EngineStateMachine** and so should not exist without it.
+
 
 ### IState
 
