@@ -131,10 +131,10 @@ Acts as a bridge between the system and the user. The **UIHandler** deals with a
 
 - *promptUser(prompt: final String): boolean* - Prompts the user to answer a yes/no question and returns the result.
 
-##### Associations
-
 
 ### EngineStateMachine
+
+Since state is an integral part of **Engine** it is important that the method for handling it is robust. The **EngineStateMachine** handles all actions and transitions for **Engine** whilst also improving maintainability and extensibility.
 
 ##### Attributes
 
