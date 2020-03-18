@@ -272,11 +272,11 @@ Represents a location in the game world where a player can stand.
 
 ### Item
 
+Represents an object in the game world that can be interacted with.
+
 ##### Attributes
 
-##### Operations
-
-##### Associations
+- *consumable: boolean* - A flag to indicate whether this object can be used multiple times, or just once.
 
 
 ### Npc
