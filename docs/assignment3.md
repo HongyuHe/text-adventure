@@ -69,6 +69,15 @@ For each application of any design pattern you have to provide a table conformin
 | **Constraints**  | The cognitive load to use GameEntities is increased, however the resulting code is simpler and can be understood without requiring to understand this functionality. |
 | **Additional remarks**  | None. |
 
+| ID  | DP2  |
+|---|---|
+| **Design pattern**  | Singleton |
+| **Problem**  | DefaultEntity |
+| **Solution**  |  |
+| **Intended use**  |  |
+| **Constraints**  |  |
+| **Additional remarks**  | None. |
+
 Maximum number of words for this section: 2000
 
 ## Class diagram									
