@@ -63,20 +63,13 @@ For each application of any design pattern you have to provide a table conformin
 | ID  | DP3  |
 |---|---|
 | **Design pattern**  | Null Object |
-| **Problem**  | A paragraph describing the problem you want to solve |
-| **Solution**  | A paragraph describing why with the application of the design pattern you solve the identified problem |
-| **Intended use**  | A paragraph describing how you intend to use at run-time the objects involved in the applied design patterns (you can refer to small sequence diagrams here if you want to detail how the involved parties interact at run-time |
-| **Constraints**  | Any additional constraints that the application of the design pattern is imposing, if any |
-| **Additional remarks**  | Optional, only if needed |
+| **Problem**  | Since Strings are an integral part of the project (the user will be typing instructions), it was immensely important to handle errors efficiently. Since the user is part of a tight feedback loop, it was considered fine for the system to fail if the user made a mistake, and to then immediately ask for a correction. |
+| **Solution**  | When searching for an object with a name matching the user's input, if the object does not exist, a null object can be returned instead. This null object can be operated upon without any special cases needing to be handled, simplifying the code. |
+| **Intended use**  | Null objects (DefaultCommand and DefaultEntity) can be returned from any findXOrDefault method in the GameEntities class. These objects implement all expected functionality, but instead of printing some successful result, they will return an indication of what went wrong, thus making error handling an inherent part of the system's operation. |
+| **Constraints**  | The cognitive load to use GameEntities is increased, however the resulting code is simpler and can be understood without requiring to understand this functionality. |
+| **Additional remarks**  | None. |
 
 Maximum number of words for this section: 2000
-
----
----
-**EngineStateMachine implements both the state machine and singleton patterns**
-**The EmptyEntity and DefaultCommand implement the NullObject Pattern**
----
----
 
 ## Class diagram									
 Author(s): `name of the team member(s) responsible for this section`
