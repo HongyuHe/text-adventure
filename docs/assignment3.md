@@ -172,7 +172,7 @@ Provides an API for the **EngineStateMachine** to interact with the state object
 
 ##### Associations
 
-- **GameMenu**, **HomeScreen**, **MainMenu**, and **GameRunning** interface realization - Each implements the operations defined by **IState**.
+- **GameMenu**, **HomeScreen**, **MainMenu**, and **GameRunning** interface realizations - Each implements the operations defined by **IState**.
 
 
 ### HomeScreen, MainMenu, GameMenu, GameRunning
@@ -198,7 +198,7 @@ Turns user commands into instructions that can be carried out by the game, then 
 
 ##### Associations
 
-- **GameEntities** aggregation - The **Game** requires a collection of entities to act upon, so must know about **GameEntities**, however, since the **Initializer** must also know about **GameEntities** during the deserialization of the JSON files, this relationship cannot be exclusive in the sense that composition is (as if **GameEntities** were a composite, then it could not exist without **Game** meaning it could not be used by the **Initializer** without creating a **Game** which would violate the composition between **Game** and **Engine**).
+- **GameEntities** shared aggregation - The **Game** requires a collection of entities to act upon, so must know about **GameEntities**, however, since the **Initializer** must also know about **GameEntities** during the deserialization of the JSON files, this relationship cannot be exclusive in the sense that composition is (as if **GameEntities** were a composite, then it could not exist without **Game** meaning it could not be used by the **Initializer** without creating a **Game** which would violate the composition between **Game** and **Engine**).
 
 ### GameEntities
 
@@ -222,7 +222,20 @@ Acts as a dictionary for converting the strings entered by the user into objects
 
 ##### Operations
 
+- *getEntityOrDefault(final String entity): Entity* - Searches all game objects and collections of game objects and returns the object which matches the given name. If such an object cannot be found the *DefaultEntity* is returned.
+
+
+- getXOrDefault:
+    - *getAreaOrDefault(final String area): Area*
+    - *getItemOrDefault(final String item): Item*
+    - *getObstacleOrDefault(final String obstacle): Obstacle*
+        - All search for the specified object in the relevant collection, and if no matching name can be found the *DefaultEntity* is returned. 
+
 ##### Associations
+
+- **Initializer** directed association - The **Initializer** builds the **GameEntities** class by reading a game's JSON files, creating the respective objects, and passing them into the **GameEntities'** constructor. The **Initializer** must therefore know about the **GameEntities**, however it is not a 'part' of the **Initializer**, so a shared or composite relationship would be inaccurate.
+
+- **Entity** shared aggregation - The **GameEntities** class is made up of **Entity** objects and  - although in the code the **Entity** objects only exist inside the **GameEntities** collections - the model still allows **Entity** objects to exist without a **GameEntities** object owning them. 
 
 
 ### Entity
