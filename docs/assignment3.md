@@ -314,11 +314,11 @@ An **Obstacle** is an entity in the game world that can impede the player's prog
 
 ### Player
 
-##### Attributes
+Represents the player character in the game world.
 
 ##### Operations
 
-##### Associations
+- *isDead(): boolean* - Indicates whether the player is alive or dead (i.e. is their health <= 0). 
 
 
 ### DefaultEntity
