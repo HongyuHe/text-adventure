@@ -36,7 +36,7 @@
     "active": true,
     "type": "Item",
     "name": "key",
-    "description": "It looks like a key that unlocks something.",
+    "description": "A heavy looking thing\n\n     8 8          ,o.\n    d8o8azzzzzzzzd   b\n                  `o',",
     "inventory": [],
     "stats": {},
     "commandBlueprints": [],
