@@ -155,11 +155,17 @@ Since state is an integral part of **Engine** it is important that the method fo
 
 ### IState
 
-##### Attributes
+Provides an API for the **EngineStateMachine** to interact with the state objects.
 
 ##### Operations
 
+- *next(s: EngineStateMachine) void* - Changes the current state object in **EngineStateMachine** for the next in line after this one.
+
+- *execute(e: final Engine): void* - Calls functions in **Engine** based on the state.
+
 ##### Associations
+
+- **GameMenu**, **HomeScreen**, **MainMenu**, and **GameRunning** interface realization - Each implements the operations defined by **IState**.
 
 
 ### HomeScreen
