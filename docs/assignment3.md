@@ -76,8 +76,6 @@ Author(s): `Anthony Wilkes`
 
 ### Engine
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -86,8 +84,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### UIHandler
-
-##### Description
 
 ##### Attributes
 
@@ -98,8 +94,6 @@ Author(s): `Anthony Wilkes`
 
 ### EngineStateMachine
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -108,8 +102,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### IState
-
-##### Description
 
 ##### Attributes
 
@@ -120,8 +112,6 @@ Author(s): `Anthony Wilkes`
 
 ### HomeScreen
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -130,8 +120,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### MainMenu
-
-##### Description
 
 ##### Attributes
 
@@ -142,8 +130,6 @@ Author(s): `Anthony Wilkes`
 
 ### GameMenu
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -152,8 +138,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### GameRunning
-
-##### Description
 
 ##### Attributes
 
@@ -164,8 +148,6 @@ Author(s): `Anthony Wilkes`
 
 ### Game
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -174,8 +156,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### GameEntities
-
-##### Description
 
 ##### Attributes
 
@@ -186,8 +166,6 @@ Author(s): `Anthony Wilkes`
 
 ### Entity
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -196,8 +174,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### Area
-
-##### Description
 
 ##### Attributes
 
@@ -208,8 +184,6 @@ Author(s): `Anthony Wilkes`
 
 ### Item
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -218,8 +192,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### Npc
-
-##### Description
 
 ##### Attributes
 
@@ -230,8 +202,6 @@ Author(s): `Anthony Wilkes`
 
 ### Locatable
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -240,8 +210,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### Obstacle
-
-##### Description
 
 ##### Attributes
 
@@ -252,8 +220,6 @@ Author(s): `Anthony Wilkes`
 
 ### Player
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -262,8 +228,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### DefaultEntity
-
-##### Description
 
 ##### Attributes
 
@@ -274,8 +238,6 @@ Author(s): `Anthony Wilkes`
 
 ### Initializer
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -284,8 +246,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### Deserializer
-
-##### Description
 
 ##### Attributes
 
@@ -296,8 +256,6 @@ Author(s): `Anthony Wilkes`
 
 ### CommandBlueprint
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -306,8 +264,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### AreaDeserializer
-
-##### Description
 
 ##### Attributes
 
@@ -318,8 +274,6 @@ Author(s): `Anthony Wilkes`
 
 ### ItemDeserializer
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -328,8 +282,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### NpcDeserializer
-
-##### Description
 
 ##### Attributes
 
@@ -340,8 +292,6 @@ Author(s): `Anthony Wilkes`
 
 ### ObstacleDeserializer
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -350,8 +300,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### PlayerDeserializer
-
-##### Description
 
 ##### Attributes
 
@@ -362,8 +310,6 @@ Author(s): `Anthony Wilkes`
 
 ### CommandFactory
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -372,8 +318,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### ICommand
-
-##### Description
 
 ##### Attributes
 
@@ -384,8 +328,6 @@ Author(s): `Anthony Wilkes`
 
 ### TakeItem
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -394,8 +336,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### ListStats
-
-##### Description
 
 ##### Attributes
 
@@ -406,8 +346,6 @@ Author(s): `Anthony Wilkes`
 
 ### ChangeState
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -416,8 +354,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### ChangeLocation
-
-##### Description
 
 ##### Attributes
 
@@ -428,8 +364,6 @@ Author(s): `Anthony Wilkes`
 
 ### Describe
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -438,8 +372,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### ListContents
-
-##### Description
 
 ##### Attributes
 
@@ -450,8 +382,6 @@ Author(s): `Anthony Wilkes`
 
 ### Fight
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -460,8 +390,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### DropItem
-
-##### Description
 
 ##### Attributes
 
@@ -472,8 +400,6 @@ Author(s): `Anthony Wilkes`
 
 ### ChangeStat
 
-##### Description
-
 ##### Attributes
 
 ##### Operations
@@ -482,8 +408,6 @@ Author(s): `Anthony Wilkes`
 
 
 ### DefaultCommand
-
-##### Description
 
 ##### Attributes
 
