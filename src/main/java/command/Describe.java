@@ -12,7 +12,7 @@ public class Describe implements ICommand {
     public String apply(String object, final GameEntities ge) {
         if (object.equals("")) { object = ge.getPlayer().getCurrentLocation(); }
 
-        Entity e = ge.findEntityOrDefault(object);
+        Entity e = ge.getEntityOrDefault(object);
 
         if (!e.isActive()) { return String.format("You cannot see '%s'.", object); }
 

@@ -133,10 +133,7 @@ public class Initializer {
     }
 
     private static <T extends Entity> void
-    iterateAndPopulate(final Map<String, T> c)
-    {
-        c.values().forEach(e -> e.setActions(createCommandMap(e)));
-    }
+    iterateAndPopulate(final Map<String, T> c) { c.values().forEach(e -> e.setActions(createCommandMap(e))); }
 
     private static Map<String, ICommand>
     createCommandMap(final Entity e)

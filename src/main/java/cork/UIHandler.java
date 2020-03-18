@@ -6,7 +6,6 @@ import java.util.List;
 import org.beryx.textio.TextIO;
 import org.beryx.textio.TextIoFactory;
 import org.beryx.textio.TextTerminal;
-import org.tinylog.Logger;
 
 public class UIHandler {
     private static final String CORK_LOGO =

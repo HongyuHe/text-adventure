@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Item extends Entity {
-    private Boolean consumable;
+    private boolean consumable;
 
     public
     Item()

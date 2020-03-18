@@ -27,7 +27,7 @@ public class ChangeLocation implements ICommand {
         final String newLocationName = area.getConnection(newLocation);
         parent.setCurrentLocation(newLocationName);
 
-        return ge.findEntityOrDefault(newLocationName).getDescription();
+        return ge.getEntityOrDefault(newLocationName).getDescription();
     }
 
     public String apply(final Area object, final GameEntities ge) {

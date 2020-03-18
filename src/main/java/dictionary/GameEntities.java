@@ -33,7 +33,7 @@ public class GameEntities {
         itemEntities.put(gameOverItem.getName(), gameOverItem);
     }
 
-    public Entity findEntityOrDefault(String entity) {
+    public Entity getEntityOrDefault(String entity) {
         if (itemEntities.containsKey(entity)) {
             return itemEntities.get(entity);
         } else if (areaEntities.containsKey(entity)) {
