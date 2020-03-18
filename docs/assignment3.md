@@ -113,6 +113,24 @@ Acts as a bridge between the system and the user. The **UIHandler** deals with a
 
 ##### Operations
 
+- *displaySplashScreen(): String* - Prints the initial splash screen to the user and waits for them to make a choice (continue or quit) and sends the result to the **Engine**.
+
+- *displayMainMenu(games: List<String>): String* - Prints the main menu to the user. This consists of a list of games that are available to be played. The user's choice is returned to the **Engine**.
+
+- *displayGameMenu(game: final String): String* - Prints the games menu to the user. This allows the user to start a new game, load a game, or quit. The choice is returned to the **Engine**.
+
+- *displayError(error: final String): void* - Allows the **Engine** to print an error. This may happen if there are no games available to be played, or if certain things go wrong during loading.
+
+- *exit(): void* - Ensures that the **TextIO** terminal is closed correctly.
+
+- *clearScreen(): void* - Clears the screen of content.
+
+- *getInput(): String* - Asks for input from the user.
+
+- *print(string: String): void* - Prints a string to the terminal.
+
+- *promptUser(prompt: final String): boolean* - Prompts the user to answer a yes/no question and returns the result.
+
 ##### Associations
 
 
