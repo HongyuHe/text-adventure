@@ -67,6 +67,13 @@ Author(s): `Anthony Wilkes`
 | **Constraints**  | DefaultEntity can no longer contain any unique state, however, since this would violate the principle of a null object, this should cause no issues. |
 | **Additional remarks**  | None. |
 
+---
+---
+CommandFactory is actually a factory method? or a builder?
+---
+---
+
+
 Maximum number of words for this section: 2000
 
 ## Class diagram									
@@ -175,12 +182,23 @@ Provide functionality to the operations defined by **IState**. Each class decide
 
 ### Game
 
+Turns user commands into instructions that can be carried out by the game, then performs the requested actions and returns the result.
+
 ##### Attributes
+
+- *previousCommands: List<String>* - A list of all commands typed in by the user. This history allows commands to be saved into a file and replayed when a game is loaded.
 
 ##### Operations
 
+- *handleCommand(input: final String): String* - Takes user input and executes the requested actions (if possible) before returning the result.
+
+- *isGameOver(): boolean* - Returns whether or not the game is over.
+
+- *playerVictory(): boolean* - Returns whether or not the player won the game.
+
 ##### Associations
 
+- **GameEntities** aggregation - The **Game** requires a collection of entities to act upon, so must know about **GameEntities**, however, since the **Initializer** must also know about **GameEntities** during the deserialization of the JSON files, this relationship cannot be exclusive in the sense that composition is (as if **GameEntities** were a composite, then it could not exist without **Game** meaning it could not be used by the **Initializer** without creating a **Game** which would violate the composition between **Game** and **Engine**).
 
 ### GameEntities
 
