@@ -323,11 +323,11 @@ Represents the player character in the game world.
 
 ### DefaultEntity
 
-##### Attributes
+A singleton, null object representation of any **Entity** - all operations that can be performed on an **Entity** or a **Locatable** can be performed on the **DefaultEntity** to no effect.
 
 ##### Operations
 
-##### Associations
+- *instance(): DefaultEntity* - A static method that returns a reference to the **DefaultEntity** singleton.
 
 
 ### Initializer
