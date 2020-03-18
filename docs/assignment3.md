@@ -83,9 +83,83 @@ Maximum number of words for this section: 2000
 ## Class diagram									
 Author(s): `Anthony Wilkes`
 
-This chapter contains the specification of the UML class diagram of your system, together with a textual description of all its elements.
-
 ![Class Diagram](./assets/A03-class_detail.png "Class diagram")
+
+#### Engine
+
+#### UIHandler
+
+#### EngineStateMachine
+
+#### IState
+
+#### HomeScreen
+
+#### MainMenu
+
+#### GameMenu
+
+#### GameRunning
+
+#### Game
+
+#### GameEntities
+
+#### Entity
+
+#### Area
+
+#### Item
+
+#### Npc
+
+#### Locatable
+
+#### Obstacle
+
+#### Player
+
+#### DefaultEntity
+
+#### Initializer
+
+#### Deserializer
+
+#### CommandBlueprint
+
+#### AreaDeserializer
+
+#### ItemDeserializer
+
+#### NpcDeserializer
+
+#### ObstacleDeserializer
+
+#### PlayerDeserializer
+
+#### CommandFactory
+
+#### ICommand
+
+#### TakeItem
+
+#### ListStats
+
+#### ChangeState
+
+#### ChangeLocation
+
+#### Describe
+
+#### ListContents
+
+#### Fight
+
+#### DropItem
+
+#### ChangeStat
+
+#### DefaultCommand
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
 - Brief description about what it represents
