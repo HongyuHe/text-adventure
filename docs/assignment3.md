@@ -252,6 +252,10 @@ The abstract description of a generic **Entity** with the methods and attributes
 
 ##### Associations
 
+- **ICommand** directed association - All **Entities** contain a collection of **ICommand** objects, however the model does not require **ICommand** objects to *only* exist within **Entity** objects.
+
+- **Locatable**, **Area**, **Item**, and **Npc** generalizations - Each is a kind of **Entity**.
+
 ### Area
 
 ##### Attributes
