@@ -5,7 +5,7 @@ import entity.*;
 
 import java.util.Map;
 
-public class ChangeStat implements Command {
+public class ChangeStat implements ICommand {
     private final Entity parent;
 
     public ChangeStat(final Entity parent) { this.parent = parent; }

@@ -3,7 +3,7 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-public class ChangeLocation implements Command {
+public class ChangeLocation implements ICommand {
     private final Locatable parent;
 
     public ChangeLocation(final Locatable parent) { this.parent = parent; }

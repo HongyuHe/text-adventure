@@ -1,6 +1,6 @@
 package entity;
 
-import command.Command;
+import command.ICommand;
 import command.DefaultCommand;
 import deserialiser.CommandBlueprint;
 
@@ -13,7 +13,7 @@ public abstract class Entity {
     protected final String description;
     protected final Set<String> inventory;
     protected final Map<String, Integer> stats;
-    private Map<String, Command> commands;
+    private Map<String, ICommand> commands;
 
     private final Set<CommandBlueprint> commandBlueprints;
 
@@ -83,12 +83,12 @@ public abstract class Entity {
     public void
     setStat(final String name, final Integer value) { stats.replace(name, value); }
 
-    public Command
+    public ICommand
     findCommandOrDefault(final String cmd) { return commands.getOrDefault(cmd, new DefaultCommand()); }
 
     public Set<CommandBlueprint>
     getCommandBlueprints() { return new HashSet<>(commandBlueprints); }
 
     public void
-    setActions(final Map<String, Command> commands) { this.commands = new HashMap<>(commands); }
+    setActions(final Map<String, ICommand> commands) { this.commands = new HashMap<>(commands); }
 }

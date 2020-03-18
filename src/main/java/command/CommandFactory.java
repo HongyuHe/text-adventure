@@ -8,7 +8,7 @@ import entity.Obstacle;
 public final class CommandFactory {
     private CommandFactory() {}
 
-    public static Command createCommand(final CommandBlueprint cmd, final Entity parent) {
+    public static ICommand createCommand(final CommandBlueprint cmd, final Entity parent) {
         switch (cmd.getFunction()) {
             case "ChangeLocation": return new ChangeLocation((Locatable) parent);
             case "ListContents":   return new ListContents(parent);

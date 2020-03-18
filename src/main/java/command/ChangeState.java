@@ -3,7 +3,7 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-public class ChangeState implements Command {
+public class ChangeState implements ICommand {
     private final Obstacle parent;
 
     public ChangeState(final Obstacle parent) { this.parent = parent; }

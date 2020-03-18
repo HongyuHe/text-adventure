@@ -5,7 +5,7 @@ import entity.*;
 
 import java.util.Map;
 
-public class DropItem implements Command {
+public class DropItem implements ICommand {
     private final Locatable parent;
 
     public DropItem(final Locatable parent) { this.parent = parent; }

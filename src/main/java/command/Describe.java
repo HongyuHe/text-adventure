@@ -3,7 +3,7 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-public class Describe implements Command {
+public class Describe implements ICommand {
     private final Entity parent;
 
     public Describe(final Entity parent) { this.parent = parent; }

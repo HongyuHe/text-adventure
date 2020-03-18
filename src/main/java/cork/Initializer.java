@@ -1,7 +1,7 @@
 package cork;
 
 import command.CommandFactory;
-import command.Command;
+import command.ICommand;
 import deserialiser.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -138,7 +138,7 @@ public class Initializer {
         c.values().forEach(e -> e.setActions(createCommandMap(e)));
     }
 
-    private static Map<String, Command>
+    private static Map<String, ICommand>
     createCommandMap(final Entity e)
     {
         return e.getCommandBlueprints()
