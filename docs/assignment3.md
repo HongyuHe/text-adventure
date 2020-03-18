@@ -103,9 +103,13 @@ The **Engine** is the entry point of the system and acts as a central 'heart' th
 
 ### UIHandler
 
-Acts as a bridge between the system and the user. The **UIHandler** deals with all input/output operations including setting up and running a terminal.
+Acts as a bridge between the system and the user. The **UIHandler** deals with all input/output operations including setting up and running a terminal - it prints information passed to it by the **Engine** and sends back any commands entered by the user.
 
 ##### Attributes
+
+- *textIO: final TextIO"* - Part of the **TextIO** library. This object handles getting input from the user.
+
+- *terminal: final TextTerminal<?>* - Part of the **TextIO** library. This is the terminal that will be presented to the user.
 
 ##### Operations
 
