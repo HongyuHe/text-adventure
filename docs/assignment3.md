@@ -292,14 +292,24 @@ An abstract description of an **Entity** that also needs to know which **Area** 
 
 - *currentLocation: String* - The name of the location the **Locatable** is at.
 
+##### Associations
+
+- **DefaultEntity**, **Obstacle**, and **Player** generalisation - Each is a type of **Locatable**.
+
 
 ### Obstacle
 
+An **Obstacle** is an entity in the game world that can impede the player's progress - this could be something literal like a door, or something more abstract like darkness. **Obstacle** objects require particular **Item** objects to be used with them to allow passage (e.g. a key).
+
 ##### Attributes
 
-##### Operations
+- *state: boolean* - Indicates whether or not the *Obstacle* is active (i.e. it 'true' it is blocking the player's movement, if 'false' the player can pass). 
 
-##### Associations
+- *blocks: String* - The name of the *Area* that the *Obstacle* is blocking. 
+
+- *requiredObject: String* - The name of the *Item* that can change the state of the *Obstacle*.
+
+- *message: String* - The message that is printed when the player tried to move past an **Obstacle** that is still active.
 
 
 ### Player
