@@ -74,81 +74,422 @@ Author(s): `Anthony Wilkes`
 
 ![Class Diagram](./assets/A03-class_detail.png "Class diagram")
 
-#### Engine
+### Engine
 
-#### UIHandler
+##### Description
 
-#### EngineStateMachine
+##### Attributes
 
-#### IState
+##### Operations
 
-#### HomeScreen
+##### Associations
 
-#### MainMenu
 
-#### GameMenu
+### UIHandler
 
-#### GameRunning
+##### Description
 
-#### Game
+##### Attributes
 
-#### GameEntities
+##### Operations
 
-#### Entity
+##### Associations
 
-#### Area
 
-#### Item
+### EngineStateMachine
 
-#### Npc
+##### Description
 
-#### Locatable
+##### Attributes
 
-#### Obstacle
+##### Operations
 
-#### Player
+##### Associations
 
-#### DefaultEntity
 
-#### Initializer
+### IState
 
-#### Deserializer
+##### Description
 
-#### CommandBlueprint
+##### Attributes
 
-#### AreaDeserializer
+##### Operations
 
-#### ItemDeserializer
+##### Associations
 
-#### NpcDeserializer
 
-#### ObstacleDeserializer
+### HomeScreen
 
-#### PlayerDeserializer
+##### Description
 
-#### CommandFactory
+##### Attributes
 
-#### ICommand
+##### Operations
 
-#### TakeItem
+##### Associations
 
-#### ListStats
 
-#### ChangeState
+### MainMenu
 
-#### ChangeLocation
+##### Description
 
-#### Describe
+##### Attributes
 
-#### ListContents
+##### Operations
 
-#### Fight
+##### Associations
 
-#### DropItem
 
-#### ChangeStat
+### GameMenu
 
-#### DefaultCommand
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### GameRunning
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Game
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### GameEntities
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Entity
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Area
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Item
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Npc
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Locatable
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Obstacle
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Player
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### DefaultEntity
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Initializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Deserializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### CommandBlueprint
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### AreaDeserializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ItemDeserializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### NpcDeserializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ObstacleDeserializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### PlayerDeserializer
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### CommandFactory
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ICommand
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### TakeItem
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ListStats
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ChangeState
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ChangeLocation
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Describe
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ListContents
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### Fight
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### DropItem
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### ChangeStat
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
+
+
+### DefaultCommand
+
+##### Description
+
+##### Attributes
+
+##### Operations
+
+##### Associations
 
 For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
 - Brief description about what it represents
