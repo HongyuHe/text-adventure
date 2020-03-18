@@ -286,11 +286,11 @@ Represents a Non-player character in the game world.
 
 ### Locatable
 
+An abstract description of an **Entity** that also needs to know which **Area** it is currently at.
+
 ##### Attributes
 
-##### Operations
-
-##### Associations
+- *currentLocation: String* - The name of the location the **Locatable** is at.
 
 
 ### Obstacle
