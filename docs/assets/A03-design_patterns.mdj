@@ -9231,7 +9231,7 @@
 											"top": 360,
 											"width": 384.744140625,
 											"height": 13,
-											"text": "+createSet(jArray: JsonArray): Set<String>",
+											"text": "#createSet(jArray: JsonArray): Set<String>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9248,7 +9248,7 @@
 											"top": 375,
 											"width": 384.744140625,
 											"height": 13,
-											"text": "+createArray(jArray: JsonArray): ArrayList<String>",
+											"text": "#createArray(jArray: JsonArray): ArrayList<String>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9265,7 +9265,7 @@
 											"top": 390,
 											"width": 384.744140625,
 											"height": 13,
-											"text": "+createMap(jObject: JsonObject): HashMap<String T>",
+											"text": "#createMap(jObject: JsonObject): HashMap<String T>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9282,7 +9282,7 @@
 											"top": 405,
 											"width": 384.744140625,
 											"height": 13,
-											"text": "+createCommandSet(jArray: JsonArray): Set<CommandBlueprint>",
+											"text": "#createCommandSet(jArray: JsonArray): Set<CommandBlueprint>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -9299,7 +9299,7 @@
 											"top": 420,
 											"width": 384.744140625,
 											"height": 13,
-											"text": "+createObject(jObject: JsonObject): CommandBlueprint",
+											"text": "#createObject(jObject: JsonObject): CommandBlueprint",
 											"horizontalAlignment": 0
 										}
 									],
@@ -12904,7 +12904,7 @@
 											"width": 514.82666015625,
 											"height": 13,
 											"underline": true,
-											"text": "+load(jsonLocation: String, deserializer: JsonDeserializer<?>, c: Class<T>): ArrayList<T>",
+											"text": "-load(jsonLocation: String, deserializer: JsonDeserializer<?>, c: Class<T>): ArrayList<T>",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12922,7 +12922,7 @@
 											"width": 514.82666015625,
 											"height": 13,
 											"underline": true,
-											"text": "+loadSingleEntity(jsonLocation: String, deserializer: JsonDeserializer<?>, c: Class<T>): T",
+											"text": "-loadSingleEntity(jsonLocation: String, deserializer: JsonDeserializer<?>, c: Class<T>): T",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12940,7 +12940,7 @@
 											"width": 514.82666015625,
 											"height": 13,
 											"underline": true,
-											"text": "+populateCommands(entities: GameEntities): void",
+											"text": "-populateCommands(entities: GameEntities): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12958,7 +12958,7 @@
 											"width": 514.82666015625,
 											"height": 13,
 											"underline": true,
-											"text": "+createCommandMap(e: Entity): Map<String ICommand>",
+											"text": "-createCommandMap(e: Entity): Map<String ICommand>",
 											"horizontalAlignment": 0
 										}
 									],
@@ -15867,6 +15867,7 @@
 								"$ref": "AAAAAAFw7ZBAk+g/Xeo="
 							},
 							"name": "createSet",
+							"visibility": "protected",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -15895,6 +15896,7 @@
 								"$ref": "AAAAAAFw7ZBAk+g/Xeo="
 							},
 							"name": "createArray",
+							"visibility": "protected",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -15923,6 +15925,7 @@
 								"$ref": "AAAAAAFw7ZBAk+g/Xeo="
 							},
 							"name": "createMap",
+							"visibility": "protected",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -15951,6 +15954,7 @@
 								"$ref": "AAAAAAFw7ZBAk+g/Xeo="
 							},
 							"name": "createCommandSet",
+							"visibility": "protected",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -15979,6 +15983,7 @@
 								"$ref": "AAAAAAFw7ZBAk+g/Xeo="
 							},
 							"name": "createObject",
+							"visibility": "protected",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -16911,6 +16916,7 @@
 										"$ref": "AAAAAAFw7YFciaWH03M="
 									},
 									"name": "load",
+									"visibility": "private",
 									"isStatic": true,
 									"parameters": [
 										{
@@ -16958,6 +16964,7 @@
 										"$ref": "AAAAAAFw7YFciaWH03M="
 									},
 									"name": "loadSingleEntity",
+									"visibility": "private",
 									"isStatic": true,
 									"parameters": [
 										{
@@ -17005,6 +17012,7 @@
 										"$ref": "AAAAAAFw7YFciaWH03M="
 									},
 									"name": "populateCommands",
+									"visibility": "private",
 									"isStatic": true,
 									"parameters": [
 										{
@@ -17036,6 +17044,7 @@
 										"$ref": "AAAAAAFw7YFciaWH03M="
 									},
 									"name": "createCommandMap",
+									"visibility": "private",
 									"isStatic": true,
 									"parameters": [
 										{

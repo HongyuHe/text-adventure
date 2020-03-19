@@ -380,11 +380,13 @@ An abstract class that provides a base set of shared methods for the various des
 
 ### CommandBlueprint
 
+An intermediary object used by the deserializers that allows **ICommand** objects to be easily described in the JSON as **CommandBlueprint** objects which are then converted into the correct command when needed.
+
 ##### Attributes
 
-##### Operations
+- *name: String* - The name that the user must type to activate this command.
 
-##### Associations
+- *function: String* - The name of the command class to create.
 
 
 ### AreaDeserializer
