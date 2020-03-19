@@ -398,11 +398,15 @@ An intermediary object used by the deserializers that allows **ICommand** object
 
 ### CommandFactory
 
-##### Attributes
+Helps convert a **CommandBlueprint** into a command object.
 
 ##### Operations
 
+- *createCommand(cmd: final CommandBlueprint, parent: final Entity): ICommand* - Creates a new command object based on the **CommandBlueprint** given. The name of the *CommandBlueprint* will indicate which command type to create.
+
 ##### Associations
+
+- **ICommand** directed association - The **CommandFactory** creates objects that implement the **ICommand** interface.
 
 
 ### ICommand
