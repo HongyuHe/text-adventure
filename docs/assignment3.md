@@ -357,11 +357,25 @@ Sets up all the objects required to build a **Game** by being a central point th
 
 ### Deserializer
 
-##### Attributes
+An abstract class that provides a base set of shared methods for the various deserializer subclasses. The deserializers are responsible for reading the JSON game files into java objects.
 
 ##### Operations
 
+- *createSet(jArray: JsonArray): Set\<String\>* - Creates a set of Strings from the given JSON array.
+
+- *createArray(jArray: JsonArray): ArrayList\<String\>* - Creates an array of Strings from the given JSON array.
+
+- *createMap(jObject: JsonObject): HashMap\<String, T\>* - Creates a HashMap of String:T pairs for the given type, T, from a JSON object.
+
+- *createCommandSet(jArray: JsonArray): Set\<CommandBlueprint\>* - Creates a Set of **CommandBlueprint** objects from the given JSON array.
+
+- *createObject(jObject: JsonObject): CommandBlueprint* - Creates a **CommandBlueprint** from the given JSON object.
+
 ##### Associations
+
+- **CommandBlueprint** directed association - The **Deserializer** objects cannot create **ICommand** objects directly, and so must use an intermediary **CommandBlueprint** to convert from the JSON data to an actual command.
+
+- **AreaDeserializer** ... **PlayerDeserializer** generalization - Each of the type-specific deserializers is a subclass of the **Deserializer** and provide a non-abstract implementation.
 
 
 ### CommandBlueprint
