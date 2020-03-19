@@ -1095,7 +1095,7 @@
 											"top": 595,
 											"width": 191.8642578125,
 											"height": 13,
-											"text": "+execute(Engine e): void",
+											"text": "+execute(e: Engine): void",
 											"horizontalAlignment": 0
 										}
 									],
@@ -2289,7 +2289,7 @@
 											"font": "Arial;13;3",
 											"left": 1245,
 											"top": 1087,
-											"width": 313.19970703125,
+											"width": 316.8115234375,
 											"height": 13,
 											"text": "Entity"
 										},
@@ -2324,7 +2324,7 @@
 									"font": "Arial;13;0",
 									"left": 1240,
 									"top": 1080,
-									"width": 323.19970703125,
+									"width": 326.8115234375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFw7YXdxqe7G+g="
@@ -2361,7 +2361,7 @@
 											"font": "Arial;13;0",
 											"left": 1245,
 											"top": 1110,
-											"width": 313.19970703125,
+											"width": 316.8115234375,
 											"height": 13,
 											"text": "-commands: Map<String, ICommand>",
 											"horizontalAlignment": 0
@@ -2370,7 +2370,7 @@
 									"font": "Arial;13;0",
 									"left": 1240,
 									"top": 1105,
-									"width": 323.19970703125,
+									"width": 326.8115234375,
 									"height": 23
 								},
 								{
@@ -2395,16 +2395,16 @@
 											"font": "Arial;13;0",
 											"left": 1245,
 											"top": 1133,
-											"width": 313.19970703125,
+											"width": 316.8115234375,
 											"height": 13,
-											"text": "+findCommandOrDefault(final String cmd): ICommand",
+											"text": "+findCommandOrDefault(cmd: final String): ICommand",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1240,
 									"top": 1128,
-									"width": 323.19970703125,
+									"width": 326.8115234375,
 									"height": 23
 								},
 								{
@@ -2444,7 +2444,7 @@
 							"containerChangeable": true,
 							"left": 1240,
 							"top": 1080,
-							"width": 323.19970703125,
+							"width": 326.8115234375,
 							"height": 73,
 							"nameCompartment": {
 								"$ref": "AAAAAAFw7YXdxqe63ak="
@@ -3256,7 +3256,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1704,
+									"left": 1706,
 									"top": 1117,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -3277,7 +3277,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 1704,
+									"left": 1706,
 									"top": 1132,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -3298,7 +3298,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1705,
+									"left": 1707,
 									"top": 1087,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -3316,7 +3316,7 @@
 							"tail": {
 								"$ref": "AAAAAAFw7YXqRqg3OdM="
 							},
-							"points": "1848:1108;1562:1108",
+							"points": "1848:1108;1566:1108",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFw7YhUarQLICw="
@@ -3915,7 +3915,7 @@
 											"font": "Arial;13;0",
 											"left": 885,
 											"top": 405,
-											"width": 201.97607421875,
+											"width": 205.587890625,
 											"height": 13,
 											"text": "«interface»"
 										},
@@ -3928,7 +3928,7 @@
 											"font": "Arial;13;1",
 											"left": 885,
 											"top": 420,
-											"width": 201.97607421875,
+											"width": 205.587890625,
 											"height": 13,
 											"text": "IState"
 										},
@@ -3963,7 +3963,7 @@
 									"font": "Arial;13;0",
 									"left": 880,
 									"top": 400,
-									"width": 211.97607421875,
+									"width": 215.587890625,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFw7YjkObhINIY="
@@ -4016,9 +4016,9 @@
 											"font": "Arial;13;0",
 											"left": 885,
 											"top": 443,
-											"width": 201.97607421875,
+											"width": 205.587890625,
 											"height": 13,
-											"text": "+next(EngineStateMachine s): void",
+											"text": "+next(s: EngineStateMachine): void",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4033,16 +4033,16 @@
 											"font": "Arial;13;0",
 											"left": 885,
 											"top": 458,
-											"width": 201.97607421875,
+											"width": 205.587890625,
 											"height": 13,
-											"text": "+execute(final Engine e): void",
+											"text": "+execute(e: final Engine): void",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 880,
 									"top": 438,
-									"width": 211.97607421875,
+									"width": 215.587890625,
 									"height": 38
 								},
 								{
@@ -4082,7 +4082,7 @@
 							"containerChangeable": true,
 							"left": 880,
 							"top": 400,
-							"width": 211.97607421875,
+							"width": 215.587890625,
 							"height": 76,
 							"nameCompartment": {
 								"$ref": "AAAAAAFw7YjkObhHm9c="
@@ -7706,7 +7706,7 @@
 											"font": "Arial;13;0",
 											"left": 1917,
 											"top": 821,
-											"width": 188.2333984375,
+											"width": 191.84521484375,
 											"height": 13,
 											"text": "«interface»"
 										},
@@ -7719,7 +7719,7 @@
 											"font": "Arial;13;1",
 											"left": 1917,
 											"top": 836,
-											"width": 188.2333984375,
+											"width": 191.84521484375,
 											"height": 13,
 											"text": "ICommand"
 										},
@@ -7754,7 +7754,7 @@
 									"font": "Arial;13;0",
 									"left": 1912,
 									"top": 816,
-									"width": 198.2333984375,
+									"width": 201.84521484375,
 									"height": 38,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFw7Y8A09rdcws="
@@ -7807,16 +7807,16 @@
 											"font": "Arial;13;0",
 											"left": 1917,
 											"top": 859,
-											"width": 188.2333984375,
+											"width": 191.84521484375,
 											"height": 13,
-											"text": "+apply(final String object): String",
+											"text": "+apply(object: final String): String",
 											"horizontalAlignment": 0
 										}
 									],
 									"font": "Arial;13;0",
 									"left": 1912,
 									"top": 854,
-									"width": 198.2333984375,
+									"width": 201.84521484375,
 									"height": 23
 								},
 								{
@@ -7856,7 +7856,7 @@
 							"containerChangeable": true,
 							"left": 1912,
 							"top": 816,
-							"width": 198.2333984375,
+							"width": 201.84521484375,
 							"height": 61,
 							"nameCompartment": {
 								"$ref": "AAAAAAFw7Y8A09rckBM="
@@ -8354,7 +8354,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2137,
+									"left": 2139,
 									"top": 841,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8375,7 +8375,7 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 2137,
+									"left": 2139,
 									"top": 856,
 									"height": 13,
 									"alpha": 1.5707963267948966,
@@ -8396,7 +8396,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 2138,
+									"left": 2140,
 									"top": 811,
 									"height": 13,
 									"alpha": -1.5707963267948966,
@@ -8414,7 +8414,7 @@
 							"tail": {
 								"$ref": "AAAAAAFw7Y3Phs9aWxk="
 							},
-							"points": "2168:832;2109:832",
+							"points": "2168:832;2113:832",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFw7Y9TVeByb5w="
@@ -13238,7 +13238,7 @@
 											"top": 1079,
 											"width": 313.2314453125,
 											"height": 13,
-											"text": "+getEntityOrDefault(String entity): Entity",
+											"text": "+getEntityOrDefault(entity: String): Entity",
 											"horizontalAlignment": 0
 										},
 										{
@@ -14330,7 +14330,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1112,
+									"left": 1104,
 									"top": 256,
 									"width": 10,
 									"height": 10
@@ -14346,7 +14346,7 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 1112,
+									"left": 1104,
 									"top": 256,
 									"width": 10,
 									"height": 10
@@ -14795,8 +14795,10 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7arlFQgypwI="
 									},
-									"name": "Engine e",
-									"type": ""
+									"name": "e",
+									"type": {
+										"$ref": "AAAAAAFw7YEMqaTfpG4="
+									}
 								},
 								{
 									"_type": "UMLParameter",
@@ -14848,34 +14850,6 @@
 								"navigable": false,
 								"aggregation": "shared"
 							}
-						},
-						{
-							"_type": "UMLAssociation",
-							"_id": "AAAAAAFw71GFQN3OWrk=",
-							"_parent": {
-								"$ref": "AAAAAAFw7YXdxqe3sQA="
-							},
-							"end1": {
-								"_type": "UMLAssociationEnd",
-								"_id": "AAAAAAFw71GFQN3P4kg=",
-								"_parent": {
-									"$ref": "AAAAAAFw71GFQN3OWrk="
-								},
-								"reference": {
-									"$ref": "AAAAAAFw7YXdxqe3sQA="
-								}
-							},
-							"end2": {
-								"_type": "UMLAssociationEnd",
-								"_id": "AAAAAAFw71GFQN3QP8M=",
-								"_parent": {
-									"$ref": "AAAAAAFw71GFQN3OWrk="
-								},
-								"reference": {
-									"$ref": "AAAAAAFw7YXDe6c59oc="
-								},
-								"aggregation": "shared"
-							}
 						}
 					],
 					"attributes": [
@@ -14905,8 +14879,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7Zta76ERd9A="
 									},
-									"name": "final String cmd",
-									"type": ""
+									"name": "cmd",
+									"type": "final String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -15039,8 +15013,10 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7atE4QvAX5A="
 									},
-									"name": "EngineStateMachine s",
-									"type": ""
+									"name": "s",
+									"type": {
+										"$ref": "AAAAAAFw7YFALKVdzsE="
+									}
 								},
 								{
 									"_type": "UMLParameter",
@@ -15067,8 +15043,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7atz5A0qdHg="
 									},
-									"name": "final Engine e",
-									"type": ""
+									"name": "e",
+									"type": "final Engine"
 								},
 								{
 									"_type": "UMLParameter",
@@ -15618,8 +15594,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7ZnTzZlR6ZU="
 									},
-									"name": "final String object",
-									"type": ""
+									"name": "object",
+									"type": "final String"
 								},
 								{
 									"_type": "UMLParameter",
@@ -17071,8 +17047,8 @@
 									"_parent": {
 										"$ref": "AAAAAAFw7aekhPNZ6+M="
 									},
-									"name": "String entity",
-									"type": ""
+									"name": "entity",
+									"type": "String"
 								},
 								{
 									"_type": "UMLParameter",
