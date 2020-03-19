@@ -86,8 +86,6 @@ Author(s): `Anthony Wilkes`
 | **Additional remarks**  | None. |
 
 
-Maximum number of words for this section: 2000
-
 ## Class diagram									
 Author(s): `Anthony Wilkes`
 
