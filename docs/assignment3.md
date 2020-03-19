@@ -67,11 +67,18 @@ Author(s): `Anthony Wilkes`
 | **Constraints**  | DefaultEntity can no longer contain any unique state, however, since this would violate the principle of a null object, this should cause no issues. |
 | **Additional remarks**  | None. |
 
+| ID  | DP5 |
+|---|---|
+| **Design pattern**  | Facade |
+| **Problem**  | Reading the JSON game files is a relatively complex process with many different methods needing to be called in the correct order and several different object types being involved. |
+| **Solution**  | The **Initializer** provides a simple front-end to this complexity that allows the **Engine** to call a single method which then handles all of the complexity internally. |
+| **Intended use**  | To simplify the creation of different **Game** objects when reading the associated JSON files. |
+| **Constraints**  | The **Engine** can no longer ask for specific files to be read, or specify any details about how the files are read. |
+| **Additional remarks**  | None. |
+
 ---
 ---
 CommandFactory is actually a factory method? or a builder?
----
-The Initializer is a Facade 
 ---
 ---
 
