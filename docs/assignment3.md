@@ -411,115 +411,66 @@ Helps convert a **CommandBlueprint** into a command object.
 
 ### ICommand
 
-##### Attributes
+The interface used by command objects.
 
 ##### Operations
 
+- *apply(object: final String): String* - Performs the respective command's action with the given object's name.
+
 ##### Associations
+
+- **DefaultCommand** ... **TakeItem** - Each implements the **ICommand** interface.
 
 
 ### TakeItem
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Allows a user to pick up an *Item*.
 
 
 ### ListStats
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Allows the stats of an **Entity** to be listed.
 
 
 ### ChangeState
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Changes the state of **Obstacle** objects so they either allow or prevent movement.
 
 
 ### ChangeLocation
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Allows moving a **Locatable** **Entity** from one **Area** to another.
 
 
 ### Describe
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Returns the full description of an **Entity**.
 
 
 ### ListContents
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Returns a list of all **Item** objects contained in an **Entity**.
 
 
 ### Fight
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Allows the player to fight with an **Entity**.
 
 
 ### DropItem
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Allows the removal of **Item** objects from the inventory of an **Entity** into their current **Area**.
 
 
 ### ChangeStat
 
-##### Attributes
-
-##### Operations
-
-##### Associations
+Changes the specified stat of an **Entity**.
 
 
 ### DefaultCommand
 
-##### Attributes
+Provides a method to call for all expected command functionality, but the methods will have no effect - the return value will always be a message that indicates to the command they have tried to use is invalid for whatever reason.
 
-##### Operations
-
-##### Associations
-
-For each class (and data type) in the class diagram you have to provide a paragraph providing the following information:
-- Brief description about what it represents
-- Brief description of the meaning of each attribute
-- Brief description of the meaning of each operation
-- Brief description of the meaning of each association involving it (each association can be described only once in this deliverable)
-
-Also, you can briefly discuss fragments of previous versions of the class diagram (with figures) in order to show how you evolved from initial versions of the class diagram to the final one.
-
-In this document you have to adhere to the following formatting conventions:
-- the name of each **class** is in bold
-- the *attributes*, *operations*, *associations*, and *objects* are in italic.
-
-Maximum number of words for this section: 4000
 
 ## Object diagrams								
 Author(s): `name of the team member(s) responsible for this section`
