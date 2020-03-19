@@ -76,11 +76,14 @@ Author(s): `Anthony Wilkes`
 | **Constraints**  | The **Engine** can no longer ask for specific files to be read, or specify any details about how the files are read. |
 | **Additional remarks**  | None. |
 
----
----
-CommandFactory is actually a factory method? or a builder?
----
----
+| ID  | DP6 |
+|---|---|
+| **Design pattern**  | Factory Method |
+| **Problem**  | The construction of command objects cannot be done directly from the JSON, and so an intermediate **CommandBlueprint** is created first. This **CommandBlueprint** needs to then be converted into the correct command object type. |
+| **Solution**  | The **CommandFactory** provides a single method that the **Initializer** can call to create the correct command objects from the given **CommandBlueprint**. |
+| **Intended use**  | Instead of having to handle the sub-typing itself, the **Initializer** can have the **CommandFactory** abstract this complexity away. |
+| **Constraints**  | Changes to the structure of the JSON will now ripple out across several classes. |
+| **Additional remarks**  | None. |
 
 
 Maximum number of words for this section: 2000
