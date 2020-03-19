@@ -389,49 +389,11 @@ An intermediary object used by the deserializers that allows **ICommand** object
 - *function: String* - The name of the command class to create.
 
 
-### AreaDeserializer
-
-##### Attributes
+### AreaDeserializer, ItemDeserializer, NpcDeserializer, ObstacleDeserializer, and PlayerDeserializer
 
 ##### Operations
 
-##### Associations
-
-
-### ItemDeserializer
-
-##### Attributes
-
-##### Operations
-
-##### Associations
-
-
-### NpcDeserializer
-
-##### Attributes
-
-##### Operations
-
-##### Associations
-
-
-### ObstacleDeserializer
-
-##### Attributes
-
-##### Operations
-
-##### Associations
-
-
-### PlayerDeserializer
-
-##### Attributes
-
-##### Operations
-
-##### Associations
+- *deserialize(json: JsonElement, typeOfT: Type, context: JsonDeserializationContext): \[Area, Item, Npc, Obstacle, or Player\]* - Reads the JSON object and uses the contained data to create the respective class.
 
 
 ### CommandFactory
