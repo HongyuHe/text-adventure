@@ -162,6 +162,7 @@ public class Engine {
         uiHandler.clearScreen();
         if (currentGame.playerVictory()) { uiHandler.print("You won!"); }
         else { uiHandler.print("You died."); }
+        uiHandler.print("\nPress 'ENTER' to continue.");
         uiHandler.getInput();
     }
 }

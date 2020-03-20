@@ -13,8 +13,8 @@ public class ChangeStat implements ICommand {
     @Override
     public String apply(final String object, final GameEntities ge) {
         if (!ge.getPlayer().hasInInventory(parent.getName())
-                && !ge.getPlayer().hasInInventory(object)
-        ) {
+                && !ge.getPlayer().hasInInventory(object))
+        {
             return String.format("You do not have '%s' in your inventory.", object);
         }
 
