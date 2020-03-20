@@ -493,7 +493,9 @@ This chapter is composed of a UML object diagram of your system, together with a
 Maximum number of words for this section: 1000
 
 ## State machine diagrams									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes`
+
+![Engine State Machine Diagram](assets/A03/A03-engine_state.png "Engine state machine diagram")
 
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
