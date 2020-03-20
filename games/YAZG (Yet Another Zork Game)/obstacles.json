@@ -16,6 +16,6 @@
     "state": true,
     "blocks": "castle",
     "requiredObject": "key",
-    "message": "hello test"
+    "message": "There is a locked door in the way."
   }
 ]

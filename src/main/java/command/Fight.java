@@ -40,24 +40,4 @@ public class Fight implements ICommand {
             return String.format("%s is killed.", object);
         }
     }
-
-    @Override
-    public String
-    apply(Area object, GameEntities ge) { return ""; }
-
-    @Override
-    public String
-    apply(Item object, GameEntities ge) { return ""; }
-
-    @Override
-    public String
-    apply(Npc object, GameEntities ge) { return ""; }
-
-    @Override
-    public String
-    apply(Player object, GameEntities ge) { return ""; }
-
-    @Override
-    public String
-    apply(Obstacle object, GameEntities ge) { return ""; }
 }

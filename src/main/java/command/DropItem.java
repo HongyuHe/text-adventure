@@ -35,24 +35,4 @@ public class DropItem implements ICommand {
 
         return result.toString();
     }
-
-    public String apply(final Area object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Item object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Npc object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Obstacle object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Player object, final GameEntities ge) {
-        return "";
-    }
 }

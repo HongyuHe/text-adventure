@@ -16,7 +16,8 @@
     "currentLocation": "control-room",
     "state": true,
     "blocks": "storage",
-    "requiredObject": "flashlight"
+    "requiredObject": "flashlight",
+    "message": "You try to pass through the darkness but you fail."
   },
   {
     "active": true,
@@ -35,6 +36,7 @@
     "currentLocation": "station",
     "state": true,
     "blocks": "outside",
-    "requiredObject": "rifle"
+    "requiredObject": "rifle",
+    "message": "There is a monster blocking your path."
   }
 ]

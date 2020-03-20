@@ -16,7 +16,8 @@
     "currentLocation": "nursery",
     "state": true,
     "blocks": "cantine",
-    "requiredObject": "note"
+    "requiredObject": "note",
+    "message": "A wean needs a note!"
   },
   {
     "type": "Obstacle",
@@ -35,6 +36,7 @@
       }
     ],
     "inventory": [],
-    "stats": {}
+    "stats": {},
+    "message": "The riddle needs an answer! No answer, no Haggis!"
   }
 ]
