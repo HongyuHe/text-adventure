@@ -100,12 +100,12 @@ public class Engine {
     {
         try
         {
-            List<String> decodedCommands = new ArrayList<>();
-            for (final String c : Files.readAllLines(getSaveFilePath()))
-            {
-                byte [] decoding = Base64.getDecoder().decode(c.getBytes());
-                decodedCommands.add(new String(decoding));
-            }
+            final List<String> decodedCommands = Files.readAllLines(getSaveFilePath())
+                    .stream()
+                    .map(c -> new String(
+                            Base64.getDecoder()
+                                    .decode(c.getBytes())))
+                    .collect(Collectors.toList());
 
             for (final String input : decodedCommands) { currentGame.handleCommand(input); }
             uiHandler.print("Game loaded.");
@@ -118,12 +118,12 @@ public class Engine {
     {
         try
         {
-            List<String> encodedCommands = new ArrayList<>();
-            for (final String c : currentGame.getPreviousCommands())
-            {
-                byte[] encoding = Base64.getEncoder().encode(c.getBytes());
-                encodedCommands.add(new String(encoding));
-            }
+            final List<String> encodedCommands = currentGame.getPreviousCommands()
+                    .stream()
+                    .map(c -> new String(
+                            Base64.getEncoder()
+                                    .encode(c.getBytes())))
+                    .collect(Collectors.toList());
 
             Files.write(getSaveFilePath(), encodedCommands);
             uiHandler.print("Game saved.");
