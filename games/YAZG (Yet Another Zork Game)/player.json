@@ -2,7 +2,7 @@
   "type": "Player",
   "name": "you",
   "active": true,
-  "description": "You're just a regular baseline human.",
+  "description": "You're just a regular human.",
   "currentLocation": "forest",
   "inventory": [],
   "stats": {
@@ -40,7 +40,7 @@
   },
   {
     "name": "interact",
-    "function": "Fight",
+    "function": "Describe",
     "params": ["NPC"]
   },
   {
