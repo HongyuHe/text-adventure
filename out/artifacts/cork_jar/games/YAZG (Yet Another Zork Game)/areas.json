@@ -20,7 +20,7 @@
   "type": "Area",
   "name": "house",
   "description": "You are inside a house. There is a forest to your east.",
-  "inventory": ["sword", "key"],
+  "inventory": ["sword"],
   "stats": {},
   "commands": [],
   "obstacles": [],
