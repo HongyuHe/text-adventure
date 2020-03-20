@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Set;
 
-public class Npc extends Entity {
+public class Npc extends Locatable {
 
     private boolean isFriendly;
 
@@ -15,7 +15,7 @@ public class Npc extends Entity {
     {
         this(false, "", "", "",
                 Collections.emptySet(), Collections.emptyMap(), Collections.emptySet(),
-                true);
+                "", true);
     }
 
     public
@@ -26,9 +26,10 @@ public class Npc extends Entity {
                final Set<String> inventory,
                final Map<String, Integer> stats,
                final Set<CommandBlueprint> commandBlueprints,
+               final String currentLocation,
                final boolean isFriendly)
     {
-        super(active, type, name, description, inventory, stats, commandBlueprints);
+        super(active, type, name, description, inventory, stats, commandBlueprints, currentLocation);
         this.isFriendly = isFriendly;
     }
 

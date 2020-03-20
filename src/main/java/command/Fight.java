@@ -33,6 +33,9 @@ public class Fight implements ICommand {
             parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - 5);
             opponent.setStat(REDUCTION_STAT, 0);
             opponent.setActive(false);
+
+
+
             return String.format("%s, -5 health%n%s is killed.", parent.getName(), object);
         }
         else
