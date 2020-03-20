@@ -29,7 +29,7 @@ Author(s): `Anthony Wilkes`
 ### Application of design patterns
 Author(s): `Anthony Wilkes`
 
-![Design Patterns Class Diagram](./assets/A03-design_patterns.png "Design patterns class diagram")
+![Design Patterns Class Diagram](assets/A03/A03-design_patterns.png "Design patterns class diagram")
 
 | ID  | DP1 |
 |---|---|
@@ -89,7 +89,7 @@ Author(s): `Anthony Wilkes`
 ## Class diagram									
 Author(s): `Anthony Wilkes`
 
-![Class Diagram](./assets/A03-class_detail.png "Class diagram")
+![Class Diagram](assets/A03/A03-class_detail.png "Class diagram")
 
 ### Engine
 
