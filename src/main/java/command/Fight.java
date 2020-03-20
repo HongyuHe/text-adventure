@@ -16,7 +16,9 @@ public class Fight implements ICommand {
         final String REDUCTION_STAT  = "health";
         final String COMPARISON_STAT = "strength";
 
-        final Entity opponent = ge.getEntityOrDefault(object);
+        final Npc opponent = ge.getNpcOrDefault(object);
+
+        if (opponent.isFriendly()) { return String.format("%s is not hostile.", object); }
 
         final Integer opponentStrength = opponent.getStatValue(COMPARISON_STAT);
         final Integer parentStrength   = parent.getStatValue(COMPARISON_STAT);

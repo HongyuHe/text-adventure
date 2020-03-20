@@ -20,7 +20,8 @@ public class NpcDeserializer extends Deserializer implements JsonDeserializer<Np
                 jsonObject.get("description").getAsString(),
                 createSet(jsonObject.get("inventory").getAsJsonArray()),
                 createMap(jsonObject.get("stats").getAsJsonObject()),
-                createCommandSet(jsonObject.get("commands").getAsJsonArray())
+                createCommandSet(jsonObject.get("commands").getAsJsonArray()),
+                jsonObject.get("isFriendly").getAsBoolean()
         );
     }
 }
