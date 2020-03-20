@@ -16,6 +16,6 @@ public class ChangeState implements ICommand {
 
         parent.setState(false);
 
-        return "It works!";
+        return "The path to " + parent.getBlocks() + " is now clear!";
     }
 }
