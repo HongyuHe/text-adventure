@@ -8,21 +8,25 @@
   "stats":
   {
     "health": 30,
-    "dexterity": 12,
-    "strength": 10,
-    "bullets": 1
+    "strength": 10
   },
-  "commands":
+
+  "commandBlueprints":
   [
     {
-      "name": "use",
-      "function": "ChangeState",
-      "params": ["Player"]
+      "name": "eat",
+      "function": "ChangeStat",
+      "params": ["health"]
     },
     {
       "name": "stats",
       "function": "ListStats",
       "params": ["Player"]
+    },
+    {
+      "name": "use",
+      "function": "ChangeStat",
+      "params": ["health"]
     },
     {
       "name": "look",
@@ -36,8 +40,12 @@
     },
     {
       "name": "interact",
-      "function": "Describe",
+      "function": "Fight",
       "params": ["NPC"]
+    },
+    {
+      "name": "fight",
+      "function": "Fight"
     },
     {
       "name": "inventory",
@@ -65,5 +73,4 @@
       "params": ["Item", "inventory"]
     }
   ]
-  
 }

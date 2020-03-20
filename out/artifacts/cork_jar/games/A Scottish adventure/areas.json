@@ -6,6 +6,8 @@
     "description": "You are pure done in, but ma is nagging, she wants you to get some Haggis. Time to go outside and visit the village",
     "inventory": [ "money" ],
     "obstacles": [],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "village": "village",
@@ -20,6 +22,8 @@
     "description": "The wee village called Dollar looks bonnie today, the sun is shining bright, yappie dugs everywhere. To yer left ye see the nursery, to yer right the church, south of ye is a bakery. I wonder who can help me to get some of this delicious Haggis.",
     "inventory": [],
     "obstacles": [ ],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "home": "home",
@@ -40,6 +44,8 @@
     "description": "Stephens Bakery is pure dead brilliant, I ask him if he sells Haggis, 'ah umnae' he answers. He seems crabbit, someone probably told him that Nessie doesn't exist. On the counter ye see a note, it reads: 'Lang may yer lum reek!'",
     "inventory": [ "note" ],
     "obstacles": [],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "bakery": "bakery",
@@ -56,6 +62,8 @@
     "description": "Everyone seems hoachin', is there a global disease going on? Ma works here too, maybe one of her co-workers can help me. I should enter the cantine, but a sad wean is blocking the door, I might have to cheer him up before the wean lets me through.",
     "inventory": [],
     "obstacles": [ "wean" ],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "nursery": "nursery",
@@ -72,6 +80,8 @@
     "description": "It smells like Haggis here, I ask around, but nobody can tell me where the smell comes from. An old woman in the corner whispers to me that if I want the best Haggis I should visit the church.",
     "inventory": [],
     "obstacles": [ ],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "back": "nursery",
@@ -86,6 +96,8 @@
     "description": "The church looks auld and stourly, in the chambers I see an auld nun. She only lets me in if I solve her riddle and have money with me. I hear her talking to herself: 'Mony a mickle maks a muckle!'",
     "inventory": [ "answer" ],
     "obstacles": [ "riddle" ],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "church": "church",
@@ -103,6 +115,8 @@
     "description": "The auld nun has a secret Haggis scullery here, she is willing to sell ye some Haggis, Ma is gonna be so happy!",
     "inventory": [ "haggis" ],
     "obstacles": [],
+    "stats": {},
+    "commandBlueprints": [],
     "npcs": [],
     "connections": {
       "back": "church",

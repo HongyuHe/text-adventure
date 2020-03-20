@@ -15,6 +15,7 @@
     "currentLocation": "forest",
     "state": true,
     "blocks": "castle",
-    "requiredObject": "key"
+    "requiredObject": "key",
+    "message": "There is a locked door in the way."
   }
 ]

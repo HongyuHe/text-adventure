@@ -1,20 +1,23 @@
 [
   {
+    "active": true,
     "type": "Obstacle",
     "name": "wean",
-    "active": true,
+    "description": "An annoying little wean",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
     "currentLocation": "nursery",
     "state": true,
     "blocks": "cantine",
     "requiredObject": "note",
-    "commands":
-    [
-      {
-        "name": "use",
-        "function": "ChangeState",
-        "params": []
-      }
-    ]
+    "message": "A wean needs a note!"
   },
   {
     "type": "Obstacle",
@@ -23,14 +26,17 @@
     "currentLocation": "church",
     "state": true,
     "blocks": "chamber",
+    "description": "I have a blue and white flag but I’m not Finland\nI’m in Europe but I’m not Greece\nI have a famous monster but it’s not Bigfoot\nI’m part of Great Britain but I’m not England\nI’m well known for my bagpipes but I’m not Turkey",
     "requiredObject": "answer",
-    "commands":
+    "commandBlueprints":
     [
       {
         "name": "use",
-        "function": "ChangeState",
-        "params": []
+        "function": "ChangeState"
       }
-    ]
+    ],
+    "inventory": [],
+    "stats": {},
+    "message": "The riddle needs an answer! No answer, no Haggis!"
   }
 ]

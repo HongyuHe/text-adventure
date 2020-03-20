@@ -6,9 +6,15 @@
     "description": "A delicious looking apple!",
     "inventory": [],
     "stats": {
-      "health": 10
+      "health": 10,
+      "strength": 0
     },
-    "commandBlueprints": [],
+    "commandBlueprints": [
+      {
+        "name": "enchant",
+        "function": "ChangeStat"
+      }
+    ],
     "consumable": true
   },
 
@@ -30,7 +36,7 @@
     "active": true,
     "type": "Item",
     "name": "key",
-    "description": "It looks like a key that unlocks something.",
+    "description": "A heavy looking thing\n\n     8 8          ,o.\n    d8o8azzzzzzzzd   b\n                  `o',",
     "inventory": [],
     "stats": {},
     "commandBlueprints": [],
@@ -44,6 +50,7 @@
     "description": "A sharp sword, probably useful in a fight.",
     "inventory": [],
     "stats": {
+      "health": 0,
       "strength": 10
     },
     "commandBlueprints": [],
