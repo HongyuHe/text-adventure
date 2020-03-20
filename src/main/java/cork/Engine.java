@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -98,7 +100,14 @@ public class Engine {
     {
         try
         {
-            for (final String input : Files.readAllLines(getSaveFilePath())) { currentGame.handleCommand(input); }
+            List<String> decodedCommands = new ArrayList<>();
+            for (final String c : Files.readAllLines(getSaveFilePath()))
+            {
+                byte [] decoding = Base64.getDecoder().decode(c.getBytes());
+                decodedCommands.add(new String(decoding));
+            }
+
+            for (final String input : decodedCommands) { currentGame.handleCommand(input); }
             uiHandler.print("Game loaded.");
         }
         catch (IOException e) { uiHandler.displayError("Game could not be loaded."); }
@@ -109,7 +118,14 @@ public class Engine {
     {
         try
         {
-            Files.write(getSaveFilePath(), currentGame.getPreviousCommands());
+            List<String> encodedCommands = new ArrayList<>();
+            for (final String c : currentGame.getPreviousCommands())
+            {
+                byte[] encoding = Base64.getEncoder().encode(c.getBytes());
+                encodedCommands.add(new String(encoding));
+            }
+
+            Files.write(getSaveFilePath(), encodedCommands);
             uiHandler.print("Game saved.");
         }
         catch (IOException e) { uiHandler.displayError("Game could not be saved."); }
