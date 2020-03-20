@@ -34,7 +34,11 @@ public class Fight implements ICommand {
             opponent.setStat(REDUCTION_STAT, 0);
             opponent.setActive(false);
 
+            final Area location = ge.getAreaOrDefault(opponent.getCurrentLocation());
 
+            for (final String item : opponent.getInventory()) { location.addToInventory(item); }
+
+            location.removeNpc(opponent.getName());
 
             return String.format("%s, -5 health%n%s is killed.", parent.getName(), object);
         }
@@ -42,6 +46,13 @@ public class Fight implements ICommand {
         {
             opponent.setStat(REDUCTION_STAT, 0);
             opponent.setActive(false);
+
+            final Area location = ge.getAreaOrDefault(opponent.getCurrentLocation());
+
+            for (final String item : opponent.getInventory()) { location.addToInventory(item); }
+
+            location.removeNpc(opponent.getName());
+
             return String.format("%s is killed.", object);
         }
     }
