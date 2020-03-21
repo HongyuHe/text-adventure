@@ -481,14 +481,42 @@ Provides a method to call for all expected command functionality, but the method
 
 
 ## Object diagrams								
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Jim Cuijpers`
 
-This chapter contains the description of a "snapshot" of the status of your system during its execution. 
-This chapter is composed of a UML object diagram of your system, together with a textual description of its key elements.
+![Object Diagram](assets/A03/A03-object_diagram.PNG "Object diagram")
 
-`Figure representing the UML class diagram`
-  
-`Textual description`
+The colours in the above diagram indicate which parts of the object diagram has been changed since the previous version of the object diagram which has been submitted
+in the previous assignment. 
+
+- **Yellow colored objects:**   Objects that have been modified
+- **Green colored objects:**    Objects that have been added  
+- **White colored objects:**    Objects that have not been modified or added
+    
+The system is in a state wherein the game "YAZG" is loaded and running and the user just inputted the command `eat apple` into the system. 
+
+- **engine:** The engine object is the main controlling object of the system itself. It is responsible from running a game and holds a state which is referenced by the `Engine state machine`. 
+                The list of games found on the system is saved as a list of strings called `games`, the selected game is stored as an object called `currentGame` and the name of the selected game is stored as a string called `gameName`, 
+                the current running state is stored as a boolean `running`. The engine handles the input given by the user through the uiHandler class and the engine builds the `currentGame` with the help of the `Initializer` class.
+                
+- **uiHandler:** The uiHandler is responsible for displaying the game to the user.  It holds the colour theme and the logo and is responsible for taking in the input of the user
+                 The uiHandles does so by using TextIO.
+
+- **game:** The game object holds the state of the game that has been initialized. It keeps track of the moves a player make throughout the game as a list of command strings in the variable `previousCommands`, in the         
+            current snapshot it is visible that the user has made only one move so far and that is: "eat apple", which was inputted into the console. The last variable is an object of the type `GameEntities`.  
+            This is the main dictionary object holding all the game objects and is initialized using the `Initializer` class.
+            
+- **Initializer:** The Initializer is a static class that reads and deserialize the JSON files for the game and returns the `GameEntities` object called `gInit`. The deserialization is done by referencing to different deserialization classes holding an overloaded method specifically catered to the format of the JSON that is about to be read. 
+                    It is used as a one-off class during initialization of the game and does not hold any valuable data.
+                    
+- **gameEntities:** The `GameEntities` object is the main dictionary object that hold all the entities present, meaning that this object is used to store the entire game.
+                    There can only be one object of the type `GameEntities` and it is persistent in memory till the system is exited.
+                    It also holds the states of the various objects. It stores these in the form of maps of all the entities supported by the engine such as the areas, obstacles, npcs and items. 
+                    It also holds the main player object, the defaultEntity and the gameOverItem object. 
+                    The maps are shown with a 1-to-many relation in the UML and the player, emptyEntity, and gameOverItem as a 1-to-1 relation.
+                    
+
+
+
 
 Maximum number of words for this section: 1000
 
