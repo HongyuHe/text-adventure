@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.Collections;
 import java.util.List;
@@ -60,23 +59,32 @@ public class Engine {
         {
             running = false;
             uiHandler.displayError("Please ensure that the Cork JAR is in the same directory as the 'games' folder and that the folder is populated.");
-            return;
         }
+        else
+        {
+            final String choice = uiHandler.displayMainMenu(gameList);
+            if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
 
-        final String choice = uiHandler.displayMainMenu(gameList);
-        if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
-
-        gameName = choice;
+            gameName = choice;
+        }
     }
 
     public void
     displayGameMenu()
     {
-        currentGame = new Game(gameName);
+        try
+        {
+            currentGame = new Game(gameName);
 
-        final String choice = uiHandler.displayGameMenu(gameName);
-        if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
-        else if (choice.equals(UIHandler.LOAD_GAME_OPTION)) { loadGame(); }
+            final String choice = uiHandler.displayGameMenu(gameName);
+            if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
+            else if (choice.equals(UIHandler.LOAD_GAME_OPTION)) { loadGame(); }
+        }
+        catch (Exception e)
+        {
+            running = false;
+            uiHandler.displayError("Error loading game.\n\n" + e.getMessage() + "\n");
+        }
     }
 
     private List<String>

@@ -1,5 +1,6 @@
 package cork;
 
+import com.google.gson.JsonParseException;
 import command.CommandFactory;
 import command.ICommand;
 import deserialiser.*;
@@ -68,50 +69,46 @@ public class Initializer {
         DefaultEntity defaultEntity = DefaultEntity.instance();
 
         GameEntities gInit = new GameEntities(itemEntities,
-                                areaEntities,
-                                obstacleEntities,
-                                npcEntities,
-                                gameOverItem,
-                                player,
+                areaEntities,
+                obstacleEntities,
+                npcEntities,
+                gameOverItem,
+                player,
                 defaultEntity
-                );
+        );
+
         populateCommands(gInit);
+
         return gInit;
     }
 
     private static <T> ArrayList<T>
     load(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
     {
-        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation))) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation)))
+        {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
             Type entitySetType = TypeToken.getParameterized(ArrayList.class, c).getType();
             return gson.fromJson(reader, entitySetType);
-
-        } catch (Exception ex) {
-            Logger.error("JSON file: " + jsonLocation + "\n" + ex.toString());
         }
-
-        return new ArrayList<>();
+        catch (Exception ex) { throw new JsonParseException("file: " + jsonLocation + "\n" + ex.getCause()); }
     }
 
     private static <T> T
     loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
     {
-        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation))) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation)))
+        {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
             return gson.fromJson(reader, c);
-
-        } catch (Exception ex) {
-            Logger.error("JSON file: " + jsonLocation + "\n" + ex.toString());
         }
-
-        return null;
+        catch (Exception ex) { throw new JsonParseException("file: " + jsonLocation + "\n" + ex.getCause()); }
     }
 
     private static void
