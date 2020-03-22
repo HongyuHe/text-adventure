@@ -22,7 +22,7 @@
   "description": "You are inside a house. There is a forest to your east.",
   "inventory": ["sword"],
   "stats": {},
-  "commands": [],
+  "commandBlueprints": [],
   "obstacles": [],
   "npcs": ["chad"],
   "connections": {
@@ -37,7 +37,7 @@
   "description": "You are inside an ominous castle. There is a forest to your south.",
   "inventory": ["diamond", "potion"],
   "stats": {},
-  "commands": [],
+  "commandBlueprints": [],
   "obstacles": [],
   "npcs": ["princess"],
   "connections": {
