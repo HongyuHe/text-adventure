@@ -523,7 +523,27 @@ Maximum number of words for this section: 1000
 ## State machine diagrams									
 Author(s): `Anthony Wilkes`
 
+### Engine
+
 ![Engine State Machine Diagram](assets/A03/A03-engine_state.png "Engine state machine diagram")
+
+The **Engine** is the heart of the system, and is the central point from which all other components determine their meta-level state. The state of the **UIHandler** is intimately linked with the **Engine** state, and the **Game** is reliant on the **Engine** to feed it with the input it requires to run.
+
+Initially, the **Engine** starts up in the *Home Screen* state - the **Engine** instructs the **UIHandler** to display the splash screen to the user and waits for a response. If the user chooses to quit, the **Engine** performs any necessary clean-up and does so. If the user chooses to continue, the *Main Menu* state is entered.
+
+On entering the *Main Menu* state, the **Engine** checks to see which games are currently available to the user. If the games directory cannot be found, the **Engine** instructs the **UIHandler** to print an error, then exits. If games can be found, these are presented to the user, and the user is allowed to make a choice.
+
+Once the user has made a choice, the *Game Menu* state is entered. On doing so, the game files are loaded, and if an error is encountered, the **Engine** displays the error and exits. If the game files load successfully, however, the user is presented with the choice to load an old game, start a new game, or exit.
+
+If the user chooses to load a game, the *load game* state is entered and the save file (if any) is loaded (this involves converting the file from base64 encoding back to normal encoding) and the commands in the file are replayed. Once all the commands have been replayed, the *Game Running* state is entered. If there are any issues loading the save file (e.g. the file doesn't exist), then the user is informed that the file could not be loaded, and the *Game Running* state is entered just as if the user had started a new game (likewise, if the user chooses to start a new game from the previous *Game Menu* state, then the *Game Running* state is entered directly).
+
+Once in the *Game Running* state, the **Engine** simply waits for input from the user. If this input is a meta-level command like loading or saving, then the **Engine** will handle these requests directly, otherwise the commands are relayed to the **Game** which deals with them as required.
+
+If the user chooses to quit the game during the *Game Running* state, then they will be prompted to save, and the game will be either be saved, and the **Engine** will exit, or the **Engine** will exit directly without saving.
+
+If the game ends whilst in the *Game Running* state (e.g. the player wins the game or dies), then the user is returned back to the initial *Home Screen* state, and the process can repeat from the beginning as before.  
+
+---
 
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
