@@ -29,7 +29,7 @@ Author(s): `Anthony Wilkes`
 ### Application of design patterns
 Author(s): `Anthony Wilkes`
 
-![Design Patterns Class Diagram](assets/A03/A03-design_patterns.png "Design patterns class diagram")
+![Design Patterns Class Diagram](assets/A03/design_patterns.png "Design patterns class diagram")
 
 | ID  | DP1 |
 |---|---|
@@ -89,7 +89,7 @@ Author(s): `Anthony Wilkes`
 ## Class diagram									
 Author(s): `Anthony Wilkes`
 
-![Class Diagram](assets/A03/A03-class_detail.png "Class diagram")
+![Class Diagram](assets/A03/class_detail.png "Class diagram")
 
 ### Engine
 
@@ -483,7 +483,7 @@ Provides a method to call for all expected command functionality, but the method
 ## Object diagrams								
 Author(s): `Jim Cuijpers`
 
-![Object Diagram](assets/A03/A03-object_diagram.PNG "Object diagram")
+![Object Diagram](assets/A03/object_diagram.png "Object diagram")
 
 The colours in the above diagram indicate which parts of the object diagram has been changed since the previous version of the object diagram which has been submitted
 in the previous assignment. 
@@ -525,7 +525,7 @@ Author(s): `Anthony Wilkes`
 
 ### Engine
 
-![Engine State Machine Diagram](assets/A03/A03-engine_state.png "Engine state machine diagram")
+![Engine State Machine Diagram](assets/A03/engine_state.png "Engine state machine diagram")
 
 The **Engine** is the heart of the system, and is the central point from which all other components determine their meta-level state. The state of the **UIHandler** is intimately linked with the **Engine** state, and the **Game** is reliant on the **Engine** to feed it with the input it requires to run.
 
