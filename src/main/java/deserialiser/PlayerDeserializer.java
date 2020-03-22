@@ -8,10 +8,9 @@ import java.lang.reflect.Type;
 public class PlayerDeserializer extends Deserializer implements JsonDeserializer<Player> {
 
     @Override
-    public Player deserialize(JsonElement json,
-                              Type typeOfT,
-                              JsonDeserializationContext context) throws JsonParseException { // NOSONAR
-
+    public Player
+    deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    {
         JsonObject jsonObject = json.getAsJsonObject();
 
         return new Player(

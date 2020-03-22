@@ -6,11 +6,11 @@ import com.google.gson.*;
 import java.lang.reflect.Type;
 
 public class NpcDeserializer extends Deserializer implements JsonDeserializer<Npc> {
-    @Override
-    public Npc deserialize(JsonElement json,
-                            Type typeOfT,
-                            JsonDeserializationContext context) throws JsonParseException { // NOSONAR
 
+    @Override
+    public Npc
+    deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    {
         JsonObject jsonObject = json.getAsJsonObject();
 
         return new Npc(

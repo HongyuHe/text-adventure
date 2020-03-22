@@ -8,10 +8,9 @@ import java.lang.reflect.Type;
 public class ItemDeserializer extends Deserializer implements JsonDeserializer<Item> {
 
     @Override
-    public Item deserialize(JsonElement json,
-                               Type typeOfT,
-                               JsonDeserializationContext context) throws JsonParseException { // NOSONAR
-
+    public Item
+    deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    {
         JsonObject jsonObject = json.getAsJsonObject();
 
         return new Item(

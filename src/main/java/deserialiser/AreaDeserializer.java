@@ -7,10 +7,9 @@ import java.lang.reflect.Type;
 public class AreaDeserializer extends Deserializer implements JsonDeserializer<Area> {
 
     @Override
-    public Area deserialize(JsonElement json,
-                               Type typeOfT,
-                               JsonDeserializationContext context) throws JsonParseException { // NOSONAR
-
+    public Area
+    deserialize(JsonElement json, Type typeOfT, JsonDeserializationContext context)
+    {
         JsonObject jsonObject = json.getAsJsonObject();
 
         return new Area(
