@@ -55,5 +55,19 @@
     },
     "commandBlueprints": [],
     "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "armor",
+    "description": "A costly piece of armor.",
+    "inventory": [],
+    "stats": {
+      "health": 10,
+      "gold": -100
+    },
+    "commandBlueprints": [],
+    "consumable": false
   }
 ]

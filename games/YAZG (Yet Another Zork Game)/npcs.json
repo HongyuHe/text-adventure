@@ -9,7 +9,12 @@
       "health": 10,
       "strength": 15
     },
-    "commandBlueprints": [],
+    "commandBlueprints": [
+      {
+        "name": "pickpocket",
+        "function": "DropItem"
+      }
+    ],
     "currentLocation": "house",
     "isFriendly": false
   },

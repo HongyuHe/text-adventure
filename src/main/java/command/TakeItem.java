@@ -20,7 +20,7 @@ public class TakeItem implements ICommand {
 
         area.removeFromInventory(object);
 
-        StringBuilder result = new StringBuilder(object + " -> " + parent.getName());
+        StringBuilder result = new StringBuilder(parent.getName() + " picked up " + object);
 
         parent.addToInventory(object);
 

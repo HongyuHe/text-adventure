@@ -19,7 +19,7 @@ public class DropItem implements ICommand {
 
         area.addToInventory(object);
 
-        StringBuilder result = new StringBuilder(object + " -> " + area.getName());
+        StringBuilder result = new StringBuilder(parent.getName() + " dropped " + object);
 
         Item item = ge.getItemOrDefault(object);
         if(item.isConsumable()) { return result.toString(); }
