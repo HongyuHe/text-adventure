@@ -1,5 +1,6 @@
 package cork;
 
+import com.google.gson.JsonParseException;
 import cork.engine_state.EngineStateMachine;
 
 import java.io.IOException;
@@ -80,7 +81,7 @@ public class Engine {
             if (choice.equals(UIHandler.QUIT_OPTION)) { running = false; }
             else if (choice.equals(UIHandler.LOAD_GAME_OPTION)) { loadGame(); }
         }
-        catch (Exception e)
+        catch (JsonParseException e)
         {
             running = false;
             uiHandler.displayError("Error loading game.\n\n" + e.getMessage() + "\n");
