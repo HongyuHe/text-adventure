@@ -1,7 +1,7 @@
 package command;
+
 import dictionary.GameEntities;
-import entity.*;
 
 public interface ICommand {
-    String apply(final String object,   final GameEntities ge);
+    String apply(final String object, final GameEntities ge);
 }
