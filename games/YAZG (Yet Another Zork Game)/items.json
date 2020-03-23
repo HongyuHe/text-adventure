@@ -102,7 +102,10 @@
     "inventory": ["gold"],
     "stats": {},
     "commandBlueprints": [
-
+      {
+        "name": "drop",
+        "function": "DropItem"
+      }
     ],
     "consumable": false
   }

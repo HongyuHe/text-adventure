@@ -6,16 +6,16 @@ import entity.*;
 import java.util.Map;
 
 public class DropItem implements ICommand {
-    private final Locatable parent;
+    private final Entity parent;
 
-    public DropItem(final Locatable parent) { this.parent = parent; }
+    public DropItem(final Entity parent) { this.parent = parent; }
 
     @Override
     public String apply(String object, GameEntities ge) {
         if (!parent.hasInInventory(object)) { return String.format("You are not holding '%s'", object); }
         parent.removeFromInventory(object);
 
-        Area area = ge.getAreaOrDefault(parent.getCurrentLocation());
+        Area area = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
         area.addToInventory(object);
 
