@@ -15,45 +15,48 @@ public class Fight implements ICommand {
     {
         final String REDUCTION_STAT  = "health";
         final String COMPARISON_STAT = "strength";
+        final Entity targetEntity = ge.getEntityOrDefault(object);
 
-        final Npc opponent = ge.getNpcOrDefault(object);
+        if (targetEntity.getType().equals("NPC"))
+        {
+            final Npc opponent = ge.getNpcOrDefault(object);
+            if (opponent.isFriendly()) { return String.format("%s is not hostile.", object); }
+        }
 
-        if (opponent.isFriendly()) { return String.format("%s is not hostile.", object); }
-
-        final Integer opponentStrength = opponent.getStatValue(COMPARISON_STAT);
+        final Integer opponentStrength = targetEntity.getStatValue(COMPARISON_STAT);
         final Integer parentStrength   = parent.getStatValue(COMPARISON_STAT);
 
         if (parentStrength < opponentStrength)
         {
-            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - opponent.getStatValue(COMPARISON_STAT));
-            return String.format("%s, - %d health", parent.getName(), opponent.getStatValue(COMPARISON_STAT));
+            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - targetEntity.getStatValue(COMPARISON_STAT));
+            return String.format("%s, - %d health", parent.getName(), targetEntity.getStatValue(COMPARISON_STAT));
         }
         else if (opponentStrength.equals(parentStrength))
         {
-            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - (opponent.getStatValue(COMPARISON_STAT) / 2));
-            opponent.setStat(REDUCTION_STAT, 0);
-            opponent.setActive(false);
+            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - (targetEntity.getStatValue(COMPARISON_STAT) / 2));
+            targetEntity.setStat(REDUCTION_STAT, 0);
+            targetEntity.setActive(false);
 
-            final Area location = ge.getAreaOrDefault(opponent.getCurrentLocation());
+            final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
-            for (final String item : opponent.getInventory()) { location.addToInventory(item); }
+            for (final String item : targetEntity.getInventory()) { location.addToInventory(item); }
 
-            location.removeNpc(opponent.getName());
+            location.removeNpc(targetEntity.getName());
 
-            return String.format("%s, -%d health%n%s is killed.", parent.getName(), (opponent.getStatValue(COMPARISON_STAT) / 2), object);
+            return String.format("%s, -%d health%n%s is destroyed.", parent.getName(), (targetEntity.getStatValue(COMPARISON_STAT) / 2), object);
         }
         else
         {
-            opponent.setStat(REDUCTION_STAT, 0);
-            opponent.setActive(false);
+            targetEntity.setStat(REDUCTION_STAT, 0);
+            targetEntity.setActive(false);
 
-            final Area location = ge.getAreaOrDefault(opponent.getCurrentLocation());
+            final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
-            for (final String item : opponent.getInventory()) { location.addToInventory(item); }
+            for (final String item : targetEntity.getInventory()) { location.addToInventory(item); }
 
-            location.removeNpc(opponent.getName());
+            location.removeNpc(targetEntity.getName());
 
-            return String.format("%s is killed.", object);
+            return String.format("%s is destroyed.", object);
         }
     }
 }

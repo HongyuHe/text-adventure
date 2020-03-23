@@ -67,5 +67,8 @@ public class Area extends Entity {
     getObstacles() { return new HashSet<>(obstacles); }
 
     public void
+    removeObstacle(final String obstacle) { obstacles.remove(obstacle); }
+
+    public void
     removeNpc(final String npc) { npcs.remove(npc); }
 }
