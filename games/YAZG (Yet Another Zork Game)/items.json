@@ -105,6 +105,10 @@
       {
         "name": "drop",
         "function": "DropItem"
+      },
+      {
+        "name": "store",
+        "function": "TakeItem"
       }
     ],
     "consumable": false

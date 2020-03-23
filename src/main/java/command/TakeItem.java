@@ -6,15 +6,15 @@ import entity.*;
 import java.util.Map;
 
 public class TakeItem implements ICommand {
-    private final Locatable parent;
+    private final Entity parent;
 
-    public TakeItem(final Locatable parent) {
+    public TakeItem(final Entity parent) {
         this.parent = parent;
     }
 
     @Override
     public String apply(String object, GameEntities ge) {
-        Area area = ge.getAreaOrDefault(parent.getCurrentLocation());
+        Area area = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
         if (!area.hasInInventory(object)) { return String.format("You cannot see '%s' here.", object); }
 
