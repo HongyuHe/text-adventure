@@ -4,10 +4,10 @@
     "type": "Area",
     "name": "forest",
     "description": "You are surrounded by trees. There is a castle to the north, a house to your west and a thorny-forest to your east.",
-    "inventory": ["apple", "pouch", "armor"],
+    "inventory": ["chest", "pouch", "cherry-bomb"],
     "stats": {},
     "commandBlueprints": [],
-    "obstacles": ["door", "iron-gate"],
+    "obstacles": ["door", "iron-gate", "wooden-spikes"],
     "npcs": [],
     "connections": {
       "north": "castle",

@@ -4,7 +4,7 @@
     "type": "NPC",
     "name": "chad",
     "description": "The chad tells you to stay away from his princess. You can see that he is holding an ornate key.",
-    "inventory": [ "key" ],
+    "inventory": [ "key", "poison" ],
     "stats": {
       "health": 10,
       "strength": 15
@@ -15,12 +15,12 @@
         "function": "DropItem"
       },
       {
-        "name": "give",
-        "function": "TakeItem"
-      },
-      {
         "name": "administer",
         "function": "ChangeStat"
+      },
+      {
+        "name": "throw",
+        "function": "TakeItem"
       }
     ],
     "currentLocation": "house",

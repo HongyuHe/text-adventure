@@ -50,7 +50,7 @@ public class Fight implements ICommand {
 
             return result.toString();
         }
-        else
+        else if (parentStrength.compareTo(opponentStrength) > 0)
         {
             targetEntity.setStat(REDUCTION_STAT, 0);
             targetEntity.setActive(false);
@@ -67,6 +67,10 @@ public class Fight implements ICommand {
             removeEntity(targetEntity, ge);
 
             return result.toString();
+        }
+        else
+        {
+            return "You cannot fight that.";
         }
     }
 
