@@ -65,6 +65,9 @@
     "name": "drop",
     "function": "DropItem",
     "params": ["Item", "inventory"]
+  },
+  {
+    "name": "fight",
+    "function": "Fight"
   }]
-
 }

@@ -6,8 +6,8 @@
     "active": true,         // Current status
     "consumable": false,    // Entity usage type
     "stats": {              // List of stat modifications
-      "health": 0
-      "strength:" 0
+      "health": 0,
+      "strength": 0
     },
     "inventory": [],        // -
     "commandBlueprints": [] // -
