@@ -12,6 +12,9 @@ public class ListContents implements ICommand {
     public String apply(final String object, final GameEntities ge)
     {
         Entity targetEntity = ge.getEntityOrDefault(object);
+
+        if (object.equals("")) { targetEntity = parent; }
+
         final String DELIMITER = ", ";
 
         StringBuilder contents = new StringBuilder("Contents: ");
