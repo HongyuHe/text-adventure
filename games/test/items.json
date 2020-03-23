@@ -1,7 +1,7 @@
 [
   {
     "type": "Item",
-    "name": "Nunchucks",
+    "name": "nunchucks",
     "description": "A pair of nunchucks. Better pick them up before someone else does.",
     "active": true,
     "consumable": false,

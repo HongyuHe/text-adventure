@@ -5,9 +5,9 @@
     "name": "testArea",
     "description": "an area",
     "active": true,
-    "inventory": ["testItem"],
+    "inventory": ["nunchucks"],
     "obstacles": [],
-    "npcs": ["cucknorris"],
+    "npcs": ["chucknorris"],
     "connections": {}
   }
 ]

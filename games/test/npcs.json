@@ -2,7 +2,7 @@
 [
   {
     "type": "NPC",
-    "name": "cucknorris",
+    "name": "chucknorris",
     "description": "It's Chuck Norris",
     "active": true,
     "isFriendly": false,
