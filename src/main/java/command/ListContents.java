@@ -11,12 +11,13 @@ public class ListContents implements ICommand {
     @Override
     public String apply(final String object, final GameEntities ge)
     {
+        Entity targetEntity = ge.getEntityOrDefault(object);
         final String DELIMITER = ", ";
 
         StringBuilder contents = new StringBuilder("Contents: ");
 
-        for (final String item : parent.getInventory()) { contents.append(item).append(DELIMITER); }
-        if (!parent.getInventory().isEmpty()) { contents.delete(contents.length() - DELIMITER.length(), contents.length()); }
+        for (final String item : targetEntity.getInventory()) { contents.append(item).append(DELIMITER); }
+        if (!targetEntity.getInventory().isEmpty()) { contents.delete(contents.length() - DELIMITER.length(), contents.length()); }
 
         return contents.toString();
     }
