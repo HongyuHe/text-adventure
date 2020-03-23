@@ -40,5 +40,23 @@
     "blocks": "thorny-forest",
     "requiredObject": "bell",
     "message": "There is an iron-gate in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "wooden-spikes",
+    "description": "Deadly wooden-spikes that can kill if you're not careful.",
+    "inventory": ["potion"],
+    "stats": {
+      "health": 30,
+      "strength": 10
+    },
+    "commandBlueprints": [
+    ],
+    "currentLocation": "forest",
+    "state": true,
+    "blocks": "house",
+    "requiredObject": "",
+    "message": "There are wooden spikes in the way."
   }
 ]

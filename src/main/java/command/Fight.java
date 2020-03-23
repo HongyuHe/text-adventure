@@ -41,7 +41,7 @@ public class Fight implements ICommand {
 
             return String.format("%s, -%d health%n%s is destroyed.", parent.getName(), (targetEntity.getStatValue(COMPARISON_STAT) / 2), object);
         }
-        else if (opponentStrength.compareTo(parentStrength) > 0)
+        else if (parentStrength.compareTo(opponentStrength) > 0)
         {
             targetEntity.setStat(REDUCTION_STAT, 0);
             targetEntity.setActive(false);
@@ -52,7 +52,7 @@ public class Fight implements ICommand {
         }
         else
         {
-            return "You cannot do that.";
+            return "You cannot fight that.";
         }
     }
 

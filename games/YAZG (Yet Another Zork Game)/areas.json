@@ -7,7 +7,7 @@
     "inventory": ["apple", "pouch", "armor"],
     "stats": {},
     "commandBlueprints": [],
-    "obstacles": ["door", "iron-gate"],
+    "obstacles": ["door", "iron-gate", "wooden-spikes"],
     "npcs": [],
     "connections": {
       "north": "castle",
