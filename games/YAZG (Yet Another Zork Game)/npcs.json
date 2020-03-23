@@ -15,12 +15,12 @@
         "function": "DropItem"
       },
       {
-        "name": "give",
-        "function": "TakeItem"
-      },
-      {
         "name": "administer",
         "function": "ChangeStat"
+      },
+      {
+        "name": "throw",
+        "function": "TakeItem"
       }
     ],
     "currentLocation": "house",

@@ -126,6 +126,20 @@
     },
     "commandBlueprints": [],
     "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "cherry-bomb",
+    "description": "A bomb that disables without discretion.",
+    "inventory": ["apple", "armor"],
+    "stats": {
+      "health": -5,
+      "strength": -5
+    },
+    "commandBlueprints": [],
+    "consumable": false
   }
 
 
