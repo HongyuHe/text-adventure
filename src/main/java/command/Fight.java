@@ -35,24 +35,38 @@ public class Fight implements ICommand {
         {
             parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - (targetEntity.getStatValue(COMPARISON_STAT) / 2));
             targetEntity.setStat(REDUCTION_STAT, 0);
-            targetEntity.setActive(false);
 
+            StringBuilder result = new StringBuilder(String.format("%s, -%d health%n%s is destroyed.", parent.getName(), (targetEntity.getStatValue(COMPARISON_STAT) / 2), object));
+
+            final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
+            for (final String item : targetEntity.getInventory())
+            {
+                location.addToInventory(item);
+                result.append("\n").append(object).append(" drops ").append(item);
+            }
+
+            targetEntity.setActive(false);
             removeEntity(targetEntity, ge);
 
-            return String.format("%s, -%d health%n%s is destroyed.", parent.getName(), (targetEntity.getStatValue(COMPARISON_STAT) / 2), object);
+            return result.toString();
         }
-        else if (opponentStrength.compareTo(parentStrength) > 0)
+        else
         {
             targetEntity.setStat(REDUCTION_STAT, 0);
             targetEntity.setActive(false);
 
+            StringBuilder result = new StringBuilder(String.format("%s is destroyed.", object));
+
+            final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
+            for (final String item : targetEntity.getInventory())
+            {
+                location.addToInventory(item);
+                result.append("\n").append(object).append(" drops ").append(item);
+            }
+
             removeEntity(targetEntity, ge);
 
-            return String.format("%s is destroyed.", object);
-        }
-        else
-        {
-            return "You cannot do that.";
+            return result.toString();
         }
     }
 
@@ -60,7 +74,6 @@ public class Fight implements ICommand {
     removeEntity(final Entity targetEntity, final GameEntities ge)
     {
         final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
-        for (final String item : targetEntity.getInventory()) { location.addToInventory(item); }
 
         switch (targetEntity.getType()) {
             case "Item":
