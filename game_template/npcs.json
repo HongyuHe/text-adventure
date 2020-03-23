@@ -1,28 +1,29 @@
-/* ########## NPC TEMPLATE ########## */
 [
-	{
-		"type": "NPC",			// Entity type
-		"name": "",				// Entity name
-		"description": "",		// Entity description
-		"active": true,			// Current status
-	    "stats": {				// List of active stats
-	      "health": 100,
-	      "strength": 10
-	    },
-	    "inventory": [],		// List of current items
-	    "commandBlueprints": []	// -
-	},
-	{
-		"type": "NPC",
-		"name": "",
-		"description": "",
-		"active": true,
-	    "stats": {
-	      "health": 100,
-	      "strength": 10
-	    },
-	    "inventory": [],
-	    "commandBlueprints": []
-	},
-	// (...)
+  {
+    "type": "NPC",			    // Entity type
+    "name": "",				      // Entity name
+    "description": "",      // Entity description
+    "active": true,			    // Current status
+    "isFriendly": false,    // NPC hostility
+    "stats": {				      // List of active stats
+      "health": 100,
+      "strength": 10
+    },
+    "inventory": [],		    // List of current items
+    "commandBlueprints": [] // -
+  },
+  {
+    "type": "NPC",
+    "name": "",
+    "description": "",
+    "active": true,
+    "isFriendly": false,
+    "stats": {
+      "health": 100,
+      "strength": 10
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  }
+  // (...)
 ]

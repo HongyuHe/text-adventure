@@ -1,0 +1,16 @@
+/* ########## NPC TEMPLATE ########## */
+[
+  {
+    "type": "NPC",
+    "name": "cucknorris",
+    "description": "It's Chuck Norris",
+    "active": true,
+    "isFriendly": false,
+    "stats": {
+      "health": 100,
+      "strength": 50
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  }
+]

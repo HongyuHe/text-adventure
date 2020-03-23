@@ -25,12 +25,12 @@ public class Fight implements ICommand {
 
         if (parentStrength < opponentStrength)
         {
-            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - 10);
-            return String.format("%s, -10 health", parent.getName());
+            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - opponent.getStatValue(COMPARISON_STAT));
+            return String.format("%s, - %d health", parent.getName(), opponent.getStatValue(COMPARISON_STAT));
         }
         else if (opponentStrength.equals(parentStrength))
         {
-            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - 5);
+            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - (opponent.getStatValue(COMPARISON_STAT) / 2));
             opponent.setStat(REDUCTION_STAT, 0);
             opponent.setActive(false);
 
@@ -40,7 +40,7 @@ public class Fight implements ICommand {
 
             location.removeNpc(opponent.getName());
 
-            return String.format("%s, -5 health%n%s is killed.", parent.getName(), object);
+            return String.format("%s, -%d health%n%s is killed.", parent.getName(), (opponent.getStatValue(COMPARISON_STAT) / 2), object);
         }
         else
         {

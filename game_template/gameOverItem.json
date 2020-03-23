@@ -1,14 +1,13 @@
-/* ########## GAME OVER ITEM TEMPLATE ########## */
 {
-    "type": "Item",         // Entity type
-    "name": "",             // Entity name
-    "description": "",      // Entity description
-    "active": true,         // Current status
-    "consumable": false,    // Entity usage type
-    "stats": {              // List of stat modifications
-      "health": 0,
-      "strength": 0
-    },
-    "inventory": [],        // -
-    "commandBlueprints": [] // -
+  "type": "Item",         // Entity type
+  "name": "",             // Entity name
+  "description": "",      // Entity description
+  "active": true,         // Current status
+  "consumable": false,    // Entity usage type
+  "stats": {              // List of stat modifications
+    "health": 0,
+    "strength": 0
+  },
+  "inventory": [],        // -
+  "commandBlueprints": [] // -
 }

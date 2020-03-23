@@ -1,0 +1,13 @@
+/* ########## AREA TEMPLATE ########## */
+[
+  {
+    "type": "Area",
+    "name": "testArea",
+    "description": "an area",
+    "active": true,
+    "inventory": ["testItem"],
+    "obstacles": [],
+    "npcs": ["cucknorris"],
+    "connections": {}
+  }
+]

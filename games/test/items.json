@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Item",
+    "name": "Nunchucks",
+    "description": "A pair of nunchucks. Better pick them up before someone else does.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "strength": 5
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  }
+]

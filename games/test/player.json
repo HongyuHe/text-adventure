@@ -1,15 +1,16 @@
+/* ########## PLAYER TEMPLATE ########## */
 {
-  "type": "Player",       // Entity type
-  "name": "",             // Entity name
-  "description": "",      // Entity description
-  "active": true,         // Current status
-  "currentLocation": "",  // Player starting location (area)
-  "stats": {              // List of active stats
+  "type": "Player",
+  "name": "You",
+  "description": "You're part of the simulation",
+  "active": true,
+  "currentLocation": "testArea",
+  "stats": {
     "health": 100,
-    "strength": 10
+    "strength": 50
   },
-  "inventory": [],        // List of current items
-  "commandBlueprints": [  // List of applicable functions
+  "inventory": [],
+  "commandBlueprints": [
     {
     "name": "eat",
     "function": "ChangeStat",
