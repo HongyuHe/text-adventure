@@ -112,6 +112,20 @@
       }
     ],
     "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "chest",
+    "description": "A wooden chest that might hold something valuable.",
+    "inventory": ["apple", "armor"],
+    "stats": {
+      "health": 10,
+      "strength": 1
+    },
+    "commandBlueprints": [],
+    "consumable": false
   }
 
 
