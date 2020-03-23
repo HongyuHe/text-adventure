@@ -32,9 +32,9 @@ public class Game {
         switch (args.length)
         {
             case 0:  return "Commands must consist of at least one word.";
-            case 1:  return gameEntities.getPlayer().findCommandOrDefault(args[0]).apply("", gameEntities);
-            case 2:  return gameEntities.getPlayer().findCommandOrDefault(args[0]).apply(args[1], gameEntities);
-            case 3:  return gameEntities.getEntityOrDefault(args[2]).findCommandOrDefault(args[0]).apply(args[1], gameEntities);
+            case 1:  return gameEntities.getPlayer().getCommandOrDefault(args[0]).apply("", gameEntities);
+            case 2:  return gameEntities.getPlayer().getCommandOrDefault(args[0]).apply(args[1], gameEntities);
+            case 3:  return gameEntities.getEntityOrDefault(args[2]).getCommandOrDefault(args[0]).apply(args[1], gameEntities);
             default: return "Commands should only consist of three words at maximum.";
         }
     }
