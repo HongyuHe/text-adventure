@@ -37,26 +37,44 @@ public class Fight implements ICommand {
             targetEntity.setStat(REDUCTION_STAT, 0);
             targetEntity.setActive(false);
 
-            final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
-
-            for (final String item : targetEntity.getInventory()) { location.addToInventory(item); }
-
-            location.removeNpc(targetEntity.getName());
+            removeEntity(targetEntity, ge);
 
             return String.format("%s, -%d health%n%s is destroyed.", parent.getName(), (targetEntity.getStatValue(COMPARISON_STAT) / 2), object);
         }
-        else
+        else if (opponentStrength.compareTo(parentStrength) > 0)
         {
             targetEntity.setStat(REDUCTION_STAT, 0);
             targetEntity.setActive(false);
 
-            final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
-
-            for (final String item : targetEntity.getInventory()) { location.addToInventory(item); }
-
-            location.removeNpc(targetEntity.getName());
+            removeEntity(targetEntity, ge);
 
             return String.format("%s is destroyed.", object);
         }
+        else
+        {
+            return "You cannot do that.";
+        }
+    }
+
+    private void
+    removeEntity(final Entity targetEntity, final GameEntities ge)
+    {
+        final Area location = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
+        for (final String item : targetEntity.getInventory()) { location.addToInventory(item); }
+
+        switch (targetEntity.getType()) {
+            case "Item":
+                location.removeFromInventory(targetEntity.getName());
+                break;
+            case "Obstacle":
+                location.removeObstacle(targetEntity.getName());
+                break;
+            case "NPC":
+                location.removeNpc(targetEntity.getName());
+                break;
+            default:
+                break;
+        }
+
     }
 }
