@@ -13,6 +13,14 @@
       {
         "name": "pickpocket",
         "function": "DropItem"
+      },
+      {
+        "name": "give",
+        "function": "TakeItem"
+      },
+      {
+        "name": "administer",
+        "function": "ChangeStat"
       }
     ],
     "currentLocation": "house",

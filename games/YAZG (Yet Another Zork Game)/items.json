@@ -61,13 +61,51 @@
     "active": true,
     "type": "Item",
     "name": "armor",
-    "description": "A costly piece of armor.",
+    "description": "A sturdy piece of armor.",
     "inventory": [],
     "stats": {
-      "health": 10,
-      "gold": -100
+      "health": 10
     },
     "commandBlueprints": [],
     "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "poison",
+    "description": "A few drops of poison in a bottle. Administering it will be deadly.",
+    "inventory": [],
+    "stats": {
+      "strength": -10
+    },
+    "commandBlueprints": [],
+    "consumable": true
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "gold",
+    "description": "A few gold coins. This could buy something.",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
+    "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "pouch",
+    "description": "A pouch that can hold something. It looks like there is some gold inside.",
+    "inventory": ["gold"],
+    "stats": {},
+    "commandBlueprints": [
+
+    ],
+    "consumable": false
   }
+
+
 ]

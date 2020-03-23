@@ -7,8 +7,7 @@
   "inventory": [],
   "stats": {
     "health": 30,
-    "strength": 10,
-    "gold": 100
+    "strength": 10
   },
   "commandBlueprints":
   [
