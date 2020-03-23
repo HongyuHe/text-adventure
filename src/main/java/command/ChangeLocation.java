@@ -3,6 +3,8 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
+import java.util.Map;
+
 public class ChangeLocation implements ICommand {
     private final Locatable parent;
 
@@ -25,8 +27,21 @@ public class ChangeLocation implements ICommand {
         }
 
         final String newLocationName = area.getConnection(newLocation);
+        area = ge.getAreaOrDefault(newLocationName);
+
+        StringBuilder result = new StringBuilder(ge.getEntityOrDefault(newLocationName).getDescription());
+
+        for (final Map.Entry<String, Integer> stat : area.getStats().entrySet())
+        {
+            final Integer oldValue = parent.getStatValue(stat.getKey());
+            final Integer newValue = oldValue + stat.getValue();
+            parent.setStat(stat.getKey(), newValue);
+
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
+        }
+
         parent.setCurrentLocation(newLocationName);
 
-        return ge.getEntityOrDefault(newLocationName).getDescription();
+        return result.toString();
     }
 }

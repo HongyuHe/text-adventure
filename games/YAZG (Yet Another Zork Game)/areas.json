@@ -54,7 +54,9 @@
     "name": "thorny-forest",
     "description": "You are inside a thorny-forest, it looks dangerous. The thorny-forest runs deeper and there is a forest to your west .",
     "inventory": ["poison"],
-    "stats": {},
+    "stats": {
+      "health": -5
+    },
     "commandBlueprints": [],
     "obstacles": [],
     "npcs": [],
