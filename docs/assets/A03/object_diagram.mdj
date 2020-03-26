@@ -841,8 +841,8 @@
 											"visible": false,
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 858.1220703125,
-											"top": 752,
+											"left": 778.1220703125,
+											"top": 768,
 											"height": 13
 										},
 										{
@@ -853,9 +853,9 @@
 											},
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;1",
-											"left": 717,
-											"top": 623,
-											"width": 148.12890625,
+											"left": 677,
+											"top": 631,
+											"width": 190.77880859375,
 											"height": 13,
 											"underline": true,
 											"text": "item: Item"
@@ -869,8 +869,8 @@
 											"visible": false,
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 858.1220703125,
-											"top": 752,
+											"left": 778.1220703125,
+											"top": 768,
 											"width": 73.67724609375,
 											"height": 13,
 											"text": "(from Model)"
@@ -884,17 +884,17 @@
 											"visible": false,
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 858.1220703125,
-											"top": 752,
+											"left": 778.1220703125,
+											"top": 768,
 											"height": 13,
 											"horizontalAlignment": 1
 										}
 									],
 									"fillColor": "#ffffd8",
 									"font": "Arial;13;0",
-									"left": 712,
-									"top": 616,
-									"width": 158.12890625,
+									"left": 672,
+									"top": 624,
+									"width": 200.77880859375,
 									"height": 25,
 									"stereotypeLabel": {
 										"$ref": "AAAAAAFwqoMBkk/lKSc="
@@ -930,9 +930,9 @@
 											},
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 717,
-											"top": 646,
-											"width": 148.12890625,
+											"left": 677,
+											"top": 654,
+											"width": 190.77880859375,
 											"height": 13,
 											"text": "+name = \"apple\"",
 											"horizontalAlignment": 0
@@ -948,9 +948,9 @@
 											},
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 717,
-											"top": 661,
-											"width": 148.12890625,
+											"left": 677,
+											"top": 669,
+											"width": 190.77880859375,
 											"height": 13,
 											"text": "+consumable = true",
 											"horizontalAlignment": 0
@@ -966,9 +966,9 @@
 											},
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 717,
-											"top": 676,
-											"width": 148.12890625,
+											"left": 677,
+											"top": 684,
+											"width": 190.77880859375,
 											"height": 13,
 											"text": "+active = false",
 											"horizontalAlignment": 0
@@ -984,9 +984,9 @@
 											},
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 717,
-											"top": 691,
-											"width": 148.12890625,
+											"left": 677,
+											"top": 699,
+											"width": 190.77880859375,
 											"height": 13,
 											"text": "+stats = [\"health\" 10]",
 											"horizontalAlignment": 0
@@ -1002,28 +1002,28 @@
 											},
 											"fillColor": "#ffffd8",
 											"font": "Arial;13;0",
-											"left": 717,
-											"top": 706,
-											"width": 148.12890625,
+											"left": 677,
+											"top": 714,
+											"width": 190.77880859375,
 											"height": 13,
-											"text": "+commandBlueprints = [ ]",
+											"text": "+commandBlueprints = [enchant]",
 											"horizontalAlignment": 0
 										}
 									],
 									"fillColor": "#ffffd8",
 									"font": "Arial;13;0",
-									"left": 712,
-									"top": 641,
-									"width": 158.12890625,
+									"left": 672,
+									"top": 649,
+									"width": 200.77880859375,
 									"height": 83
 								}
 							],
 							"fillColor": "#ffffd8",
 							"font": "Arial;13;0",
 							"containerChangeable": true,
-							"left": 712,
-							"top": 616,
-							"width": 158.12890625,
+							"left": 672,
+							"top": 624,
+							"width": 200.77880859375,
 							"height": 108,
 							"nameCompartment": {
 								"$ref": "AAAAAAFwqoMBkk/k6ZQ="
@@ -4971,8 +4971,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 686,
-									"top": 577,
+									"left": 452,
+									"top": 563,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -4992,8 +4992,8 @@
 									},
 									"visible": null,
 									"font": "Arial;13;0",
-									"left": 701,
-									"top": 577,
+									"left": 452,
+									"top": 548,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5013,8 +5013,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 657,
-									"top": 578,
+									"left": 452,
+									"top": 593,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5097,8 +5097,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 686,
-									"top": 627,
+									"left": 687,
+									"top": 592,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 30,
@@ -5117,8 +5117,8 @@
 									},
 									"visible": false,
 									"font": "Arial;13;0",
-									"left": 683,
-									"top": 613,
+									"left": 700,
+									"top": 589,
 									"height": 13,
 									"alpha": -0.7853981633974483,
 									"distance": 40,
@@ -5136,8 +5136,8 @@
 										"$ref": "AAAAAAFw9xCofM+zBgA="
 									},
 									"font": "Arial;13;0",
-									"left": 681,
-									"top": 654,
+									"left": 650,
+									"top": 596,
 									"width": 19.5126953125,
 									"height": 13,
 									"alpha": 0.5235987755982988,
@@ -5155,7 +5155,7 @@
 							"tail": {
 								"$ref": "AAAAAAFwqnaSx0Z4NgA="
 							},
-							"points": "232:414;232:584;672:584;672:648;712:648",
+							"points": "232:414;232:584;672:584;672:624",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFw9xCofM+27sQ="
@@ -5759,7 +5759,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 796,
-									"top": 734,
+									"top": 738,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 15,
@@ -5780,7 +5780,7 @@
 									"visible": null,
 									"font": "Arial;13;0",
 									"left": 811,
-									"top": 734,
+									"top": 738,
 									"height": 13,
 									"alpha": 1.5707963267948966,
 									"distance": 30,
@@ -5801,7 +5801,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 767,
-									"top": 735,
+									"top": 739,
 									"height": 13,
 									"alpha": -1.5707963267948966,
 									"distance": 15,
@@ -5822,7 +5822,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 797,
-									"top": 742,
+									"top": 750,
 									"height": 13,
 									"alpha": 0.5235987755982988,
 									"distance": 30,
@@ -5843,7 +5843,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 810,
-									"top": 745,
+									"top": 753,
 									"height": 13,
 									"alpha": 0.7853981633974483,
 									"distance": 40,
@@ -5864,7 +5864,7 @@
 									"visible": false,
 									"font": "Arial;13;0",
 									"left": 769,
-									"top": 738,
+									"top": 746,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -5941,7 +5941,7 @@
 							"tail": {
 								"$ref": "AAAAAAFwqoMBkU/jm5g="
 							},
-							"points": "782:723;782:760",
+							"points": "782:731;782:760",
 							"showVisibility": true,
 							"nameLabel": {
 								"$ref": "AAAAAAFw9zFJUXsR7aA="
@@ -12419,7 +12419,8 @@
 								"$ref": "AAAAAAFwqoMBkE/hUqc="
 							},
 							"name": "commandBlueprints",
-							"value": "[ ]"
+							"type": "",
+							"value": "[enchant]"
 						}
 					]
 				},
@@ -12449,6 +12450,7 @@
 								"$ref": "AAAAAAFwqoMIClCTJxg="
 							},
 							"name": "commandBlueprints",
+							"type": "",
 							"value": "[ ]"
 						}
 					]
@@ -12499,6 +12501,7 @@
 								"$ref": "AAAAAAFwqoMMGFFjpls="
 							},
 							"name": "commandBlueprints",
+							"type": "",
 							"value": "[ ]"
 						}
 					]
@@ -12752,6 +12755,7 @@
 								"$ref": "AAAAAAFwqoMP3lJROa8="
 							},
 							"name": "commandBlueprints",
+							"type": "",
 							"value": "[eat]"
 						}
 					]
@@ -12802,6 +12806,7 @@
 								"$ref": "AAAAAAFwqoMUPVNdyD8="
 							},
 							"name": "commandBlueprints",
+							"type": "",
 							"value": "[ ]"
 						}
 					]
@@ -12852,6 +12857,7 @@
 								"$ref": "AAAAAAFwqoNVpVSHSUQ="
 							},
 							"name": "commandBlueprints",
+							"type": "",
 							"value": "[use]"
 						},
 						{
@@ -12962,6 +12968,7 @@
 								"$ref": "AAAAAAFwqoNaQlXPTDw="
 							},
 							"name": "commandBlueprints",
+							"type": "",
 							"value": "[ ]"
 						}
 					]
@@ -13559,6 +13566,7 @@
 								"$ref": "AAAAAAFxFnJVQfJJQfQ="
 							},
 							"name": "state",
+							"type": "",
 							"value": "GameRunning"
 						}
 					]
