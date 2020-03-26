@@ -19,7 +19,7 @@ public final class CommandFactory {
             case "DropItem":       return new DropItem(parent);
             case "ListStats":      return new ListStats(parent);
             case "Fight":          return new Fight(parent);
-            default:               return new DefaultCommand();
+            default:               return new DefaultCommand(parent);
         }
     }
 }

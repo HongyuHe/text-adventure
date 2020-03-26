@@ -4963,7 +4963,7 @@
 												"$ref": "AAAAAAFxB8WxaHp3Bjk="
 											},
 											"edgePosition": 1,
-											"text": "31 : setState(false)"
+											"text": "31 : deactivate"
 										},
 										{
 											"_type": "EdgeLabelView",
@@ -5851,14 +5851,13 @@
 							"_parent": {
 								"$ref": "AAAAAAFwlpqMYUzseRQ="
 							},
-							"name": "setState",
+							"name": "deactivate",
 							"source": {
 								"$ref": "AAAAAAFwsLo5L2XIT6I="
 							},
 							"target": {
 								"$ref": "AAAAAAFwlrPZLk9IAJk="
-							},
-							"arguments": "false"
+							}
 						},
 						{
 							"_type": "UMLMessage",

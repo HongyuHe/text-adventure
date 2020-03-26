@@ -41,7 +41,7 @@ public class Obstacle extends Locatable {
     }
 
     public void
-    setState(final boolean state) { this.state = state; }
+    deactivate() { this.state = false; }
 
     public boolean
     getState() { return state; }

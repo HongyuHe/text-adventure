@@ -32,12 +32,12 @@ public class Fight implements ICommand {
 
         if (parentStrength < opponentStrength)
         {
-            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - targetEntity.getStatValue(COMPARISON_STAT));
-            return String.format("%s, - %d health", parent.getName(), targetEntity.getStatValue(COMPARISON_STAT));
+            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - opponentStrength);
+            return String.format("%s, - %d health", parent.getName(), opponentStrength);
         }
         else if (opponentStrength.equals(parentStrength))
         {
-            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - (targetEntity.getStatValue(COMPARISON_STAT) / 2));
+            parent.setStat(REDUCTION_STAT, parent.getStatValue(REDUCTION_STAT) - (opponentStrength / 2));
             targetEntity.setStat(REDUCTION_STAT, 0);
 
             StringBuilder result = new StringBuilder(String.format("%s, -%d health%n%s is destroyed.", parent.getName(), (targetEntity.getStatValue(COMPARISON_STAT) / 2), object));
@@ -53,6 +53,7 @@ public class Fight implements ICommand {
             removeEntity(targetEntity, ge);
 
             return result.toString();
+
         }
         else if (parentStrength.compareTo(opponentStrength) > 0)
         {

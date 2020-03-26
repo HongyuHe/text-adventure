@@ -10,5 +10,17 @@
     },
     "inventory": [],
     "commandBlueprints": []
-  }
+  },
+  {
+    "type": "Item",
+    "name": "black_belt",
+    "description": "Chuck's black belt. It imposes great power.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "strength": 100
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
 ]
