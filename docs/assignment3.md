@@ -488,52 +488,57 @@ Author(s): `Jim Cuijpers`
 The colours in the above diagram indicate which parts of the object diagram has been changed since the previous version of the object diagram which has been submitted
 in the previous assignment. 
 
-- **Yellow colored objects:**   Objects that have been modified
-- **Green colored objects:**    Objects that have been added  
-- **White colored objects:**    Objects that have not been modified or added
+-**Yellow colored objects:**   Modified objects
+-**Green colored objects:**    Added objects 
     
 The system is in a state wherein the game "YAZG" is loaded and running and the user just inputted the command `eat apple` into the system. 
 
-- **engine:** The engine object is the main controlling object of the system itself. It is responsible from running a game and holds a state which is referenced by the `Engine state machine`. 
+-**engine:** The engine object is the main controlling object of the system itself. It is responsible from running a game and holds a state which is referenced by the `Engine state machine`. 
                 The list of games found on the system is saved as a list of strings called `games`, the selected game is stored as an object called `currentGame` and the name of the selected game is stored as a string called `gameName`, 
                 the current running state is stored as a boolean `running`. The engine handles the input given by the user through the uiHandler class and the engine builds the `currentGame` with the help of the `Initializer` class.
                 
-- **uiHandler:** The uiHandler is responsible for displaying the game to the user.  It holds the colour theme and the logo and is responsible for taking in the input of the user
+-**uiHandler:** The uiHandler is responsible for displaying the game to the user.  It holds the colour theme and the logo and is responsible for taking in the input of the user
                  The uiHandles does so by using TextIO.
 
-- **game:** The game object holds the state of the game that has been initialized. It keeps track of the moves a player make throughout the game as a list of command strings in the variable `previousCommands`, in the         
+-**game:** The game object holds the state of the game that has been initialized. It keeps track of the moves a player make throughout the game as a list of command strings in the variable `previousCommands`, in the         
             current snapshot it is visible that the user has made only one move so far and that is: "eat apple", which was inputted into the console. The last variable is an object of the type `GameEntities`.  
             This is the main dictionary object holding all the game objects and is initialized using the `Initializer` class.
             
-- **Initializer:** The Initializer is a static class that reads and deserialize the JSON files for the game and returns the `GameEntities` object called `gInit`. The deserialization is done by referencing to different deserialization classes holding an overloaded method specifically catered to the format of the JSON that is about to be read. 
+-**Initializer:** The Initializer is a static class that reads and deserialize the JSON files for the game and returns the `GameEntities` object called `gInit`. The deserialization is done by referencing to different deserialization classes holding an overloaded method specifically catered to the format of the JSON that is about to be read. 
                     It is used as a one-off class during initialization of the game and does not hold any valuable data.
                     
-- **gameEntities:** The `GameEntities` object is the main dictionary object that hold all the entities present, meaning that this object is used to store the entire game.
+-**gameEntities:** The `GameEntities` object is the main dictionary object that hold all the entities present, meaning that this object is used to store the entire game.
                     There can only be one object of the type `GameEntities` and it is persistent in memory till the system is exited.
                     It also holds the states of the various objects. It stores these in the form of maps of all the entities supported by the engine such as the areas, obstacles, npcs and items. 
                     It also holds the main player object, the defaultEntity and the gameOverItem object. 
                     The maps are shown with a 1-to-many relation in the UML and the player, emptyEntity, and gameOverItem as a 1-to-1 relation.
                     
-- **gameOverItem:** The main item the player has to acquire to win and causes the game to finish. In our case, the object is called `diamond`. The gameOverItem will be stored in the inventory of one of the areas in the game.
+-**gameOverItem:** The main item the player has to acquire to win and causes the game to finish. In our case, the object is called `diamond`. The gameOverItem will be stored in the inventory of one of the areas in the game.
 
-- **area:** A game needs to have at least one area as it needs an area to hold the gameOverItem and as initial spawn location of the player. In our snapshot the area is a `forest`, holding a `diamond` in its inventory, has a `troll` in it as npc and is connected with a `castle` that lies north. However this connection is blocked by an obstacle `door`.
+-**area:** A game needs to have at least one area as it needs an area to hold the gameOverItem and as initial spawn location of the player. In our snapshot the area is a `forest`, holding a `diamond` in its inventory, has a `troll` in it as npc and is connected with a `castle` that lies north. However this connection is blocked by an obstacle `door`.
 
-- **obstacle:** A game can have zero or more obstacles. In our case, we have an obstacle called the door that exists inside the forest and blocks the 
+-**obstacle:** A game can have zero or more obstacles. In our case, we have an obstacle called the door that exists inside the forest and blocks the 
                 user's path to the castle. The door just like the player has a commandBlueprint object called `use` of the type ChangeState. 
                 This checks for a requiredObject called `key` when the command is executed by the player. 
                 On a success, the state of the obstacle is set to true and the area is no longer blocked.
 
-- **npc:** A game can have zero or multiple NPCs. In our case we are focusing on a NPC called the troll who does not have any items in his inventory, 
+-**npc:** A game can have zero or multiple NPCs. In our case we are focusing on a NPC called the troll who does not have any items in his inventory, 
             does not have any commands we can use on it and is active in the game. This means that the user can interact with him.
 
-- **item:** A game can have zero or more items. In our case, we will focus on the item apple as this is the subject of the user's previous command. 
+-**item:** A game can have zero or more items. In our case, we will focus on the item apple as this is the subject of the user's previous command. 
             The item's name is apple, it is consumable meaning that it can only be used once and its active flag is set to false when used. 
-            As eating an apple is only possible once, it is considered to be a consumable. This is different from an object such as a key that does not get consumed. 
+            This is different from an object such as a key that does not get consumed. 
             As the user has already eaten the apple, the active flag has been set to false to show that the object is not a part of the game anymore. The `stats` variable
             shows the effect of the apple when consumed, in our case it regenerates 10 health. The apple has a commandBlueprint object called `enchant` of the type ChangeStat.
             Upon using this command the original values of stat can be modified.
 
-Maximum number of words for this section: 1000
+-**player:** This is the main entity responsible for interacting with the game world and other entities. 
+            It holds a variable called `stats` which is a dictionary of key-value pairs, in the current snapshot it states that
+            the player has a health of 50. The player is in the area forest which is stored as a String variable called currentLocation. 
+            He holds an apple in his inventory and has the commandBlueprint objects eat, stats, move, take, inventory, interact, look and drop attached to him.  
+            
+-**commandBlueprint objects** All commands are mapped to objects of their relative type. This allows us to define multiple keywords for the same function.
+                Additionally, having all actions/commands as objects allows us to define actions inside the JSON and make it easy for us to parse it.
 
 ## State machine diagrams									
 Author(s): `Anthony Wilkes`
