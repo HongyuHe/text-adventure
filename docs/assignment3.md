@@ -631,20 +631,6 @@ If the user selects to load a previous game, the *loadGame()* function is called
 
 At any point in time, initialization of the game may fail due to many different causes. It is especially important for users who wish to make a game, that they adhere to the general structure of the JSON files, because if, for example, there are typos or unrecognizable fields inside any of the JSON files, the deserialization will fail by default, at which point initialization will be preemptively terminated.
 
-#########################################################
-
-This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
-
-For each sequence diagram you have to provide:
-- a title representing the specific situation you want to describe;
-- a figure representing the sequence diagram;
-- a textual description of all its elements in a narrative manner (you do not need to structure your description into tables in this case). We expect a detailed description of all the interaction partners, their exchanged messages, and the fragments of interaction where they are involved. For each sequence diagram we expect a description of about 300-500 words.
-
-The goal of your sequence diagrams is both descriptive and prescriptive, so put the needed level of detail here, finding the right trade-off between understandability of the models and their precision.
-
-Maximum number of words for this section: 4000
-
-
 ## Implementation									
 Author(s): `Anthony Wilkes`
 
