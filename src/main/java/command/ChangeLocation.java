@@ -14,7 +14,7 @@ public class ChangeLocation implements ICommand {
     public String apply(final String newLocation, final GameEntities ge) {
         Area area = ge.getAreaOrDefault(parent.getCurrentLocation());
 
-        if (!area.connectsTo(newLocation)) { return "You cannot go there from here."; }
+        if (!area.connectsTo(newLocation)) { return parent.getName() + " cannot go there from " + area.getName(); }
 
         for (final String o : area.getObstacles())
         {
@@ -29,7 +29,16 @@ public class ChangeLocation implements ICommand {
         final String newLocationName = area.getConnection(newLocation);
         area = ge.getAreaOrDefault(newLocationName);
 
-        StringBuilder result = new StringBuilder(ge.getEntityOrDefault(newLocationName).getDescription());
+        StringBuilder result = new StringBuilder();
+
+        if (parent.getType().equalsIgnoreCase("player"))
+        {
+            result.append(ge.getEntityOrDefault(newLocationName).getDescription());
+        }
+        else
+        {
+            result.append(parent.getName()).append(" moved to ").append(newLocation);
+        }
 
         for (final Map.Entry<String, Integer> stat : area.getStats().entrySet())
         {
@@ -41,7 +50,26 @@ public class ChangeLocation implements ICommand {
         }
 
         parent.setCurrentLocation(newLocationName);
+        addEntityToArea(parent, ge);
 
         return result.toString();
+    }
+
+    private void
+    addEntityToArea(final Locatable targetEntity, final GameEntities ge)
+    {
+        final Area location = ge.getAreaOrDefault(targetEntity.getCurrentLocation());
+
+        switch (targetEntity.getType()) {
+            case "Obstacle":
+                location.addObstacle(targetEntity.getName());
+                break;
+            case "NPC":
+                location.addNpc(targetEntity.getName());
+                break;
+            default:
+                break;
+        }
+
     }
 }

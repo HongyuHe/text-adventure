@@ -71,4 +71,10 @@ public class Area extends Entity {
 
     public void
     removeNpc(final String npc) { npcs.remove(npc); }
+
+    public void
+    addObstacle(final String obstacle) { obstacles.add(obstacle); }
+
+    public void
+    addNpc(final String npc) { npcs.add(npc); }
 }
