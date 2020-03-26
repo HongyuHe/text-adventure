@@ -607,6 +607,32 @@ Through this process it should be clear to see that the results the player can r
 
 ![Initialization Sequence Diagram](assets/A03/initialization_sequence_diagram.png "Initialization sequence diagram")
 
+The diagram above describes the process of game initialization. It covers the whole process from when the user selects a game up until they start playing the game.
+
+When our game is started an instance of the **Engine** class is created. The engine is the part of our program responsible for all inter-class communication as well as managing initialization with help of a few other classes. Whenever the user wants to play a game, the idea is that an instance of the game is brought into the engine, which can then run that game.
+
+Instances of the type **Game** are containing all the important information regarding the various games the user may choose from. It acts as a wrapper for all for all the deserialized information for all the entities which are part of the game, while also offering api-like functions that provide information about the state of the game. Finally, the an instance of the type Game also holds a list of previously put in commands, which can be later used to restore the game up until a certain point as is required for saving and loading a game.
+
+After an instance of the Engine class has been created, it continues the initialization process by creating a new instance of type Game. The constructor for the Game instance then calls *loadGameFiles(String game)*, located inside an instance of type Initializer. The argument *String game* which is passed to the function, is the path to a folder the user has selected. This folder should contain all the JSON files which make up the entities inside the game.
+
+Once the Initializer knows which game it should load for the user, it starts by unpacking the JSON files one by one. For each entity type it has a specific deserializer. The first deserializer is for the items inside the game. The Initializer creates an instance of type **ItemDeserializer** which in turn loads in the JSON file for the game's items. The item deserializer loads in all items separately. It does this by reading the first JSON object in the related JSON file and copying the values in its fields to corresponding variables. Once it has saved the whole JSON object inside variables, it creates a new instance of type **Item** using these variables. This instance of Item is then returned to the Initializer, after which the item deserializer continues with the next JSON object inside the file, until the whole file has been deserialized into instances of type Item. Inside the Initializer all instances of Item are saved inside a list of entities.
+
+If all items have been successfully deserialized, the Initializer continues by creating instances of **AreaDeserializer**, **ObstacleDeserializer** and **NpcDeserializer** in that respective order. Each of those deserializers does exactly the same as the item deserializer, except for the differences that they each target a different JSON file and return an instance of a different entity type.
+
+If, again, everything has been successfully deserialized, there will be two files left to deserializer: one for the gameOverItem and one for the player itself. For these files the Initializer creates two more instances, one again of type **ItemDeserializer** and one of type **PlayerDeserializer**. The reason these deserializers are different from the others is because they are used to load in a single JSON object as opposed to multiple object as was the case before. This is because each game can contain at most one gameOverItem as well as one player.
+
+When the Initializer has collected all the information stored inside the game's JSON files, it creates another instance of type **gameEntities**, in which it stores all the various entities which it has deserialized. This instance of gameEntities is then returned to the instance of Game created by the Engine. Which in turn is returned to the Engine itself and saved there inside a variable called *currentGame*. Once this has been done, the game is ready to be played, since it is present inside the Engine and contains all the important information stored inside its related JSON files.
+
+At this point the user should be presented a submenu for the specific game it has chosen to play. In this submenu the user is given the choice to start a new game, load a previous game or quit altogether. Since quitting is always an option at any moment in time it has not been included inside the initialization sequence diagram.
+
+When the user selects to start a new game, nothing happens other than that *runGame()* is executed by the Engine, at which point user commands will be processed as part of the game.
+
+If the user selects to load a previous game, the *loadGame()* function is called before running the game. The *loadGame()* function first looks to find the path of the save file, which is located inside the same folder as the JSON files related to the current game. Once it has found the savefile, if one exists in the first place, it starts reading each line one by one while saving them inside a variable *decodedCommands*. Once the file has been exhausted it starts executing the commands saved inside *decodedCommands* as if they were normal user input. If the Engine is done with executing this list of commands, it executes *runGame()* and control is given to the user.
+
+At any point in time, initialization of the game may fail due to many different causes. It is especially important for users who wish to make a game, that they adhere to the general structure of the JSON files, because if, for example, there are typos or unrecognizable fields inside any of the JSON files, the deserialization will fail by default, at which point initialization will be preemptively terminated.
+
+#########################################################
+
 This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
 
 For each sequence diagram you have to provide:
