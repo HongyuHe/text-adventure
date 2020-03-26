@@ -613,20 +613,26 @@ The goal of your sequence diagrams is both descriptive and prescriptive, so put 
 
 Maximum number of words for this section: 4000
 
+
 ## Implementation									
-Author(s): `name of the team member(s) responsible for this section`
+Author(s): `Anthony Wilkes`
 
-In this chapter you will describe the following aspects of your project:
-- the strategy that you followed when moving from the UML models to the implementation code;
-- the key solutions that you applied when implementing your system (for example, how you implemented the syntax highlighting feature of your code snippet manager, how you manage fantasy soccer matches, etc.);
-- the location of the main Java class needed for executing your system in your source code;
-- the location of the Jar file for directly executing your system;
-- the 30-seconds video showing the execution of your system (you can embed the video directly in your md file on GitHub).
+#### Implementation Strategy
 
-IMPORTANT: remember that your implementation must be consistent with your UML models. Also, your implementation must run without the need from any other external software or tool. Failing to meet this requirement means 0 points for the implementation part of your project.
+TODO: general overview of workflow
 
-Maximum number of words for this section: 2000
+#### Key Solutions
 
-## References
+TODO: add features and how we implemented them
 
-References, if needed.
+#### Main Class Location
+The main function can be found in `src/main/java/cork/Engine.java`
+
+#### Jar Location
+`out/artifacts/cork_jar/software-design-vu-2020.main.jar`
+
+#### Execution Video
+
+TODO: replace with up-to-date video
+
+[![Execution Video](https://img.youtube.com/vi/qOCYWU9dryA/0.jpg)](https://www.youtube.com/watch?v=qOCYWU9dryA&feature=youtu.be)
