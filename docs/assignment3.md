@@ -516,10 +516,22 @@ The system is in a state wherein the game "YAZG" is loaded and running and the u
                     
 - **gameOverItem:** The main item the player has to acquire to win and causes the game to finish. In our case, the object is called `diamond`. The gameOverItem will be stored in the inventory of one of the areas in the game.
 
-- **area** A game needs to have at least one area as it needs an area to hold the gameOverItem and as initial spawn location of the player. In our snapshot the area is a `forest`, holding a `diamond` in its inventory, has a `troll` in it as npc and is connected with a `castle` that lies north. However this connection is blocked by an obstacle `door`.
+- **area:** A game needs to have at least one area as it needs an area to hold the gameOverItem and as initial spawn location of the player. In our snapshot the area is a `forest`, holding a `diamond` in its inventory, has a `troll` in it as npc and is connected with a `castle` that lies north. However this connection is blocked by an obstacle `door`.
 
-- **obstacle**
+- **obstacle:** A game can have zero or more obstacles. In our case, we have an obstacle called the door that exists inside the forest and blocks the 
+                user's path to the castle. The door just like the player has a commandBlueprint object called `use` of the type ChangeState. 
+                This checks for a requiredObject called `key` when the command is executed by the player. 
+                On a success, the state of the obstacle is set to true and the area is no longer blocked.
 
+- **npc:** A game can have zero or multiple NPCs. In our case we are focusing on a NPC called the troll who does not have any items in his inventory, 
+            does not have any commands we can use on it and is active in the game. This means that the user can interact with him.
+
+- **item:** A game can have zero or more items. In our case, we will focus on the item apple as this is the subject of the user's previous command. 
+            The item's name is apple, it is consumable meaning that it can only be used once and its active flag is set to false when used. 
+            As eating an apple is only possible once, it is considered to be a consumable. This is different from an object such as a key that does not get consumed. 
+            As the user has already eaten the apple, the active flag has been set to false to show that the object is not a part of the game anymore. The `stats` variable
+            shows the effect of the apple when consumed, in our case it regenerates 10 health. The apple has a commandBlueprint object called `enchant` of the type ChangeStat.
+            Upon using this command the original values of stat can be modified.
 
 Maximum number of words for this section: 1000
 
