@@ -632,7 +632,7 @@ If the user selects to load a previous game, the *loadGame()* function is called
 At any point in time, initialization of the game may fail due to many different causes. It is especially important for users who wish to make a game, that they adhere to the general structure of the JSON files, because if, for example, there are typos or unrecognizable fields inside any of the JSON files, the deserialization will fail by default, at which point initialization will be preemptively terminated.
 
 ## Implementation									
-Author(s): `Anthony Wilkes`
+Author(s): `Anthony Wilkes, Jim Cuijpers`
 
 #### Implementation Strategy
 
@@ -643,17 +643,17 @@ TODO: general overview of workflow
 ##### Functional Features
 | ID  | Short name  | Description  |
 |---|---|---|
-| F1  | Commands  |  |
-| F1B  | Customizable Commands  |  |
-| F2  | Movements  |  |
-| F3  | Areas |  |
-| F4  | Obstacles |  |
-| F5  | Items |  |
-| F6  | NPCs |  |
+| F1  | Commands  | These were implemented as objects with the classes `ChangeLocation`, `TakeItem`, `ListContents`, `ChangeStat`, `Fight`, `Describe`, `DropItem`, `ChangeStat` and `ListStats` that all implement the interface `ICommand`. Every time a command gets called by the player it is applied to either a target entity or the player itself based on the input, the object will then make the changes to the target entity. Additionally, having all actions/commands as objects allows us to define actions inside the JSON and make it easy for us to parse it. This helps us with better customizability, modularity and prevents us from hard-coding functionality.  |
+| F1B  | Customizable Commands  | As mentioned in **F1** having all the commands as objects allows us to define actions inside the JSON rather than hardcoded, this allows the player to customize the commands by editing the corresponding JSON file.|
+| F2  | Movements  | Movements are implemented by the ChangeLocation class. When the player inputs a move command, for example `move north`, the command object `ChangeLocation` gets called, which will then check if the next area exist, and if that is the case if the next area is blocked by an obstacle. Upon successfully moving locations, the `currentLocation` of the player gets updated. Every area has up to four directions that can either be reached by calling the direction or the name of the area.|
+| F3  | Areas | All areas are objects initialized by reading the corresponding JSON file with the classes `AreaDeserializer` and `Area`. After reading the JSON file we acquire a dictionary with `area_name-area_object` pairs and every area object only knows all of its own properties. |
+| F4  | Obstacles | All obstacles are objects initialized by reading the corresponding JSON file with the classes `ObstacleDeserializer` and `Obstacle`. After reading the JSON file we acquire a dictionary with `obstacle_name-obstacle_object` pairs and every obstacle object only knows all of its own properties. Additionally an obstacle can be 'active' or 'non-active' based on if the player has already used the unlocking object on it. |
+| F5  | Items | All items are objects initialized by reading the corresponding JSON file with the classes `ItemDeserializer` and `Item`. After reading the JSON file we acquire a dictionary with `item_name-item_object` pairs and every item object only knows all of its own properties. The item objects can be used by the player upon taking them in their inventory. |
+| F6  | NPCs |  All NPCs are objects initialized by reading the corresponding JSON file with the classes `NpcDeserializer` and `Npc`. After reading the JSON file we acquire a dictionary with `npc_name-npc_object` pairs and every npc object only knows all of its own properties. NPCs can then be interacted with by the player. |
 | F7  | Stats |  |
 | F8  | Combat |  |
-| F9  | Save Game |  |
-| F10  | Load Game |  |
+| F9  | Save Game | Saving the game is implemented with the `Game` and `Engine` class. The Game class holds the previous input commands that are given by the player, while the Engine class writes it to a TXT file that gets encoded, so that the player can't adjust the state of the saved game and have it successfully loaded upon loading the game. |
+| F10  | Load Game | Loading the game is implemented with the `Engine` class, the moves get decoded and 'played' from a new game before the user continues his own game. Appearing it to be loaded from the last state the player initially left. |
 
 ##### Quality requirements
 
