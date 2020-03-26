@@ -49,6 +49,7 @@ public class ChangeLocation implements ICommand {
             result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
         }
 
+        removeEntityFromArea(parent, ge);
         parent.setCurrentLocation(newLocationName);
         addEntityToArea(parent, ge);
 
@@ -66,6 +67,24 @@ public class ChangeLocation implements ICommand {
                 break;
             case "NPC":
                 location.addNpc(targetEntity.getName());
+                break;
+            default:
+                break;
+        }
+
+    }
+
+    private void
+    removeEntityFromArea(final Locatable targetEntity, final GameEntities ge)
+    {
+        final Area location = ge.getAreaOrDefault(targetEntity.getCurrentLocation());
+
+        switch (targetEntity.getType()) {
+            case "Obstacle":
+                location.removeObstacle(targetEntity.getName());
+                break;
+            case "NPC":
+                location.removeNpc(targetEntity.getName());
                 break;
             default:
                 break;
