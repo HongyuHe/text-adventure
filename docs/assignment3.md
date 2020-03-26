@@ -563,6 +563,11 @@ Author(s): `Anthony Wilkes`
 
 ![User Input Sequence Diagram](assets/A03/input_sequence.png "User input sequence diagram")
 
+
+### JSON Initialization
+
+![Initialization Sequence Diagram](assets/A03/initialization_sequence_diagram.png "Initialization sequence diagram")
+
 This chapter contains the specification of at least 2 UML sequence diagrams of your system, together with a textual description of all its elements. Here you have to focus on specific situations you want to describe. For example, you can describe the interaction of player when performing a key part of the videogame, during a typical execution scenario, in a special case that may happen (e.g., an error situation), when finalizing a fantasy soccer game, etc.
 
 For each sequence diagram you have to provide:
