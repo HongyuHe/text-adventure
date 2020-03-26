@@ -84,7 +84,7 @@ public abstract class Entity {
     setStat(final String name, final Integer value) { stats.replace(name, value); }
 
     public ICommand
-    getCommandOrDefault(final String cmd) { return commands.getOrDefault(cmd, new DefaultCommand()); }
+    getCommandOrDefault(final String cmd) { return commands.getOrDefault(cmd, new DefaultCommand(this)); }
 
     public Set<CommandBlueprint>
     getCommandBlueprints() { return new HashSet<>(commandBlueprints); }
