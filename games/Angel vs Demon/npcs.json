@@ -2,9 +2,9 @@
   {
     "type": "NPC",
     "name": "angel",
-    "description": "It's an Angel from heaven ready to slay the demon",
+    "description": "It's an Angel from heaven ready to `battle` the demon in the arena.",
     "active": true,
-    "isFriendly": true,
+    "isFriendly": false,
     "stats": {
       "health": 100,
       "strength": 40
@@ -29,23 +29,19 @@
   {
     "type": "NPC",
     "name": "demon",
-    "description": "It's a demon from hell here to kill the angel",
+    "description": "It's a demon from hell here to `battle` the angel in the arena.",
     "active": true,
     "isFriendly": false,
     "stats": {
       "health": 100,
       "strength": 50
     },
-    "currentLocation": "hell",
+    "currentLocation": "arena",
     "inventory": ["devil-horn"],
     "commandBlueprints": [
       {
         "name": "battle",
         "function": "Fight"
-      },
-      {
-        "name": "summon",
-        "function": "ChangeLocation"
       }
     ]
   }

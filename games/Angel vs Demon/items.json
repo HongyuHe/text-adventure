@@ -10,5 +10,25 @@
     },
     "inventory": [],
     "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "manual",
+    "description": "You are on the side of the angels. You have to `summon` an angel to the arena and battle the demon, who is too strong for you to beat! \n Supported commands are :-
+	`look *[Entity]`,
+	`summon [Area] [NPC]`,
+	`call [Item] [Area]`,
+	`take [Item]`,
+	`drop [Item]`,
+	`give [Item] [Area]`,
+	`stats [Entity]`,
+	`inventory [Entity]`,
+	`battle [NPC] [NPC]`",
+    "active": true,
+    "consumable": false,
+    "stats": {
+    },
+    "inventory": [],
+    "commandBlueprints": []
   }
 ]

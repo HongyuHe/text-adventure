@@ -2,7 +2,7 @@
   {
     "type": "Area",
     "name": "heaven",
-    "description": "The residence of all angels.",
+    "description": "The residence of all angels. You can `summon` them and `call` their items from here!",
     "active": true,
     "inventory": ["angelic-blade"],
     "obstacles": [],
@@ -13,33 +13,19 @@
     "stats": {},
     "commandBlueprints": [
       {
-        "name": "summon",
+        "name": "call",
         "function": "DropItem"
       }
     ]
   },
   {
     "type": "Area",
-    "name": "hell",
-    "description": "The residence of all demons.",
+    "name": "arena",
+    "description": "You are in the `arena` where angels battle demons. You can `summon` the angel to the arena. There is a `heaven` above you. Do not try going there as you are merely a human.",
     "active": true,
-    "inventory": [],
+    "inventory": ["manual"],
     "obstacles": [],
     "npcs": ["demon"],
-    "connections": {
-      "arena": "arena"
-    },
-    "stats": {},
-    "commandBlueprints": []
-  },
-  {
-    "type": "Area",
-    "name": "arena",
-    "description": "You are in the arena ready to make angels battle demons. Summon them from their abode in heaven and hell!",
-    "active": true,
-    "inventory": [],
-    "obstacles": [],
-    "npcs": [],
     "connections": {
     },
     "stats": {},
