@@ -10,7 +10,6 @@ import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 import entity.*;
 import dictionary.GameEntities;
-import org.tinylog.Logger;
 
 import java.io.Reader;
 import java.lang.reflect.Type;

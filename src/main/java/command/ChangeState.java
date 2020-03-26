@@ -14,7 +14,7 @@ public class ChangeState implements ICommand {
         if (!parent.getState()) { return "You don't need to do that."; }
         if (!parent.getRequiredObject().equalsIgnoreCase(object)) { return "That doesn't work here."; }
 
-        parent.setState(false);
+        parent.deactivate();
 
         return "The path to " + parent.getBlocks() + " is now clear!";
     }
