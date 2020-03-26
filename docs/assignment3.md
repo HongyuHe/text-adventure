@@ -2,7 +2,7 @@
 
 Maximum number of words for this document: 18000
 
-**IMPORTANT**: In this assignment you will fully model and impement your system. The idea is that you improve your UML models and Java implementation by (i) applying (a subset of) the studied design patterns and (ii) adding any relevant implementation-specific details (e.g., classes with “technical purposes” which are not part of the domain of the system). The goal here is to improve the system in terms of maintainability, readability, evolvability, etc.    
+**IMPORTANT**: In this assignment you will fully model and implement your system. The idea is that you improve your UML models and Java implementation by (i) applying (a subset of) the studied design patterns and (ii) adding any relevant implementation-specific details (e.g., classes with “technical purposes” which are not part of the domain of the system). The goal here is to improve the system in terms of maintainability, readability, evolvability, etc.    
 
 **Format**: establish formatting conventions when describing your models in this document. For example, you style the name of each class in bold, whereas the attributes, operations, and associations as underlined text, objects are in italic, etc.
 
@@ -514,8 +514,11 @@ The system is in a state wherein the game "YAZG" is loaded and running and the u
                     It also holds the main player object, the defaultEntity and the gameOverItem object. 
                     The maps are shown with a 1-to-many relation in the UML and the player, emptyEntity, and gameOverItem as a 1-to-1 relation.
                     
+- **gameOverItem:** The main item the player has to acquire to win and causes the game to finish. In our case, the object is called `diamond`. The gameOverItem will be stored in the inventory of one of the areas in the game.
 
+- **area** A game needs to have at least one area as it needs an area to hold the gameOverItem and as initial spawn location of the player. In our snapshot the area is a `forest`, holding a `diamond` in its inventory, has a `troll` in it as npc and is connected with a `castle` that lies north. However this connection is blocked by an obstacle `door`.
 
+- **obstacle**
 
 
 Maximum number of words for this section: 1000
