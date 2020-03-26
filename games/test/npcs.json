@@ -10,7 +10,7 @@
       "health": 100,
       "strength": 50
     },
-    "inventory": [],
+    "inventory": ["black_belt"],
     "commandBlueprints": []
   }
 ]
