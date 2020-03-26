@@ -1,0 +1,48 @@
+[
+  {
+    "type": "Area",
+    "name": "heaven",
+    "description": "The residence of all angels.",
+    "active": true,
+    "inventory": ["angelic-blade"],
+    "obstacles": [],
+    "npcs": ["angel"],
+    "connections": {
+      "arena": "arena"
+    },
+    "stats": {},
+    "commandBlueprints": [
+      {
+        "name": "summon",
+        "function": "DropItem"
+      }
+    ]
+  },
+  {
+    "type": "Area",
+    "name": "hell",
+    "description": "The residence of all demons.",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": ["demon"],
+    "connections": {
+      "arena": "arena"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "arena",
+    "description": "You are in the arena ready to make angels battle demons. Summon them from their abode in heaven and hell!",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+    },
+    "stats": {},
+    "commandBlueprints": []
+  }
+]

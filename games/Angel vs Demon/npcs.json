@@ -1,0 +1,52 @@
+[
+  {
+    "type": "NPC",
+    "name": "angel",
+    "description": "It's an Angel from heaven ready to slay the demon",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+      "health": 100,
+      "strength": 40
+    },
+    "currentLocation": "heaven",
+    "inventory": [],
+    "commandBlueprints": [
+      {
+        "name": "give",
+        "function": "TakeItem"
+      },
+      {
+        "name": "battle",
+        "function": "Fight"
+      },
+      {
+        "name": "summon",
+        "function": "ChangeLocation"
+      }
+    ]
+  },
+  {
+    "type": "NPC",
+    "name": "demon",
+    "description": "It's a demon from hell here to kill the angel",
+    "active": true,
+    "isFriendly": false,
+    "stats": {
+      "health": 100,
+      "strength": 50
+    },
+    "currentLocation": "hell",
+    "inventory": ["devil-horn"],
+    "commandBlueprints": [
+      {
+        "name": "battle",
+        "function": "Fight"
+      },
+      {
+        "name": "summon",
+        "function": "ChangeLocation"
+      }
+    ]
+  }
+]

@@ -1,0 +1,14 @@
+[
+  {
+    "type": "Item",
+    "name": "angelic-blade",
+    "description": "An angelic-blade that makes the angel stronger. Give this to your angel to make him win!.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "strength": 15
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  }
+]
