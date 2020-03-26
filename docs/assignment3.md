@@ -623,7 +623,35 @@ TODO: general overview of workflow
 
 #### Key Solutions
 
-TODO: add features and how we implemented them
+##### Functional Features
+| ID  | Short name  | Description  |
+|---|---|---|
+| F1  | Commands  |  |
+| F1B  | Customizable Commands  |  |
+| F2  | Movements  |  |
+| F3  | Areas |  |
+| F4  | Obstacles |  |
+| F5  | Items |  |
+| F6  | NPCs |  |
+| F7  | Stats |  |
+| F8  | Combat |  |
+| F9  | Save Game |  |
+| F10  | Load Game |  |
+
+##### Quality requirements
+
+| ID  | Short name  | Quality attribute |
+|---|---|---|
+| QR1 | Pre-Game Validation |  |
+| QR2  | Customizable Scenarios |  |
+| QR3 | Event Timing |  |
+| QR4 | Speed of Action Execution |  |
+| QR5 | Speed of Initialization |  |
+| QR6  | Command validation |  |
+| QR7 | Input Reception |  |
+| QR8 | Save Files Encryption |  |
+| QR9 | Save Prompting |  |
+| QR10 | Determinism Guarantee |  |
 
 #### Main Class Location
 The main function can be found in `src/main/java/cork/Engine.java`
