@@ -578,6 +578,31 @@ Author(s): `Anthony Wilkes`
 
 ![User Input Sequence Diagram](assets/A03/input_sequence.png "User input sequence diagram")
 
+The diagram above follows the processes involved when the user types in "use key door" whilst the game is running.
+
+Initially the **Engine** is inside the *runGame* loop, and has deferred getting user input to the UIHandler's *getInput* function. *getInput* blocks until the user has entered some text and hit the `enter` key, at which point the line of entered text is returned as a String to **Engine**. If this input matches a meta-level command ("save", "load", "quit"), then **Engine** handles the resolution of this input itself, without sending the request to the current *game*. If the user input is not a meta-level command, however, then it is sent directly to the current *game* to handle as needed through the *handleCommand* function.
+
+When the **Game** class receives input it first tries to find a corresponding target **Entity**. This will always be the **Entity** with a name that matches the third word in the user input (inputs must be between 1 and 3 words inclusive, if the command is 1 or 2 words in length then the target entity defaults to the player). To do this, the **Game** class calls the **GameEntities'** *getEntityOrDefault* function, which will find any existing **Entity** with the given name, or returns a **DefaultEntity**. A **DefaultEntity** provides all functionality that any **Entity** has, but interaction with it will never have any side-effects and results will always return a message that indicates to the user what they did wrong (as opposed to a real **Entity** which might return an indication of success or failure). This type of interaction will be discussed in detail further on, as this description will first deal with the assumption that a matching **Entity** has been found.
+
+Assuming **GameEntities** has returned a reference to the "door" **Entity**, the **Game** now calls *getCommandOrDefault* on the door. As with *getEntityOrDefault*, this function will return a command with a matching name or a **DefaultCommand**. Interaction with a **DefaultCommand** will always return a message indicating to the user what went wrong, and will never have side-effects (the same as for the **DefaultEntity**).
+
+Again assuming that *getCommandOrDefault* has returned a real command object, the **Game** calls the command's *apply* function. In the case of the input "use key door", the "door" object will contain a **ChangeState** command tied to the name "use", and the **ChangeState's** *apply* function will take "key" as an argument.
+
+**ChangeState** will first query if the **Player** has the "key" object in their inventory. If this is not the case, the function exits early and returns a String result with a message that indicates the problem to the user. In this case "You do not have 'key' in your inventory.". The **Engine** receives this result and passes it directly to the **UIHandler** which prints it, and the *runGame* loop continues. If the **Player** does have the "key" in their inventory then the state of the "door" object is queried. If the "door" is currently inactive, then *apply* terminates early and a result is returned as before, this time the String "You don't need to do that." (as unlocking an unlocked door will have no effect). If the "door" object is currently active, however, then the *apply* function next checks to see if the "key" passed as an argument to the function matches the required object for the "door". If this is not the case, then the String "That doesn't work here." is returned to the user. If the "key" is the required object, however, then the *deactivate* function is called on the "door" object, and the **Obstacle** will now allow the passage of the **Player**. This completes the *apply* function, which then returns "The path to the castle is now clear!".
+
+The above explanation largely assumes that the given input leads to a successful command, however, it is also possible that the player writes input that doesn't work, for example, they might make spelling mistakes like "youse keey doro". In this instance, the system has been designed so that errors in the user input do not need to be handled explicitly, allowing the code written inside of **Game** to be free of exceptions and other error handling methods.
+
+At the first stage of command completion, it's possible for the target **Entity** to not exist - in this case, there is no **Entity** called "doro". Instead of returning a null value that would require explicit checking, the **GameEntities** object returns a **DefaultEntity** as described above.
+
+Next, it is possible that the command specified doesn't exist - in this case, "youse" will not be found in the specified **Entity**. Note that if the player had spelled "door" correctly, the *door* object would return a **DefaultCommand** in the same way that the **DefaultEntity** was returned previously (the **DefaultEntity** will always return a **DefaultCommand** when queried). This **DefaultCommand** can be used with the *apply* function just like any other, however, the result returned will always signify that something went wrong (but no other action will be taken).
+
+Through this process it should be clear to see that the results the player can receive will be one of the following:
+
+- The player tried something successfully, and gets a message like "The path to the castle is now clear!".
+- The player misspelled or used the wrong target entity's name, upon which a **DefaultEntity** provides a **DefaultCommand** that returns "You cannot see that here.".
+- The player misspelled or used the wrong name for the command, meaning a real **Entity** returns a **DefaultCommand** which returns "You cannot do that.".
+- The player used the wrong item name, meaning a real **Entity** returns a real command that returns "That doesn't work here." (assuming the apple is in their inventory)
+- The player misspelled the item name (or tried to use an item they are not holding) meaning the *handleCommand* exits early with a message like "You do not have 'keye' in your inventory.".
 
 ### JSON Initialization
 
