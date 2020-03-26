@@ -566,7 +566,7 @@ The goal of your state machine diagrams is both descriptive and prescriptive, so
 Maximum number of words for this section: 4000
 
 ## Sequence diagrams									
-Author(s): `Anthony Wilkes`
+Author(s): `Anthony Wilkes, Luca Taglialatela`
 
 ### User Input
 
