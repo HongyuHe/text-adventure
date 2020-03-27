@@ -1,7 +1,7 @@
 {
+  "active": true,
   "type": "Player",
   "name": "you",
-  "active": true,
   "description": "You're just a regular human.",
   "currentLocation": "forest",
   "inventory": [],
