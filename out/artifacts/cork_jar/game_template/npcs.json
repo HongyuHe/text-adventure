@@ -1,28 +1,35 @@
-/* ########## NPC TEMPLATE ########## */
 [
-	{
-		"type": "NPC",			// Entity type
-		"name": "",				// Entity name
-		"description": "",		// Entity description
-		"active": true,			// Current status
-	    "stats": {				// List of active stats
-	      "health": 100,
-	      "strength": 10
-	    },
-	    "inventory": [],		// List of current items
-	    "commandBlueprints": []	// -
-	},
-	{
-		"type": "NPC",
-		"name": "",
-		"description": "",
-		"active": true,
-	    "stats": {
-	      "health": 100,
-	      "strength": 10
-	    },
-	    "inventory": [],
-	    "commandBlueprints": []
-	},
-	// (...)
+    {
+        "active": true,             // This should always be true
+        "type": "NPC",              // This should always be NPC
+        "name": "",                 // A name for the NPC - this should be a single word and unique across all entities
+        "description": "",          // A description for the NPC - it might be a good idea to describe anything they are holding if it's useful the player knows about it.
+        "inventory": [],            // Any items the NPC is holding (these will be dropped when the NPC dies)
+        "stats": {},                // A list of stats for the NPC
+        "commandBlueprints": [],    // This should always be true
+        "currentLocation": "",      // The current location of the NPC - make sure this matches the corresponding area's list of NPC
+        "isFriendly": true          // Indicates whether or not the NPC is hostile
+    },
+
+    // An example NPC
+    {
+        "active": true,
+        "type": "NPC",
+        "name": "princess",
+        "description": "The princess tells you that you were warned to stay away from her!",
+        "inventory": [ "key" ],
+        "stats": {
+            "health": 30
+        },
+        "commandBlueprints": [
+            {
+                "name": "pickpocket",
+                "function": "DropItem"
+            },
+        ],
+        "currentLocation": "castle",
+        "isFriendly": true
+    },
+
+    // [{...}, {...}, ...] - Add as many NPCs as you'd like
 ]

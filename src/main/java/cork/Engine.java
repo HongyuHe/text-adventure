@@ -1,6 +1,5 @@
 package cork;
 
-import com.google.gson.JsonParseException;
 import cork.engine_state.EngineStateMachine;
 
 import java.io.IOException;
