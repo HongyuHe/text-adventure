@@ -640,6 +640,8 @@ TODO: general overview of workflow
 
 #### Key Solutions
 
+Below are two tables which explain how each of the functional and quality requirements have been met.
+
 ##### Functional Features
 | ID  | Short name  | Description  |
 |---|---|---|
@@ -659,16 +661,16 @@ TODO: general overview of workflow
 
 | ID  | Short name  | Quality attribute |
 |---|---|---|
-| QR1 | Pre-Game Validation |  |
-| QR2  | Customizable Scenarios |  |
-| QR3 | Event Timing |  |
-| QR4 | Speed of Action Execution |  |
-| QR5 | Speed of Initialization |  |
-| QR6  | Command validation |  |
-| QR7 | Input Reception |  |
-| QR8 | Save Files Encryption |  |
-| QR9 | Save Prompting |  |
-| QR10 | Determinism Guarantee |  |
+| QR1 | Pre-Game Validation | All exceptions resulting from a failure to load JSON game files are caught by the **Engine**, which cleanly exits and presents an error message to the user. |
+| QR2  | Customizable Scenarios | Any valid and complete JSON files in the `games` folder can be loaded and run by the system. For documentation, templates are provided in the `game_template` folder which explain some of the requirements placed on different object attributes and allow a *modder* user to create their own games. |
+| QR3 | Event Timing | The **Engine** will not request the **UIHandler** to gather input until a result has been returned from the previous command, ensuring that only one command can be entered at a time. |
+| QR4 | Speed of Action Execution | All inputs will return a result within 2 seconds. |
+| QR5 | Speed of Initialization | All current games load within 10 seconds. It is assumed that only excessively massive JSON files could lead to a violation of this requirement. |
+| QR6  | Command validation | All commands will return some indication to the user as to what went wrong with trying to execute an invalid command - this is built into the system with the **DefaultEntity** and **DefaultCommand** classes. |
+| QR7 | Input Reception | As above, all inputs will return some message to the user due to the design of the system. |
+| QR8 | Save Files Encryption | All save files are obfuscated with base64 encoding making it difficult for a user to easily edit them. |
+| QR9 | Save Prompting | The user will always be prompted to save whenever they try to quit whilst the game is running. |
+| QR10 | Determinism Guarantee | All actions have predictable effects - there is no element of chance built into the game. |
 
 #### Main Class Location
 The main function can be found in `src/main/java/cork/Engine.java`
