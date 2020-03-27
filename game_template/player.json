@@ -2,7 +2,7 @@
     "active": true,         // This should always be true
     "type": "Player",       // This should be Player
     "name": "",             // This should be a single word and unique across all entities
-    "description": "",      // A descrption of the player
+    "description": "",      // A description of the player
     "currentLocation": "",  // The player's starting location
     "inventory": [],        // Anything the player is holding when the game begins
     "stats": {},            // The player's stats and their respective values
