@@ -679,7 +679,4 @@ The main function can be found in `src/main/java/cork/Engine.java`
 `out/artifacts/cork_jar/software-design-vu-2020.main.jar`
 
 #### Execution Video
-
-TODO: replace with up-to-date video
-
-[![Execution Video](https://img.youtube.com/vi/qOCYWU9dryA/0.jpg)](https://www.youtube.com/watch?v=qOCYWU9dryA&feature=youtu.be)
+[![Execution Video](https://img.youtube.com/vi/AnDEMYql8B8/0.jpg)](https://www.youtube.com/watch?v=AnDEMYql8B8&feature=youtu.be)
