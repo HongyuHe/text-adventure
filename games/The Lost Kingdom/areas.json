@@ -1,0 +1,317 @@
+[
+  {
+    "type": "Area",
+    "name": "jail",
+    "description": "You are trapped in the jail cell. A fallen king such as you does not belong here! It would be a nice idea to `move` around.",
+    "active": true,
+    "inventory": ["cheese", "apple"],
+    "obstacles": ["wall"],
+    "npcs": [],
+    "connections": {
+      "north": "cavern",
+      "south": "cavern",
+      "east": "cavern",
+      "west": "cavern"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "cavern",
+    "description": "You are now in a `cavern` connected to the jail. The wall behind you collapsed and there is no way to go back. In the faint light emitted by the torches on the wall you can make out that the cavern runs `deeper` leading to the `deeper-cavern`. Going `south` seems to take you to some place that stinks, probably a `sewer`.",
+    "active": true,
+    "inventory": ["torch"],
+    "obstacles": ["giant-rat"],
+    "npcs": [],
+    "connections": {
+      "deeper": "deeper-cavern",
+      "deeper-cavern": "deeper-cavern",
+      "south": "sewer",
+	  "sewer": "sewer"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "deeper-cavern",
+    "description": "You trudge in the darkness guided by the torch, you hold, deeper into the cavern. The walls of the `deeper-cavern` are covered all over with moss and you can make out its outlines. Going further `south` leads to a familiar place but this time it feels unwelcoming. Going `back` will take you back to the opening of the `cavern`.",
+    "active": true,
+    "inventory": ["chest"],
+    "obstacles": ["darkness"],
+    "npcs": [],
+    "connections": {
+      "south": "crypt",
+      "cavern": "cavern",
+      "back": "cavern"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "crypt",
+    "description": "You remember this place as if it were from a dream. Yes! You did see this place in a dream! In your dream you saw your father waiting for you here. You thought back then that it was a sign of him waiting for you in the afterlife. You see a `hooded-figure` standing in the corner. You could try to `interact` with him or you could simply ignore him and go `east` to the `sewer`, never to see him again.  It's' a gamble, what do you choose to do?",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": ["hooded-figure"],
+    "connections": {
+      "sewer": "sewer",
+      "east": "sewer"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "sewer",
+    "description": "This `sewer` indeed stinks. The methane infused fumes are so pungent they make your eyes water. It is a fit place for a king without a kingdom, maybe a few of your suppressed tears get a way out without you feeling ashamed. Through your watery eyes, you see a path leading `east` that goes into the strong foundations of a collosal structure. To your `south` is the exit of the sewer which leads to a lush green covering, probably a `forest`. ",
+    "active": true,
+    "inventory": [],
+    "obstacles": ["secret-door"],
+    "npcs": [],
+    "connections": {
+      "south": "forest",
+      "forest": "forest",
+      "east": "palace"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "forest",
+    "description": "You finally get some fresh air and thank your ancestors for guiding you safely so-far. You stand in the `forest` surrounding by `lumber` rich trees. The herbal properties of the `forest` improve your `health`. Your teacher informed you of `wolves` that roamed such parts. It is a good idea to stay vigilant and avoid unnecessary trouble. To your `north` is the `sewer` you came from earlier and to your `south` is the entrance to a `cave` like structure. Also, you can hear the sound of a `river` to your `west`. Lastly, there is a `pit` to your `east`. Oddly enough, the `pit` is large enough to fit a `boulder`.",
+    "active": true,
+    "inventory": ["lumber"],
+    "obstacles": ["boulder"],
+    "npcs": ["wolves"],
+    "connections": {
+      "north": "sewer",
+      "sewer": "sewer",
+      "west": "river-edge",
+      "river": "river-edge",
+      "south": "cave",
+      "cave": "cave",
+      "east": "pit",
+      "pit": "pit"
+    },
+    "stats": {
+      "health": 1
+    },
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "pit",
+    "description": "You are in a `pit`, it is a dark and useless place, just like the jail and the sewers. It is the same size as a `boulder`. The `forest` lies to your `west`.",
+    "active": true,
+    "inventory": ["trash"],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "west": "forest",
+      "forest": "forest"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "river-edge",
+    "description": "You are at the edge of a river with strong currents. It would be impossible to swim across. However, you see a `broken-bridge` across the river leading to a menacing `tower` to the `west`. You had heard stories of a `wizard` who lived in a tower at the borders of your kingdom. You never believed those stories but now this tower proves there might indeed be some truth to those tales.",
+    "active": true,
+    "inventory": ["fish"],
+    "obstacles": ["broken-bridge"],
+    "npcs": [],
+    "connections": {
+      "east": "forest",
+      "forest": "forest",
+      "west": "tower",
+      "tower": "tower"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "tower",
+    "description": "After crossing the bridge you enter the tower. The door back closes shut and won't budge. The place looks abandoned but you feel a certain `presence` there eyeing your every move. This journey did seem like a fool's errand except you see something shine atop the fireplace. There is a purplish mirror resembling a `portal`. You have no choice but to `go` through the `portal` to `exit` this place.",
+    "active": true,
+    "inventory": ["glass-case"],
+    "obstacles": [],
+    "npcs": ["presence"],
+    "connections": {
+      "portal": "forest",
+      "exit": "forest"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "cave",
+    "description": "You smile at the boulder lying inside the `pit` and walk into the dark cave. You promise yourself never to enter ghastly dark places but your intuition tells you that your promise won't last long. Maybe it is your destiny to be stuck in dark places? Best not to ponder too long, else going insane won't take long. Just when you start to regain your cool, the entrance is blocked again. You are caved in! The only way forward leads to a `mine` in the `west`.",
+    "active": true,
+    "inventory": ["mining-equipment"],
+    "obstacles": ["ore"],
+    "npcs": [],
+    "connections": {
+      "west": "mine",
+      "mine": "mine"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "mine",
+    "description": "You walk into the mine. There are remnants of a `rebel-base` here which looks recently forsaken. Why are all the places you go to abandoned? You hold back a few tears remembering how your mother abandoned you when you were merely six winters old as she passed away to the next abode! But, this was no time or place to mourn. It was a time for some slight optimism! This ex `rebel-base` shows that there are partisans in favour of the old king! On looking around you see that the `mine` runs `deeper` into a `deeper-mine`.",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "deeper": "deeper-mine",
+      "deeper-mine": "deeper-mine"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "deeper-mine",
+    "description": "In the `deeper-mine` you see some `inscriptions` and `notes` lying around. They are easily visible in the torch light. There was also something shocking! There were two bodies, one of a `dead-partisan` and one a `dead-soldier`. There were bloodstains everywhere! It looks like there was a battle here as well. Who knew so much could happen in less than a week. There is a path leading `outside`, probably the way through which the royal soldiers entered to crush the rebellion. Going back to the mine is pointless so best to go `outside` after you `inspect` everything.",
+    "active": true,
+    "inventory": ["notes", "inscriptions", "dead-partisan", "dead-soldier"],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "outside": "highway",
+      "back": "mine"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "highway",
+    "description": "You try to enjoy the sunlight while it lasts on the `highway` you just entered. You know full well that more dark places await you for it is your destiny. Rebellions start from dark places and not in broad daylight. You smile sadly at the irony of the situation. Your ministers plotted a rebellion in some dark cryptic place and now you will do the same. Life can be so convulated sometimes. Maybe you should take up philosophy after retaking the kingdom. A highwayman `mugger` startles you and brings your internal monologue to an end. Maybe try to `mug` the `mugger` for disturbing his majesty? That really wouldn't be majestic but tough times need tough measures. The `highway` leads `north` to the capital `town`.",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": ["mugger"],
+    "connections": {
+      "north": "town",
+      "town": "town",
+      "back": "deeper-mine",
+      "deeper-mine": "deeper-mine",
+      "west": "deeper-mine"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "town",
+    "description": "You are now in the middle of the capital `town` you once used to rule. You reflect that the ministers were idiots to imprison you so close to the `palace` which is to the `north` of town. You solemnly promise yourself that you would make the prison even stronger and preferably shift it to someplace even farther away! You see some `common-folk` on the streets chatting. You could `interact` with them. There is a `tavern` to your `east`, an `abandoned-house` to your `west` that catches your eye and just the other buildings of the regular old town.",
+    "active": true,
+    "inventory": [],
+    "obstacles": ["royal-guard", "barkeep"],
+    "npcs": ["common-folk"],
+    "connections": {
+      "north": "palace",
+      "palace": "palace",
+      "east": "tavern",
+      "tavern": "tavern",
+      "west": "abandoned-house",
+      "abandoned-house": "abandoned-house",
+      "south": "highway",
+      "highway": "highway"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "tavern",
+    "description": "After some hassling with the `barkeep` you enter the `tavern`. You see `wanted` pictures of rebels on the tavern's walls. There are a `bunch-of-hooligans` sitting at the bar drinking ale and arguing with the `bartender`. The people don't care about your presence. This hurts your pride a bit but then you remember you've seen worse times. You feel someone staring at you and you look back making eye-contact with a `quiet-person` sitting alone in the corner of the `tavern`. You immidiately notice that he recognizes you and he signals you to come talk to him! You could try to `interact` with everyone in the `tavern` or simply exit to the `town` which lies to your `west`.",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": ["bunch-of-hooligans", "bartender", "quiet-person"],
+    "connections": {
+      "west": "town",
+      "town": "town"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "abandoned-house",
+    "description": "You are in an `abandoned-house` lying at the corner of town. There is something special about this place, you know it! Maybe someone or something mentioned this place. The place is quiet and maybe even too quiet. A parchment of `old-paper` stuck to the wall catches your eye and except that everything else looks extremely lackluster. The `town` lies to your `east`.",
+    "active": true,
+    "inventory": ["old-paper"],
+    "obstacles": ["rebel-guard"],
+    "npcs": [],
+    "connections": {
+      "east": "town",
+      "town": "town",
+      "hidden-trap-door": "rebel-base",
+      "rebel-base": "rebel-base"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "rebel-base",
+    "description": "You are accepted graciously by the rebels! They give you the food they have, which helps you heal and they celebrate your arrival. You see that there are only a few `rebels` left. You should `interact` with them to understand their predicament and know what they have to say. Going through the `hidden-trap-door` would take you `back` to the `abandoned-house`.",
+    "active": true,
+    "inventory": ["gold-coins", "cherry-bomb"],
+    "obstacles": [],
+    "npcs": ["rebels"],
+    "connections": {
+      "hidden-trap-door": "abandoned-house",
+      "back": "abandoned-house",
+      "abandoned-house": "abandoned-house",
+      "secret-passage": "forest",
+      "forest": "forest"
+    },
+    "stats": {
+      "health": 10
+    },
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "palace",
+    "description": "You make it into the `palace` just as planned. You see `partisans` on your side and the `royal-soldiers` loyal to the crown. As per the plan it is best to order `partisans` to `battle` the `royal-soldiers`. You need to make it to the `court` in the `north` to take back your crown!",
+    "active": true,
+    "inventory": [],
+    "obstacles": ["royal-soldiers"],
+    "npcs": ["partisans"],
+    "connections": {
+      "north": "court",
+      "court": "court"
+    },
+    "stats": {},
+    "commandBlueprints": []
+  },
+  {
+    "type": "Area",
+    "name": "court",
+    "description": "You are now in the `court`. All your plotting and planning has led to this moment. Everything has gone according to plan so far. You see the `fake-king` sitting on your throne. It is time to take your revenge, `attack` him and take back your crown!",
+    "active": true,
+    "inventory": [],
+    "obstacles": [],
+    "npcs": ["fake-king"],
+    "connections": {
+    },
+    "stats": {},
+    "commandBlueprints": []
+  }
+]

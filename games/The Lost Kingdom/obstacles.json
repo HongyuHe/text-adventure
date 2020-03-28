@@ -1,0 +1,232 @@
+[
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "wall",
+    "description": "The `wall` looks very weak and can be broken with a single blow. You can try to `attack` it.",
+    "inventory": [],
+    "stats": {
+      "strength": 1,
+      "health": 1
+    },
+    "commandBlueprints": [
+    ],
+    "currentLocation": "jail",
+    "state": true,
+    "blocks": "cavern",
+    "requiredObject": "",
+    "message": "There is a `wall` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "giant-rat",
+    "description": "The `giant-rat` looks very hungry. You can try to `give` it some food.",
+    "inventory": [],
+    "stats": {
+      "strength": 110,
+      "health": 100
+    },
+    "commandBlueprints": [
+      {
+        "name": "give",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "cavern",
+    "state": true,
+    "blocks": "sewer",
+    "requiredObject": "cheese",
+    "message": "There is a `giant-rat` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "darkness",
+    "description": "The `darkness` does not allow you to see the path. You can try to `use` a source of light on it.",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "deeper-cavern",
+    "state": true,
+    "blocks": "crypt",
+    "requiredObject": "torch",
+    "message": "You turn back as you cannot see anything in the `darkness`."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "secret-door",
+    "description": "The `secret-door` is very sturdy and looks well made. You need to `use` a key to open it.",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "sewer",
+    "state": true,
+    "blocks": "palace",
+    "requiredObject": "ornate-key",
+    "message": "There is a `secret-door` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "boulder",
+    "description": "The `boulder` is nice and round. You can `push` it into an area where it won't bother anyone.",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "push",
+        "function": "ChangeLocation"
+      }
+    ],
+    "currentLocation": "forest",
+    "state": true,
+    "blocks": "cave",
+    "requiredObject": "",
+    "message": "There is a `boulder` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "broken-bridge",
+    "description": "The `broken-bridge` needs some `lumber` to be usable. You can `use` some `lumber` to rebuild the bridge.",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "river-edge",
+    "state": true,
+    "blocks": "tower",
+    "requiredObject": "lumber",
+    "message": "There is a `broken-bridge` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "ore",
+    "description": "The `ore` needs to be removed by using some kind of `mining-equipment`.",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "cave",
+    "state": true,
+    "blocks": "mine",
+    "requiredObject": "mining-equipment",
+    "message": "There is some `ore` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "barkeep",
+    "description": "The `barkeep` demands an entry fee. Maybe 'bribe' him with some 'gold-coins'?",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "bribe",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "town",
+    "state": true,
+    "blocks": "tavern",
+    "requiredObject": "gold-coins",
+    "message": "There is a `barkeep` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "royal-guard",
+    "description": "The `royal-guard` will not allow anyone to pass through. You could try to `attack` them but they look very strong.",
+    "inventory": [],
+    "stats": {
+      "strength": 110,
+      "health": 100
+    },
+    "commandBlueprints": [
+    ],
+    "currentLocation": "town",
+    "state": true,
+    "blocks": "palace",
+    "requiredObject": "",
+    "message": "There are `royal-guard` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "rebel-guard",
+    "description": "The `rebel-guard` asks you to `give` the `password`.",
+    "inventory": [],
+    "stats": {
+      "strength": 1000,
+      "health": 1000
+    },
+    "commandBlueprints": [
+      {
+        "name": "give",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "abandoned-house",
+    "state": true,
+    "blocks": "rebel-base",
+    "requiredObject": "password",
+    "message": "There is a `rebel-guard` in the way."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "royal-soldiers",
+    "description": "The `royal-soldiers` will not allow anyone to pass through. You could try to `attack` them but they look very strong.",
+    "inventory": [],
+    "stats": {
+      "strength": 110,
+      "health": 100
+    },
+    "commandBlueprints": [
+    ],
+    "currentLocation": "palace",
+    "state": true,
+    "blocks": "court",
+    "requiredObject": "",
+    "message": "There are `royal-soldiers` in the way."
+  }
+]
