@@ -1,30 +1,42 @@
-/* ########## ITEM TEMPLATE ########## */
 [
-  {
-    "type": "Item",         // Entity type
-    "name": "",             // Entity name
-    "description": "",      // Entity description
-    "active": true,         // Current status
-    "consumable": false,    // Entity usage type
-    "stats": {              // List of stat modifications
-      "health": 0
-      "strength:" 0
+    {
+        "active": true,             // This should always be true
+        "type": "Item",             // This should always be Item
+        "name": "",                 // The name of the item - this should be a single word, and unique across all entities
+        "description": "",          // A description of the item
+        "inventory": [],            // Anything this item might contain, e.g. a pouch with gold
+        "stats": {},                // The stats of the item - these could be applied to an NPC when they pickup the item e.g. armor that increases defence
+        "commandBlueprints": [],    // Any commands that can be executed with this item
+        "consumable": false         // Whether or not using this item will destroy it
     },
-    "inventory": [],        // -
-    "commandBlueprints": [] // -
-  },
-  {
-    "type": "Item",
-    "name": "",
-    "description": "",
-    "active": true,
-    "consumable": false,
-    "stats": {
-      "health": 0
-      "strength:" 0
+
+    // An example item
+    {
+        "active": true,
+        "type": "Item",
+        "name": "pouch",
+        "description": "A pouch that can hold something. It looks like there is some gold inside.",
+        "inventory": [ "gold" ],
+        "stats": {
+            "health": 10,
+            "strength": 0
+        },
+        "commandBlueprints": [
+        {
+            "name": "enchant",
+            "function": "ChangeStat"
+        },
+        {
+            "name": "drop",
+            "function": "DropItem"
+        },
+        {
+            "name": "store",
+            "function": "TakeItem"
+        }
+        ],
+        "consumable": false
     },
-    "inventory": [],
-    "commandBlueprints": []
-  },
-  // (...)
+
+      // [{...}, {...}, ...] - add as many items as you'd like
 ]

@@ -1,72 +1,74 @@
 {
-  "type": "Player",       // Entity type
-  "name": "",             // Entity name
-  "description": "",      // Entity description
-  "active": true,         // Current status
-  "currentLocation": "",  // Player starting location (area)
-  "stats": {              // List of active stats
-    "health": 100,
-    "strength": 10
-  },
-  "inventory": [],        // List of current items
-  "commandBlueprints": [  // List of applicable functions
-    {
-    "name": "eat",
-    "function": "ChangeStat",
-    "params": ["health"]
-  },
-  {
-    "name": "stats",
-    "function": "ListStats",
-    "params": ["Player"]
-  },
-  {
-    "name": "use",
-    "function": "ChangeStat",
-    "params": ["health"]
-  },
-  {
-    "name": "look",
-    "function": "Describe",
-    "params": ["Entity"]
-  },
-  {
-    "name": "search",
-    "function": "ListContents",
-    "params": ["Area"]
-  },
-  {
-    "name": "interact",
-    "function": "Describe",
-    "params": ["NPC"]
-  },
-  {
-    "name": "inventory",
-    "function": "ListContents",
-    "params": ["Player"]
-  },
-  {
-    "name": "move",
-    "function": "ChangeLocation",
-    "params": ["Player"]
-  },
-  {
-    "name": "go",
-    "function": "ChangeLocation",
-    "params": ["Player"]
-  },
-  {
-    "name": "take",
-    "function": "TakeItem",
-    "params": ["Item", "inventory"]
-  },
-  {
-    "name": "drop",
-    "function": "DropItem",
-    "params": ["Item", "inventory"]
-  },
-  {
-    "name": "fight",
-    "function": "Fight"
-  }]
+    "active": true,         // This should always be true
+    "type": "Player",       // This should be Player
+    "name": "",             // This should be a single word and unique across all entities
+    "description": "",      // A description of the player
+    "currentLocation": "",  // The player's starting location
+    "inventory": [],        // Anything the player is holding when the game begins
+    "stats": {},            // The player's stats and their respective values
+    "commandBlueprints":[]  // Any actions the player can take
+}
+
+// An example player. There can be only one.
+{
+    "active": true,
+    "type": "Player",
+    "name": "you",
+    "description": "You're just a regular human.",
+    "currentLocation": "forest",
+    "inventory": [ "key" ],
+    "stats": {
+        "health": 30,
+        "strength": 10
+    },
+    "commandBlueprints": [
+        {
+            "name": "eat",
+            "function": "ChangeStat"
+        },
+        {
+            "name": "stats",
+            "function": "ListStats"
+        },
+        {
+            "name": "use",
+            "function": "ChangeStat"
+        },
+        {
+            "name": "look",
+            "function": "Describe"
+        },
+        {
+            "name": "search",
+            "function": "ListContents"
+        },
+        {
+            "name": "interact",
+            "function": "Describe"
+        },
+        {
+            "name": "fight",
+            "function": "Fight"
+        },
+        {
+            "name": "inventory",
+            "function": "ListContents"
+        },
+        {
+            "name": "move",
+            "function": "ChangeLocation"
+        },
+        {
+            "name": "go",
+            "function": "ChangeLocation"
+        },
+        {
+            "name": "take",
+            "function": "TakeItem"
+        },
+        {
+            "name": "drop",
+            "function": "DropItem"
+        }
+    ]
 }

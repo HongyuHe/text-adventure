@@ -1,23 +1,28 @@
 [
-  {
-    "type": "Area",     // Entity type
-    "name": "",         // Entity name
-    "description": "",  // Entity description
-    "active": true,     // Current status
-    "inventory": [],    // List of active items
-    "obstacles": [],    // List of active obstacles
-    "npcs": [],         // List of active NPCs
-    "connections": {}   // List of connected areas
-  },
-  {
-    "type": "Area",
-    "name": "",
-    "description": "",
-    "active": true,
-    "inventory": [],
-    "obstacles": [],
-    "npcs": [],
-    "connections": {}
-  }
-  // (...)
+    {
+        "active": true,     // Current status - this should always be true
+        "type": "Area",     // This should always be Area
+        "name": "",         // Entity name - this must be a single word and unique across all entities
+        "description": "",  // Entity description - This can be anything you like (though it's recommended to give enough explanation so the player can understand what to do).
+        "inventory": [],    // List of active items - the unique names of any items that are in this area (the corresponding items must exist in items.json)
+        "stats": {},        // List of stats - these should be name:value pairs
+        "obstacles": [],    // List of active obstacles - any obstacles that are in this area (the corresponding obstacles must exist in obstacles.json)
+        "npcs": [],         // List of active NPCs - as above, but with non-player characters
+        "connections": {}   // List of connected areas - a list of pairs that indicate where the player can go from here. The first word should be what the player needs to type, the second the name of the area (the corresponding area should be described in this file).
+    },
+
+    // An example Area
+    {
+        "active": true,
+        "type": "Area",
+        "name": "example",
+        "description": "This is an example area to show you what one could look like.",
+        "inventory": [ "item-name", "another-item" ],
+        "stats": { "health": 30, "strength": 10 },
+        "obstacles": [ "some-obstacle" ],
+        "npcs": [ "merchant" ],
+        "connections": { "north" : "another-area", "another-area" : "another-area" }
+    }
+
+    // [{...}, {...}, ...] - add as many areas as you'd like
 ]

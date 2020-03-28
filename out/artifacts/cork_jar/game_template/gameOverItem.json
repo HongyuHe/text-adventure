@@ -1,14 +1,22 @@
-/* ########## GAME OVER ITEM TEMPLATE ########## */
 {
-    "type": "Item",         // Entity type
-    "name": "",             // Entity name
-    "description": "",      // Entity description
-    "active": true,         // Current status
-    "consumable": false,    // Entity usage type
-    "stats": {              // List of stat modifications
-      "health": 0
-      "strength:" 0
-    },
-    "inventory": [],        // -
-    "commandBlueprints": [] // -
+    "active": true,             // This should always be true
+    "type": "Item",             // This should always be Item
+    "name": "",                 // The name of the item - this should be a single word, and unique across all entities
+    "description": "",          // A description of the item
+    "inventory": [],            // Anything this item might contain, e.g. a pouch with gold
+    "stats": {},                // The stats of the item - these could be applied to an NPC when they pickup the item e.g. armor that increases defence
+    "commandBlueprints": [],    // Any commands that can be executed with this item
+    "consumable": false         // Whether or not using this item will destroy it
+}
+
+// An example gameOverItem. There can be only one.
+{
+    "active": true,
+    "type": "Item",
+    "name": "diamond",
+    "description": "A very precious diamond.",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
+    "consumable": false
 }

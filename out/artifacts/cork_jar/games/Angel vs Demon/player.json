@@ -1,0 +1,33 @@
+{
+  "type": "Player",
+  "name": "You",
+  "description": "You're the summoner making the heavens fight hell!",
+  "active": true,
+  "currentLocation": "arena",
+  "stats": {
+    "health": 100,
+    "strength": 0
+  },
+  "inventory": [],
+  "commandBlueprints": [
+  {
+    "name": "stats",
+    "function": "ListStats"
+  },
+  {
+    "name": "look",
+    "function": "Describe"
+  },
+  {
+    "name": "inventory",
+    "function": "ListContents"
+  },
+  {
+    "name": "take",
+    "function": "TakeItem"
+  },
+  {
+    "name": "drop",
+    "function": "DropItem"
+  }]
+}

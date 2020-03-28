@@ -55,5 +55,92 @@
     },
     "commandBlueprints": [],
     "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "armor",
+    "description": "A sturdy piece of armor.",
+    "inventory": [],
+    "stats": {
+      "health": 10
+    },
+    "commandBlueprints": [],
+    "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "poison",
+    "description": "A few drops of poison in a bottle. Administering it will be deadly.",
+    "inventory": [],
+    "stats": {
+      "strength": -10
+    },
+    "commandBlueprints": [],
+    "consumable": true
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "gold",
+    "description": "A few gold coins. This could buy something.",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints": [],
+    "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "pouch",
+    "description": "A pouch that can hold something. It looks like there is some gold inside.",
+    "inventory": ["gold"],
+    "stats": {},
+    "commandBlueprints": [
+      {
+        "name": "drop",
+        "function": "DropItem"
+      },
+      {
+        "name": "store",
+        "function": "TakeItem"
+      }
+    ],
+    "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "chest",
+    "description": "A wooden chest that might hold something valuable.",
+    "inventory": ["apple", "armor"],
+    "stats": {
+      "health": 10,
+      "strength": 1
+    },
+    "commandBlueprints": [],
+    "consumable": false
+  },
+
+  {
+    "active": true,
+    "type": "Item",
+    "name": "cherry-bomb",
+    "description": "A bomb that disables without discretion.",
+    "inventory": ["apple", "armor"],
+    "stats": {
+      "health": -5,
+      "strength": -5
+    },
+    "commandBlueprints": [],
+    "consumable": false
   }
+
+
 ]
