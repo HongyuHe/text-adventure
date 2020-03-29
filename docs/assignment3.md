@@ -535,7 +535,7 @@ The system is in a state wherein the game "YAZG" is loaded and running and the u
                 Additionally, having all actions/commands as objects allows us to define actions inside the JSON and make it easy for us to parse it.
 
 ## State machine diagrams									
-Author(s): `Anthony Wilkes`
+Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 ### Engine
 
@@ -557,7 +557,9 @@ If the user chooses to quit the game during the *Game Running* state, then they 
 
 If the game ends whilst in the *Game Running* state (e.g. the player wins the game or dies), then the user is returned back to the initial *Home Screen* state, and the process can repeat from the beginning as before.  
 
----
+### UIHandler
+
+![UIHandler State Machine Diagram](assets/A03/state_ui.png "UIHandler state machine diagram")
 
 This chapter contains the specification of at least 2 UML state machines of your system, together with a textual description of all their elements. Also, remember that classes the describe only data structures (e.g., Coordinate, Position) do not need to have an associated state machine since they can be seen as simple "data containers" without behaviour (they have only stateless objects).
 
