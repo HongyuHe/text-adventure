@@ -4,17 +4,21 @@ import dictionary.GameEntities;
 import entity.*;
 
 public class Describe implements ICommand {
-    private final Entity parent;
-
-    public Describe(final Entity parent) { this.parent = parent; }
-
     @Override
     public String apply(String object, final GameEntities ge) {
         if (object.equals("")) { object = ge.getPlayer().getCurrentLocation(); }
 
-        Entity e = ge.getEntityOrDefault(object);
+        final Entity e = ge.getEntityOrDefault(object);
+        final Area localArea = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
-        if (!e.isActive()) { return String.format("You cannot see '%s'.", object); }
+        if (!e.isActive()
+                || !(ge.getPlayer().hasInInventory(object)
+                    || (object.equals(ge.getPlayer().getName()))
+                    || localArea.hasInInventory(object)
+                    || localArea.hasNpc(object)
+                    || localArea.hasObstacle(object)
+                    || (ge.getAreaEntities().containsKey(object)
+                        && localArea.getName().equals(object)))) { return String.format("You cannot see '%s'.", object); }
 
         return e.getDescription();
     }

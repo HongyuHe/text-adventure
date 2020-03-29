@@ -14,7 +14,7 @@ public final class CommandFactory {
             case "ListContents":   return new ListContents(parent);
             case "ChangeStat":     return new ChangeStat(parent);
             case "ChangeState":    return new ChangeState((Obstacle) parent);
-            case "Describe":       return new Describe(parent);
+            case "Describe":       return new Describe();
             case "TakeItem":       return new TakeItem(parent);
             case "DropItem":       return new DropItem(parent);
             case "ListStats":      return new ListStats(parent);

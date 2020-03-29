@@ -19,7 +19,7 @@ public class Npc extends Locatable {
     }
 
     public
-    Npc(final boolean active,
+    Npc(final boolean active, // NOSONAR - Many parameters are required to allow deserialization
                final String type,
                final String name,
                final String description,

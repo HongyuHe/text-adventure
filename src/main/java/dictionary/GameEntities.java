@@ -35,7 +35,7 @@ public class GameEntities {
     }
 
     public Entity
-    getEntityOrDefault(String entity)
+    getEntityOrDefault(final String entity)
     {
         if      (itemEntities.containsKey(entity))      { return itemEntities.get(entity); }
         else if (areaEntities.containsKey(entity))      { return areaEntities.get(entity); }
