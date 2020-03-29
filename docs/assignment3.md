@@ -654,7 +654,11 @@ Author(s): `Anthony Wilkes, Jim Cuijpers, Ajay Hitendra Mota`
 
 #### Implementation Strategy
 
-TODO: general overview of workflow
+Since most of the functionality for **Cork** had already been implemented in assignment 2, a lot of work in assignment 3 was based around refactoring and redesigning. Issues that had arisen during assignment 2 were addressed, and areas of duplicated code (e.g. in the *entity* package with getters and setters) or poor implementations, etc. was fixed. This work included improving class hierarchies (e.g. the entity package now used an abstract class **Entity** to remove previously duplicated code), or adding in more robust solutions (e.g. the state machine code for **Engine**). Any changes to the code that caused changes to the model were updated in the class diagram UML so that the whole project stayed consistent (as these changes were small, it seemed prudent to solve the problems first then reflect the solutions in the model after - small changes wouldn't lead to major issues with violations to the model, only minor alterations).
+
+Once this initial work was complete, each team member looked for changes they could make to improve functionality (e.g. many of the implementations in the *command* package were altered) - only changes that would not affect the model were allowed (e.g. changing the implementation of a command's *apply* function would have no change required in the UML, as this would be at a higher level of detail than UML modelling shows).
+
+Whilst these improvements to functionality were being made, each team member was also assigned a UML diagram to make or improve, and to add the associated descriptions to this file. Each of these UML diagrams was based off the new class diagram that showed the latest state of the system with references to the code were relevant (e.g. when drawing the **Engine** state diagram).
 
 #### Key Solutions
 
@@ -694,7 +698,12 @@ Below are two tables which explain how each of the functional and quality requir
 The main function can be found in `src/main/java/cork/Engine.java`
 
 #### Jar Location
-`out/artifacts/cork_jar/software-design-vu-2020.main.jar`
+
+The jar can be found at: https://github.com/HongyuHe/text-adventure/tree/Assignment3/out/artifacts/cork_jar
+
+\[on disk: `out/artifacts/cork_jar/software-design-vu-2020.main.jar`\]
+
+**NOTE: if the `games` folder is not in the same directory as the jar, then the engine will not be able to find any games to run!**
 
 #### Execution Video
 [![Execution Video](https://img.youtube.com/vi/AnDEMYql8B8/0.jpg)](https://www.youtube.com/watch?v=AnDEMYql8B8&feature=youtu.be)
