@@ -650,7 +650,7 @@ If the user selects to load a previous game, the *loadGame()* function is called
 At any point in time, initialization of the game may fail due to many different causes. It is especially important for users who wish to make a game, that they adhere to the general structure of the JSON files, because if, for example, there are typos or unrecognizable fields inside any of the JSON files, the deserialization will fail by default, at which point initialization will be preemptively terminated.
 
 ## Implementation									
-Author(s): `Anthony Wilkes, Jim Cuijpers, Ajay Hitendra Mota`
+Author(s): `Hongyu He, Anthony Wilkes, Jim Cuijpers, Ajay Hitendra Mota`
 
 #### Implementation Strategy
 
