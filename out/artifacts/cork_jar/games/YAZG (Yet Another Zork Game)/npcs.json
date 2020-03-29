@@ -38,5 +38,18 @@
     "commandBlueprints": [],
     "currentLocation": "castle",
     "isFriendly": true
+  },
+  {
+    "active": true,
+    "type": "NPC",
+    "name": "troll",
+    "description": "A friendly troll minding its own business",
+    "inventory": [],
+    "stats": {
+      "health": 30
+    },
+    "commandBlueprints": [],
+    "currentLocation": "forest",
+    "isFriendly": true
   }
 ]

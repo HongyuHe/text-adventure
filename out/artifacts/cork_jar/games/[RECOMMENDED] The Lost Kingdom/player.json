@@ -1,0 +1,58 @@
+{
+  "type": "Player",
+  "name": "You",
+  "description": "You're the bloody king!",
+  "active": true,
+  "currentLocation": "jail",
+  "stats": {
+    "health": 100,
+    "strength": 50
+  },
+  "inventory": [],
+  "commandBlueprints": [
+  {
+    "name": "stats",
+    "function": "ListStats"
+  },
+  {
+    "name": "look",
+    "function": "Describe"
+  },
+  {
+    "name": "inspect",
+    "function": "Describe"
+  },
+  {
+    "name": "interact",
+    "function": "Describe"
+  },
+  {
+    "name": "inventory",
+    "function": "ListContents"
+  },
+  {
+    "name": "take",
+    "function": "TakeItem"
+  },
+  {
+    "name": "drop",
+    "function": "DropItem"
+  },
+  {
+    "name": "attack",
+    "function": "Fight"
+  },
+  {
+    "name": "eat",
+    "function": "ChangeStat"
+  },
+  {
+    "name": "go",
+    "function": "ChangeLocation"
+  },
+  {
+    "name": "move",
+    "function": "ChangeLocation"
+  }
+]
+}

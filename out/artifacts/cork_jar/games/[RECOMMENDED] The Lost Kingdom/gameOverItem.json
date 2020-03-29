@@ -1,0 +1,11 @@
+{
+  "type": "Item",
+  "name": "crown",
+  "description": "The coveted crown that makes a man a king. This crown belonged to your father and his father before him. It is your birthright and belongs to only a true king!",
+  "active": true,
+  "consumable": false,
+  "stats": {
+  },
+  "inventory": [],
+  "commandBlueprints": []
+}

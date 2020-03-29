@@ -1,0 +1,164 @@
+[
+  {
+    "type": "NPC",
+    "name": "hooded-figure",
+    "description": "The `hooded-figure` tells you he is pleased to meet you. His name is `Sinjun` and he has some important information for you. He is your ancestor and tells you that there is a secret passage that leads to the palace from some place very close-by. He also advices you to stay strong and only fight when neccessary.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {},
+    "currentLocation": "crypt",
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "wolves",
+    "description": "A pack of `wolves` that will `attack` when provoked.",
+    "active": true,
+    "isFriendly": false,
+    "stats": {
+      "health": 10,
+      "strength": 50
+    },
+    "currentLocation": "forest",
+    "inventory": ["wolfskin"],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "presence",
+    "description": "The `presence` tells you that you are welcome to his home, `The Espen Tower`! He says that noone had dared to visit his tower since a long time. He recognizes you as the king and foresees a bright future ahead for you. He says that you can `request` a `magical-fruit` from him, the `presence` and he shall drop it if he sees fit.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {},
+    "currentLocation": "tower",
+    "inventory": ["magical-fruit"],
+    "commandBlueprints": [
+      {
+        "name": "request",
+        "function": "DropItem"
+      }
+    ]
+  },
+  {
+    "type": "NPC",
+    "name": "mugger",
+    "description": "The `mugger` is a poor soul mugging merchants for a living on the highway. He seems a bit overworked at the moment. He holds `gold-coins`. You could try to `attack` him.",
+    "active": true,
+    "isFriendly": false,
+    "stats": {
+      "health": 10,
+      "strength": 50
+    },
+    "currentLocation": "highway",
+    "inventory": ["gold-coins"],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "common-folk",
+    "description": "The `common-folk` hail `long live the new king!` and then begin complaining about the `high prices`. Somethings never change.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+    },
+    "currentLocation": "town",
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "bunch-of-hooligans",
+    "description": "The `bunch-of-hooligans` argue about `hidden traps & hidden doors` inside the `abandoned-house`. They continue drinking their ale and then move onto another topic.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+    },
+    "currentLocation": "tavern",
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "bartender",
+    "description": "The `bartender` says that he saw a young miner walk into the `abandoned-house` and never come back. He says that the place is haunted and warns you to stay away from it.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+    },
+    "currentLocation": "tavern",
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "quiet-person",
+    "description": "The `quiet-person` reveals his face to you for a moment. You recognize him as your faithful informer and friend `J.C.J.`! He tells you there is a `rebel-base` underneath the `abandoned-house` and that you need to solve the puzzle to get in. You will also need a password. Lastly, he tells you there is a `secret-door` in the palace that opens into the sewers but he doesn't know its exact location. He has the `ornate-key` with him and he can give it to you if you `request` it from him.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+    },
+    "currentLocation": "tavern",
+    "inventory": ["ornate-key"],
+    "commandBlueprints": [
+      {
+        "name": "request",
+        "function": "DropItem"
+      }
+    ]
+  },
+  {
+    "type": "NPC",
+    "name": "rebels",
+    "description": "The group rebels tell you that you are a `Ray` of hope for them. They tell you that they have a plan in place. They say that they have recruited partisans from the `royal-guard` to fight for them and overthrow the king but they needed you. They say the moment you enter the palace, the `partisans` will rebel and take your side. They also inform you of a `secret-passage`, here, in the `rebel-base` that leads straight to the forest if things get hairy.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+    },
+    "currentLocation": "rebel-base",
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "NPC",
+    "name": "partisans",
+    "description": "The `partisans` are soldiers on your side. Make them `battle` the `royal-soldiers` so that you can proceed to the `court` quickly. You can also `call` them to the `court` to help you in your `battle` there.",
+    "active": true,
+    "isFriendly": true,
+    "stats": {
+      "health": 100,
+      "strength": 110
+    },
+    "currentLocation": "palace",
+    "inventory": [],
+    "commandBlueprints": [
+      {
+        "name": "battle",
+        "function": "Fight"
+      },
+      {
+        "name": "call",
+        "function": "ChangeLocation"
+      }
+    ]
+  },
+  {
+    "type": "NPC",
+    "name": "fake-king",
+    "description": "The `fake-king` is your cousin `Yaja`. His face looks revolting and sly. But he looks very strong for a single man.",
+    "active": true,
+    "isFriendly": false,
+    "stats": {
+      "health": 100,
+      "strength": 110
+    },
+    "currentLocation": "court",
+    "inventory": ["crown"],
+    "commandBlueprints": [
+      {
+        "name": "battle",
+        "function": "Fight"
+      }
+    ]
+  }
+]
