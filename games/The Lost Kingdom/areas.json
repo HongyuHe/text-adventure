@@ -271,7 +271,7 @@
     "name": "rebel-base",
     "description": "You are accepted graciously by the rebels! They give you the food they have, which helps you heal and they celebrate your arrival. You see that there are only a few `rebels` left. You should `interact` with them to understand their predicament and know what they have to say. Going through the `hidden-trap-door` would take you `back` to the `abandoned-house`.",
     "active": true,
-    "inventory": ["gold-coins", "cherry-bomb"],
+    "inventory": ["gold-coins"],
     "obstacles": [],
     "npcs": ["rebels"],
     "connections": {
