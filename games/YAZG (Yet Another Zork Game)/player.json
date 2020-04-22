@@ -1,0 +1,63 @@
+{
+  "active": true,
+  "type": "Player",
+  "name": "you",
+  "description": "You're just a regular human.",
+  "currentLocation": "forest",
+  "inventory": [],
+  "stats": {
+    "health": 30,
+    "strength": 10
+  },
+  "commandBlueprints":
+  [
+    {
+    "name": "eat",
+    "function": "ChangeStat"
+  },
+  {
+    "name": "stats",
+    "function": "ListStats"
+  },
+  {
+    "name": "use",
+    "function": "ChangeStat"
+  },
+  {
+    "name": "look",
+    "function": "Describe"
+  },
+  {
+    "name": "search",
+    "function": "ListContents"
+  },
+  {
+    "name": "interact",
+    "function": "Describe"
+  },
+  {
+    "name": "fight",
+    "function": "Fight"
+  },
+  {
+    "name": "inventory",
+    "function": "ListContents"
+  },
+  {
+    "name": "move",
+    "function": "ChangeLocation"
+  },
+  {
+    "name": "go",
+    "function": "ChangeLocation"
+  },
+  {
+    "name": "take",
+    "function": "TakeItem"
+  },
+  {
+    "name": "drop",
+    "function": "DropItem"
+  }]
+
+}

@@ -6,32 +6,36 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Game {
-    private List<String> previousCommands = new ArrayList<>();
-    private GameEntities gameEntities;
+    private final List<String> previousCommands = new ArrayList<>();
+    private final GameEntities gameEntities;
 
+    public
     Game(final String game) { gameEntities = Initializer.loadGameFiles(game); }
 
-    boolean isGameOver() { return (playerVictory() || gameEntities.getPlayer().isDead()); }
+    public boolean
+    isGameOver() { return (playerVictory() || gameEntities.getPlayer().isDead()); }
 
-    boolean playerVictory() { return gameEntities.getPlayer().has(gameEntities.getGameOverItem().getName()); }
+    public boolean
+    playerVictory() { return gameEntities.getPlayer().hasInInventory(gameEntities.getGameOverItem().getName()); }
 
-    List<String> getPreviousCommands() { return new ArrayList<>(previousCommands); }
+    public List<String>
+    getPreviousCommands() { return new ArrayList<>(previousCommands); }
 
-    String handleCommand(final String input) {
-        String  result = "";
+    public String
+    handleCommand(final String input)
+    {
+        final String SPLIT_DELIMITER = " ";
+        final String[] args = input.split(SPLIT_DELIMITER);
 
         previousCommands.add(input);
 
-        String[] args = input.split(" ", 0);
-
-        if(args.length == 1) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply("", gameEntities);
-        } else if(args.length == 2) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
-        } else if(args.length == 3) {
-            result = gameEntities.getPlayer().findCommandOrElse(args[0]).apply(args[1], gameEntities);
+        switch (args.length)
+        {
+            case 0:  return "Commands must consist of at least one word.";
+            case 1:  return gameEntities.getPlayer().getCommandOrDefault(args[0]).apply("", gameEntities);
+            case 2:  return gameEntities.getPlayer().getCommandOrDefault(args[0]).apply(args[1], gameEntities);
+            case 3:  return gameEntities.getEntityOrDefault(args[2]).getCommandOrDefault(args[0]).apply(args[1], gameEntities);
+            default: return "Commands should only consist of three words at maximum.";
         }
-
-        return result;
     }
 }

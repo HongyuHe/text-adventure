@@ -1,88 +1,86 @@
 package entity;
 
+import deserialiser.CommandBlueprint;
+
 import java.util.*;
 
 public class Area extends Entity {
-    private String type;
-    private String name;
-    private Boolean active;
-    private String description;
-    private Set<String> inventory;
     private Set<String> obstacles;
     private Set<String> npcs;
     private Map<String, String> connections;
 
-    public Area()
+    public
+    Area()
     {
-        new Area("", "", false, "",
-            Collections.emptySet(), Collections.emptySet(),
-            Collections.emptySet(), Collections.emptyMap()
+        new Area(false, "", "", "",
+                Collections.emptySet(), Collections.emptyMap(),
+                Collections.emptySet(), Collections.emptySet(),
+                Collections.emptySet(), Collections.emptyMap()
         );
     }
 
-    public Area(String type, // NOSONAR - 8 parameters are required to allow deserialization
-                String name,
-                Boolean active,
-                String description,
-                Set<String> inventory,
-                Set<String> obstacles,
-                Set<String> npcs,
-                Map<String, String> connections) {
-
-        this.type = type;
-        this.name = name;
-        this.active = active;
-        this.description = description;
-        this.inventory = new HashSet<>(inventory);
+    public
+    Area(final boolean active, // NOSONAR - Many parameters are required to allow deserialization
+                final String type,
+                final String name,
+                final String description,
+                final Set<String> inventory,
+                final Map<String, Integer> stats,
+                final Set<CommandBlueprint> commandBlueprints,
+                final Set<String> obstacles,
+                final Set<String> npcs,
+                final Map<String, String> connections)
+    {
+        super(active, type, name, description, inventory, stats, commandBlueprints);
         this.obstacles = new HashSet<>(obstacles);
         this.npcs = npcs;
         this.connections = connections;
     }
 
-    public boolean connectsTo(String nextArea) { return connections.containsKey(nextArea); }
+    public boolean
+    connectsTo(final String nextArea) { return connections.containsKey(nextArea); }
 
-    public String getConnection(String nextArea) { return connections.get(nextArea); }
-
-    @Override
-    public String getType() { return type; }
-
-    @Override
-    public String getName() { return name; }
+    public String
+    getConnection(final String nextArea) { return connections.get(nextArea); }
 
     @Override
-    public String getDescription()
+    public String
+    getDescription()
     {
-        StringBuilder d = new StringBuilder(description);
-
-        if (!npcs.isEmpty()) { d.append("\nYou can see the following people here:\n"); }
-        for (final String npc : npcs) { d.append(npc).append(", "); }
-        if (!npcs.isEmpty()) { d.delete(d.length() - 2, d.length()); }
-
-        if (!inventory.isEmpty()) { d.append("\nYou can see the following items here:\n"); }
-        for (final String item : inventory) { d.append(item).append(", "); }
-        if (!inventory.isEmpty()) { d.delete(d.length() - 2, d.length()); }
-
-        return d.toString();
+        return description + buildOutputList("people", npcs) + buildOutputList("items", inventory);
     }
 
-    @Override
-    public boolean isActive() { return active; }
+    private String
+    buildOutputList(final String noun, Collection<String> c)
+    {
+        final String DELIMITER = ", ";
 
-    @Override
-    public void setActive(boolean value) { active = value; }
+        if (c.isEmpty()) { return ""; }
 
-    public Set<String> getInventory() { return new HashSet<>(inventory); }
+        StringBuilder sb = new StringBuilder(String.format("%nYou can see the following %s here:%n", noun));
+        for (final String e : c) { sb.append(e).append(DELIMITER); }
 
-    public boolean hasInInventory(final String object) { return inventory.contains(object); }
+        return sb.substring(0, sb.length() - DELIMITER.length());
+    }
 
-    public void removeFromInventory(final String object) { inventory.remove(object); }
+    public Set<String>
+    getObstacles() { return new HashSet<>(obstacles); }
 
-    public void addToInventory(final String object) { inventory.add(object); }
+    public void
+    removeObstacle(final String obstacle) { obstacles.remove(obstacle); }
 
-    public Set<String> getObstacles() { return new HashSet<>(obstacles); }
+    public void
+    addObstacle(final String obstacle) { obstacles.add(obstacle); }
 
-    public Set<String> getNpcs() { return npcs; }
+    public void
+    removeNpc(final String npc) { npcs.remove(npc); }
 
-    public Map<String, String> getConnections() { return new HashMap<>(connections); }
+    public boolean
+    hasNpc(final String npc) { return npcs.contains(npc); }
 
+    public void
+    addNpc(final String npc) { npcs.add(npc); }
+
+    public boolean
+    hasObstacle(final String obstacle) { return obstacles.contains(obstacle); }
 }

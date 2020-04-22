@@ -1,0 +1,68 @@
+[
+  {
+    "active": true,
+    "type": "Area",
+    "name": "forest",
+    "description": "You are surrounded by trees. There is a castle to the north, a house to your west and a thorny-forest to your east.",
+    "inventory": ["chest", "pouch", "cherry-bomb"],
+    "stats": {},
+    "commandBlueprints": [],
+    "obstacles": ["door", "iron-gate", "wooden-spikes"],
+    "npcs": ["troll"],
+    "connections": {
+      "north": "castle",
+      "castle": "castle",
+      "west": "house",
+      "house": "house",
+      "east": "thorny-forest",
+      "thorny-forest": "thorny-forest"
+    }
+  },
+  {
+    "active": true,
+    "type": "Area",
+    "name": "house",
+    "description": "You are inside a house. There is a forest to your east.",
+    "inventory": ["sword"],
+    "stats": {},
+    "commandBlueprints": [],
+    "obstacles": [],
+    "npcs": ["chad"],
+    "connections": {
+      "east": "forest",
+      "forest": "forest"
+    }
+  },
+  {
+    "active": true,
+    "type": "Area",
+    "name": "castle",
+    "description": "You are inside an ominous castle. There is a forest to your south.",
+    "inventory": ["diamond", "potion"],
+    "stats": {},
+    "commandBlueprints": [],
+    "obstacles": [],
+    "npcs": ["princess"],
+    "connections": {
+      "south": "forest",
+      "forest": "forest"
+    }
+  },
+  {
+    "active": true,
+    "type": "Area",
+    "name": "thorny-forest",
+    "description": "You are inside a thorny-forest, it looks dangerous. The thorny-forest runs deeper and there is a forest to your west .",
+    "inventory": ["poison"],
+    "stats": {
+      "health": -5
+    },
+    "commandBlueprints": [],
+    "obstacles": [],
+    "npcs": [],
+    "connections": {
+      "west": "forest",
+      "forest": "forest"
+    }
+  }
+]

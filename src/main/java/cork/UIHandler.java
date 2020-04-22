@@ -25,7 +25,7 @@ public class UIHandler {
 
     private static final String DEFAULT_PROMPT   = ">";
     private static final String CLEAR_BOOKMARK   = "clear";
-    private static final String QUIT_OPTION      = "Quit";
+    public  static final String QUIT_OPTION      = "Quit";
     private static final String CONTINUE_OPTION  = "Continue";
     private static final String NEW_GAME_OPTION  = "New Game";
     public  static final String LOAD_GAME_OPTION = "Load Game";
@@ -34,11 +34,11 @@ public class UIHandler {
     private static final List<String> GAME_MENU_OPTIONS   = Arrays.asList(NEW_GAME_OPTION, LOAD_GAME_OPTION, QUIT_OPTION);
 
     private static final Color DEFAULT_OUTPUT_COLOR = Color.GREEN;
-    private static final Color DEFAULT_INPUT_COLOR  = Color.WHITE;
+    private static final Color DEFAULT_INPUT_COLOR  = Color.CYAN;
     private static final Color DEFAULT_ERROR_COLOR  = Color.RED;
 
-    private TextIO textIO = TextIoFactory.getTextIO();
-    private TextTerminal<?> terminal = textIO.getTextTerminal();
+    private final TextIO textIO = TextIoFactory.getTextIO();
+    private final TextTerminal<?> terminal = textIO.getTextTerminal();
 
 
     UIHandler()
@@ -46,25 +46,32 @@ public class UIHandler {
         terminal.setBookmark(CLEAR_BOOKMARK);
         terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
         terminal.getProperties().setInputColor(DEFAULT_INPUT_COLOR);
+        terminal.registerUserInterruptHandler(t -> {}, false);
     }
     
-    public String displaySplashScreen() {
+    public String
+    displaySplashScreen()
+    {
         clearScreen();
         print(CORK_LOGO);
         return textIO.newStringInputReader()
                 .withNumberedPossibleValues(HOME_SCREEN_OPTIONS)
-                        .read();
+                .read();
     }
 
-    public String displayMainMenu(List<String> games) {
+    public String
+    displayMainMenu(List<String> games)
+    {
         clearScreen();
         games.add(QUIT_OPTION);
         return textIO.newStringInputReader()
                 .withNumberedPossibleValues(games)
-                        .read("Please select a game to play:");
+                .read("Please select a game to play:");
     }
 
-    public String displayGameMenu(final String game) {
+    public String
+    displayGameMenu(final String game)
+    {
         clearScreen();
         print(game);
         return textIO.newStringInputReader()
@@ -72,22 +79,30 @@ public class UIHandler {
                 .read();
     }
 
-    public String displayError(final String error) {
+    public void
+    displayError(final String error)
+    {
         clearScreen();
-        terminal.getProperties().setPromptColor(DEFAULT_ERROR_COLOR);
-        print(error);
-        terminal.getProperties().setPromptColor(DEFAULT_OUTPUT_COLOR);
+        terminal.executeWithPropertiesConfigurator(
+                p -> p.setPromptColor(DEFAULT_ERROR_COLOR),
+                t -> t.println(error)
+        );
         print("Press any key to continue.");
-        return getInput();
+        getInput();
     }
 
-    public void exit() { terminal.dispose(); }
+    public void
+    exit() { terminal.dispose(); }
 
-    public void clearScreen() { terminal.resetToBookmark(CLEAR_BOOKMARK); }
+    public void
+    clearScreen() { terminal.resetToBookmark(CLEAR_BOOKMARK); }
 
-    public String getInput() { return textIO.newStringInputReader().withDefaultValue(DEFAULT_PROMPT).read().toLowerCase(); }
+    public String
+    getInput() { return textIO.newStringInputReader().withDefaultValue(DEFAULT_PROMPT).read().toLowerCase(); }
 
-    public void print(String string) { terminal.println(string); }
+    public void
+    print(String string) { terminal.println(string); }
 
-    public boolean promptUser(final String prompt) { return textIO.newBooleanInputReader().read(prompt); }
+    public boolean
+    promptUser(final String prompt) { return textIO.newBooleanInputReader().read(prompt); }
 }

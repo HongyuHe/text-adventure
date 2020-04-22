@@ -1,0 +1,31 @@
+[
+  {
+    "type": "Item",
+    "name": "money",
+    "description": "A deaf man will hear the clink o' money.",
+    "consumable": false,
+    "active": true,
+
+    "stats": {
+      "money": 5
+    }
+  },
+  {
+    "type": "Item",
+    "name": "note",
+    "description": "A note with a quote aboot health.",
+    "consumable": false,
+    "active": true,
+
+    "stats": {}
+  },
+  {
+    "type": "Item",
+    "name": "answer",
+    "description": "The answer to every riddle, you may not know the answer yourself, but Failing means yer playin!",
+    "consumable": false,
+    "active": true,
+
+    "stats": {}
+  }
+]

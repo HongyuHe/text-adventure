@@ -16,7 +16,7 @@ The list of features that have been implemented can be found in the table below.
 ## Class diagram                                    
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
-![Class Diagram](./assets/class_detail.png "Class diagram")
+![Class Diagram](assets/A02/class_detail.png "Class diagram")
 
 **Engine**
 The engine is the heart of the system and can be considered the (grand) parent of all the other components. It will contain the entry point of the entire project and acts as a bridge between the game itself, the UI, and the JSON handling code, whilst also controlling the state of the overall system and handling certain meta-commandBlueprints meant for the engine itself (e.g. saving the game).
@@ -228,7 +228,7 @@ Attributes
 Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 
 The figure representing the UML object diagram is as follows :-
-![Object Diagram](./assets/object_diagram.PNG "State machine diagram for the Engine class")
+![Object Diagram](assets/A02/object_diagram.PNG "State machine diagram for the Engine class")
 
 In the above diagram, the system is in a state wherein the game has been loaded successfully and the gamer just inputted the command `eat apple` into the system. The description of the various objects and the states of their variables are as follows :-
 - **engine**: The engine object is the main controlling object of the system itself. It is also responsible for running a game. The selected game is stored as a variable called `currentGame` and the list of games found on the system is saved as a list of strings called `games`. The engine builds the `currentGame` with the help of the `Initializer` class.
@@ -253,7 +253,7 @@ Author(s): `Anthony Wilkes, Ajay Hitendra Mota`
 In this section, we will describe two components of the system that hold different states. There are the **Engine** class and the **UIHandler** class.
 
 ### Engine
-![Engine State Machine](./assets/engine_state.png "State machine diagram for the Engine class")
+![Engine State Machine](assets/A02/engine_state.png "State machine diagram for the Engine class")
 
 The **Engine** class will be the main, top-level control point for the system as a whole. On system start the **Engine** will load the list of available games that the user can play to present them in a menu. This list will be determined by the **Initializer** as it is the **Initializer** that should be responsible for interactions with game files. If the **Initializer** fails at any point during this process, it should return a reason why and this error response should be printed to the console before the system exits.
 
@@ -269,7 +269,7 @@ Finally, if the game ends in the *Game Running* loop (i.e. the player obtains th
 
 ### UIHandler
 The state machine diagram for the UIHandler is as follows :-
-![State machine diagrams](./assets/state_ui.png "State machine diagram 1")
+![State machine diagrams](assets/A02/state_ui.png "State machine diagram 1")
 The UI as mentioned earlier will make use of a terminal window that is called using the native terminal application provided by the Operating System and otherwise open a window using the *javax.swing* package. This functionality of opening an application window will be provided by the *Text-IO* package.
 
 The general states can be briefly explained before diving into their details as follows :-
@@ -299,7 +299,7 @@ In this section, we will describe two crucial parts of the system during its fun
 ### Game Initialization Sequence
 
 The UML diagram for the interaction is as follows :-
-![State machine diagrams](./assets/init_sequence.PNG "State machine diagram 1")
+![State machine diagrams](assets/A02/init_sequence.PNG "State machine diagram 1")
 
 The game initialization sequence is divided into two main parts. The upper half of the diagram shows the initialization of the game with the correct objects, their lifelines, their types and the right functions/values used as messages. The lower half shows the two alternate scenarios in prescriptive detail till the point in time that the game just starts its execution. The description of the two main phases is as follows :-
 - Pre-Initialization: The engine is the main controller of the game invokes the initializer object bypassing the game path of the selected user's choice from the UIHandler. This is abstracted away in this sequence diagram. The main initialization occurs from this step as follows :-
@@ -320,7 +320,7 @@ The game initialization sequence is divided into two main parts. The upper half 
 
 ### User Input Handling
 
-![User Input Handling](./assets/input_sequence.png "Seqeuence diagram for user input")
+![User Input Handling](assets/A02/input_sequence.png "Seqeuence diagram for user input")
 
 The sequence diagram above follows the processes that occur after the user has typed in the command "use key door" during gameplay. To enable input to be captured the **Engine** must be inside the *runGame* loop, where it calls the *getInput* function inside the **UIHandler** which blocks waiting for the user to type something in. Once the input has been received, the **UIHandler** returns the String input to the **Engine**. At this point, control flow splits up based on what value the input holds. If the input is a meta-command (e.g. "save", "load", or "quit"), then the **Engine** deals with this command directly before continuing with the *runGame* loop's next iteration (note that, since this diagram is looking to describing the **Engine's** interaction with the game-world, only the alternate process for "save" is shown as, at this level of detail, the other meta-command functions would be identical).
 

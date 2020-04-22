@@ -1,0 +1,45 @@
+[
+    {
+        "active": true,             // This should always be true
+        "type": "Obstacle",         // This should always be Obstacle
+        "name": "",                 // This should be a single word and unique across all entities
+        "description": "",          // A description of the obstacle
+        "inventory": [],            // Anything the obstacle might have inside it (this could be dropped on interaction, for example)
+        "stats": {},                // Any stats the obstacle might have (for example, trying to get past the obstacle might hurt the player by the specified amount)
+        "commandBlueprints": [],    // Any commands that can be used with the obstacle
+        "currentLocation": "",      // Where the obstacle is currently found - make sure this matches the list of obstacle for the corresponding area
+        "state": true,              // If true then the obstacle will block the player's progress towards a certain area, otherwise it will allow them to pass
+        "blocks": "",               // The name of the area that this obstacle blocks access to
+        "requiredObject": "",       // The name of the item that is required to change this obstacle's state to false - there should be a corresponding item in the items.json file
+        "message": ""               // The message presented to the player if they try to get past the obstacle without "unlocking" it first
+    },
+
+    // An example obstacle
+    {
+        "active": true,
+        "type": "Obstacle",
+        "name": "door",
+        "description": "A sturdy, spiked door.",
+        "inventory": [ "bell" ],
+        "stats": {
+            "health": 30,
+        },
+        "commandBlueprints": [
+            {
+                "name": "ring",
+                "function": "ChangeState"
+            },
+            {
+                "name": "pickup",
+                "function": "DropItem"
+            }
+        ],
+        "currentLocation": "forest",
+        "state": true,
+        "blocks": "castle",
+        "requiredObject": "bell",
+        "message": "There is a sturdy, spiked door in the way - ouch!"
+    },
+
+    // [{...}, {...}, ...] - add as many obstacles as you'd like
+]

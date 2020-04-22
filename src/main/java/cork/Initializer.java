@@ -1,16 +1,15 @@
 package cork;
 
+import com.google.gson.JsonParseException;
 import command.CommandFactory;
-import command.Command;
+import command.ICommand;
 import deserialiser.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonDeserializer;
 import com.google.gson.reflect.TypeToken;
 import entity.*;
-import entity.EmptyEntity;
 import dictionary.GameEntities;
-import org.tinylog.Logger;
 
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -20,80 +19,128 @@ import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static entity.EmptyEntity.initializeEmptyEntity;
-
 public class Initializer {
     private Initializer() {}
 
-    public static GameEntities loadGameFiles(String game) {
-        game = "./games/" +  game;
-        Map<String, Item> itemEntities = load(game + "/items.json", new ItemDeserializer(), Item.class)
-                .stream().collect(Collectors.toMap(Item::getName, Function.identity()));
-        Map<String, Area> areaEntities = load(game + "/areas.json", new AreaDeserializer(), Area.class)
-                .stream().collect(Collectors.toMap(Area::getName, Function.identity()));
-        Map<String, Obstacle> obstacleEntities = load(game + "/obstacles.json", new ObstacleDeserializer(), Obstacle.class)
-                .stream().collect(Collectors.toMap(Obstacle::getName, Function.identity()));
-        Map<String, Npc> npcEntities = load(game + "/npcs.json", new NpcDeserializer(), Npc.class)
-                .stream().collect(Collectors.toMap(Npc::getName, Function.identity()));
+    public static
+    GameEntities loadGameFiles(String game)
+    {
+        final String jsonLocation = "./games/" + game;
+        final String itemLocation = jsonLocation + "/items.json";
+        final String areaLocation = jsonLocation + "/areas.json";
+        final String obstacleLocation = jsonLocation + "/obstacles.json";
+        final String npcLocation = jsonLocation + "/npcs.json";
+        final String gameOverItemLocation = jsonLocation + "/gameOverItem.json";
+        final String playerLocation = jsonLocation + "/player.json";
 
-        GameOverItem gameOverItem = loadSingleEntity(game + "/gameOverItem.json", new GameOverItemDeserializer(), GameOverItem.class);
-        Player player = loadSingleEntity(game + "/player.json", new PlayerDeserializer(), Player.class);
-        EmptyEntity emptyEntity = initializeEmptyEntity();
+        Map<String, Item> itemEntities =
+                load(itemLocation, new ItemDeserializer(), Item.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Item::getName,
+                                Function.identity()));
+
+        Map<String, Area> areaEntities =
+                load(areaLocation, new AreaDeserializer(), Area.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Area::getName,
+                                Function.identity()));
+
+        Map<String, Obstacle> obstacleEntities =
+                load(obstacleLocation, new ObstacleDeserializer(), Obstacle.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Obstacle::getName,
+                                Function.identity()));
+
+        Map<String, Npc> npcEntities =
+                load(npcLocation, new NpcDeserializer(), Npc.class)
+                        .stream()
+                        .collect(Collectors.toMap(
+                                Npc::getName,
+                                Function.identity()));
+
+        Item gameOverItem = loadSingleEntity(gameOverItemLocation, new ItemDeserializer(), Item.class);
+
+        Player player = loadSingleEntity(playerLocation, new PlayerDeserializer(), Player.class);
+
+        DefaultEntity defaultEntity = DefaultEntity.instance();
 
         GameEntities gInit = new GameEntities(itemEntities,
-                                areaEntities,
-                                obstacleEntities,
-                                npcEntities,
-                                gameOverItem,
-                                player,
-                                emptyEntity
-                );
-        populateActions(gInit);
+                areaEntities,
+                obstacleEntities,
+                npcEntities,
+                gameOverItem,
+                player,
+                defaultEntity
+        );
+
+        populateCommands(gInit);
+
         return gInit;
     }
 
-    private static <T> ArrayList<T> load(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c) {
-        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation))) {
+    private static <T> ArrayList<T>
+    load(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
+    {
+        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation)))
+        {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
             Type entitySetType = TypeToken.getParameterized(ArrayList.class, c).getType();
             return gson.fromJson(reader, entitySetType);
-
-        } catch (Exception ex) {
-            Logger.error(ex.getMessage());
         }
-
-        return new ArrayList<>();
+        catch (Exception ex) { throw new JsonParseException("file: " + jsonLocation + "\n" + ex.getCause()); }
     }
 
-    private static <T> T loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c) {
-        try {
+    private static <T> T
+    loadSingleEntity(String jsonLocation, JsonDeserializer<?> deserializer, Class<T> c)
+    {
+        try (Reader reader = Files.newBufferedReader(Paths.get(jsonLocation)))
+        {
             Gson gson = new GsonBuilder()
                             .registerTypeAdapter(Entity.class, deserializer)
                             .create();
 
-            Reader reader = Files.newBufferedReader(Paths.get(jsonLocation));
-            T singleEntity = gson.fromJson(reader, c);
-
-            reader.close();
-            return singleEntity;
-
-        } catch (Exception ex) {
-            Logger.error(ex.getMessage());
+            return gson.fromJson(reader, c);
         }
-
-        return null;
+        catch (Exception ex) { throw new JsonParseException("file: " + jsonLocation + "\n" + ex.getCause()); }
     }
 
-    private static void populateActions(GameEntities entities) {
-        HashMap<String, Command> actions = new HashMap<>();
-        Player player = entities.getPlayer();
+    private static void
+    populateCommands(GameEntities entities)
+    {
+        iterateAndPopulate(entities.getItemEntities());
+        iterateAndPopulate(entities.getAreaEntities());
+        iterateAndPopulate(entities.getObstacleEntities());
+        iterateAndPopulate(entities.getNpcEntities());
 
-        for (CommandBlueprint cmd : player.getCommands()) {
-            actions.putIfAbsent(cmd.getName(), CommandFactory.createCommand(cmd, player));
-        }
-        player.setActions(new HashMap<>(actions));
+        Item goi = entities.getGameOverItem();
+        goi.setActions(createCommandMap(goi));
+
+        Player p = entities.getPlayer();
+        p.setActions(createCommandMap(p));
+
+        DefaultEntity ee = entities.getDefaultEntity();
+        ee.setActions(createCommandMap(ee));
+    }
+
+    private static <T extends Entity> void
+    iterateAndPopulate(final Map<String, T> c) { c.values().forEach(e -> e.setActions(createCommandMap(e))); }
+
+    private static Map<String, ICommand>
+    createCommandMap(final Entity e)
+    {
+        return e.getCommandBlueprints()
+                .stream()
+                .collect(Collectors.toMap(
+                        CommandBlueprint::getName,
+                        cb -> CommandFactory.createCommand(cb, e),
+                        (a, b) -> b,
+                        HashMap::new)
+                );
     }
 }

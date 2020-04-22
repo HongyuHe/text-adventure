@@ -3,61 +3,40 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-import java.util.Set;
+import java.util.Map;
 
-public class TakeItem extends Command {
-    private IInteractable parent;
-    private Set<String> args;
+public class TakeItem implements ICommand {
+    private final Entity parent;
 
-    public TakeItem(final Set<String> args, final IInteractable parent) {
-        this.args = args;
+    public TakeItem(final Entity parent) {
         this.parent = parent;
     }
 
     @Override
     public String apply(String object, GameEntities ge) {
-        if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
+        Area area = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
-        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
-
-        if (!area.hasInInventory(object)) { return String.format("You cannot pick up '%s'", object); }
+        if (!area.hasInInventory(object)) { return String.format("You cannot see '%s' here.", object); }
 
         area.removeFromInventory(object);
 
-        StringBuilder result = new StringBuilder(object + " -> " + parent.getName());
+        StringBuilder result = new StringBuilder(parent.getName() + " picked up " + object);
 
-        ICharacter p = (ICharacter) parent;
-        p.addToInventory(object);
+        parent.addToInventory(object);
 
-        Item i = ge.getItemOrElse(object);
-        Stat s = i.getStat();
+        Item item = ge.getItemOrDefault(object);
 
-        if (!i.isConsumable() && !s.getName().equals(""))
+        if (item.isConsumable()) { return result.toString(); }
+
+        for (final Map.Entry<String, Integer> stat : item.getStats().entrySet())
         {
-            p.setStat(s.getName(), p.getStatValue(s.getName()) + s.getValue());
-            result.append("\n").append(s.getName()).append(" changes to ").append(s.getValue());
+            final Integer oldValue = parent.getStatValue(stat.getKey());
+            final Integer newValue = oldValue + stat.getValue();
+            parent.setStat(stat.getKey(), newValue);
+
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
         }
 
         return result.toString();
-    }
-
-    public String apply(final Area object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Item object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Npc object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Obstacle object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Player object, final GameEntities ge) {
-        return "";
     }
 }

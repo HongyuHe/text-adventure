@@ -3,56 +3,38 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-import java.util.Set;
+import java.util.Map;
 
-public class ChangeStat extends Command {
-    private IInteractable parent;
-    private Set<String> args;
+public class ChangeStat implements ICommand {
+    private final Entity parent;
 
-    public ChangeStat(final Set<String> args, final IInteractable parent) {
-        this.args = args;
-        this.parent = parent;
-    }
+    public ChangeStat(final Entity parent) { this.parent = parent; }
 
     @Override
     public String apply(final String object, final GameEntities ge) {
-        if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
+        if (!parent.hasInInventory(parent.getName())
+                && !parent.hasInInventory(object))
+        {
+            return String.format("You do not have '%s' in your inventory.", object);
+        }
 
-        ICharacter p = (ICharacter) parent;
+        Item item = ge.getItemOrDefault(object);
+        if (!item.isConsumable()) { return "You cannot use that."; }
 
-        if (!p.hasInInventory(object)) { return String.format("You do not have '%s' in your inventory.", object); }
+        StringBuilder result = new StringBuilder();
+        result.append(parent.getName()).append(":");
+        for (final Map.Entry<String, Integer> stat : item.getStats().entrySet())
+        {
+            final Integer oldValue = parent.getStatValue(stat.getKey());
+            final Integer newValue = oldValue + stat.getValue();
+            parent.setStat(stat.getKey(), newValue);
 
-        Item i = ge.getItemOrElse(object);
-        if (!i.isConsumable()) { return "You cannot use that."; }
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
+        }
 
-        Stat s = i.getStat();
+        parent.removeFromInventory(object);
+        item.setActive(false);
 
-        final Integer oldValue = p.getStatValue(s.getName());
-        p.setStat(s.getName(), oldValue + s.getValue());
-
-        p.removeFromInventory(object);
-        i.setActive(false);
-
-        return String.format("%s changes to %d", s.getName(), oldValue + s.getValue());
-    }
-
-    public String apply(final Area object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Item object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Npc object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Obstacle object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Player object, final GameEntities ge) {
-        return "";
+        return result.toString();
     }
 }

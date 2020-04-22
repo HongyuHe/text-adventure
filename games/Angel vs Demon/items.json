@@ -1,0 +1,34 @@
+[
+  {
+    "type": "Item",
+    "name": "angelic-blade",
+    "description": "An angelic-blade that makes the angel stronger. Give this to your angel to make him win!.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "strength": 15
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "manual",
+    "description": "You are on the side of the angels. You have to `summon` an angel to the arena and battle the demon, who is too strong for you to beat! \n Supported commands are :-
+	`look *[Entity]`,
+	`summon [Area] [NPC]`,
+	`call [Item] [Area]`,
+	`take [Item]`,
+	`drop [Item]`,
+	`give [Item] [Area]`,
+	`stats [Entity]`,
+	`inventory [Entity]`,
+	`battle [NPC] [NPC]`",
+    "active": true,
+    "consumable": false,
+    "stats": {
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  }
+]

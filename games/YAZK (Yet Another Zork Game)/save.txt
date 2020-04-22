@@ -1,9 +1,0 @@
-look
-look
-look apple
-move north
-look
-move south
-go west
-look
-go east

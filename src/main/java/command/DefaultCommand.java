@@ -3,27 +3,15 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-public class DefaultCommand extends Command {
+public class DefaultCommand implements ICommand {
+    private final Entity parent;
+
+    public DefaultCommand(final Entity parent) { this.parent = parent; }
+
     @Override
-    public String apply(final String object, final GameEntities ge) { return "You cannot do that."; }
-
-    public String apply(final Area object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Item object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Npc object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Obstacle object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Player object, final GameEntities ge) {
-        return "";
+    public String apply(final String object, final GameEntities ge)
+    {
+        if (ge.getEntityOrDefault(parent.getName()) == DefaultEntity.instance()) { return "You cannot see that here."; }
+        else { return "You cannot do that."; }
     }
 }

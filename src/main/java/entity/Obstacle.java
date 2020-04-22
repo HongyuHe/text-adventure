@@ -1,84 +1,58 @@
 package entity;
 
-import command.*;
 import deserialiser.CommandBlueprint;
 
 import java.util.*;
 
-public class Obstacle extends Entity implements IInteractable {
-    private String type;
-    private String name;
-    private Boolean active;
-    private String currentLocation;
-    private Boolean state;
+public class Obstacle extends Locatable {
+    private boolean state;
     private String blocks;
     private String requiredObject;
-    private Set<CommandBlueprint> commands;
+    private String message;
 
-    private Map<String, Command> actions;
+    public
+    Obstacle()
+    {
+        new Obstacle(false, "", "", "",
+                Collections.emptySet(), Collections.emptyMap(),
+                Collections.emptySet(), "", false, "", "", ""
+        );
+    }
 
-    public Obstacle(String type, // NOSONAR - 8 parameters are required to allow deserialization
-                    String name,
-                    Boolean active,
-                    String currentLocation,
-                    Boolean state,
-                    String blocks,
-                    String requiredObject,
-                    List<CommandBlueprint> commands) {
-
-        this.type = type;
-        this.name = name;
-        this.active = active;
-        this.currentLocation = currentLocation;
+    public
+    Obstacle(final boolean active, // NOSONAR - Many parameters are required to allow deserialization
+             final String type,
+             final String name,
+             final String description,
+             final Set<String> inventory,
+             final Map<String, Integer> stats,
+             final Set<CommandBlueprint> commandBlueprints,
+             final String currentLocation,
+             final boolean state,
+             final String blocks,
+             final String requiredObject,
+             final String message)
+    {
+        super(active, type, name, description, inventory, stats, commandBlueprints, currentLocation);
         this.state = state;
         this.blocks = blocks;
         this.requiredObject = requiredObject;
-        this.commands = new HashSet<>(commands);
+        this.message = message;
     }
 
-    @Override
-    public String getType() { return type; }
+    public void
+    deactivate() { this.state = false; }
 
-    @Override
-    public String getName() {
-        return name;
-    }
+    public boolean
+    getState() { return state; }
 
-    @Override
-    public String getDescription() {
-        return "This entity does not have a description, quite the obstacle";
-    }
+    public String
+    getBlocks() { return blocks; }
 
-    @Override
-    public boolean isActive() { return active; }
+    public String
+    getRequiredObject() { return requiredObject; }
 
-    @Override
-    public void setActive(boolean value) { active = value; }
-
-    @Override
-    public Set<CommandBlueprint> getCommands() { return new HashSet<>(commands); }
-
-    @Override
-    public void setCurrentLocation(String newLocation) {
-        currentLocation = newLocation;
-    }
-
-    @Override
-    public String getCurrentLocation() { return currentLocation; }
-
-    public Boolean getState() { return state; }
-
-    public String getBlocks() { return blocks; }
-
-    public String getRequiredObject() { return requiredObject; }
-
-    public void setActions(Map<String, Command> actions) {
-        this.actions = actions;
-    }
-
-    @Override
-    public Command findCommandOrElse(String cmd) {
-        return actions.getOrDefault(cmd, new DefaultCommand());
-    }
+    public String
+    getMessage() { return message; }
 }
 

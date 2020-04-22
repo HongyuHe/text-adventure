@@ -1,0 +1,11 @@
+{
+  "type": "Item",
+  "name": "devil-horn",
+  "description": "The precious devil-horn that sells for billions.",
+  "active": true,
+  "consumable": false,
+  "stats": {
+  },
+  "inventory": [],
+  "commandBlueprints": []
+}

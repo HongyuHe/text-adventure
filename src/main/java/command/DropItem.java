@@ -3,50 +3,36 @@ package command;
 import dictionary.GameEntities;
 import entity.*;
 
-import java.util.Set;
+import java.util.Map;
 
-public class DropItem extends Command {
-    private IInteractable parent;
-    private Set<String> args;
+public class DropItem implements ICommand {
+    private final Entity parent;
 
-    public DropItem(final Set<String> args, final IInteractable parent) {
-        this.args = args;
-        this.parent = parent;
-    }
+    public DropItem(final Entity parent) { this.parent = parent; }
 
     @Override
     public String apply(String object, GameEntities ge) {
-        if (!(parent instanceof ICharacter)) { return "You cannot do that."; }
+        if (!parent.hasInInventory(object)) { return String.format("You are not holding '%s'", object); }
+        parent.removeFromInventory(object);
 
-        ICharacter p = (ICharacter) parent;
-
-        if (!p.hasInInventory(object)) { return String.format("You are not holding '%s'", object); }
-        p.removeFromInventory(object);
-
-        Area area = ge.getAreaOrElse(parent.getCurrentLocation());
+        Area area = ge.getAreaOrDefault(ge.getPlayer().getCurrentLocation());
 
         area.addToInventory(object);
 
-        return object + " -> " + area.getName();
-    }
+        StringBuilder result = new StringBuilder(parent.getName() + " dropped " + object);
 
-    public String apply(final Area object, final GameEntities ge) {
-        return "";
-    }
+        Item item = ge.getItemOrDefault(object);
+        if(item.isConsumable()) { return result.toString(); }
 
-    public String apply(final Item object, final GameEntities ge) {
-        return "";
-    }
+        for (final Map.Entry<String, Integer> stat : item.getStats().entrySet())
+        {
+            final Integer oldValue = parent.getStatValue(stat.getKey());
+            final Integer newValue = oldValue - stat.getValue();
+            parent.setStat(stat.getKey(), newValue);
 
-    public String apply(final Npc object, final GameEntities ge) {
-        return "";
-    }
+            result.append("\n").append(stat.getKey()).append(" changes to ").append(newValue);
+        }
 
-    public String apply(final Obstacle object, final GameEntities ge) {
-        return "";
-    }
-
-    public String apply(final Player object, final GameEntities ge) {
-        return "";
+        return result.toString();
     }
 }

@@ -1,0 +1,42 @@
+[
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "darkness",
+    "description": "A pool of oily blackness.",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "control-room",
+    "state": true,
+    "blocks": "storage",
+    "requiredObject": "flashlight",
+    "message": "You try to pass through the darkness but you fail."
+  },
+  {
+    "active": true,
+    "type": "Obstacle",
+    "name": "monster",
+    "description": "It hasn't seen you yet.",
+    "inventory": [],
+    "stats": {},
+    "commandBlueprints":
+    [
+      {
+        "name": "use",
+        "function": "ChangeState"
+      }
+    ],
+    "currentLocation": "station",
+    "state": true,
+    "blocks": "outside",
+    "requiredObject": "rifle",
+    "message": "There is a monster blocking your path."
+  }
+]

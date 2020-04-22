@@ -1,0 +1,9 @@
+{
+  "type": "Item",
+  "name": "haggis",
+  "description": "Some delicious looking haggis.",
+  "consumable": true,
+  "active": true,
+  "inventory": [],
+  "stats": {}
+}

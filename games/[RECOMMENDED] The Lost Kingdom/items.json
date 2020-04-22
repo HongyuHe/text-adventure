@@ -1,0 +1,258 @@
+[
+  {
+    "type": "Item",
+    "name": "cheese",
+    "description": "A few crumbles of cheese that are useless to you but are a rat's favourite food.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "apple",
+    "description": "A delicious looking apple that you can `eat`.",
+    "active": true,
+    "consumable": true,
+    "stats": {
+      "health": 10,
+      "strength": 1
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "torch",
+    "description": "A piece of wood with some burning cloth and oil on top. You can `use` it to clear darkness.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "chest",
+    "description": "An old rotten chest that could hold something. You can easily `attack` and break it.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "health": 1,
+      "strength": 1
+    },
+    "inventory": ["dagger"],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "dagger",
+    "description": "A small weapon that increases your strength in fights.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "strength": 5
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "wolfskin",
+    "description": "A small piece of armor that increases your strength and health.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "health": 5,
+      "strength": 5
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "lumber",
+    "description": "Large pieces of wood bundled together. You can `use` it to repair some structure that is broken.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "trash",
+    "description": "Some useless piece of trash.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "fish",
+    "description": "Just some fish swimming in the strong currents best to let them be.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "magical-fruit",
+    "description": "A `magical-fruit` that you can `eat`",
+    "active": true,
+    "consumable": true,
+    "stats": {
+      "strength": 20
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "glass-case",
+    "description": "On close inspection you see that the `glass-case` fits an `ornate-sword`. All you need to do is `remove` it from the `glass-case`.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": ["ornate-sword"],
+    "commandBlueprints": [
+      {
+        "name": "remove",
+        "function": "DropItem"
+      }
+    ]
+  },
+  {
+    "type": "Item",
+    "name": "ornate-sword",
+    "description": "A magical weapon that increases your strength in fights significantly! Best to `take` it before someone else does.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "strength": 20
+    },
+    "inventory": [],
+    "commandBlueprints": [
+    ]
+  },
+  {
+    "type": "Item",
+    "name": "mining-equipment",
+    "description": "Some `mining-equipment` lying around. It looks like the owner left them here a long time ago. It should come in handy if you want to `use` it on something like `ore` or `rubble`.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "notes",
+    "description": "These are some sketches of a plan. You can oly make out some phrases in the bloodsoaked parchments like `return of the king`, `jailbreak` and `rebellion`.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "inscriptions",
+    "description": "The inscriptions show a map pointing the location of the ex `rebel-base`. It was an ideal location as it was close to `town` and also close to a secret entrace to the `palace` through the `sewer`!?",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "dead-partisan",
+    "description": "The bloodsoaked body of a `dead-partisan`. It is a sad sight but it would be a good idea to look through his `inventory` and `remove` any important items from the body of the `dead-partisan`.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": ["password"],
+    "commandBlueprints": [
+      {
+        "name": "remove",
+        "function": "DropItem"
+      }
+    ]
+  },
+  {
+    "type": "Item",
+    "name": "password",
+    "description": "This is a `password` to enter the `rebel-base`! Who knows if they even exist anymore? Best to keep it with you till you have `use` of it.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "dead-soldier",
+    "description": "The bloodsoaked body of a `dead-soldier`. He has some heavy gear so it would be a good idea to look through his `inventory` and `remove` and any important items from the body of the `dead-soldier`.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": ["heavy-armor"],
+    "commandBlueprints": [
+      {
+        "name": "remove",
+        "function": "DropItem"
+      }
+    ]
+  },
+  {
+    "type": "Item",
+    "name": "heavy-armor",
+    "description": "Some heavy platemail, breaches, steel boots and gloves. Equipping it increases the `strength` and `health` of its wearer.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+      "health": 20,
+      "strength": 20
+    },
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "gold-coins",
+    "description": "Some gold-coins. Can buy you food or buy you information through a `bribe`.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "old-paper",
+    "description": "An `old-paper` that says a `1-trap-3` is `hidden-1` behind the `3-door`, `go` there! It looks like a crytpic message that leads you to aan area somewhere in this house. It would be a good idea to decode it and come up with a sensible name for an area to `go` to.",
+    "active": true,
+    "consumable": false,
+    "stats": {},
+    "inventory": [],
+    "commandBlueprints": []
+  },
+  {
+    "type": "Item",
+    "name": "ornate-key",
+    "description": "An `ornate-key` that you can `use` to open the `secret-door` leading to the palace.",
+    "active": true,
+    "consumable": false,
+    "stats": {
+    },
+    "inventory": [],
+    "commandBlueprints": [
+    ]
+  }
+]
